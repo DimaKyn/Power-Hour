@@ -1,0 +1,116 @@
+.wrapper {
+    overflow: hidden;
+    
+    color: white;
+    height: 90vh;
+    width: 100vw; 
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+.backgroundImage {
+    background-image: url("../public/GymBackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.2;
+    overflow: hidden;
+    color: white;
+    height: 90vh;
+    width: 100vw; 
+    position: absolute;
+    animation-name: backgroundImageScale; 
+    animation-duration: 20s infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes backgroundImageScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.main {  
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+}
+
+.labelPowerHour {
+    font-family:  monospace;
+    text-transform: bold;
+    font-size: 200px;
+    font-weight: 10px;
+}
+
+.subLabel {
+    font-family:  monospace;
+    text-transform: bold;
+    font-size: 50px;
+    font-weight: 10px;
+    margin-top: -50px;
+}
+
+.loginText {
+    font-size: 40px;
+    position: absolute;
+    bottom: 14vh;
+    cursor: pointer;
+}
+
+.loginText:hover {
+    scale: 1.05;
+}
+
+.arrowDiv {
+    position: absolute;
+    bottom: 12vh;
+    justify-content: center;
+    align-items: bottom;
+    display: flex;
+    height: 30px;
+    width: 70px;
+    animation: moveArrow 2.5s infinite;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes moveArrow {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+.loginPage {
+    background-image: linear-gradient(0deg, gray, black);
+    height: 110vh;
+    width: 100vw;
+    max-width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+
+
+

@@ -1,0 +1,42 @@
+.loginBlock {
+    background-color: transparent;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 30px;
+
+    box-shadow: 0px 0px 5px 1px white;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    top: 125vh;
+    height: 50vh;
+    width: 25vw;
+    min-width: 300px;
+    min-height: 300px;
+
+
+}
+
+.loginLabel {
+    font-size: 50px;
+    position: absolute;
+    top: 20px;
+}
+
+.username, .password {
+    height: 50px;
+    width: 85%;
+    margin: 10px;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+}
+
+.username:focus, .password:focus { 
+     
+    outline: none;
+    background-color: transparent;
+    border-bottom: 3px solid white;
+    
+}
