@@ -1,10 +1,10 @@
 .loginBlock {
     background-color: transparent;
-    border-width: 3px;
+    border-width: 7px;
     border-color: black;
-    border-radius: 30px;
+    border-radius: 10px;
 
-    box-shadow: 0px 0px 5px 1px white;
+    box-shadow: 0px 0px 5px 1px rgb(56, 53, 53);
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -15,8 +15,6 @@
     width: 25vw;
     min-width: 300px;
     min-height: 300px;
-
-
 }
 
 .loginLabel {
@@ -40,3 +38,55 @@
     border-bottom: 3px solid white;
     
 }
+
+.loginButton {
+    height: 50px;
+    width: 85%;
+    margin: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.loginButton:focus {
+    outline: none;
+}
+
+.usernameLabel, .passwordLabel {
+    font-size: 20px;
+    top: 0px;
+    left: 10px;
+}
+
+.loadingDiv {
+    visibility: hidden;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    animation: spin 1s infinite;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

@@ -10,14 +10,14 @@ import LoginBlock from '../components/LoginBlock';
 function movePage(labelRef) {
   //labelRef is the current clicked on element
   if (homepage) {
-    labelRef.current.style.color = "red";
+    labelRef.current.textContent = "LOGIN TO START TRAINING";
     labelRef.current.style.top = "78vh";
     window.scrollTo({ top: 0, behavior: 'smooth' });
     homepage = !homepage;
   } else {
-    labelRef.current.style.color = "white";
-    labelRef.current.style.top = "90vh";
-    window.scrollTo({ bottom: window.scrollY, behavior: 'smooth' });
+    labelRef.current.textContent = "BACK TO TOP";
+    labelRef.current.style.top = "110vh";
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     homepage = !homepage;
   }
   
@@ -35,18 +35,21 @@ export default function Home() {
       </Header>
       <div className={Style.wrapper}>
         <div className={Style.backgroundImage}></div>
-        <label className={Style.labelPowerHour}>POWER HOUR</label><br/>
+        <label className={Style.labelPowerHour}>POWER HOUR</label>
         <label className={Style.subLabel}>TIME TO TRAIN</label>
         <label ref={labelRef} className={Style.loginText} onClick={() => movePage(labelRef)}>LOGIN TO START TRAINING</label>
-        <div className={Style.arrowDiv}>
+        <div className={Style.arrowDivDown}>
           <ion-icon name="chevron-down-outline" size="large" className={Style.arrowDownward}></ion-icon>
         </div>
-      </div>
-      <div className={Style.loginPage}>
-        
-        <LoginBlock/>
-      </div>
       
+
+        <div className={Style.loginPage}>
+          <div className={Style.arrowDivUp}>
+            <ion-icon name="chevron-up-outline" size="large" className={Style.arrowUpward}></ion-icon>
+          </div>
+          <LoginBlock/>
+        </div>
+      </div>
     </main>
   )
 }
