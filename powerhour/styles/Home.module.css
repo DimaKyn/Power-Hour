@@ -12,6 +12,14 @@
     padding: 0;
 }
 
+.homepageLabels {
+    overflow: hidden;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .backgroundImage {
     background-image: url("../public/GymBackground.jpg");
     background-position: center;
@@ -42,8 +50,9 @@
     }
 }
 
-
 .main {  
+    height: 200vh;
+    width: 100vw;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -51,33 +60,36 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(0deg,gray, black);
+
 }
 
 .labelPowerHour {
+    
     font-family:  monospace;
     text-transform: bold;
-    font-size: 200px;
+    font-size: min(300px, 12vw);
+
     font-weight: 10px;
 }
 
 .subLabel {
+    min-block-size: 100px;
     font-family:  monospace;
     text-transform: bold;
-    font-size: 50px;
+    font-size: min(200px, 6vw);
     font-weight: 10px;
-    margin-top: -50px;
 }
 
 .loginText {
-    font-size: 30px;
+    font-size: min(100px, 3vw);
     position: absolute;
-    bottom: 14vh;
+    bottom: 15vh;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 .loginText:hover {
-    scale: 1.05;
+    transform: scale(1.1);
 }
 
 .arrowDivDown {
@@ -90,6 +102,11 @@
     width: 70px;
     animation: moveArrow 2.5s infinite;
     animation-timing-function: ease-in-out;
+}
+
+.arrowDivDown:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 
@@ -107,7 +124,7 @@
 
 
 .loginPage {
-    margin-top: 100px;
+    margin-top: 5vh;
     height: 110vh;
     width: 100vw;
     max-width: 100%;
@@ -129,6 +146,26 @@
     animation: moveArrow 2.5s infinite;
     animation-timing-function: ease-in-out;        
 }
+
+.arrowDivUp:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.homeText {
+    top: 110vh;
+    font-size: min(100px, 3vw);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    transition: transform 0.2s ease-in-out;
+}
+
+.homeText:hover {
+    transform: scale(1.1);
+}
+
+
 
 
 

@@ -1,55 +1,51 @@
 "use client"
 
-import {useRef} from 'react';
+import { useRef } from 'react';
 import Image from 'next/image'
 import Style from '../styles/Home.module.css';
 import Header from '../components/Header';
 import LoginBlock from '../components/LoginBlock';
 
 //On a click of a label, move the page to the login block or to the top of the page
-function movePage(labelRef) {
+function movePage(homepage) {
   //labelRef is the current clicked on element
-  if (homepage) {
-    labelRef.current.textContent = "LOGIN TO START TRAINING";
-    labelRef.current.style.top = "78vh";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    homepage = !homepage;
-  } else {
-    labelRef.current.textContent = "BACK TO TOP";
-    labelRef.current.style.top = "110vh";
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    homepage = !homepage;
-  }
-  
+  homepage ? window.scrollTo({ top: 0, behavior: 'smooth' }) :
+           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  homepage = !homepage;
+
 }
 
-var homepage = false;
+
 
 export default function Home() {
-  const labelRef = useRef(null);
-  
+  var homepage = false;
 
   return (
     <main className={Style.main}>
       <Header>
       </Header>
+
       <div className={Style.wrapper}>
         <div className={Style.backgroundImage}></div>
-        <label className={Style.labelPowerHour}>POWER HOUR</label>
-        <label className={Style.subLabel}>TIME TO TRAIN</label>
-        <label ref={labelRef} className={Style.loginText} onClick={() => movePage(labelRef)}>LOGIN TO START TRAINING</label>
-        <div className={Style.arrowDivDown}>
-          <ion-icon name="chevron-down-outline" size="large" className={Style.arrowDownward}></ion-icon>
-        </div>
-      
-
-        <div className={Style.loginPage}>
-          <div className={Style.arrowDivUp}>
-            <ion-icon name="chevron-up-outline" size="large" className={Style.arrowUpward}></ion-icon>
+        <div className={Style.homepageLabels}>
+          <label className={Style.labelPowerHour}>POWER HOUR</label>
+          <label className={Style.subLabel}>TIME TO TRAIN</label>
+          <label className={Style.loginText} onClick={() => movePage(homepage = false)}>LOGIN TO START TRAINING</label>
+          <div className={Style.arrowDivDown} onClick={() => movePage(homepage = false)}>
+            <ion-icon name="chevron-down-outline" size="large" className={Style.arrowDownward}></ion-icon>
           </div>
-          <LoginBlock/>
         </div>
       </div>
+
+      <div className={Style.loginPage}>
+        <div className={Style.arrowDivUp} onClick={() => movePage(homepage = true)}>
+          <ion-icon name="chevron-up-outline" size="large" className={Style.arrowUpward}></ion-icon>
+        </div>
+        <label className={Style.homeText} onClick={() => movePage(homepage = true)}>HOME</label>
+
+        <LoginBlock />
+      </div>
+
     </main>
   )
 }
