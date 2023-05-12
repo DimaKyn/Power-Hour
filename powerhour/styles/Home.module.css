@@ -32,9 +32,22 @@
     height: 320vh;
     width: 100%;
 
-    animation-name: backgroundImageScale; 
-    animation-duration: 20s infinite;
-    animation-timing-function: ease-in-out;
+    animation: backgroundImageScale 20s infinite ease-in-out; 
+
+}
+
+.backgroundImage2 {
+    background-image: url("../public/duo.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    opacity: 0.2;
+    overflow: hidden;
+    color: white;
+    height: 110vh;
+    width: 100vw; 
 }
 
 @keyframes backgroundImageScale {
@@ -63,7 +76,7 @@
 }
 
 .labelPowerHour {
-    
+    animation: fadeInPower 2s ease-in-out;
     font-family:  monospace;
     text-transform: bold;
     font-size: min(300px, 12vw);
@@ -71,12 +84,54 @@
     font-weight: 10px;
 }
 
+@keyframes fadeInPower {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .subLabel {
+    opacity:0;
     min-block-size: 100px;
     font-family:  monospace;
     text-transform: bold;
     font-size: min(200px, 6vw);
     font-weight: 10px;
+    animation: fadeInSub 2s ease-in-out 1s forwards;
+
+}
+
+.subSubSubImage {
+    /*background-image: url("../public/4.jpg");
+    */
+    height:200px;
+    width: 110px;
+    opacity:0;
+    animation: fadeInImg 2s ease-in-out 2s forwards;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes fadeInImg {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInSub {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .loginText {

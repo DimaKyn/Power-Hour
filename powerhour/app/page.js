@@ -30,6 +30,7 @@ export default function Home() {
         <div className={Style.homepageLabels}>
           <label className={Style.labelPowerHour}>POWER HOUR</label>
           <label className={Style.subLabel}>TIME TO TRAIN</label>
+          <div className={Style.subSubSubImage}/>
           <label className={Style.loginText} onClick={() => movePage(homepage = false)}>LOGIN TO START TRAINING</label>
           <div className={Style.arrowDivDown} onClick={() => movePage(homepage = false)}>
             <ion-icon name="chevron-down-outline" size="large" className={Style.arrowDownward}></ion-icon>
@@ -38,6 +39,7 @@ export default function Home() {
       </div>
 
       <div className={Style.loginPage}>
+        <div className={Style.backgroundImage2}></div>
         <div className={Style.arrowDivUp} onClick={() => movePage(homepage = true)}>
           <ion-icon name="chevron-up-outline" size="large" className={Style.arrowUpward}></ion-icon>
         </div>
