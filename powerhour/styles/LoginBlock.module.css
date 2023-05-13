@@ -81,6 +81,7 @@
     font-size: 40px;
     position: absolute;
     top: 20px;
+    overflow: hidden;
 }
 
 .buttonDiv {

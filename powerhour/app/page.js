@@ -47,7 +47,6 @@ export default function Home() {
           <AiFillCaretUp/>
         </div>
         <label className={Style.homeText} onClick={() => movePage(homepage = true)}>HOME</label>
-
         <LoginBlock />
       </div>
 
