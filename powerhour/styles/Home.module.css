@@ -2,13 +2,12 @@
     overflow: hidden;
     top: 30vh;
     color: white;
-    height: 90vh;
+    height: 100vh;
     width: 100vw; 
     justify-content: center;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 0;
     padding: 0;
 }
 
@@ -30,11 +29,8 @@
     opacity: 0.2;
     overflow: hidden;
     color: white;
-    height: 100vh;
-    width: 100vw; 
-
-    animation: backgroundImageScale 20s infinite ease-in-out; 
-
+    height: 90vh;
+    width: 100%;
 }
 
 .backgroundImage2 {
@@ -51,21 +47,9 @@
     width: 100vw; 
 }
 
-@keyframes backgroundImageScale {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 .main {  
     height: 200vh;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -106,8 +90,7 @@
 }
 
 .subSubSubImage {
-    /*background-image: url("../public/4.jpg");
-    */
+    background-image: url("../public/4.jpg");
     height:200px;
     width: 110px;
     opacity:0;
@@ -138,7 +121,7 @@
 .loginText {
     font-size: min(100px, 3vw);
     position: absolute;
-    bottom: 15vh;
+    bottom: 5vh;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
 }
@@ -149,12 +132,12 @@
 
 .arrowDivDown {
     position: absolute;
-    bottom: 12vh;
+    bottom: 0vh;
     justify-content: center;
     align-items: bottom;
     display: flex;
-    height: 30px;
-    width: 70px;
+    height: 60px;
+    width: 100%;
     animation: moveArrow 2.5s infinite;
     animation-timing-function: ease-in-out;
 }
@@ -192,12 +175,12 @@
 
 .arrowDivUp {
     position: absolute;
-    top: 105vh;
+    top: 109vh;
     justify-content: center;
     align-items: bottom;
     display: flex;
-    height: 30px;
-    width: 70px;
+    height: 10vh;
+    width: 100%;
     animation: moveArrow 2.5s infinite;
     animation-timing-function: ease-in-out;        
 }
@@ -208,8 +191,8 @@
 }
 
 .homeText {
-    top: 110vh;
-    font-size: min(100px, 3vw);
+    top: 113vh;
+    font-size: min(50px, 4vw);
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     position: absolute;
