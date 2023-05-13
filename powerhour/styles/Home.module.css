@@ -1,6 +1,6 @@
 .wrapper {
     overflow: hidden;
-    top: 30vh;
+    top: 0vh;
     color: white;
     height: 100vh;
     width: 100vw; 
@@ -29,7 +29,7 @@
     opacity: 0.2;
     overflow: hidden;
     color: white;
-    height: 90vh;
+    height: 100vh;
     width: 100%;
 }
 
@@ -38,7 +38,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+
     position: absolute;
     opacity: 0.2;
     overflow: hidden;
@@ -47,8 +47,10 @@
     width: 100vw; 
 }
 
+
+
 .main {  
-    height: 200vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
     margin: 0;
@@ -89,26 +91,6 @@
 
 }
 
-.subSubSubImage {
-    background-image: url("../public/4.jpg");
-    height:200px;
-    width: 110px;
-    opacity:0;
-    animation: fadeInImg 2s ease-in-out 2s forwards;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-@keyframes fadeInImg {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 @keyframes fadeInSub {
     0% {
         opacity: 0;
@@ -121,7 +103,7 @@
 .loginText {
     font-size: min(100px, 3vw);
     position: absolute;
-    bottom: 5vh;
+    bottom: 10vh;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
 }
@@ -132,7 +114,8 @@
 
 .arrowDivDown {
     position: absolute;
-    bottom: 0vh;
+    bottom: 5vh;
+    font-size: 30px;
     justify-content: center;
     align-items: bottom;
     display: flex;
@@ -163,8 +146,8 @@
 
 .loginPage {
     margin-top: 5vh;
-    height: 110vh;
-    width: 100vw;
+    height: 100vh;
+    width: 90vw;
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
