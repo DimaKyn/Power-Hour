@@ -29,11 +29,8 @@
     opacity: 0.2;
     overflow: hidden;
     color: white;
-    height: 320vh;
+    height: 90vh;
     width: 100%;
-
-    animation: backgroundImageScale 20s infinite ease-in-out; 
-
 }
 
 .backgroundImage2 {
@@ -48,18 +45,6 @@
     color: white;
     height: 110vh;
     width: 100vw; 
-}
-
-@keyframes backgroundImageScale {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
 }
 
 .main {  
@@ -105,8 +90,7 @@
 }
 
 .subSubSubImage {
-    /*background-image: url("../public/4.jpg");
-    */
+    background-image: url("../public/4.jpg");
     height:200px;
     width: 110px;
     opacity:0;
