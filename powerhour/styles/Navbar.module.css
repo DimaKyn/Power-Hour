@@ -91,10 +91,10 @@
 
 @keyframes hamburgerClick {
     0% {
-        transform: scale(1)
+        transform: scale(1);
     }
     100% {
-        transform: scale(0.95)    
+        transform: scale(0.95)  ; 
     }
 }
 
@@ -124,16 +124,13 @@
         display: block;
     }
 
-
-
-
     .buttons {
         display: none;
     }
 }
 
 .navText:hover {
-    animation: background-color 0.5s ;
+    animation: background-color 0.5s forwards;
 }
 
 @keyframes background-color {
@@ -150,19 +147,17 @@
 
 .hamburgerMenu {
     position: fixed;
-    display: none;
     top: min(100px, 10vh);
     left: 0;
     right: 0;
     height: calc(100vh - min(100px, 10vh));
-    width: 100vw;
-    background-image: radial-gradient(rgb(40, 3, 71) 10%, rgba(0, 0, 0, 1) 80%);
+    width: 100%;
+    background-image: radial-gradient( rgba(0, 0, 0, 1) 50%, rgba(40, 3, 71, 1) 100%);
     transform: translateY(calc(-100%-min(100px, 10vh)));
     transition: transform 0.3s ease-in-out;
 }
 
 .hamburgerButtons{
-    margin-top:min(100px, 10vh);
     height: 100%;
     width:100%;
     display: flex;
@@ -202,11 +197,21 @@
 }
 
 @media(max-width: 768px)    {
-    .hamburgerMenu {
+    .hamburger {
         display: block;
     }
 
     .buttons {
+        display: none;
+    }
+}
+
+@media(min-width: 768px)    {
+    .wrapper {
+        background-color: rgb(40, 3, 71, 0.5);
+    }
+
+    .hamburgerMenu {
         display: none;
     }
 }
