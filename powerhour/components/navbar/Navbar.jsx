@@ -52,7 +52,7 @@ export default function Navbar() {
                     <Link href="/" className={Style.navText} onClick={handleHamburgerClick} >Home</Link>
                     <Link onClick={() => handleHamburgerClick()} href="../../workouts/workouts" className={Style.navText}
                         >Workouts</Link>
-                    <Link href="/" className={Style.navText} onClick={() => handleHamburgerClick()}>Who we are</Link>
+                    <Link href="../../about" className={Style.navText} onClick={() => handleHamburgerClick()}>About us</Link>
 
                 </div>
 
@@ -67,7 +67,7 @@ export default function Navbar() {
             <div className={Style.hamburgerButtons}>
                 <Link href="/" className={Style.hamburgerLinks}>HOME</Link>
                 <Link href="../../workouts/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                <Link href="/" className={Style.hamburgerLinks}>INFO</Link>
+                <Link href="../../about" className={Style.hamburgerLinks}>INFO</Link>
 
             </div>
 
