@@ -1,40 +1,22 @@
 import Style from "../../styles/PageStandard.module.css";
 import Image from "next/image";
 
-//Creates multiple divs with images inside
-function createDivs() {
+// Fetch all images and workouts from database
+export async function getStaticProps() {
+    const prisma = new PrismaClient()
+    const images = await prisma.images.findMany()
+
+    return {
+        props: { images }
+    }
+}
+
+//Returns workout divs with an image, title, and description
+//TODO: Create image to return
+export default function WorkoutsBlocks({ images }) {
     const divs = [];
 
-    for (let i = 0; i < 4; i++) {
-        divs.push(<div key={i} className={Style.block}>
-            {generateImageIntoDiv(i)}
-        </div>)
-    }
-    return divs;
-}
-
-//TODO: fetch images from database
-function generateImageIntoDiv() {
-
-
-    return (<>
-        <Image src="/../public/liftingWeights.jpg"
-            width={300}
-            height={300}
-            alt="Lifting weights" className={Style.image}/> 
-            <label>Explenation:</label><br/>
-            <span>
-                blah blah blah blah<br/>
-                blah blah blah blah blah<br/>
-                blah blah blah blah blah blah<br/>
-            </span>
-            
-    </>)
-}
-
-//Returns multiple divs with images inside
-export default function WorkoutsBlocks() {
     return <div className={Style.blocksWrapper}>
-        {createDivs()}
+        foo
     </div>
 }
