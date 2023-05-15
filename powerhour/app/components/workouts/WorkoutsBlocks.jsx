@@ -1,4 +1,4 @@
-import Style from "../../styles/PageStandard.module.css";
+import Style from "../../../styles/PageStandard.module.css";
 import Image from "next/image";
 
 // Fetch all images and workouts from database
