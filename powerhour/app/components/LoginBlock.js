@@ -1,4 +1,4 @@
-import Style from '../styles/LoginBlock.module.css';
+import Style from '../../styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
 
 

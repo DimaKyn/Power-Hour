@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Style from '../../../styles/PageStandard.module.css';
-import WorkoutsBlocks from '../../../components/workouts/WorkoutsBlocks';
+import WorkoutsBlocks from '../../app/components/workouts/WorkoutsBlocks';
 
 
 export default function workouts( ) {
