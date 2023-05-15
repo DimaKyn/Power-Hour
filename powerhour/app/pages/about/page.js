@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Style from '../../styles/PageStandard.module.css';
+import Style from '../../../styles/PageStandard.module.css';
 
 export default function About() {
     return (

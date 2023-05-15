@@ -61,7 +61,7 @@
 }
 
 .labelPowerHour {
-    animation: fadeInPower 2s ease-in-out;
+    animation: fadeInPower 2s ease-in-out forwards;
     font-family:  monospace;
     text-transform: bold;
     font-size: min(300px, 12vw);
