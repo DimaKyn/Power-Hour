@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Container from "../Container";
-import Style from "../../../styles/Navbar.module.css";
+import Style from "/styles/Navbar.module.css";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCancelCircle } from "react-icons/im";
@@ -60,8 +60,8 @@ export default function Navbar() {
         <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
             <div className={Style.hamburgerButtons}>
                 <Link href="/" className={Style.hamburgerLinks}>HOME</Link>
-                <Link href="pages/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                <Link href="./about/about" className={Style.hamburgerLinks}>
+                <Link href="../pages/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                <Link href="../pages/about" className={Style.hamburgerLinks}>
                     INFO</Link>
                 <Link href="" className={Style.hamburgerLinks} >Account</Link>
             </div>
