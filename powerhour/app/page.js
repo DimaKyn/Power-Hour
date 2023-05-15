@@ -4,10 +4,10 @@ import Head from 'next/head';
 import { useRef } from 'react';
 import Image from 'next/image'
 import Style from '../styles/Home.module.css';
-import Header from '../components/Header';
-import LoginBlock from '../components/LoginBlock';
+import Header from './components/Header';
+import LoginBlock from './components/LoginBlock';
 import Link from 'next/link';
-import { AiFillCaretDown, AiFillCaretUp} from '/node_modules/react-icons/ai';
+import { AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 
 
 
