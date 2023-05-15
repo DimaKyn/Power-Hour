@@ -101,7 +101,8 @@
 }
 
 .loginText {
-    font-size: min(100px, 3vw);
+    font-size: min(2rem, 100px);
+    font-family: "Space Mono", monospace;
     position: absolute;
     bottom: 10vh;
     cursor: pointer;

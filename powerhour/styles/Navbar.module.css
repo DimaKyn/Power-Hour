@@ -2,10 +2,10 @@
     overflow: hidden;
     top: 0;
     color: white;
-    background-color: rgb(40, 3, 71, 0.5);
+    background-color: rgb(40, 3, 71);
     height: min(100px, 10vh);
     width: 100%; 
-    justify-content: space-between;
+    justify-content: center;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -40,13 +40,16 @@
 }
 
 .logo {
-    align-items: left;
+    position: absolute;
+    align-items: center;
     justify-content: center;
     flex-direction: row;
     padding-left:15px;
 }
 
 .buttons {
+    position: absolute;
+    right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,8 +73,7 @@
 
 .hamburger {
     position: absolute;
-    right: 20px;
-    display: none;
+    left: 20px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -151,7 +153,7 @@
     left: 0;
     right: 0;
     height: calc(100vh - min(100px, 10vh));
-    width: 100%;
+    width: 250px;
     background-image: radial-gradient( rgba(0, 0, 0, 1) 50%, rgba(40, 3, 71, 1) 100%);
     transform: translateY(calc(-100%-min(100px, 10vh)));
     transition: transform 0.3s ease-in-out;
@@ -175,6 +177,7 @@
     justify-content: center;
     
     margin: 20px;
+    height: min(100px, 5vh);
     width: 100%;
     font-size: min(30px, 5vw);
     padding: 30px;
@@ -206,15 +209,6 @@
     }
 }
 
-@media(min-width: 768px)    {
-    .wrapper {
-        background-color: rgb(40, 3, 71, 0.5);
-    }
-
-    .hamburgerMenu {
-        display: none;
-    }
-}
 
 .active {
     transform: translateX(0%);
@@ -222,7 +216,7 @@
 }
 
 .hidden {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     z-index: 4;
 
 }
