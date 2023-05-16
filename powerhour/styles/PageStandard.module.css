@@ -12,7 +12,7 @@
 
 .inner {
     position: absolute;
-    height: 100%;
+    height: calc(100% - min(100px, 10vh));
     width: 100%;
     top: min(100px, 10vh);
     align-items: center;
@@ -40,4 +40,19 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.backgroundImage {
+    background-image: url("../public/backgroundStandard.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.Body {
+    font-family: "Space Mono", monospace;
 }

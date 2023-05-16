@@ -1,5 +1,6 @@
 import Style from '../../styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
+import Link from 'next/link';
 
 
 //Hide the login button and show the loading div
@@ -24,7 +25,7 @@ export default function LoginBlock() {
             <div className={Style.usernameBlock}>
                 <FaUserAlt className={Style.userIcon}/>
                 <input required pattern=".*\S.*" type="text" className={Style.usernameInput}></input>
-                <label className={Style.usernameLabel}>Username</label>
+                <label className={Style.usernameLabel}>Username/Email</label>
 
             </div>
             <div className={Style.passwordBlock}>
@@ -32,14 +33,19 @@ export default function LoginBlock() {
                 <input required pattern=".*\S.*" type="password" className={Style.passwordInput}></input>
                 <label className={Style.passwordLabel}>Password</label>
             </div>
-            <div className={Style.buttonDiv}>
+            <Link href="/">Forgot your password?</Link>
+            <div style={{}} className={Style.buttonDiv}>
                 <button className={Style.loginButton}
                     onClick={() => handleLogin(Style.loginButton)}>Login</button>
-                <div className={Style.loadingDiv}>
-
-                </div>
             </div>
-
+            <div className={Style.loginBlock}>
+                <div style={{border:"3px"}} className={Style.buttonDiv}>
+                <label style={{fontSize: '28px'}}>New to Power Hour?</label>
+                <Link href="/" className={Style.registerButton}>Register now</Link>
+            </div>
         </div>
+        </div>
+
+        
     </>
 }

@@ -1,6 +1,6 @@
 .wrapper {
     overflow: hidden;
-    top: 0vh;
+    top: 0;
     color: white;
     height: 100vh;
     width: 100vw; 
@@ -25,10 +25,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    opacity: 0.15;
     position: absolute;
     overflow: hidden;
     color: white;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -37,11 +38,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    background-attachment: fixed;
+    opacity: 0.15;
     position: absolute;
     overflow: hidden;
     color: white;
-    height: 110vh;
+    height: 100%;
     width: 100%; 
 }
 
@@ -153,15 +155,16 @@
     justify-content: center;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .arrowDivUp {
     position: absolute;
-    top: 109vh;
+    top: 115vh;
     justify-content: center;
     align-items: bottom;
     display: flex;
-    height: 10vh;
+    height: 60px;
     width: 100%;
     animation: moveArrow 2.5s infinite;
     animation-timing-function: ease-in-out;        
@@ -173,7 +176,7 @@
 }
 
 .homeText {
-    top: 113vh;
+    top: 120vh;
     font-size: min(50px, 4vw);
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
@@ -184,10 +187,6 @@
 .homeText:hover {
     transform: scale(1.1);
 }
-
-
-
-
 
 
 

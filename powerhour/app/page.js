@@ -8,8 +8,8 @@ import Header from './components/Header';
 import LoginBlock from './components/LoginBlock';
 import Link from 'next/link';
 import { AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
-
-
+import WorkoutBox from './components/workoutsBlock/WorkoutBox';
+import RegisterBlock from './components/RegisterBlock';
 
 //On a click of a label, move the page to the login block or to the top of the page
 function movePage(homepage) {
@@ -23,8 +23,7 @@ function movePage(homepage) {
 
 
 export default function Home() {
-  var homepage = false;
-
+  let homepage = true;
   return (
     <div className={Style.main}>
 
@@ -49,7 +48,6 @@ export default function Home() {
         <label className={Style.homeText} onClick={() => movePage(homepage = true)}>HOME</label>
         <LoginBlock /> 
       </div>
-
     </div>
   )
 }
