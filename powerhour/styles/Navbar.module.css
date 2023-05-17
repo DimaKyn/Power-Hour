@@ -156,7 +156,7 @@
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    transform: translateY(calc(-100%-min(70px, 10vh)));
+    transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
     z-index: 3;
     border-right: 2px double rgba(252, 203, 6, 0.6);
@@ -165,6 +165,7 @@
 
 .lowerOpacityHamburgerOpen {
     position: fixed;
+
     top: 0;
     left:0;
     height: 100%;

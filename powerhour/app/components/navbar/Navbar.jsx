@@ -14,16 +14,16 @@ import { AiFillInfoCircle } from "react-icons/ai";
 
 const handleLowerOpacityScreenClick = () => {
     setHamburgerMenuOpen(!hamburgerMenuOpen);
-        setHamburgerCloserHidden(!hamburgerCloserHidden);
-        if (!hamburgerMenuOpen) {
-            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
-            hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
-            navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
-        } else {
-            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
-            hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.active}`;
-            navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
-        }
+    setHamburgerCloserHidden(!hamburgerCloserHidden);
+    if (!hamburgerMenuOpen) {
+        lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
+        hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
+        navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
+    } else {
+        lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
+        hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.active}`;
+        navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
+    }
 }
 
 
@@ -39,7 +39,7 @@ export default function Navbar() {
     const handleHamburgerClick = () => {
         setHamburgerMenuOpen(!hamburgerMenuOpen);
         setHamburgerCloserHidden(!hamburgerCloserHidden);
-        if (!hamburgerMenuOpen) {
+        if (hamburgerMenuOpen) {
             lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
             hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
             navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
@@ -51,8 +51,8 @@ export default function Navbar() {
     };
 
     //If the hamburger menu is open and you click on a button, the hamburger menu closes
-    const handleButtonClick =() => {
-        if (!hamburgerMenuOpen) {
+    const handleButtonClick = () => {
+        if (hamburgerMenuOpen) {
             handleHamburgerClick();
         }
     }
@@ -60,12 +60,12 @@ export default function Navbar() {
 
 
     return <>
-        <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen} 
+        <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
             onClick={() => handleHamburgerClick()}></div>
         <div ref={navbar} className={Style.wrapper}>
 
-            {hamburgerMenuOpen && <GiHamburgerMenu className={Style.hamburger} onClick={() => handleHamburgerClick()} />}
-            {hamburgerCloserHidden &&
+            {!hamburgerMenuOpen && <GiHamburgerMenu className={Style.hamburger} onClick={() => handleHamburgerClick()} />}
+            {!hamburgerCloserHidden &&
                 <CgClose className={Style.hamburgerCloser} onClick={() => handleHamburgerClick()} />}
             <div className={Style.rightSide}>
                 <div className={Style.logo}>
@@ -86,34 +86,35 @@ export default function Navbar() {
                 <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.navText}>Workouts</Link>
             </div>
         </div>
-        <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
-            <div className={Style.hamburgerButtons}>
-                <div className={Style.topIcons}>
-                    {/* Profile icon inside the hamburger menu*/}
-                    <div className={Style.iconContainer}>
-                        <Link onClick={() => handleButtonClick()} href="/">
-                            <AiFillHome />
+        
+            <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
+                <div className={Style.hamburgerButtons}>
+                    <div className={Style.topIcons}>
+                        {/* Profile icon inside the hamburger menu*/}
+                        <div className={Style.iconContainer}>
+                            <Link onClick={() => handleButtonClick()} href="/">
+                                <AiFillHome />
+                            </Link>
+                        </div>
+                        <label style={{ width: "auto" }}>MENU</label>
+                        {/* Home icon inside the hamburger menu*/}
+                        <div className={Style.iconContainer}>
+                            <Link onClick={() => handleButtonClick()} href="/profile">
+                                <BsFillPersonFill />
+                            </Link>
+
+                        </div>
+                    </div>
+
+                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                    <div className={Style.bottomSection}>
+                        <Link onClick={() => handleButtonClick()} href="/about">
+                            <AiFillInfoCircle className={Style.infoCircle} />
                         </Link>
                     </div>
-                    <label style={{width:"auto"}}>MENU</label>
-                    {/* Home icon inside the hamburger menu*/}
-                    <div className={Style.iconContainer}>
-                        <Link onClick={() => handleButtonClick()} href="/profile">
-                            <BsFillPersonFill />
-                        </Link>
 
-                    </div>
                 </div>
-
-                <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                <div className={Style.bottomSection}>
-                    <Link onClick={() => handleButtonClick()} href="/about">
-                        <AiFillInfoCircle className={Style.infoCircle}/>
-                    </Link>
-                </div>
-
             </div>
-        </div>
     </>
 
 

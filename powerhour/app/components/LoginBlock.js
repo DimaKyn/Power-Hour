@@ -7,8 +7,13 @@ import Link from 'next/link';
 //TODO: Add a loading animation
 function handleLogin(loginButton) {
     console.log("test");
-    document.getElementsByClassName(loginButton)[0].style.display = "none";
-    document.getElementsByClassName(`${Style.loadingDiv}`)[0].style.visibility = "visible";
+    // document.getElementsByClassName(loginButton)[0].style.display = "none";
+    // document.getElementsByClassName(`${Style.loadingDiv}`)[0].style.visibility = "visible";
+}
+
+export async function handleLogin2(loginButton) {
+    console.log("test");
+
 }
 
 //The main login block
@@ -23,29 +28,25 @@ export default function LoginBlock() {
             <label className={Style.loginLabel}>LOGIN</label>
 
             <div className={Style.usernameBlock}>
-                <FaUserAlt className={Style.userIcon}/>
+                <FaUserAlt className={Style.userIcon} />
                 <input required pattern=".*\S.*" type="text" className={Style.usernameInput}></input>
                 <label className={Style.usernameLabel}>Username/Email</label>
 
             </div>
             <div className={Style.passwordBlock}>
-                <FaKey className={Style.passwordIcon}/>
+                <FaKey className={Style.passwordIcon} />
                 <input required pattern=".*\S.*" type="password" className={Style.passwordInput}></input>
                 <label className={Style.passwordLabel}>Password</label>
             </div>
-            <Link href="/">Forgot your password?</Link>
-            <div style={{}} className={Style.buttonDiv}>
+            <Link className={Style.forgotPassword} href="/">Forgot your password?</Link>
+            <div className={Style.buttonDiv}>
                 <button className={Style.loginButton}
                     onClick={() => handleLogin(Style.loginButton)}>Login</button>
-            </div>
-            <div className={Style.loginBlock}>
-                <div style={{border:"3px"}} className={Style.buttonDiv}>
-                <label style={{fontSize: '28px'}}>New to Power Hour?</label>
+                <label style={{ fontSize: '28px' , color: "rgba(252, 203, 6, 0.8)"}}>New to Power Hour?</label>
                 <Link href="/" className={Style.registerButton}>Register now</Link>
             </div>
         </div>
-        </div>
 
-        
+
     </>
 }

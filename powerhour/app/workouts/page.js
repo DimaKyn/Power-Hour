@@ -11,12 +11,12 @@ export default function workouts() {
 
         <div className={Style.inner}>
             <label className={Style.mainLabel}>Workouts page</label>
-
+            hghghgh
             <WorkoutsBlocks />
 
 
             <Link href="/">
-                return home
+                return homeasfasf
             </Link>
         </div>
     </div>

@@ -7,7 +7,6 @@
     position: absolute;
     box-shadow: 0px 0px 5px 1px rgb(61, 53, 53);
     justify-content: space-around;
-
     flex-direction: column;
     align-items: center;
     display: flex;
@@ -76,21 +75,22 @@
 }
 
 .loginLabel {
-    font-size: 60px;
+    font-size: 40px;
     overflow: hidden;
 }
 
 .buttonDiv {
     width: 100%;
-    height: 100px;
+    height: 200px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
     position: relative;
+
 }
 
 .loginButton {
-    position: absolute;
     height: 50px;
     width: 80%;
     background-color: transparent;
@@ -104,10 +104,10 @@
 }
 
 .loginButton:hover {
-    background-color: rgba(252, 203, 6, 0.6);
-    color: white;
-    box-shadow: 2px 2px 5px 0px rgba(252, 203, 6, 0.3);
-    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    box-shadow: 2px 2px 5px 1px rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
 }
 
 .loginButton:focus {
@@ -115,7 +115,6 @@
 }
 
 .registerButton {
-    position: absolute;
     height: 50px;
     width: 80%;
     background-color: transparent;
@@ -125,16 +124,18 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
+    transition: background-color 0.5s, color 0.5s, border 0.5s, transform 0.5s, box-shadow 0.5s;
     align-items: center;
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
 
 .registerButton:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 2px 2px 5px 0px rgba(252, 203, 6, 0.3);
-    transform: scale(1.1);
+    background-color: rgba(252, 203, 6, 0.8);
+    border: 2px solid white;
+    color: black;
+    transform: scale(1.03);
 }
 
 .registerButton:focus {
@@ -284,5 +285,9 @@
 .passwordIcon {
     font-size: 30px;
     padding-right: 10px;
+}
+
+.forgotPassword:hover {
+    text-decoration: underline;
 }
 
