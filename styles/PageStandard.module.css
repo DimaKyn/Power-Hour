@@ -1,0 +1,58 @@
+.outer {
+    height: calc(100% - min(100px, 10vh));
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner {
+    position: absolute;
+    height: calc(100% - min(100px, 10vh));
+    width: 100%;
+    top: min(100px, 10vh);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainLabel {
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-variant: uppercase;
+}
+
+.block {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 5vw;
+}
+
+.blocksWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.backgroundImage {
+    background-image: url("../public/backgroundStandard.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.Body {
+    font-family: "Space Mono", monospace;
+}
