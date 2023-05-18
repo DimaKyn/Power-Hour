@@ -1,0 +1,299 @@
+.wrapper {
+    overflow: hidden;
+    top: 0;
+    color: white;
+    background-color: rgba(22,22,22,0.5);
+    height: min(70px, 10vh);
+    width: 100%; 
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    z-index:4;
+    border-bottom: 2px double rgba(252, 203, 6, 0.6);
+    min-height: 70px;
+}
+
+.navFullOpacity {
+    animation: backgroundFullOpacity 0.5s forwards;
+}
+
+@keyframes backgroundFullOpacity {
+    0% {
+        background-color: rgba(22,22,22,0.5);
+    }
+    100% {
+        background-color: rgba(22,22,22,1);
+    }
+}
+
+.navHalfOpacity {
+    animation: backgroundHalfOpacity 0.5s forwards;
+}
+
+@keyframes backgroundHalfOpacity {
+    0% {
+        background-color: rgb(22, 22, 22);
+    }
+    100% {
+        background-color: rgba(22,22,22,0.5);
+    }
+}
+
+.logo {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.buttons {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.rightSide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.navText {
+    display: inline-block;
+    min-width: auto;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid white;
+}
+
+.hamburger {
+    position: absolute;
+    left: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.hamburger:hover {
+    outline: none;
+    animation: hamburgerShadow 0.3s forwards;
+}
+
+.hamburger:focus {
+    outline: none;
+    animation: hamburgerClick 0.3s forwards;
+}
+
+.hamburgerCloser {
+    border-radius: 100%;
+    position: absolute;
+    left: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale 0.5s forwards;
+
+}
+
+.hamburgerCloser:hover {
+    transform: scale(1.05) 3s forwards;
+}
+
+.hamburgerCloser:focus {
+    outline: none;
+}
+
+@media(max-width: 800px)    {
+    .hamburger {
+        display: block;
+    }
+
+    .buttons {
+        display: none;
+    }
+}
+
+.navText:hover {
+    animation: background-color 0.5s forwards;
+}
+
+@keyframes background-color {
+    0% {
+        background-color: rgba(39, 35, 35, 0);
+        scale: 1;
+    }
+    100% {
+        background-color: rgba(39, 35, 35, 1);
+        scale: 1.1;
+    }
+}
+
+
+.hamburgerMenu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - min(70px, 10vh));
+    min-height: 200px;
+    width: 270px;
+    background-image: url("../public/hamburgerMenu.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 3;
+    border-right: 2px double rgba(252, 203, 6, 0.6);
+
+}
+
+.lowerOpacityHamburgerOpen {
+    position: fixed;
+
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.lowerOpacityActive {
+    pointer-events: all;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.hamburgerButtons{
+    height: 100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: min(30px, 5vw);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.hamburgerLinks {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 20px;
+    height: min(100px, 5vh);
+    width: 100%;
+    font-size: min(30px, 5vw);
+    padding: 30px;
+    border: 1px solid rgb(46, 46, 46);
+}
+
+.hamburgerLinks:hover {
+    animation: backgroundColorLinks 0.5s forwards;
+}
+
+@keyframes backgroundColorLinks {
+    0% {
+        background-color: rgba(0, 0, 0, 0.4);
+
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 1);
+        transform: scale(1.05);
+        transform: border(1px);
+        border-color: rgba(252, 203, 6, 0.6);
+    }
+}
+
+.active {
+    transform: translateX(0%);
+    z-index: 4;
+}
+
+.hidden {
+    transform: translateX(-100%);
+    z-index: 4;
+
+}
+
+.iconContainer {
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.iconContainer:nth-child(1) {
+
+    border-right: 2px solid rgba(252, 203, 6, 0.6);
+}
+
+.iconContainer:nth-child(3) {
+
+    border-left: 2px solid rgba(252, 203, 6, 0.6);
+}
+
+
+.topIcons {
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: double 2px rgba(252, 203, 6, 0.6);
+    box-shadow: -5px 4px 10px 5px rgba(252, 203, 6, 0.05);
+}
+
+.bottomSection {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    width: 70px;
+    padding-left: 20px;
+}
+
+.bottomIcons {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+
+.infoCircle {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease-in;
+
+}
+
+.infoCircle:hover {
+    transform: scale(1.1) ;
+}
+
