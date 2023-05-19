@@ -1,9 +1,13 @@
 import WorkoutBox from '/components/workoutsBlock/WorkoutBox';
 import Style from '/styles/PageStandard.module.css';
+import NavigationPanel from '/components/navigationPanel/NavigationPanel';
+import { customWorkoutPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+
 
 export default function CustomWorkout() {
     return <>
-        <div className={Style.backgroundImage}></div>
+                <NavigationPanel links={customWorkoutPanelLinks} />
+
         <div className={Style.inner}>
 
             <label className={Style.mainLabel}>Custom Workout page</label>

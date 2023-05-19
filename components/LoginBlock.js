@@ -43,7 +43,7 @@ export default function LoginBlock() {
                 <button className={Style.loginButton}
                     onClick={() => handleLogin(Style.loginButton)}>Login</button>
                 <label style={{ fontSize: '28px' , color: "rgba(252, 203, 6, 0.8)"}}>New to Power Hour?</label>
-                <Link href="/" className={Style.registerButton}>Register now</Link>
+                <Link href="/register" className={Style.registerButton}>Register now</Link>
             </div>
         </div>
 

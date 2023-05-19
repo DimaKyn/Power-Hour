@@ -1,10 +1,14 @@
 import Image from 'next/image';
 import Style from '/styles/PageStandard.module.css';
+//Import the navigation panel for this specific page
+import NavigationPanel from '/components/navigationPanel/NavigationPanel';
+import { aboutPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+
 
 export default function About() {
     return (
         <>
-            <div className={Style.backgroundImage}></div>
+            <NavigationPanel links={aboutPanelLinks} />
             <div className={Style.inner}>
                 <h1 style={{ fontSize: '50px' }}>Maxim and Dima, Web developers</h1>
                 <Image

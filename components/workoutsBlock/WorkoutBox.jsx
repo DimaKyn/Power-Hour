@@ -20,6 +20,6 @@ const handleDrop = (index) => {
 export default function WorkoutBox(props) {
   const {title, explanation, imageSrc, imageWidth, imageHeight} = props;
   return <div>
-    <h3>{title}</h3>
+    <h3>{props.title}</h3>
   </div>
 }
