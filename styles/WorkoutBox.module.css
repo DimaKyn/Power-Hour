@@ -3,3 +3,27 @@
     height: 100px;
     width: 200px;
 }
+
+.workout {
+    border: 2px solid rgba(252, 203, 6, 0.6);
+    border-radius: 10px;
+    background-color: black;
+    min-width: 400px;
+    min-height: 400px;
+    max-height: 500px;
+    max-width: 500px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+}
+
+.blocksWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

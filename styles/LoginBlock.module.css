@@ -3,6 +3,7 @@
 .loginBlock {
     font-family: 'Noto Sans', sans-serif;
     border-radius: 10px;
+    border: 3px solid rgba(252, 203, 6, 0.7);
     overflow: hidden;
     position: absolute;
     box-shadow: 0px 0px 5px 1px rgb(61, 53, 53);
@@ -17,31 +18,34 @@
     max-height: 500px;
     min-width: 300px;
     min-height: 500px;
+
 }
 
 .loginBlock::before {
     content: "";
+    overflow: hidden;
+
     background-image: radial-gradient(
-        closest-side at 50% 50%,
+        closest-side at 0% 0%,
         rgb(70, 70, 70) 0%,
         rgba(252, 203, 6, 0.7) 100%
         );  
     width: 200%;
     height: 200%;
-    
+    outline: 3px solid rgba(252, 203, 6, 0.7);
     position: absolute;
-    animation: rotate 3s linear infinite;
 }
 
 .loginBlock::after {
     content: " ";
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
+
     animation: pulse 10s linear infinite;
     box-shadow: 0px 0px 8px 8px rgb(0, 0, 0);
     overflow: hidden;
-    width: 94%;
-    height: 96%;
+    width: 99%;
+    height: 99%;
     position: absolute;
     border-radius: 10px;
     display: flex;
