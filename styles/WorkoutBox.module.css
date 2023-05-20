@@ -27,3 +27,80 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.workoutSquare {
+    border: 2px solid rgba(252, 203, 26, 0.8);
+    border-radius: 10px;
+    background-color: black;
+    min-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+}
+
+.workoutSquare:hover {
+    cursor:move
+}
+
+.moveSquareIcon {
+    box-sizing: border-box;
+    font-size: 30px;
+    right: 5px;
+    top: 5px;
+    position: absolute;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: rgba(252, 203, 26, 0.8);
+    pointer-events: none;
+
+}
+
+.greenCheckMark {
+    font-size: 30px;
+    left: 0px;
+    bottom: 0px;
+    border-radius: 0 7px 0 0;
+    border-top: 2px solid rgba(252, 203, 26, 0.8);
+    border-right: 2px solid rgba(252, 203, 26, 0.8);
+    position: absolute;
+    color: white;
+}
+
+.checkmark {
+    background-color:rgba(43, 255, 0, 0.74);
+    font-size: 40px;
+    border-radius: 0 5px 0 0;
+}   
+
+.editPlan {
+    box-sizing: border-box;
+    font-size: 40px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: rgba(252, 203, 26, 1);
+    border-radius: 7px 0 0 0;
+    border-top: 2px solid rgba(252, 203, 26, 0.8);
+    border-left: 2px solid rgba(252, 203, 26, 0.8);
+}
+
+.editPlan:hover {
+    cursor: pointer;
+}
+
+
+
