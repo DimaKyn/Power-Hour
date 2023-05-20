@@ -32,7 +32,7 @@
         );  
     width: 200%;
     height: 200%;
-    outline: 3px solid rgba(252, 203, 6, 0.7);
+    outline: 3px solid rgba(252, 203, 26, 0.8);
     position: absolute;
 }
 
@@ -122,7 +122,7 @@
     height: 50px;
     width: 80%;
     background-color: transparent;
-    border: 2px solid rgba(252, 203, 6, 0.8);
+    border: 2px solid rgba(252, 203, 26, 0.8);
     border-radius: 2px;
     color: rgba(252, 203, 6, 0.8);
     font-size: 20px;
@@ -136,7 +136,7 @@
 }
 
 .registerButton:hover {
-    background-color: rgba(252, 203, 6, 0.8);
+    background-color: rgba(252, 203, 26, 0.8);
     border: 2px solid white;
     color: black;
     transform: scale(1.03);
@@ -187,7 +187,7 @@
 .usernameBlock input:focus + label,
 .usernameBlock input:valid + label {
     content: "";
-    color: rgba(252, 203, 6, 0.6);
+    color: rgba(252, 203, 26, 1);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
     font-size: 1em;
@@ -219,7 +219,7 @@
 }
 
 .usernameInput:focus {
-    border-color: rgba(252, 203, 6, 1);
+    border-color: rgba(252, 203, 26, 1);
     border-bottom-width: 3px;
     border-radius: 5px;
     outline: none;
@@ -243,7 +243,7 @@
 
 .passwordBlock input:focus + label,
 .passwordBlock input:valid + label {
-    color: rgba(252, 203, 6, 1);
+    color: rgba(252, 203, 26, 1);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
     font-size: 1em;
@@ -273,7 +273,7 @@
 }
 
 .passwordInput:focus {
-    border-color: rgba(252, 203, 6, 1);
+    border-color: rgba(252, 203, 26, 1);
     border-bottom-width: 3px;
     border-radius: 5px;
     outline: none;
