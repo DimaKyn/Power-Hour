@@ -71,11 +71,11 @@
 
 .navPanelLinks:hover{ 
     text-decoration: underline;
-    color: rgba(252, 203, 6, 1);
+    color: rgba(252, 203, 26, 1);
 }
 
 .navPanelLinkCurrent {
-    color: rgba(252, 203, 6, 1);
+    color: rgba(252, 203, 26, 1);
     pointer-events: none;
     text-decoration: none;
     font-weight: bold;
