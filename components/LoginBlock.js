@@ -3,25 +3,25 @@ import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import { signIn } from 'next-auth/react';
 //Hide the login button and show the loading div
 //TODO: Add a loading animation
 
 
 // Update the handleLogin function
 async function handleLogin(loginButton, username, password) {
-
-  try {
-    const response = await axios.post('/api/login', { username, password });
-    if (response.data.success) {
-      console.log('User found:', response.data.user);
-      // Handle successful login
-    } else {
-      console.log('User not found');
-      // Handle unsuccessful login
-    }
-  } catch (error) {
-    console.error('Error:', error.message);
+  const response = await signIn('credentials', {
+    redirect: false,
+    username,
+    password,
+  });
+  console.log(response)
+  if (response.error) {
+    console.log('User not found');
+    // Handle unsuccessful login
+  } else {
+    console.log('User found:', response.user);
+    // Handle successful login
   }
 }
 
