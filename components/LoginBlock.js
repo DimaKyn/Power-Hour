@@ -1,9 +1,9 @@
 import Style from '/styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
-import axios from 'axios';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
+
 //Hide the login button and show the loading div
 //TODO: Add a loading animation
 
