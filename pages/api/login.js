@@ -1,11 +1,15 @@
 import bcrypt from 'bcrypt';
-import { findUser } from '../../lib/mongodb';
+import { findUser } from '/lib/mongodb';
 
+// PREETY SURE THIS API IN NOT NEEDED, DOUBLE CHECK AND DELETE
 export default async function handler(req, res) {
+  console.log("IM HERE IN LOGIN")
   if (req.method === 'POST') {
-    const { username, password } = req.body;
+    const { identifier, password } = req.body;
+    console.log('Received identifier:', identifier);
     try {
-      const user = await findUser(username);
+      const user = await findUser(identifier);
+      console.log('Received user:', user);
 
       // If the user exists, compare the entered password with the stored hashed password
       if (user) {

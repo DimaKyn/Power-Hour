@@ -9,13 +9,15 @@ import { signIn } from 'next-auth/react';
 
 
 // Update the handleLogin function
-async function handleLogin(loginButton, username, password) {
+async function handleLogin(loginButton, identifier, password) {
+  console.log('Trying to find user with identifier:', identifier);
+
   const response = await signIn('credentials', {
     redirect: false,
-    username,
+    identifier,
     password,
   });
-  console.log(response)
+  //console.log(response)
   if (response.error) {
     console.log('User not found');
     // Handle unsuccessful login
@@ -38,7 +40,7 @@ export async function handleLogin2(loginButton) {
 //TODO: Add a register function
 //TODO: Add a forgot password function
 export default function LoginBlock() {
-    const [username, setUsername] = useState('');
+    const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
     return <>
         <div className={Style.loginBlock}>
@@ -47,7 +49,7 @@ export default function LoginBlock() {
 
             <div className={Style.usernameBlock}>
                 <FaUserAlt className={Style.userIcon} />
-                <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={identifier} onChange={(e) => setIdentifier(e.target.value)}></input>
                 <label className={Style.usernameLabel}>Username/Email</label>
 
             </div>
@@ -59,7 +61,7 @@ export default function LoginBlock() {
             <Link className={Style.forgotPassword} href="/">Forgot your password?</Link>
             <div className={Style.buttonDiv}>
                 <button className={Style.loginButton}
-                    onClick={() => handleLogin(Style.loginButton, username, password)}>Login</button>
+                    onClick={() => handleLogin(Style.loginButton, identifier, password)}>Login</button>
                 <label style={{ fontSize: '28px' , color: "rgba(252, 203, 6, 0.8)"}}>New to Power Hour?</label>
                 <Link href="/register" className={Style.registerButton}>Register now</Link>
             </div>

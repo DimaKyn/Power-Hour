@@ -4,10 +4,11 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { findUser } from '../../../lib/mongodb';
 import bcrypt from 'bcrypt';
 
+//NOT WORKING, I TRIED
 async function refreshAccessToken(tokenObject) {
   try {
     // Get a new set of tokens with a refreshToken
-    const tokenResponse = await axios.post(YOUR_API_URL + 'auth/refreshToken', {
+    const tokenResponse = await axios.post(NEXTAUTH_URL + 'auth/refreshToken', {
       token: tokenObject.refreshToken
     });
     return {
@@ -28,9 +29,10 @@ export default NextAuth({
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const { username, password } = credentials;
-        const user = await findUser(username);
-    
+        const { identifier, password } = credentials;
+        console.log(credentials)
+        const user = await findUser(identifier);
+        console.log("userAAAAAAAAA:", user)
         if (user && (await bcrypt.compare(password, user.password))) {
           return { email: user.email, name: user.name, username: user.username };
         } else {
@@ -39,6 +41,7 @@ export default NextAuth({
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt(token, user, account, profile) {
       if (user) {
