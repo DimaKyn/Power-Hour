@@ -85,35 +85,40 @@ export default function Navbar() {
                 <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.navText}>Workouts</Link>
             </div>
         </div>
-        
-            <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
-                <div className={Style.hamburgerButtons}>
-                    <div className={Style.topIcons}>
-                        {/* Profile icon inside the hamburger menu*/}
-                        <div className={Style.iconContainer}>
-                            <Link onClick={() => handleButtonClick()} href="/">
-                                <AiFillHome />
-                            </Link>
-                        </div>
-                        <label style={{ width: "auto" }}>MENU</label>
-                        {/* Home icon inside the hamburger menu*/}
-                        <div className={Style.iconContainer}>
-                            <Link onClick={() => handleButtonClick()} href="/profile">
-                                <BsFillPersonFill />
-                            </Link>
 
-                        </div>
-                    </div>
-
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                    <div className={Style.bottomSection}>
-                        <Link onClick={() => handleButtonClick()} href="/about">
-                            <AiFillInfoCircle className={Style.infoCircle} />
+        <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
+            <div className={Style.hamburgerButtons}>
+                <div className={Style.topIcons}>
+                    {/* Profile icon inside the hamburger menu*/}
+                    <div className={Style.iconContainer}>
+                        <Link onClick={() => handleButtonClick()} href="/">
+                            <AiFillHome />
                         </Link>
                     </div>
+                    <label style={{ width: "auto" }}>MENU</label>
+                    {/* Home icon inside the hamburger menu*/}
+                    <div className={Style.iconContainer}>
+                        <Link onClick={() => handleButtonClick()} href="/profile">
+                            <BsFillPersonFill />
+                        </Link>
 
+                    </div>
                 </div>
+                <div className={Style.hamburgerLinksContainer}>
+                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
+                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
+                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
+                </div>
+
+                <div className={Style.bottomSection}>
+                    <Link onClick={() => handleButtonClick()} href="/about">
+                        <AiFillInfoCircle className={Style.infoCircle} />
+                    </Link>
+                </div>
+
             </div>
+        </div>
     </>
 
 
