@@ -11,7 +11,7 @@ import { signIn } from 'next-auth/react';
 // Update the handleLogin function
 async function handleLogin(loginButton, identifier, password) {
   console.log('Trying to find user with identifier:', identifier);
-
+  
   const response = await signIn('credentials', {
     redirect: false,
     identifier,
