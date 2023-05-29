@@ -22,16 +22,9 @@ async function handleLogin(loginButton, identifier, password) {
     console.log('User not found');
     // Handle unsuccessful login
   } else {
-    console.log('User found:', response.user);
+    console.log('User found');
     // Handle successful login
   }
-}
-
-
-
-export async function handleLogin2(loginButton) {
-    console.log("test");
-
 }
 
 //The main login block
