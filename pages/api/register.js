@@ -15,10 +15,9 @@ export default async function handler(req, res) {
       if (!name || !username || !email || !password || !phoneNumber) {
         return res.status(400).json({ message: 'All fields are required' });
       }
-
+      
       const client = await clientPromise;
-      const db = client.db('powerhourdb');
-
+      const db = client.db(process.env.DB_NAME);
       const existingEmail = await db.collection('Users').findOne({ email });
 
       if (existingEmail) {
@@ -44,8 +43,10 @@ export default async function handler(req, res) {
         password: hashedPassword, // Store the hashed password
         phoneNumber,
       });
+      console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
-      return res.status(201).json({ message: 'User registered successfully', user: newUser.ops[0] });
+      const insertedUser = await db.collection('Users').findOne({ _id: newUser.insertedId });
+      return res.status(201).json({ message: 'User registered successfully', user: insertedUser });
     } else {
       res.status(405).json({ message: 'Method not allowed' });
     }
