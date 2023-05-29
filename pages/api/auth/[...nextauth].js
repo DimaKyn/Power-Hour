@@ -1,7 +1,7 @@
 import axios from 'axios';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { findUser } from '../../../lib/mongodb';
+import { findUser } from '../../../lib/findUser';
 import bcrypt from 'bcrypt';
 
 //NOT WORKING, I TRIED
@@ -30,9 +30,10 @@ export default NextAuth({
     CredentialsProvider({
       async authorize(credentials) {
         const { identifier, password } = credentials;
-        console.log(credentials)
+        console.log("from nextauth printing credentials:\n", credentials)
+        console.log("Sending to findUser with identifier:\n", identifier)
         const user = await findUser(identifier);
-        console.log("userAAAAAAAAA:", user)
+        console.log("from nextauth printing user info:\n", user)
         if (user && (await bcrypt.compare(password, user.password))) {
           return { email: user.email, name: user.name, username: user.username };
         } else {
