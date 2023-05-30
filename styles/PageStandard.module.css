@@ -11,6 +11,7 @@
 }
 
 .inner {
+    --globalGold: rgb(252, 203, 26);
     position: absolute;
     height: calc(100% - min(100px, 10vh));
     width: 100%;
@@ -82,7 +83,32 @@
 }
 
 .draggablesContainer {
-    background-color: blue;
-    height: 1000px;
-    width: 1000px;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 90%;
+    width: 90%;
   }
+
+  
+  .gridLayout {
+    
+    height: 90%;
+    width: 90%;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;  
+    overflow: hidden;
+}
+
+.gridElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    color: white;
+}
