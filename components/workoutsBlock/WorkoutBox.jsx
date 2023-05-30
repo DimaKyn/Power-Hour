@@ -1,7 +1,6 @@
 "use client"
 
 // WorkoutBox.jsx
-import Draggable from "react-draggable";
 import React from "react";
 import Image from "next/image";
 import Style from "/styles/WorkoutBox.module.css";
@@ -12,7 +11,8 @@ import { BiPencil } from "react-icons/bi";
 //TODO: import workout plan from db
 export default function WorkoutBox(props) {
   const { title, reps, weight, imageSrc, imageWidth, imageHeight, containerName} = props;
-  return <div className={Style.workoutSquare}>
+  let containerStatus = containerName === "workoutBox" ? Style.workoutSquare : Style.exerciseCompleted;
+  return <div className={containerStatus}>
         <BsArrowsMove className={Style.moveSquareIcon} />
         <h3 style={{ fontSize: "20px" }}>{title}</h3>
         <Image style={{ pointerEvents: "none" }} src={imageSrc} width={imageWidth} height={imageHeight} />
