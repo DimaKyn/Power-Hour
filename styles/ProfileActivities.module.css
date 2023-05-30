@@ -4,9 +4,12 @@
     color: white;
     position: relative;
     padding: 10px;
-    margin: 10px;
-    width: min(300px, 50vw);
-    height: 150px;
+    margin: 0 auto;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button:hover {
@@ -18,8 +21,66 @@
 .buttonContainer {
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
     position: relative;
+    flex-wrap: wrap;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePicture {
+    background-image: url("../public/donkey.jpg");
+    background-size: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    background-color: blue;
+}
+
+.choiceBlock {
+    border: 2px solid rgba(252, 203, 6, 0.6);
+    border-radius: 10px;
+    background-color: black;
+    min-width: 500px;
+    min-height: 300px;
+    max-height: 400px;
+    max-width: 500px;
+    align-items: center;
+    display: grid;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.choiceBlock > h1:first-child {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.span {
+    text-align: center;
+}
+
+.choiceBlock > Link {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: red;
 }
 
