@@ -8,13 +8,13 @@
     border: 2px solid rgba(252, 203, 6, 0.6);
     border-radius: 10px;
     background-color: black;
-    min-width: 400px;
-    min-height: 400px;
+    min-width: 350px;
+    min-height: 500px;
     max-height: 500px;
-    max-width: 500px;
+    max-width: 350px;
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     padding: 20px;
     margin: 10px;
@@ -47,7 +47,7 @@
 }
 
 .workoutSquare:hover {
-    cursor:move
+    cursor: move
 }
 
 .moveSquareIcon {
@@ -77,10 +77,10 @@
 }
 
 .checkmark {
-    background-color:rgba(43, 255, 0, 0.74);
+    background-color: rgb(0, 255, 42);
     font-size: 40px;
     border-radius: 0 5px 0 0;
-}   
+}
 
 .editPlan {
     box-sizing: border-box;
@@ -102,5 +102,93 @@
     cursor: pointer;
 }
 
+.exerciseCompleted {
+    border: 2px solid rgba(63, 62, 59, 0.8);
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    min-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+    animation: transformExerciseCompleted 2s forwards;
+}
 
 
+
+.exerciseCompleted::after {
+    content: "";
+    font-size: 40px;
+    position: absolute;
+
+    background-image: linear-gradient(45deg, rgb(31, 31, 31),rgb(0, 0, 0));
+    animation: pulse 10s linear infinite;
+    box-shadow: 0px 0px 8px 8px rgb(0, 0, 0);
+    overflow: hidden;
+    box-shadow: 0 0 20px 150px rgb(31, 31, 31);
+    width: 0px;
+    height: 150%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(0deg) rotate(45deg);
+    animation: grayOutCompletedExercise 1.35s forwards;
+}
+
+@keyframes grayOutCompletedExercise {
+    0% {
+        content: "";
+        opacity: 0.8;
+        width: 0px;
+        transform: translateY(0px);
+        transform: translateX(-250px);
+        transform: rotateY(0deg) rotate(45deg);
+        box-shadow: 0 0 0px 0px rgb(31, 31, 31);
+
+    }
+    60% {
+        content: "";
+        width: 30px;
+        opacity: 0.8;
+        transform: translateY(0px);
+        transform: translateX(0px);
+        transform: rotateY(0deg) rotate(45deg);
+        box-shadow: 0 0 20px 20px rgb(31, 31, 31);
+    }
+    99% {
+        content: "";
+        width: 150%;
+        opacity: 0.8;
+        transform: translateY(0px);
+        transform: translateX(0px);
+        transform: rotateY(0deg) rotate(0deg);
+
+    }
+    100% {
+        content: "COMPLETED";
+        opacity: 0.8;
+        width: 150%;
+        transform: rotateY(0deg) rotate(0deg);
+    }
+}
+
+@keyframes transformExerciseCompleted {
+    0% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}

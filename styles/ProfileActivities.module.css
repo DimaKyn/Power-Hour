@@ -48,10 +48,10 @@
     border: 2px solid rgba(252, 203, 6, 0.6);
     border-radius: 10px;
     background-color: black;
-    min-width: 500px;
+    min-width: 350px;
     min-height: 300px;
     max-height: 400px;
-    max-width: 500px;
+    max-width: 350px;
     align-items: center;
     display: grid;
     justify-content: center;
