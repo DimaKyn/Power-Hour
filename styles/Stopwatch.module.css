@@ -1,0 +1,14 @@
+.stopwatchContainer {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 1rem;
+    z-index: 999;
+  }
+  
+  .stopwatchDisplay {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
