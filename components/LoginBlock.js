@@ -1,9 +1,8 @@
 import Style from '/styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
-
+import React, { useState, useEffect } from 'react';
+import { signIn} from 'next-auth/react';
 //Hide the login button and show the loading div
 //TODO: Add a loading animation
 
@@ -11,19 +10,23 @@ import { signIn } from 'next-auth/react';
 // Update the handleLogin function
 async function handleLogin(loginButton, identifier, password) {
   console.log('Trying to find user with identifier:', identifier);
-  
+
   const response = await signIn('credentials', {
     redirect: false,
     identifier,
     password,
   });
-  //console.log(response)
+  console.log(response)
   if (response.error) {
     console.log('User not found');
     // Handle unsuccessful login
   } else {
-    console.log('User found');
-    // Handle successful login
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('loggedInUser', identifier);
+      console.log('Stored:', identifier);
+      window.location.href = '/profile'; // redirect to profile page
+    }
   }
 }
 
@@ -35,6 +38,23 @@ async function handleLogin(loginButton, identifier, password) {
 export default function LoginBlock() {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
+
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUser');
+    setIsLoggedIn(false);
+    window.location.reload();
+  };
+  if(!isLoggedIn){
     return <>
         <div className={Style.loginBlock}>
 
@@ -59,7 +79,12 @@ export default function LoginBlock() {
                 <Link href="/register" className={Style.registerButton}>Register now</Link>
             </div>
         </div>
-
-
     </>
+  }
+  return (
+    <div className={Style.buttonDiv}>
+      <p>Welcome, {localStorage.getItem('loggedInUser')}!</p>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
 }

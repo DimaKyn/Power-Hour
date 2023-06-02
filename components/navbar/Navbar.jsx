@@ -5,7 +5,7 @@ import Style from "/styles/Navbar.module.css";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { MdAccountCircle } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
@@ -34,6 +34,22 @@ export default function Navbar() {
     const hamburgerMenu = useRef(null);
     const navbar = useRef(null);
     const lowerOpacityHamburgerOpen = useRef(null);
+
+    const [loggedInUser, setLoggedInUser] = useState(null);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          const user = localStorage.getItem('loggedInUser');
+          setLoggedInUser(user);
+        }
+      }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+        setLoggedInUser(null);
+        window.location.href = '/'
+    };
+
 
     const handleHamburgerClick = () => {
         setHamburgerMenuOpen(!hamburgerMenuOpen);
@@ -80,8 +96,18 @@ export default function Navbar() {
             </div>
             <div className={Style.buttons}>
                 <Link onClick={() => handleButtonClick()} href="/profile" style={{ display: "flex", alignItems: "center" }} className={Style.navText}  >
-                    <MdAccountCircle style={{ paddingRight: "5px", fontSize: "25px" }} />
-                    Sign in/Profile</Link>
+                    {loggedInUser ? (
+                        <>
+                            <span style={{ marginRight: "5px" }}>My profile</span>
+                            <MdAccountCircle style={{ fontSize: "25px" }} />
+                            <button onClick={handleLogout} className={Style.navText}>Logout</button>
+                        </>
+                    ) : (
+                        <>
+                            <MdAccountCircle style={{ paddingRight: "5px", fontSize: "25px" }} />
+                            Sign in/Profile
+                        </>
+                    )}</Link>
                 <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.navText}>Workouts</Link>
             </div>
         </div>
