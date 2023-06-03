@@ -1,17 +1,22 @@
 import { useState, useRef } from 'react';
-import Style from '/styles/StopWatch.module.css';
+import Style from '/styles/Stopwatch.module.css';
 
 export default function StopWatch(){
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [laps, setLaps] = useState([]);
   const intervalRef = useRef();
 
   const start = () => {
     setIsRunning(true);
-    intervalRef.current = setInterval(() => {
-      setTime(prevTime => prevTime + 10);
-    }, 10);
+    if (time === 0) {
+      intervalRef.current = setInterval(() => {
+        setTime(prevTime => prevTime + 10);
+      }, 10);
+    } else {
+      intervalRef.current = setInterval(() => {
+        setTime(prevTime => prevTime + 10);
+      }, 10);
+    }
   };
 
   const stop = () => {
@@ -22,12 +27,7 @@ export default function StopWatch(){
   const reset = () => {
     setTime(0);
     setIsRunning(false);
-    setLaps([]);
     clearInterval(intervalRef.current);
-  };
-
-  const mark = () => {
-    setLaps(prevLaps => [...prevLaps, time]);
   };
 
   const formatTime = (time) => {
@@ -42,21 +42,15 @@ export default function StopWatch(){
     <div className={Style.stopwatchContainer}>
       <div className={Style.stopwatchDisplay}>{formatTime(time)}</div>
       {!isRunning && (
-        <button onClick={start}>Start</button>
+        <button className={Style.buttonStart} onClick={start}>
+          {time === 0 ? 'Start' : 'Resume'}
+        </button>
       )}
       {isRunning && (
-        <>
-          <button onClick={stop}>Stop</button>
-          <button onClick={mark}>Lap</button>
-        </>
+        <button className={Style.buttonStop} onClick={stop}>Stop</button>
       )}
-      <button onClick={reset}>Reset</button>
-      {laps.length > 0 && (
-        <ul>
-          {laps.map((lap, index) => (
-            <li key={index}>{formatTime(lap)}</li>
-          ))}
-        </ul>
+      {!isRunning && time !== 0 && (
+        <button className={Style.buttonReset} onClick={reset}>Reset</button>
       )}
     </div>
   );

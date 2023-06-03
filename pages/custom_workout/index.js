@@ -29,7 +29,7 @@ export default function CustomWorkout() {
         <div className={Style.inner}>
             <label className={Style.mainLabel}>Custom Workout</label>
             <span>Workout blocks can be moved freely</span>
-            <StopWatch/>
+            
             <div className={Style.draggablesContainer}>
                 <ResponsiveGridLayout
                     className={Style.gridLayout}
@@ -58,8 +58,8 @@ export default function CustomWorkout() {
 
 
                 </ResponsiveGridLayout>
+                <StopWatch/>
             </div>
-
         </div >
     </>
 }

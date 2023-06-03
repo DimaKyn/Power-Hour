@@ -1,14 +1,68 @@
 .stopwatchContainer {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    padding: 1rem;
-    z-index: 999;
-  }
-  
-  .stopwatchDisplay {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-  }
-  
+  text-align: center;
+  background-color: #131212;
+  position: fixed;
+  bottom: 1%;
+  height: 100px;
+  width: 90%;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgb(155, 152, 13);
+}
+
+.stopwatchDisplay {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.buttonStart {
+  display: inline-block;
+  padding: 5px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-color: #175536;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+.buttonStart:hover {
+  background-color: #3b9267;
+}
+
+.buttonReset {
+  display: inline-block;
+  padding: 5px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-color: #742424;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+.buttonReset:hover {
+  background-color: #b14747;
+}
+
+.buttonStop {
+  display: inline-block;
+  padding: 5px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-color: #742424;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+.buttonStop:hover {
+  background-color: #b14747;
+}
