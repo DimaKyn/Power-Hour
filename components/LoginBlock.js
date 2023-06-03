@@ -3,6 +3,8 @@ import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { signIn} from 'next-auth/react';
+import NavigationPanel from '/components/navigationPanel/NavigationPanel';
+import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 //Hide the login button and show the loading div
 //TODO: Add a loading animation
 
@@ -82,9 +84,29 @@ export default function LoginBlock() {
     </>
   }
   return (
-    <div className={Style.buttonDiv}>
-      <p>Welcome, {localStorage.getItem('loggedInUser')}!</p>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
+    <>
+      <NavigationPanel links={profilePanelLinks} />
+      <div className={Style.inner}>
+        {isLoggedIn ? (
+          <>
+            <div className={Style.guide}>
+            <h1>Welcome, {localStorage.getItem('loggedInUser')}!</h1>
+              <h2 className={Style.guideH2}>How to use our website</h2>
+              <p className={Style.guideP}>Here are some tips on how to get the most out of PowerHour:</p>
+              <ul className={Style.guideUl}>
+                <li>Use the stopwatch to time your workouts.</li>
+                <li>Track your progress by logging your workouts.</li>
+                <li>Check out our exercise library for ideas on new exercises to try.</li>
+              </ul>
+            </div>
+            <div className={Style.buttonDiv}>
+              <button className={Style.logoutButton} onClick={handleLogout}>Logout</button>
+            </div>
+          </>
+        ) : (
+          <ProfileActivities />
+        )}
+      </div>
+    </>
   );
 }

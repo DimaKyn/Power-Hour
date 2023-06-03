@@ -16,7 +16,7 @@ export default function Profile() {
         <NavigationPanel links={profilePanelLinks} />
         <div className={Style.inner}>
 
-            <h1 style={{ fontSize: "min(50px, 3vw)" }}>Welcome back, {loggedInUser}</h1>
+            <h1 style={{ fontSize: "min(50px, 3vw)" }}>Welcome back {loggedInUser}</h1>
 
             <ProfileActivities />
         </div>

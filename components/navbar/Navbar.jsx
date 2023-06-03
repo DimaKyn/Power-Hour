@@ -36,6 +36,7 @@ export default function Navbar() {
     const lowerOpacityHamburgerOpen = useRef(null);
 
     const [loggedInUser, setLoggedInUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -43,6 +44,14 @@ export default function Navbar() {
           setLoggedInUser(user);
         }
       }, []);
+
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+        setIsLoggedIn(true);
+        }
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem('loggedInUser');
@@ -72,8 +81,6 @@ export default function Navbar() {
         }
     }
 
-
-
     return <>
         <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
             onClick={() => handleHamburgerClick()}></div>
@@ -94,13 +101,12 @@ export default function Navbar() {
 
                 </div>
             </div>
-            <div className={Style.buttons}>
+            <div className={Style.buttons} style={{ display: "flex", justifyContent: "space-between" }}>
                 <Link onClick={() => handleButtonClick()} href="/profile" style={{ display: "flex", alignItems: "center" }} className={Style.navText}  >
                     {loggedInUser ? (
                         <>
                             <span style={{ marginRight: "5px" }}>My profile</span>
                             <MdAccountCircle style={{ fontSize: "25px" }} />
-                            <button onClick={handleLogout} className={Style.navText}>Logout</button>
                         </>
                     ) : (
                         <>
@@ -109,6 +115,9 @@ export default function Navbar() {
                         </>
                     )}</Link>
                 <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.navText}>Workouts</Link>
+                {loggedInUser &&(
+                    <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>
+                )}
             </div>
         </div>
 
@@ -130,12 +139,18 @@ export default function Navbar() {
 
                     </div>
                 </div>
+                {isLoggedIn ? (
                 <div className={Style.hamburgerLinksContainer}>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
                 </div>
+                    ) : (
+                <div className={Style.hamburgerLinksContainer}>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                </div>
+                )}
 
                 <div className={Style.bottomSection}>
                     <Link onClick={() => handleButtonClick()} href="/about">
