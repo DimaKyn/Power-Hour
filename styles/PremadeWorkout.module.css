@@ -1,0 +1,43 @@
+.explanation {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .workouts {
+    display: flex;
+    margin-top: 2rem;
+  }
+  
+  .containerWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .containerV2 {
+    flex: 1;
+    margin: 1rem;
+  }
+  
+  .centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px; 
+  }
+  
+  .headline{
+    font-size: 35px;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .p{
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 20);
+  }
