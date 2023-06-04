@@ -295,3 +295,44 @@
     text-decoration: underline;
 }
 
+.guide {
+    background-color: #423f3f;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 200px;
+    padding: 20px;
+}
+
+.guideH2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.guideP {
+    margin-top: 0;
+}
+
+.guideUl {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.logoutButton {
+    height: 50px;
+    width: 40%;
+    background-color: transparent;
+    border: 2px solid rgb(255, 119, 119);
+    border-radius: 2px;
+    color: rgb(134, 32, 32);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
+}
+
+.logoutButton:hover {
+    background-color: rgb(134, 32, 32);
+    color: black;
+    box-shadow: 2px 2px 5px 1px rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
+}

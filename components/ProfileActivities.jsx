@@ -11,11 +11,11 @@ export default function ProfileActivities() {
         <div className={Style.profilePicture}></div>
         <div className={Style.buttonContainer}>
             <div className={Style.choiceBlock}>
-                <h1 style={{ fontSize: "27px" }}>Try out a workout</h1>
+                <h1 style={{ fontSize: "27px" }}>Check out a workout</h1>
                 <span className={Style.span}>Choose a plan from a dozen of our available workouts.</span>
-                <Link href="/" className={Style.button}>
+                <Link href="./premade_workout" className={Style.button}>
                     <VscDebugStart style={{ justifyContent: "center", position: "center", paddingRight: "10px", fontSize: "30px" }} />
-                    Start Workout</Link>
+                    Browse Workouts</Link>
 
             </div>
             <div className={Style.choiceBlock}>

@@ -3,6 +3,7 @@ import Style from '/styles/PageStandard.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { customWorkoutPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import { useState } from 'react';
+import StopWatch from 'components/StopWatch.jsx';
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
 import SpotifyPlayer from 'react-spotify-player';
@@ -25,6 +26,7 @@ export default function CustomWorkout() {
         <div className={Style.inner}>
             <label className={Style.mainLabel}>Custom Workout</label>
             <span>Workout blocks can be moved freely</span>
+            
             <div className={Style.draggablesContainer}>
                 <ResponsiveGridLayout
                     className={Style.gridLayout}
@@ -49,6 +51,7 @@ export default function CustomWorkout() {
                         <WorkoutBox title={""} reps={""} weight={""} imageSrc={"/liftingWeights.jpg"} imageHeight={"150"} imageWidth={"150"} />
                     </div>
                 </ResponsiveGridLayout>
+                <StopWatch/>
             </div>
         </div >
     </>

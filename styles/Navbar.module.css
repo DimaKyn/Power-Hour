@@ -74,6 +74,26 @@
     border: 1px solid white;
 }
 
+.logoutButton {
+    padding: 10px;
+    margin: 10px;
+    background-color: transparent;
+    border: 2px solid rgb(255, 119, 119);
+    border-radius: 2px;
+    color: rgb(134, 32, 32);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
+}
+
+.logoutButton:hover {
+    background-color: rgb(134, 32, 32);
+    color: black;
+    box-shadow: 2px 2px 5px 1px rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
+}
+
 .hamburger {
     position: absolute;
     left: 20px;

@@ -1,9 +1,10 @@
 import Style from '/styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
-
+import React, { useState, useEffect } from 'react';
+import { signIn} from 'next-auth/react';
+import NavigationPanel from '/components/navigationPanel/NavigationPanel';
+import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 //Hide the login button and show the loading div
 //TODO: Add a loading animation
 
@@ -11,19 +12,23 @@ import { signIn } from 'next-auth/react';
 // Update the handleLogin function
 async function handleLogin(loginButton, identifier, password) {
   console.log('Trying to find user with identifier:', identifier);
-  
+
   const response = await signIn('credentials', {
     redirect: false,
     identifier,
     password,
   });
-  //console.log(response)
+  console.log(response)
   if (response.error) {
     console.log('User not found');
     // Handle unsuccessful login
   } else {
-    console.log('User found');
-    // Handle successful login
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('loggedInUser', identifier);
+      console.log('Stored:', identifier);
+      window.location.href = '/profile'; // redirect to profile page
+    }
   }
 }
 
@@ -35,6 +40,23 @@ async function handleLogin(loginButton, identifier, password) {
 export default function LoginBlock() {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
+
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUser');
+    setIsLoggedIn(false);
+    window.location.reload();
+  };
+  if(!isLoggedIn){
     return <>
         <div className={Style.loginBlock}>
 
@@ -58,7 +80,32 @@ export default function LoginBlock() {
                 <Link href="/register" className={Style.registerButton}>Register now</Link>
             </div>
         </div>
-
-
     </>
+  }
+  return (
+    <>
+      <NavigationPanel links={profilePanelLinks} />
+      <div className={Style.inner}>
+        {isLoggedIn ? (
+          <>
+            <div className={Style.guide}>
+            <h1>Welcome, {localStorage.getItem('loggedInUser')}!</h1>
+              <h2 className={Style.guideH2}>How to use our website</h2>
+              <p className={Style.guideP}>Here are some tips on how to get the most out of PowerHour:</p>
+              <ul className={Style.guideUl}>
+                <li>Use the stopwatch to time your workouts.</li>
+                <li>Track your progress by logging your workouts.</li>
+                <li>Check out our exercise library for ideas on new exercises to try.</li>
+              </ul>
+            </div>
+            <div className={Style.buttonDiv}>
+              <button className={Style.logoutButton} onClick={handleLogout}>Logout</button>
+            </div>
+          </>
+        ) : (
+          <ProfileActivities />
+        )}
+      </div>
+    </>
+  );
 }
