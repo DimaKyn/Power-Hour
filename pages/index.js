@@ -4,6 +4,7 @@ import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 //Import the navigation panel for this specific page
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { homePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+import { useState, useEffect } from 'react';
 
 //On a click of a label, move the page to the login block or to the top of the page
 function movePage(homepage) {
@@ -16,6 +17,16 @@ function movePage(homepage) {
 
 
 export default function Home() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   let homepage = true;
   return (
     <div className={Style.main}>
@@ -26,7 +37,11 @@ export default function Home() {
           <label className={Style.labelPowerHour}>POWER HOUR</label>
           <label className={Style.subLabel}>TIME TO TRAIN</label>
           <div className={Style.subSubSubImage}></div>
-          <label className={Style.loginText} onClick={() => movePage(homepage = false)}>LOGIN TO START TRAINING</label>
+          {isLoggedIn ? (
+            <label className={Style.loginText} onClick={() => movePage(homepage = false)}>Explore your possibilities using PowerHour</label>
+          ) : (
+            <label className={Style.loginText} onClick={() => movePage(homepage = false)}>LOGIN TO START TRAINING</label>
+          )}
           <div className={Style.arrowDivDown} onClick={() => movePage(homepage = false)}>
             <AiFillCaretDown />
           </div>
