@@ -11,6 +11,7 @@ import { BiPencil } from "react-icons/bi";
 //TODO: import workout plan from db
 export default function WorkoutBox(props) {
   const { title, reps, weight, imageSrc, imageWidth, imageHeight, containerName} = props;
+  console.log(typeof(props));
   let containerStatus = containerName === "workoutBox" ? Style.workoutSquare : Style.exerciseCompleted;
   return <div className={containerStatus}>
         <BsArrowsMove className={Style.moveSquareIcon} />

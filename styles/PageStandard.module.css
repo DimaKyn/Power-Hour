@@ -19,13 +19,42 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    
 }
 
 .mainLabel {
     align-items: center;
-    font-size: 50px;
+    font-size: 3em;
     font-weight: bold;
     font-variant: uppercase;
+}
+
+@media(max-width: 500px) {
+    .mainLabel {
+        font-size: 1.5em;
+    }
+    .navPanelLinks {
+        font-size: 0.8em;
+    }
+    .navPanelLinkCurrent {
+        font-size: 0.8em;
+    }
+}
+
+@media(max-width: 300px) {
+    .inner {
+        width: auto;
+    }
+    .mainLabel {
+        font-size: 1em;
+        margin-top: 30px;
+    }
+    .navPanelLinks {
+        font-size: 0.5em;
+    }
+    .navPanelLinkCurrent {
+        font-size: 0.5em;
+    }
 }
 
 .block {
@@ -74,6 +103,8 @@
     text-decoration: underline;
     color: rgba(252, 203, 26, 1);
 }
+
+
 
 .navPanelLinkCurrent {
     color: rgba(252, 203, 26, 1);
