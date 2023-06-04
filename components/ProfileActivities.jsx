@@ -21,7 +21,7 @@ export default function ProfileActivities() {
             <div className={Style.choiceBlock}>
                 <h1 style={{ fontSize: "27px" }}>Feeling creative?</h1>
                 <span className={Style.span}>Create the perfect routine to suit your style, technique, preferences and workout needs. <br />Browse from hundreds of available exercises.</span>
-                <Link href="/" className={Style.button}>
+                <Link href="./create_custom_workout" className={Style.button}>
                     <BsPlusLg style={{ justifyContent: "center", position: "center", paddingRight: "10px", fontSize: "30px" }} />
                     Create Workout</Link>
             </div>

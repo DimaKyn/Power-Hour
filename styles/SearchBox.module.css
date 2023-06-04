@@ -1,0 +1,297 @@
+.searchBoxInner {
+    border: 2px solid rgba(252, 203, 26, 0.8);
+    background-color: black;
+    width: 95%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.inputDiv {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+.inputDiv:focus {
+    height: 600px;
+}
+
+.inputTextBox {
+    border-bottom: 3px solid gray;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    padding-left: 50px;
+    position: absolute;
+    box-sizing: border-box;
+    transition: border-bottom 0.3s ease-in;
+}
+
+
+.inputTextBox:focus {
+    outline: none;
+    border-bottom: 3px solid white;
+    transition: border-bottom 0.3s ease-in, color 0.3s ease-in;
+
+}
+
+.magnifyingGlass {
+    color: rgba(252, 203, 26, 0.8);
+    font-size: 40px;
+    padding-left: 10px;
+    height: 100%;
+    z-index: 1;
+}
+
+.searchResults {
+    position: relative;
+    height: calc(100% - 70px);
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: auto;
+    z-index: 2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media(max-width: 500px) {
+    .exercise {
+        transform: scale(0.8);
+        padding: 0;
+    }
+
+    .exerciseIcons {
+        display: hidden;
+    }
+
+    .searchResults {
+        height: calc(100% - 70px);
+        width: 100%;
+
+    }
+}
+
+@media(max-width: 300px) {
+    .exercise {
+        transform: scale(0.8)
+    }
+
+    .exerciseIcons {
+        display: hidden;
+    }
+
+    .searchResults {
+        height: calc(100% - 70px);
+        width: 100%;
+
+
+    }
+}
+
+.exercise {
+    border: 1px solid rgba(252, 203, 26, 0.8);
+    border-radius: 3px;
+    height: auto;
+    width: 100%;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-width: 400px;
+    max-width: 300px;
+}
+
+.informationCircle {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 40px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: help;
+}
+
+.exerciseInfoHoverCircle {
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.infoBlockBottomDiv {
+    flex-direction: column;
+    width: 50px;
+    padding: 10px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.h1block {
+    width: 100%;
+    overflow: hidden;
+}
+
+.exerciseIcons {
+    background-color: rgb(0, 0, 0);
+    border-right: 2px solid rgba(252, 203, 26, 0.8);
+    border-left: 2px solid rgba(252, 203, 26, 0.8);
+    padding: 10px;
+    font-size: 50px;
+    height: auto;
+    width: auto;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.repetitionsSetsAdd {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.setsRepsLabel {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addButton {
+    height: 50px;
+    width: 50px;
+    border-radius: 3px;
+    outline: 1px solid rgba(0, 255, 76, 0.2);
+    border: 2px solid black;
+    background-color: rgba(252, 203, 26, 1);
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    bottom: 0;
+    right: 0%;
+    font-size: 30px;
+}
+
+.removeButton {
+    height: 30px;
+    width: 30px;
+    border-radius: 3px;
+    outline: 1px solid rgba(0, 255, 76, 0.2);
+    border: 2px solid black;
+    background-color: rgba(252, 203, 26, 1);
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    bottom: 0;
+    right: 0;
+    font-size: 20px;
+}
+
+.buttonDiv {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    right: 0;
+}
+
+.plusIcon {
+    position: absolute;
+    color: black;
+    font-size: 50px;
+    ;
+    pointer-events: none;
+}
+
+.trashIcon {
+    position: absolute;
+    color: black;
+    font-size: 30px;
+    ;
+    pointer-events: none;
+}
+
+.reps {
+    background: transparent;
+    border: 2px solid rgba(252, 203, 26, 0.8);
+    width: 50px;
+    height: 30px;
+    padding-left: auto;
+    color: rgba(252, 203, 26, 1);
+}
+
+.reps:focus {
+    outline: none;
+}
+
+.chosenExercises {
+    top: 0;
+    height: 600px;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 3px solid black;
+    outline: 4px solid rgba(252, 203, 26, 0.8);
+    box-shadow: 2px 5px 5px 5px rgba(252, 203, 26, 0.4);
+    overflow: auto;
+    white-space: nowrap;
+
+}

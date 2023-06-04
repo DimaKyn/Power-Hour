@@ -44,7 +44,6 @@ export default function LoginBlock() {
                 <FaUserAlt className={Style.userIcon} />
                 <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={identifier} onChange={(e) => setIdentifier(e.target.value)}></input>
                 <label className={Style.usernameLabel}>Username/Email</label>
-
             </div>
             <div className={Style.passwordBlock}>
                 <FaKey className={Style.passwordIcon} />

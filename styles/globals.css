@@ -25,3 +25,24 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(56, 149, 255, 0.3); 
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(252, 203, 26, 1); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(252, 203, 26, 1); 
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
