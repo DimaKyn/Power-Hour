@@ -5,6 +5,7 @@ import { findUser } from '../../../lib/findUser';
 import bcrypt from 'bcrypt';
 
 export default NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
@@ -14,14 +15,14 @@ export default NextAuth({
         const user = await findUser(identifier);
         console.log("from nextauth printing user info:\n", user)
         if (user && (await bcrypt.compare(password, user.password))) {
-          return { email: user.email, name: user.name, username: user.username };
+          const { password, ...userWithoutPassword } = user; // exclude password property from user object
+          return { ...userWithoutPassword, identifier: user.email }; // include user object without password in response
         } else {
           throw new Error('Invalid credentials');
         }
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
   events: {
     // Disable broadcasting the getSession event
     getSession: false,

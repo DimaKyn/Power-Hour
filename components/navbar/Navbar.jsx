@@ -5,7 +5,7 @@ import Style from "/styles/Navbar.module.css";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { MdAccountCircle } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
@@ -35,6 +35,31 @@ export default function Navbar() {
     const navbar = useRef(null);
     const lowerOpacityHamburgerOpen = useRef(null);
 
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          const user = localStorage.getItem('loggedInUser');
+          setLoggedInUser(user);
+        }
+      }, []);
+
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+        setIsLoggedIn(true);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+        setLoggedInUser(null);
+        window.location.href = '/'
+    };
+
+
     const handleHamburgerClick = () => {
         setHamburgerMenuOpen(!hamburgerMenuOpen);
         setHamburgerCloserHidden(!hamburgerCloserHidden);
@@ -56,8 +81,6 @@ export default function Navbar() {
         }
     }
 
-
-
     return <>
         <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
             onClick={() => handleHamburgerClick()}></div>
@@ -78,11 +101,23 @@ export default function Navbar() {
 
                 </div>
             </div>
-            <div className={Style.buttons}>
+            <div className={Style.buttons} style={{ display: "flex", justifyContent: "space-between" }}>
                 <Link onClick={() => handleButtonClick()} href="/profile" style={{ display: "flex", alignItems: "center" }} className={Style.navText}  >
-                    <MdAccountCircle style={{ paddingRight: "5px", fontSize: "25px" }} />
-                    Sign in/Profile</Link>
+                    {loggedInUser ? (
+                        <>
+                            <span style={{ marginRight: "5px" }}>My profile</span>
+                            <MdAccountCircle style={{ fontSize: "25px" }} />
+                        </>
+                    ) : (
+                        <>
+                            <MdAccountCircle style={{ paddingRight: "5px", fontSize: "25px" }} />
+                            Sign in/Profile
+                        </>
+                    )}</Link>
                 <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.navText}>Workouts</Link>
+                {loggedInUser &&(
+                    <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>
+                )}
             </div>
         </div>
 
@@ -104,12 +139,18 @@ export default function Navbar() {
 
                     </div>
                 </div>
+                {isLoggedIn ? (
                 <div className={Style.hamburgerLinksContainer}>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
-                    <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
                 </div>
+                    ) : (
+                <div className={Style.hamburgerLinksContainer}>
+                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
+                </div>
+                )}
 
                 <div className={Style.bottomSection}>
                     <Link onClick={() => handleButtonClick()} href="/about">
