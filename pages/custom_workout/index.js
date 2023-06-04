@@ -6,10 +6,7 @@ import { useState } from 'react';
 import StopWatch from 'components/StopWatch.jsx';
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
-
 import SpotifyPlayer from 'react-spotify-player';
-
-
 import { Responsive, WidthProvider } from 'react-grid-layout';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -35,7 +32,6 @@ export default function CustomWorkout() {
                     className={Style.gridLayout}
                     breakpoints={{ lg: 1500, md: 1000, sm: 750, xs: 500, xxs: 250 }}
                     cols={{ lg: 5, md: 4, sm: 3, xs: 2, xxs: 1 }}
-
                 >
                     <div key="d" data-grid={{ x: 0, y: 0, w: 1, h: 2, minW: 1, maxW: 1 }} className={Style.gridElement}>
                         <SpotifyPlayer
@@ -54,9 +50,6 @@ export default function CustomWorkout() {
                     <div key="c" data-grid={{ x: 1, y: 1, w: 1, h: 2, minW: 1, maxW: 1 }} className={Style.gridElement}>
                         <WorkoutBox title={""} reps={""} weight={""} imageSrc={"/liftingWeights.jpg"} imageHeight={"150"} imageWidth={"150"} />
                     </div>
-
-
-
                 </ResponsiveGridLayout>
                 <StopWatch/>
             </div>

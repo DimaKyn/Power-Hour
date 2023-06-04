@@ -4,6 +4,7 @@ import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import Style from '/styles/PageStandard.module.css';
 import { SessionProvider } from 'next-auth/react';
 
+
 function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
