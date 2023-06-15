@@ -1,10 +1,16 @@
 import bcrypt from 'bcrypt';
 import clientPromise from '../../lib/mongodb';
+import { redirect } from 'next/dist/server/api-utils';
 
 async function hashPassword(password) {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   return hashedPassword;
+}
+
+async function errorHandler(err, req, res, next) {
+  console.error(err);
+  res.status(500).json({ message: 'Internal server error' });
 }
 
 export default async function handler(req, res) {
@@ -15,7 +21,7 @@ export default async function handler(req, res) {
       if (!name || !username || !email || !password || !phoneNumber) {
         return res.status(400).json({ message: 'All fields are required' });
       }
-      
+
       const client = await clientPromise;
       const db = client.db(process.env.DB_NAME);
       const existingEmail = await db.collection('Users').findOne({ email });
@@ -43,15 +49,25 @@ export default async function handler(req, res) {
         password: hashedPassword, // Store the hashed password
         phoneNumber,
       });
+
+      // // Create JSON table for new user
+      // const jsonTable = await db.collection('UserCustomWorkouts').insertOne({
+      //   username: username,
+      //   workoutsArray: []
+      // });
+
+      
+
       console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
       const insertedUser = await db.collection('Users').findOne({ _id: newUser.insertedId });
+
       return res.status(201).json({ message: 'User registered successfully', user: insertedUser });
     } else {
       res.status(405).json({ message: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Error in /api/register:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    return errorHandler(error, req, res);
   }
 }
