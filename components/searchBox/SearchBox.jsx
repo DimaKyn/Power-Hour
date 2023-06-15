@@ -137,9 +137,6 @@ export default function SearchBox() {
                         <StringToIconType style={{ marginTop: "10px" }} exerciseInput={exercise.type} />
                         <StringToIconMuscle style={{ marginTop: "10px" }} exerciseInput={exercise.muscle} />
                         <StringToIconDifficulty style={{ marginTop: "10px" }} exerciseInput={exercise.difficulty} />
-                        <div className={Style.infoIcon}>
-                            <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
-                        </div>
                         <Popover className={Style.popoverParent}>
                             <PopoverTrigger >
                                 <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
@@ -151,10 +148,10 @@ export default function SearchBox() {
 
                     </div>
 
-                </div>
-                <div className={Style.buttonDiv}>
-                    <AiOutlinePlus className={Style.plusIcon} />
-                    <button key={index} onClick={() => addExercise(exercise, index)} className={Style.addButton}></button>
+                    <div className={Style.buttonDiv}>
+                        <AiOutlinePlus className={Style.plusIcon} />
+                        <button key={index} onClick={() => addExercise(exercise, index)} className={Style.addButton}></button>
+                    </div>
                 </div>
             </>
         }
@@ -180,9 +177,9 @@ export default function SearchBox() {
             <div className={Style.chosenExercises}>
                 <div className={Style.upperLabel}>
                     <label className={Style.labelChosenExercises}>Chosen Exercises</label>
-                    <input value={workoutName} onChange={(e) => setWorkoutName(e.target.value)} style={{color: "black"}}></input>
-                    <button onClick={() => saveWorkout(workoutName)} style={{ backgroundColor: "blue"}}>Save to db</button>
-                    <button style={{ backgroundColor: "red"}}>clear</button>
+                    <input value={workoutName} onChange={(e) => setWorkoutName(e.target.value)} style={{ color: "black" }}></input>
+                    <button onClick={() => saveWorkout(workoutName)} style={{ backgroundColor: "blue" }}>Save to db</button>
+                    <button style={{ backgroundColor: "red" }}>clear</button>
                 </div>
                 <div style={{ top: "50px", position: "absolute", bottom: "50px" }}>
                     {addedExercises.map((exercise, index) => {
