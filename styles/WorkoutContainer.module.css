@@ -1,75 +1,97 @@
 .container {
-    margin-top: 100px;
-    padding: 20px;
-    width: 350px;
-    background-color: rgb(43, 42, 42);
+  margin-top: 100px;
+  padding: 20px;
+  width: 350px;
+  background-color: rgb(27, 27, 27);
 }
 
 .containerV2 {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    box-sizing: border-box;
-    max-width: 400px;
-    display: flex;
-    
+  flex: 0 0 auto;
+  margin-right: 20px;
+  box-sizing: border-box;
+  max-width: 400px;
+  display: flex;
 }
 
 .containerWrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1200px) {
-    .containerWrapper {
-        flex-wrap: wrap;
-    }
+  .containerWrapper {
+    flex-wrap: wrap;
+  }
 }
 
 .containerV2:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    color: rgb(234, 238, 18);
-    font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: rgb(234, 238, 18);
+  font-weight: bold;
 }
 
 .exercisesContainer {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 400px;
 }
 
 .exercise {
-    flex-shrink: 0;
-    margin-right: 20px;
-    width: 300px;
-    background-color: black;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 16px;
+  flex-shrink: 0;
+  margin-right: 20px;
+  width: 300px;
+  background-color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 16px;
 }
 
 .h3 {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: rgb(255, 255, 255);
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
 }
 
 .p {
-    margin-bottom: 10px;
-    font-size: 25px;
+  margin-bottom: 10px;
+  font-size: 25px;
 }
 
 .img {
-    width: 100%;
-    height: auto;
-    border-radius: 2px;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
 }
+
+.inputBlack {
+  background-color: black;
+}
+
+.button {
+  background-color: rgb(234, 238, 18);
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(161, 163, 10);
+}
+
+.buttonContainer {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+  }

@@ -8,6 +8,7 @@ import { StringToIconDifficulty } from "/components/stringToIcon/StringToIconDif
 import { StringToIconType } from "/components/stringToIcon/StringToIconType";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
+import { useRef } from "react";
 import {
     Popover,
     PopoverContent,
@@ -47,6 +48,7 @@ async function workoutToDB(addedExercises, workoutName) {
     }
 }
 
+
 //Fetch a list of (maximum 10) workouts from the ninja API based on the attribute of the workout
 function fetchWorkoutByAttribute(inputValue, attribute) {
     console.log(api_url + attribute + inputValue);
@@ -69,6 +71,7 @@ export default function SearchBox() {
     const [stringInput, setStringInput] = useState('');
     const [listOfExercises, setListOfWorkouts] = useState([]);
     const [addedExercises, setAddedExercises] = useState([]);
+
     const [workoutName, setWorkoutName] = useState('');
 
 
@@ -134,6 +137,8 @@ export default function SearchBox() {
                     <StringToIconMuscle style={{ marginTop: "10px" }} exerciseInput={exercise.muscle} />
                     <StringToIconDifficulty style={{ marginTop: "10px" }} exerciseInput={exercise.difficulty} />
                     <div className={Style.infoIcon}>
+                        <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
+                    </div>
                         <Popover className={Style.popoverParent}>
                             <PopoverTrigger >
                                 <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
@@ -165,6 +170,9 @@ export default function SearchBox() {
                         return exerciseBlock(exercise, index);
                     })}
                 </div>
+                <span style={{ width: "100%", fontSize: "30px", fontWeight: "bold", padding: "10px", borderTop: "2px solid white", borderBottom: "2px solid white" }}>CHOSEN EXERCISES</span>
+
+                <div className={Style.chosenExercises}>
 
 
 
@@ -184,8 +192,6 @@ export default function SearchBox() {
                         return addExerciseToBottomDiv(exercise, index);
                     })}
                 </div>
-
-
             </div>
 
         </>
@@ -193,6 +199,7 @@ export default function SearchBox() {
 
     //This function adds an exercise to the bottom div
     function addExerciseToBottomDiv(exercise, index) {
+
         return <div className={Style.exerciseAdded} key={index}>
             <div className={Style.infoBlockAdded}>
                 <div className={Style.setsRepsLabelAdded}>

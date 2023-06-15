@@ -10,21 +10,30 @@ export default NextAuth({
     CredentialsProvider({
       async authorize(credentials) {
         const { identifier, password } = credentials;
-        console.log("from nextauth printing credentials:\n", credentials)
-        console.log("Sending to findUser with identifier:\n", identifier)
         const user = await findUser(identifier);
-        console.log("from nextauth printing user info:\n", user)
         if (user && (await bcrypt.compare(password, user.password))) {
-          const { password, ...userWithoutPassword } = user; // exclude password property from user object
-          return { ...userWithoutPassword, identifier: user.email }; // include user object without password in response
+          const {...userWithoutPassword } = user;
+          console.log(userWithoutPassword);
+          return { ...userWithoutPassword};
         } else {
           throw new Error('Invalid credentials');
         }
       },
     }),
   ],
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.username = user.username; // add the username attribute to the token
+      }
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user.username = token.username; // add the username attribute to the session
+      return session;
+    },
+  },
   events: {
-    // Disable broadcasting the getSession event
     getSession: false,
   },
 });
