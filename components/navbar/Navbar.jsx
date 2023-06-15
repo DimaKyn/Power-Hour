@@ -96,7 +96,7 @@ export default function Navbar() {
                         src="/../public/pwrhwrlogo.png"
                         width={200}
                         height={200}
-                        alt="Picture of the PowerHour logo"
+                        alt="PowerHour logo"
                     />
 
                 </div>

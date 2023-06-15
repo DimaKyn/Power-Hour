@@ -22,6 +22,25 @@
     
 }
 
+.innerRow {
+    --globalGold: rgb(252, 203, 26);
+    position: absolute;
+    height: calc(100% - min(100px, 10vh));
+    width: 100%;
+    top: min(100px, 10vh);
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media(max-width: 500px) {
+
+
+}
+
+
 .mainLabel {
     align-items: center;
     font-size: 3em;
@@ -29,7 +48,10 @@
     font-variant: uppercase;
 }
 
-@media(max-width: 500px) {
+@media(max-width: 600px) {
+    .innerRow {
+        flex-direction: column;
+    }
     .mainLabel {
         font-size: 1.5em;
     }
@@ -42,8 +64,8 @@
 }
 
 @media(max-width: 300px) {
-    .inner {
-        width: auto;
+    .innerRow {
+        flex-direction: column;
     }
     .mainLabel {
         font-size: 1em;

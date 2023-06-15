@@ -3,16 +3,19 @@ import { createCustomWorkoutPanelLinks } from '/components/navigationPanel/Navig
 import Style from '/styles/PageStandard.module.css';
 import SearchBox from '/components/searchBox/SearchBox';
 
+import { useRef ,forwardRef, useImperativeHandle } from 'react';
 
 
-export default function CreateCustomWorkout() { 
+export default function CreateCustomWorkout() {
 
     return <>
-         <NavigationPanel links={createCustomWorkoutPanelLinks} />
+        <NavigationPanel links={createCustomWorkoutPanelLinks} />
         <div className={Style.inner}>
-            <label className={Style.mainLabel}>Create Custom</label>
-            <SearchBox className={Style.searchBox}></SearchBox>
-            <div className={Style.workouts}></div>
+            <label className={Style.mainLabel}>Create Workout</label>
+            <div className={Style.innerRow}>
+                <SearchBox className={Style.searchBoxInner} ></SearchBox>
+                <div className={Style.workouts}></div>
+            </div>
         </div>
     </>
 }
