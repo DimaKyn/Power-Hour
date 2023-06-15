@@ -1,13 +1,14 @@
 .searchBoxInner {
     border: 2px solid rgba(252, 203, 26, 0.8);
     background-color: black;
-    width: 95%;
-    height: 700px;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
+    margin: 30
 }
 
 .inputDiv {
@@ -63,15 +64,66 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     z-index: 2;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-@media(max-width: 500px) {
+.divider {
+    height: 100%;
+    width: max(100px, 10%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(26, 49, 252, 0.8);
+
+}
+
+@media (max-width: 600px) {
+    .labelChosenExercises {
+        font-size: 20px;
+    }
+}
+
+.upperLabel {
+    position: absolute;
+    top: 0;
+    width: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-bottom: 2px solid rgba(252, 203, 26, 0.8);
+
+}
+
+.chosenExercises {
+    top: 0;
+    height: calc(100% - 70px);
+    min-height: 100%;
+    min-width: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    border: 2px solid rgba(252, 203, 26, 0.8);
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+@media(max-width: 600px) {
     .exercise {
-        transform: scale(0.8);
+        transform: scale(0.9);
         padding: 0;
     }
 
@@ -88,7 +140,7 @@
 
 @media(max-width: 300px) {
     .exercise {
-        transform: scale(0.8)
+        transform: scale(0.9)
     }
 
     .exerciseIcons {
@@ -107,7 +159,7 @@
     border: 1px solid rgba(252, 203, 26, 0.8);
     border-radius: 3px;
     height: auto;
-    width: 100%;
+    width: auto;
     margin: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -121,12 +173,46 @@
     max-width: 300px;
 }
 
+.exerciseAdded {
+    border: 1px solid rgba(252, 203, 26, 0.8);
+    border-radius: 3px;
+    height: auto;
+    width: 250px;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-width: 200px;
+    max-width: 300px;
+}
+
 .informationCircle {
     color: rgba(0, 0, 0, 0.8);
     font-size: 40px;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.8);
-    cursor: help;
+    cursor: pointer;
+}
+
+.popover {
+    background-color: black;
+    height: 400px;
+    width: 300px;
+    z-index: 3;
+    border: 2px solid rgba(252, 203, 26, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 100px 100px rgb(0, 0, 0);
+    padding: 10px;
+    overflow: auto;
+}
+
+.popoverParent {
+    position: absolute;
 }
 
 .exerciseInfoHoverCircle {
@@ -136,9 +222,7 @@
     flex-direction: column;
     width: auto;
     height: auto;
-    top: 0;
-    left: 0;
-    position: absolute;
+
     padding-top: 10px;
     padding-left: 10px;
 }
@@ -148,6 +232,16 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    height: auto;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.infoBlockAdded {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
     height: auto;
     padding: 10px;
     flex-wrap: wrap;
@@ -200,6 +294,16 @@
     margin-right: 10px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setsRepsLabelAdded {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
@@ -279,19 +383,13 @@
     outline: none;
 }
 
-.chosenExercises {
-    top: 0;
-    height: 600px;
+.arrows {
+    color: rgba(252, 203, 26, 1);
+    font-size: 30px;
+}
 
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border: 3px solid black;
-    outline: 4px solid rgba(252, 203, 26, 0.8);
-    box-shadow: 2px 5px 5px 5px rgba(252, 203, 26, 0.4);
-    overflow: auto;
-    white-space: nowrap;
-
+@media(max-width: 600px) {
+    .arrows {
+        transform: rotate(90deg);
+    }
 }

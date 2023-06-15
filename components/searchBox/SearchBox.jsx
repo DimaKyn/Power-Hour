@@ -9,6 +9,12 @@ import { StringToIconType } from "/components/stringToIcon/StringToIconType";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 import { useRef } from "react";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover.jsx"
+import { VscArrowSwap } from "react-icons/vsc";
 
 
 //Fetch a list of (maximum 10) workouts from the ninja API based on the attribute of the workout
@@ -88,8 +94,17 @@ export default function SearchBox() {
                     <StringToIconMuscle style={{ marginTop: "10px" }} exerciseInput={exercise.muscle} />
                     <StringToIconDifficulty style={{ marginTop: "10px" }} exerciseInput={exercise.difficulty} />
                     <div className={Style.infoIcon}>
-                        <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
+                        <Popover className={Style.popoverParent}>
+                            <PopoverTrigger >
+                                <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
+                            </PopoverTrigger>
+                            <PopoverContent className={Style.popover}>
+                                <h1 style={{ fontSize: "30px" }}>INSTRUCTIONS</h1>
+                                <span>{exercise.instructions}</span></PopoverContent>
+                        </Popover>
+
                     </div>
+
                 </div>
                 <div className={Style.buttonDiv}>
                     <AiOutlinePlus className={Style.plusIcon} />
@@ -110,31 +125,35 @@ export default function SearchBox() {
                         return exerciseBlock(exercise, index);
                     })}
                 </div>
-                <span style={{ width: "100%", fontSize: "30px", fontWeight: "bold", padding: "10px", borderTop: "2px solid white", borderBottom: "2px solid white" }}>CHOSEN EXERCISES</span>
 
-                <div className={Style.chosenExercises}>
+
+
+            </div>
+            <div className={Style.divider}>
+                <VscArrowSwap style={{ fontSize: '50px', margin: "20px" }} className={Style.arrows} />
+            </div>
+            <div className={Style.chosenExercises}>
+                <div className={Style.upperLabel}>
+                    <label className={Style.labelChosenExercises}>Chosen Exercises</label>
+                </div>
+                <div style={{ top: "50px", position: "absolute", bottom: "50px"}}>
                     {addedExercises.map((exercise, index) => {
                         return addExerciseToBottomDiv(exercise, index);
                     })}
                 </div>
 
             </div>
+
         </>
     }
 
     //This function adds an exercise to the bottom div
     function addExerciseToBottomDiv(exercise, index) {
-        return <div className={Style.exercise} key={index}>
-            <div className={Style.infoBlock}>
-                <div className={Style.h1block}>
-                    <h1 style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold", width: "100px" }}>{exercise.name}</h1>
-                </div>
-                <div className={Style.setsRepsLabel}>
-                    <div className={Style.infoIcon}>
-                        <GrCircleInformation style={{ fontSize: "30px", marginRight: "10px" }} className={Style.informationCircle} />
-                    </div>
-                    X Sets
-                    X Reps
+        return <div className={Style.exerciseAdded} key={index}>
+            <div className={Style.infoBlockAdded}>
+                <div className={Style.setsRepsLabelAdded}>
+                    <span style={{ textAlign: "center", fontSize: "20px", textTransform: "uppercase", fontWeight: "bold", wordWrap: "wrap", width: "250px" }}>{exercise.name}</span>
+                    <label>X Sets X Reps</label>
                     <div className={Style.repetitionsSetsAdd} style={{ padding: "0" }}>
                         <StringToIconType style={{ fontSize: "70px" }} exerciseInput={exercise.type} />
                         <StringToIconMuscle style={{ fontSize: "70px" }} exerciseInput={exercise.muscle} />
