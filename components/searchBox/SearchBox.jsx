@@ -8,7 +8,6 @@ import { StringToIconDifficulty } from "/components/stringToIcon/StringToIconDif
 import { StringToIconType } from "/components/stringToIcon/StringToIconType";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
-import { useRef } from "react";
 import {
     Popover,
     PopoverContent,
@@ -16,6 +15,37 @@ import {
 } from "@/components/ui/popover.jsx"
 import { VscArrowSwap } from "react-icons/vsc";
 
+
+//TODO: implement save by username
+async function workoutToDB(addedExercises, workoutName) {
+    var workout = { 
+        workoutName: workoutName,
+        exercises: []
+    };
+    addedExercises.forEach((exercise) => {
+        const exerciseInfo = {
+            name: exercise.name,
+            sets: exercise.sets,
+            reps: exercise.reps,
+            info: exercise.instructions,
+        };
+        workout.exercises.push({exerciseInfo});
+    })
+    try {
+        let response = await fetch('/api/addWorkoutToDB', {
+            method: 'POST',
+            body: JSON.stringify(workout),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+            },
+    });
+    response = await response.json();
+    console.log(response);
+    } catch (error) {
+        console.log("Encountered an error adding workout:", error);
+    }
+}
 
 //Fetch a list of (maximum 10) workouts from the ninja API based on the attribute of the workout
 function fetchWorkoutByAttribute(inputValue, attribute) {
@@ -39,6 +69,16 @@ export default function SearchBox() {
     const [stringInput, setStringInput] = useState('');
     const [listOfExercises, setListOfWorkouts] = useState([]);
     const [addedExercises, setAddedExercises] = useState([]);
+    const [workoutName, setWorkoutName] = useState('');
+
+
+    function saveWorkout(workoutName) {
+        if (workoutName === '') {
+            alert("Please enter a workout name");
+            return;
+        }
+        workoutToDB(addedExercises, workoutName);
+    }
 
     return SearchBoxInner();
 
@@ -79,11 +119,11 @@ export default function SearchBox() {
                     <div className={Style.repetitionsSetsAdd}>
 
                         <div className={Style.setsRepsLabel}>
-                            <label style={{ marginLeft: "10px", color: "rgba(252, 203, 26, 1)" }}>Sets</label>
+                            <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Sets</label>
                             <input type="number" style={{ paddingLeft: "5px" }} min="0" max="500" placeholder="3" className={Style.reps}></input>
                         </div>
                         <div className={Style.setsRepsLabel}>
-                            <label style={{ marginLeft: "10px", color: "rgba(252, 203, 26, 1)" }}>Reps</label>
+                            <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Reps</label>
 
                             <input type="number" style={{ paddingLeft: "5px" }} min="0" max="1000" placeholder="10" className={Style.reps}></input>
                         </div>
@@ -135,12 +175,16 @@ export default function SearchBox() {
             <div className={Style.chosenExercises}>
                 <div className={Style.upperLabel}>
                     <label className={Style.labelChosenExercises}>Chosen Exercises</label>
+                    <input value={workoutName} onChange={(e) => setWorkoutName(e.target.value)} style={{color: "black"}}></input>
+                    <button onClick={() => saveWorkout(workoutName)} style={{ backgroundColor: "blue"}}>Save to db</button>
+                    <button style={{ backgroundColor: "red"}}>clear</button>
                 </div>
-                <div style={{ top: "50px", position: "absolute", bottom: "50px"}}>
+                <div style={{ top: "50px", position: "absolute", bottom: "50px" }}>
                     {addedExercises.map((exercise, index) => {
                         return addExerciseToBottomDiv(exercise, index);
                     })}
                 </div>
+
 
             </div>
 

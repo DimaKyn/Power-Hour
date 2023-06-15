@@ -1,5 +1,5 @@
 .searchBoxInner {
-    border: 2px solid rgba(252, 203, 26, 0.8);
+    border: 2px solid rgba(75, 75, 170, 0.8);
     background-color: black;
     width: 100%;
     height: 100%;
@@ -48,7 +48,7 @@
 }
 
 .magnifyingGlass {
-    color: rgba(252, 203, 26, 0.8);
+    color: rgba(75, 75, 170, 0.8);
     font-size: 40px;
     padding-left: 10px;
     height: 100%;
@@ -96,7 +96,7 @@
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    border-bottom: 2px solid rgba(252, 203, 26, 0.8);
+    border-bottom: 2px solid rgba(75, 75, 170, 0.8);
 
 }
 
@@ -112,7 +112,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
-    border: 2px solid rgba(252, 203, 26, 0.8);
+    border: 2px solid rgba(75, 75, 170, 0.8);
     overflow-y: auto;
     overflow-x: hidden;
     white-space: wrap;
@@ -156,7 +156,7 @@
 }
 
 .exercise {
-    border: 1px solid rgba(252, 203, 26, 0.8);
+    border: 1px solid rgba(75, 75, 170, 0.8);
     border-radius: 3px;
     height: auto;
     width: auto;
@@ -174,7 +174,7 @@
 }
 
 .exerciseAdded {
-    border: 1px solid rgba(252, 203, 26, 0.8);
+    border: 1px solid rgba(75, 75, 184, 0.8);
     border-radius: 3px;
     height: auto;
     width: 250px;
@@ -204,7 +204,7 @@
     height: 400px;
     width: 300px;
     z-index: 3;
-    border: 2px solid rgba(252, 203, 26, 0.8);
+    border: 2px solid rgba(75, 75, 170, 0.8);
     border-radius: 5px;
     box-shadow: 0 0 100px 100px rgb(0, 0, 0);
     padding: 10px;
@@ -262,8 +262,8 @@
 
 .exerciseIcons {
     background-color: rgb(0, 0, 0);
-    border-right: 2px solid rgba(252, 203, 26, 0.8);
-    border-left: 2px solid rgba(252, 203, 26, 0.8);
+    border-right: 2px solid rgba(75, 75, 170, 0.8);
+    border-left: 2px solid rgba(75, 75, 170, 0.8);
     padding: 10px;
     font-size: 50px;
     height: auto;
@@ -314,7 +314,7 @@
     border-radius: 3px;
     outline: 1px solid rgba(0, 255, 76, 0.2);
     border: 2px solid black;
-    background-color: rgba(252, 203, 26, 1);
+    background-color: rgba(75, 75, 170, 0.8);
     font-weight: bold;
     color: black;
     display: flex;
@@ -332,7 +332,7 @@
     border-radius: 3px;
     outline: 1px solid rgba(0, 255, 76, 0.2);
     border: 2px solid black;
-    background-color: rgba(252, 203, 26, 1);
+    background-color: rgba(75, 75, 170, 0.8);
     font-weight: bold;
     color: black;
     display: flex;
@@ -372,11 +372,11 @@
 
 .reps {
     background: transparent;
-    border: 2px solid rgba(252, 203, 26, 0.8);
+    border: 2px solid rgba(75, 75, 170, 0.8);
     width: 50px;
     height: 30px;
     padding-left: auto;
-    color: rgba(252, 203, 26, 1);
+    color: rgba(75, 75, 170, 0.8);
 }
 
 .reps:focus {
@@ -384,7 +384,7 @@
 }
 
 .arrows {
-    color: rgba(252, 203, 26, 1);
+    color: white;
     font-size: 30px;
 }
 
