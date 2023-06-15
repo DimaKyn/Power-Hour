@@ -114,11 +114,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(252, 203, 26, 1); 
+  background: rgba(64, 64, 192, 1); 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(252, 203, 26, 1); 
+  background: rgba(64, 64, 192, 1); 
 }
 
 input[type=number]::-webkit-inner-spin-button {
