@@ -56,13 +56,14 @@ export default async function handler(req, res) {
       //   workoutsArray: []
       // });
 
-      
+      // Save the redirect URL in the session
+      req.session.redirectUrl = '/';
 
       console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
       const insertedUser = await db.collection('Users').findOne({ _id: newUser.insertedId });
 
-      return res.status(201).json({ message: 'User registered successfully', user: insertedUser });
+      return res.status(201).json({ message: 'User registered successfully'});
     } else {
       res.status(405).json({ message: 'Method not allowed' });
     }
