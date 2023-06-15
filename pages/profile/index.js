@@ -8,7 +8,7 @@ import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLi
 export default function Profile() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const { data: session, status } = useSession();
-
+  
   useEffect(() => {
     if (status === 'authenticated') {
       setLoggedInUser(session.user);
