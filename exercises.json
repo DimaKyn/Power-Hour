@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Push Day",
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Bench Press",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Barbell-Bench-Press_0316b783-43b2-44f8-8a2b-b177a2cfcbfc_600x600.png?v=1612137800"
+      },
+      {
+        "id": 2,
+        "name": "Dips",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Parallel-Dip-Bar_600x600.png?v=1619977962"
+      },
+      {
+        "id": 3,
+        "name": "Overhead Press",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Barbell-Push-Press_8ba0542a-aba8-45ce-bdee-1a3eb4736514_600x600.png?v=1621162658"
+      },
+      {
+        "id": 4,
+        "name": "Triceps Pressdown",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Triceps-Pressdown_e759437b-6200-4b44-b484-14db770024a4_600x600.png?v=1612136845"
+      },
+      {
+        "id": 5,
+        "name": "Lying Triceps Extension",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Lying-Triceps-Extension_4affa7a2-9c1c-48f8-8003-3570d7b3a39c_600x600.png?v=1612136744"
+      }
+    ]
+  },
+
+  {
+    "name": "Pull Day",
+    "exercises": [
+      {
+        "id": 6,
+        "name": "Pull Ups",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Pull-Up_600x600.png?v=1619977612"
+      },
+      {
+        "id": 7,
+        "name": "Barbell Curl",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Barbell-Curl_f38580d5-412e-4082-b453-5d319afa94fd_600x600.png?v=1612137128"
+      },
+      {
+        "id": 8,
+        "name": "Barbell Row",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Barbell-Row_4beb1d94-bac9-4538-9578-2d9cf93ef008_600x600.png?v=1612138201"
+      },
+      {
+        "id": 9,
+        "name": "Dumbbell Concentration Curl",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Dumbbell-Concentration-Curl_289b5739-4bdd-40e6-a195-6ecfcc685126_600x600.png?v=1612137334"
+      },
+      {
+        "id": 10,
+        "name": "Incline Dumbbell Curl",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Incline-Dumbbell-Curl_7debf468-cd34-49bc-8933-7f4b087e6cca_600x600.png?v=1612137309"
+      }
+    ]
+  },
+
+  {
+    "name": "Leg Day",
+    "exercises": [
+      {
+        "id": 10,
+        "name": "Lunge",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Lunge_600x600.png?v=1612138903"
+      },
+      {
+        "id": 11,
+        "name": "Barbell Deadlift",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Barbell-Deadlift_600x600.png?v=1619977112"
+      },
+      {
+        "id": 12,
+        "name": "Leg Press",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Leg-Press_f7febd5c-75e5-42f4-9bb4-c938969ce293_600x600.png?v=1612138836"
+      },
+      {
+        "id": 13,
+        "name": "Leg Extension",
+        "sets": "sets: x3",
+        "reps": "reps: x5",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Leg-Extension_41d91d3f-4b9c-4374-82e2-1d697ce35fe4_600x600.png?v=1612138862"
+      },
+      {
+        "id": 14,
+        "name": "Standing Calf Raise",
+        "sets": "sets: x3",
+        "reps": "reps: x15",
+        "imageUrl": "https://cdn.shopify.com/s/files/1/0269/5551/3900/files/Standing-Calf-Raise_61746b47-98aa-49ee-bb97-5a19562592b9_600x600.png?v=1612137090"
+      }
+    ]
+  }
+]
