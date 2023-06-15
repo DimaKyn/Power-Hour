@@ -11,21 +11,6 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { AiFillInfoCircle } from "react-icons/ai";
 
-const handleLowerOpacityScreenClick = () => {
-    setHamburgerMenuOpen(!hamburgerMenuOpen);
-    setHamburgerCloserHidden(!hamburgerCloserHidden);
-    if (!hamburgerMenuOpen) {
-        lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
-        hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
-        navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
-    } else {
-        lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
-        hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.active}`;
-        navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
-    }
-}
-
-
 //TODO: When hamburger open and you click on a link, the hamburger menu should close
 //TODO: When hamburger open and you click on screen, the hamburger menu should close
 export default function Navbar() {
@@ -40,16 +25,16 @@ export default function Navbar() {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-          const user = localStorage.getItem('loggedInUser');
-          setLoggedInUser(user);
+            const user = localStorage.getItem('loggedInUser');
+            setLoggedInUser(user);
         }
-      }, []);
+    }, []);
 
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
-        setIsLoggedIn(true);
+            setIsLoggedIn(true);
         }
     }, []);
 
@@ -92,32 +77,34 @@ export default function Navbar() {
             <div className={Style.rightSide}>
                 <div className={Style.logo}>
                     <Link onClick={() => handleButtonClick()} style={{ height: "100%", width: "100%", cursor: "pointer", position: "absolute" }} href="/"></Link>
-                    <Image style={{ pointerEvents: "none" }}
-                        src="/../public/pwrhwrlogo.png"
-                        width={200}
-                        height={200}
-                        alt="PowerHour logo"
-                    />
+                    <div className={Style.logoContainer}>
+                        <Image style={{ pointerEvents: "none" }}
+                            src="/../public/pwrhwrlogo.png"
+                            alt="PowerHour logo"
+                            fill={true}
+                            sizes="(max-width: 500px) 100px"
+                        />
+                    </div>
+
 
                 </div>
             </div>
             <div className={Style.buttons} style={{ display: "flex", justifyContent: "space-between" }}>
-                <Link onClick={() => handleButtonClick()} href="/profile" style={{ display: "flex", alignItems: "center" }} className={Style.navText}  >
+            {loggedInUser && (
+                    <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>
+                )}
+                <Link onClick={() => handleButtonClick()} href="/profile" style={{}} className={Style.navProfileIcon}  >
                     {loggedInUser ? (
                         <>
-                            <span style={{ marginRight: "5px" }}>My profile</span>
-                            <MdAccountCircle style={{ fontSize: "25px" }} />
+                            <MdAccountCircle style={{ fontSize: "45px" }} />
                         </>
                     ) : (
                         <>
-                            <MdAccountCircle style={{ paddingRight: "5px", fontSize: "25px" }} />
-                            Sign in/Profile
+                            <MdAccountCircle style={{ paddingRight: "5px", fontSize: "45px" }} />
+
                         </>
                     )}</Link>
-                <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.navText}>Workouts</Link>
-                {loggedInUser &&(
-                    <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>
-                )}
+                
             </div>
         </div>
 
@@ -140,16 +127,16 @@ export default function Navbar() {
                     </div>
                 </div>
                 {isLoggedIn ? (
-                <div className={Style.hamburgerLinksContainer}>
+                    <div className={Style.hamburgerLinksContainer}>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
-                </div>
-                    ) : (
-                <div className={Style.hamburgerLinksContainer}>
+                    </div>
+                ) : (
+                    <div className={Style.hamburgerLinksContainer}>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                </div>
+                    </div>
                 )}
 
                 <div className={Style.bottomSection}>

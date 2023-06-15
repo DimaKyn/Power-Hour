@@ -17,6 +17,11 @@
     min-height: 70px;
 }
 
+.logoContainer {
+    height: 46px;
+    width: 243px;
+}
+
 .navFullOpacity {
     animation: backgroundFullOpacity 0.5s forwards;
 }
@@ -72,6 +77,11 @@
     padding: 10px;
     margin: 10px;
     border: 1px solid white;
+}
+
+.navProfileIcon {
+    display: "flex";
+    align-items: center;
 }
 
 .logoutButton {
@@ -135,6 +145,13 @@
 
 .hamburgerCloser:focus {
     outline: none;
+}
+
+@media(max-width: 450px) {
+    .logoContainer {
+        height: 25.3px;
+        width: 133.65px;
+    }
 }
 
 @media(max-width: 800px)    {

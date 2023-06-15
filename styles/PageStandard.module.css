@@ -18,8 +18,15 @@
     top: min(100px, 10vh);
     align-items: center;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
+}
+
+@media(max-width: 300px) {
+    .inner {
+        transform: scale(0.8);
+        top: 1vh;
+        margin-left: 10px;
+    }
 }
 
 .innerRow {
@@ -35,15 +42,10 @@
     padding-right: 10px;
 }
 
-@media(max-width: 500px) {
-
-
-}
-
 
 .mainLabel {
     align-items: center;
-    font-size: 3em;
+    font-size: min(100px, 100px);
     font-weight: bold;
     font-variant: uppercase;
 }
@@ -53,7 +55,7 @@
         flex-direction: column;
     }
     .mainLabel {
-        font-size: 1.5em;
+        font-size: 2em;
     }
     .navPanelLinks {
         font-size: 0.8em;
@@ -68,7 +70,7 @@
         flex-direction: column;
     }
     .mainLabel {
-        font-size: 1em;
+        font-size: 2em;
         margin-top: 30px;
     }
     .navPanelLinks {
@@ -100,14 +102,9 @@
     width: 100%;
 }
 
-.Body {
-    font-family: "Space Mono", monospace;
-}
-
 .navigationPanel {
     top:70px;
     left: 10px;
-
     height: 30px;
     width: calc(100% - 20px);
     display: flex;
