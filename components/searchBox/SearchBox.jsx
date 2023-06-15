@@ -19,7 +19,7 @@ import { VscArrowSwap } from "react-icons/vsc";
 
 //TODO: implement save by username
 async function workoutToDB(addedExercises, workoutName) {
-    var workout = { 
+    var workout = {
         workoutName: workoutName,
         exercises: []
     };
@@ -30,7 +30,7 @@ async function workoutToDB(addedExercises, workoutName) {
             reps: exercise.reps,
             info: exercise.instructions,
         };
-        workout.exercises.push({exerciseInfo});
+        workout.exercises.push({ exerciseInfo });
     })
     try {
         let response = await fetch('/api/addWorkoutToDB', {
@@ -40,9 +40,9 @@ async function workoutToDB(addedExercises, workoutName) {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json",
             },
-    });
-    response = await response.json();
-    console.log(response);
+        });
+        response = await response.json();
+        console.log(response);
     } catch (error) {
         console.log("Encountered an error adding workout:", error);
     }
@@ -111,34 +111,35 @@ export default function SearchBox() {
 
         //This function adds an exercise to the search results
         function exerciseBlock(exercise, index) {
-            return <div className={Style.exercise} key={index}>
+            return <>
+                <div className={Style.exercise} key={index}>
 
-                <div className={Style.infoBlock}>
+                    <div className={Style.infoBlock}>
 
-                    <h1 style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
-                    <h2>Type: {exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
-                    <h3>Muscle: {exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}</h3>
-                    <h3>Difficulty: {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}</h3>
-                    <div className={Style.repetitionsSetsAdd}>
+                        <h1 style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
+                        <h2>Type: {exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
+                        <h3>Muscle: {exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}</h3>
+                        <h3>Difficulty: {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}</h3>
+                        <div className={Style.repetitionsSetsAdd}>
 
-                        <div className={Style.setsRepsLabel}>
-                            <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Sets</label>
-                            <input type="number" style={{ paddingLeft: "5px" }} min="0" max="500" placeholder="3" className={Style.reps}></input>
-                        </div>
-                        <div className={Style.setsRepsLabel}>
-                            <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Reps</label>
+                            <div className={Style.setsRepsLabel}>
+                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Sets</label>
+                                <input type="number" style={{ paddingLeft: "5px" }} min="0" max="500" placeholder="3" className={Style.reps}></input>
+                            </div>
+                            <div className={Style.setsRepsLabel}>
+                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Reps</label>
 
-                            <input type="number" style={{ paddingLeft: "5px" }} min="0" max="1000" placeholder="10" className={Style.reps}></input>
+                                <input type="number" style={{ paddingLeft: "5px" }} min="0" max="1000" placeholder="10" className={Style.reps}></input>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={Style.exerciseIcons}>
-                    <StringToIconType style={{ marginTop: "10px" }} exerciseInput={exercise.type} />
-                    <StringToIconMuscle style={{ marginTop: "10px" }} exerciseInput={exercise.muscle} />
-                    <StringToIconDifficulty style={{ marginTop: "10px" }} exerciseInput={exercise.difficulty} />
-                    <div className={Style.infoIcon}>
-                        <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
-                    </div>
+                    <div className={Style.exerciseIcons}>
+                        <StringToIconType style={{ marginTop: "10px" }} exerciseInput={exercise.type} />
+                        <StringToIconMuscle style={{ marginTop: "10px" }} exerciseInput={exercise.muscle} />
+                        <StringToIconDifficulty style={{ marginTop: "10px" }} exerciseInput={exercise.difficulty} />
+                        <div className={Style.infoIcon}>
+                            <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
+                        </div>
                         <Popover className={Style.popoverParent}>
                             <PopoverTrigger >
                                 <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
@@ -155,8 +156,9 @@ export default function SearchBox() {
                     <AiOutlinePlus className={Style.plusIcon} />
                     <button key={index} onClick={() => addExercise(exercise, index)} className={Style.addButton}></button>
                 </div>
-            </div>
+            </>
         }
+
 
         return <>
             <div className={Style.searchBoxInner}>
@@ -170,13 +172,8 @@ export default function SearchBox() {
                         return exerciseBlock(exercise, index);
                     })}
                 </div>
-                <span style={{ width: "100%", fontSize: "30px", fontWeight: "bold", padding: "10px", borderTop: "2px solid white", borderBottom: "2px solid white" }}>CHOSEN EXERCISES</span>
-
-                <div className={Style.chosenExercises}>
-
-
-
             </div>
+
             <div className={Style.divider}>
                 <VscArrowSwap style={{ fontSize: '50px', margin: "20px" }} className={Style.arrows} />
             </div>
@@ -192,6 +189,7 @@ export default function SearchBox() {
                         return addExerciseToBottomDiv(exercise, index);
                     })}
                 </div>
+
             </div>
 
         </>
