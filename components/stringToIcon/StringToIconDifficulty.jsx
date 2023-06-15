@@ -1,9 +1,9 @@
-import {FcMiddleBattery, FcFullBattery, FcChargeBattery} from 'react-icons/fc';
+import {FcHighBattery, FcChargeBattery, FcLowBattery} from 'react-icons/fc';
 
 const icons = {
-    "beginner": <FcMiddleBattery/>,
-    "intermediate": <FcFullBattery/>,
-    "expert": <FcChargeBattery/>,
+    "beginner": <FcLowBattery/>,
+    "intermediate": <FcHighBattery/>,
+    "expert": <FcChargeBattery/>
 }
 
 export function StringToIconDifficulty(wantedIconName) { 

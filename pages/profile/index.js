@@ -8,7 +8,7 @@ import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLi
 export default function Profile() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const { data: session, status } = useSession();
-  
+
   useEffect(() => {
     if (status === 'authenticated') {
       setLoggedInUser(session.user);
@@ -21,10 +21,11 @@ export default function Profile() {
       <>
         <NavigationPanel links={profilePanelLinks} />
         <div className={Style.inner}>
-          <h1 style={{ fontSize: 'min(50px, 3vw)' }}>
+          <label className={Style.mainLabel} style={{ fontSize: 'min(50px, 3vw)' }}>
             Welcome back {loggedInUser ? ', ' + loggedInUser.name : ''}
-          </h1>
+          </label>
           <ProfileActivities />
+
         </div>
       </>
     </SessionProvider>
