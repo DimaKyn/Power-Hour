@@ -12,7 +12,6 @@ export default function Profile() {
   useEffect(() => {
     if (status === 'authenticated') {
       setLoggedInUser(session.user);
-      console.log(session.user)
     }
   }, [session, status]);
 
