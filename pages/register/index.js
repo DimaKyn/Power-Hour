@@ -3,6 +3,8 @@ import Style from '/styles/PageStandard.module.css';
 import FormStyle from '/styles/RegisterForm.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { registerPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+import { useSession } from "next-auth/react";
+import { signIn, signOut} from 'next-auth/react';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -29,20 +31,26 @@ export default function Register() {
     });
     const responseText = await response.text();
     console.log("Response text:", responseText);
-  
-    if (response.headers.get("Content-Type") !== "application/json") {
-      // Handle non-JSON responses, e.g., show an error message
-      console.log("non-JSON responses")
-      return;
-    }
+
     const data = JSON.parse(responseText);
+
+    const responseLogin = await signIn('credentials', {
+      redirect: false,
+      identifier: username,
+      password: password,
+    });
   
-    if (response.ok) {
-      // Handle successful registration, e.g., show a success message or redirect the user
-      console.log("Successful registration")
-    } else {
+    if (response.error || !responseText.includes("User registered successfully")) {
       // Handle errors, e.g., show an error message
       console.log("Unsuccessful registration")
+    } else if (!responseLogin.error) {
+      // Handle successful registration, e.g., show a success message or redirect the user
+      console.log("Successful registration")
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('loggedInUser', username);
+      console.log('Stored:', username);
+      window.location.href = '/profile'; // redirect to profile page
+      //window.location.href = '/';
     }
   };
 
