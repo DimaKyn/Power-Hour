@@ -29,7 +29,7 @@ export default function ProfileActivities() {
                 <h1 style={{ fontSize: "27px", testAlign: "center" }}>Browse custom workouts</h1>
 
                 <span className={Style.span}>Start a workout that you built for yourself.</span>
-                <Link href="./custom_workout" className={Style.button}>
+                <Link href="./custom" className={Style.button}>
                     <GiBiceps style={{ justifyContent: "center", position: "center", paddingRight: "10px", fontSize: "30px" }} />
                     Custom Workouts</Link>
             </div>
