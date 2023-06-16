@@ -1,5 +1,8 @@
 import Style from '/styles/PageStandard.module.css';
+<<<<<<< HEAD
 import TableStyle from '/styles/workoutsTable.module.css';
+=======
+>>>>>>> a550150 (Added profile navbar icon menu- still doesn't work well)
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -17,8 +20,11 @@ async function fetchWorkouts() {
 
 export default function Custom() {
     const [workouts, setWorkouts] = useState([]);
+<<<<<<< HEAD
     const router = useRouter();
 
+=======
+>>>>>>> a550150 (Added profile navbar icon menu- still doesn't work well)
 
     useEffect(() => {
         (async () => {
@@ -27,6 +33,7 @@ export default function Custom() {
         })();
     }, []);
 
+<<<<<<< HEAD
     const handleWorkoutClick = (workoutName) => {
         router.push({
           pathname: '/custom_workout',
@@ -61,3 +68,19 @@ export default function Custom() {
         </div>
     );
 }
+=======
+    return (
+        <>
+            <div className={Style.inner}>
+                <label className={Style.mainLabel}>Custom Workouts</label>
+                {Array.isArray(workouts.workoutsArray) &&
+                    workouts.workoutsArray.map(workout => (
+                        <div key={workout.workoutName} style={{ backgroundColor: 'blue' }}>
+                            {workout.workoutName}
+                        </div>
+                    ))}
+            </div>
+        </>
+    );
+}
+>>>>>>> a550150 (Added profile navbar icon menu- still doesn't work well)
