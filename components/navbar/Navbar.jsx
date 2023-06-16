@@ -176,7 +176,7 @@ export default function Navbar() {
                 {isLoggedIn ? (
                     <div className={Style.hamburgerLinksContainer}>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
-                        <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>ADD</Link>
+                        <Link onClick={() => handleButtonClick()} href="/BMICalculator" className={Style.hamburgerLinks}>BMI CALCULATOR</Link>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>OTHER</Link>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>LINKS</Link>
                     </div>

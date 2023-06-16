@@ -2,7 +2,6 @@ import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { createCustomWorkoutPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import Style from '/styles/PageStandard.module.css';
 import SearchBox from '/components/searchBox/SearchBox';
-
 import { useRef ,forwardRef, useImperativeHandle } from 'react';
 
 

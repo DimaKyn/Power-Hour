@@ -237,7 +237,7 @@
     height: min(100px, 5vh);
     width: 100%;
     padding: 30px;
-    font-size: min(30px, 5vw);
+    font-size: min(25px, 5vw);
     border-top: 2px solid rgb(39, 39, 39);
     border-bottom: 2px solid rgb(39, 39, 39);
 }

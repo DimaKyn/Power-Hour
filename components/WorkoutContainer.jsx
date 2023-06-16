@@ -23,6 +23,7 @@ async function saveWorkoutToDB(workoutName, exercises) {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
+      credentials: 'include',
     });
   } catch (error) {
     console.log("Encountered an error adding workout:", error);
