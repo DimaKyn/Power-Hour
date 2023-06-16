@@ -12,6 +12,7 @@ export default function Profile() {
   useEffect(() => {
     if (status === 'authenticated') {
       setLoggedInUser(session.user);
+      localStorage.setItem('username', session.user.username);
     }
   }, [session, status]);
 
