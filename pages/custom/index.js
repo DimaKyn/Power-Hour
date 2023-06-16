@@ -27,10 +27,10 @@ export default function Custom() {
         })();
     }, []);
 
-    const handleWorkoutClick = (workoutName) => {
+    const handleWorkoutClick = (workoutName, exercises) => {
         router.push({
           pathname: '/custom_workout',
-          query: { workout: workoutName },
+          query: { workout: workoutName, exercise: JSON.stringify(exercises) },
         });
       };
     return (
@@ -48,7 +48,7 @@ export default function Custom() {
                             workouts.workoutsArray.map((workout) => (
                                 <tr key={workout.workoutName}>
                                     <td>
-                                        <button onClick={() => handleWorkoutClick(workout.workoutName)}>
+                                        <button onClick={() => handleWorkoutClick(workout.workoutName, workout.exercises)}>
                                             {workout.workoutName}
                                         </button>
                                     </td>
@@ -60,4 +60,3 @@ export default function Custom() {
         </div>
     );
 }
-
