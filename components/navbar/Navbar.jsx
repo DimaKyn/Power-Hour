@@ -12,6 +12,7 @@ import { AiFillHome } from "react-icons/ai";
 import { AiFillInfoCircle } from "react-icons/ai";
 import {signOut } from 'next-auth/react'
 
+
 //TODO: When hamburger open and you click on a link, the hamburger menu should close
 //TODO: When hamburger open and you click on screen, the hamburger menu should close
 export default function Navbar() {
