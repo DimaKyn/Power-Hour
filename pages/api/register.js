@@ -50,19 +50,15 @@ export default async function handler(req, res) {
         phoneNumber,
       });
 
-      // // Create JSON table for new user
-      // const jsonTable = await db.collection('UserCustomWorkouts').insertOne({
-      //   username: username,
-      //   workoutsArray: []
-      // });
-
-      // Save the redirect URL in the session
-      req.session.redirectUrl = '/';
+      // Create JSON table for new user
+      const jsonTable = await db.collection('UserCustomWorkouts').insertOne({
+        username: username,
+        workoutsArray: []
+      });
 
       console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
-      const insertedUser = await db.collection('Users').findOne({ _id: newUser.insertedId });
-
+      
       return res.status(201).json({ message: 'User registered successfully'});
     } else {
       res.status(405).json({ message: 'Method not allowed' });
