@@ -13,11 +13,6 @@ export default async function handler(req, res) {
         const session = await getServerSession(req, res)
         console.log(session)
 
-        if (!session) {
-            // Handle unauthorized access
-            return res.status(401).json({ message: 'Unauthorized' });
-        }
-
         const workout = req.body;
         const client = await clientPromise;
         const db = client.db("powerhourdb");
@@ -30,6 +25,7 @@ export default async function handler(req, res) {
         res.status(200).json({ message: "Workout added successfully", insertedId: result.insertedId });
     } catch (error) {
         res.status(500).json({ message: "Error adding workout", error: error.message });
+        client.close();
     }
     finally{
         client.close();
