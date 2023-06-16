@@ -28,7 +28,7 @@ export default function About() {
                     <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
                         <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
                             <Image
-                                src="/../public/about/refrigerator.jpg"
+                                src="/../public/about/Maxim.jpg"
                                 width={300}
                                 height={300}
                                 priority={true}
