@@ -1,10 +1,10 @@
 import clientPromise from '/lib/mongodb';
 import { getSession } from 'next-auth/react';
 
-export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ msg: 'Method not allowed' });
-  }
+export default async function handler(req, res) { 
+    if (req.method !== 'GET') {
+        return res.status(405).json({ msg: 'Method not allowed' });
+    }
 
   try {
     const session = await getSession({ req });
