@@ -32,6 +32,8 @@
     "react-icons": "^4.8.0",
     "react-resizable": "^3.0.5",
     "react-spotify-player": "^1.0.4",
+    "swal": "^0.1.0",
+    "sweetalert2": "^11.7.12",
     "swr": "^2.1.5",
     "tailwind-merge": "^1.13.0",
     "tailwindcss": "3.3.2",
