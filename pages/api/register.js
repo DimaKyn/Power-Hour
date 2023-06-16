@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
       // Create JSON table for new user
       const jsonTable = await db.collection('UserCustomWorkouts').insertOne({
-        username: username,
+        email: email,
         workoutsArray: []
       });
 

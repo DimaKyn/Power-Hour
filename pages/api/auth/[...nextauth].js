@@ -32,6 +32,6 @@ export default NextAuth({
     },
   },
   events: {
-    getSession: false,
+    getSession: true,
   },
 });

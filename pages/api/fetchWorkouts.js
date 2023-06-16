@@ -7,7 +7,9 @@ export default async function handler(req, res) {
     }
 
   try {
+   
     const session = await getSession({ req });
+    console.log(session)
     if (!session) {
       // Handle unauthorized access
       return res.status(401).json({ message: 'Unauthorized' });
@@ -16,7 +18,7 @@ export default async function handler(req, res) {
     const client = await clientPromise;
     const db = client.db("powerhourdb");
     const workoutsCollection = db.collection("UserCustomWorkouts");
-    const cursor = await workoutsCollection.find({ username: session.user.username});
+    const cursor = await workoutsCollection.find({ email: session.user.email});
     const result = await cursor.toArray();
     res.status(200).json(result[0]);
   } catch (error) {
