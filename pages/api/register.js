@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import clientPromise from '../../lib/mongodb';
-import { redirect } from 'next/dist/server/api-utils';
 
 async function hashPassword(password) {
   const salt = await bcrypt.genSalt(10);

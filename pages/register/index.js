@@ -4,7 +4,8 @@ import FormStyle from '/styles/RegisterForm.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { registerPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import { useSession } from "next-auth/react";
-import { signIn, signOut} from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
+import Swal from 'sweetalert2';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -15,7 +16,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const response = await fetch("/api/register", {
       method: "POST",
       headers: {
@@ -39,12 +40,52 @@ export default function Register() {
       identifier: username,
       password: password,
     });
-  
+
     if (response.error || !responseText.includes("User registered successfully")) {
+      if (responseText.includes("All fields are required")) {
+        Swal.fire({
+          icon: 'error',
+          width: 400,
+          height: 100,
+          title: 'Unsuccessful registration',
+          text: 'All fields are required!',
+          // You can customize the appearance of the alert further using other options
+        });
+      }
+
+      else if (responseText.includes("Username already exists")) {
+        Swal.fire({
+          icon: 'error',
+          width: 400,
+          height: 100,
+          title: 'Unsuccessful registration',
+          text: 'Username already exists!',
+          // You can customize the appearance of the alert further using other options
+        });
+      }
+
+      else if (responseText.includes("Email already exists")) {
+        Swal.fire({
+          icon: 'error',
+          width: 400,
+          height: 100,
+          title: 'Unsuccessful registration',
+          text: 'Email already exists!',
+          // You can customize the appearance of the alert further using other options
+        });
+      }
+
       // Handle errors, e.g., show an error message
       console.log("Unsuccessful registration")
     } else if (!responseLogin.error) {
       // Handle successful registration, e.g., show a success message or redirect the user
+      // Swal.fire({
+      //   position: 'top',
+      //   icon: 'success',
+      //   title: 'Successful registration',
+      //   showConfirmButton: false,
+      //   timer: 1500
+      // })
       console.log("Successful registration")
       localStorage.setItem('isLoggedIn', true);
       localStorage.setItem('loggedInUser', username);
@@ -60,7 +101,7 @@ export default function Register() {
       <div className={Style.inner}>
         <h1>Register page</h1>
         <form onSubmit={handleSubmit}>
-        <div className={FormStyle.block}>
+          <div className={FormStyle.block}>
             <label className={FormStyle.blockLabel} htmlFor="name">Name:</label>
             <input
               type="text"
