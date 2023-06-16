@@ -2,9 +2,9 @@
     overflow: hidden;
     top: 0;
     color: white;
-    background-color: rgba(22,22,22,0.5);
+    background-color: rgba(22, 22, 22, 0.5);
     height: min(70px, 10vh);
-    width: 100%; 
+    width: 100%;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@
     padding: 0;
     margin: 0;
     position: fixed;
-    z-index:10;
+    z-index: 12;
     border-bottom: 2px double rgba(64, 64, 192, 1);
     min-height: 70px;
 }
@@ -28,10 +28,11 @@
 
 @keyframes backgroundFullOpacity {
     0% {
-        background-color: rgba(22,22,22,0.5);
+        background-color: rgba(22, 22, 22, 0.5);
     }
+
     100% {
-        background-color: rgba(22,22,22,1);
+        background-color: rgba(22, 22, 22, 1);
     }
 }
 
@@ -43,8 +44,9 @@
     0% {
         background-color: rgb(22, 22, 22);
     }
+
     100% {
-        background-color: rgba(22,22,22,0.5);
+        background-color: rgba(22, 22, 22, 0.5);
     }
 }
 
@@ -85,12 +87,12 @@
 }
 
 .logoutButton {
-    padding: 10px;
-    margin: 10px;
-    background-color: transparent;
-    border: 2px solid rgb(255, 119, 119);
+    width: 80%;
+    height: 35px;
+    background-color: #250909;
+    border: 2px solid rgb(175, 1, 1);
     border-radius: 2px;
-    color: rgb(134, 32, 32);
+    color: white;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -98,10 +100,8 @@
 }
 
 .logoutButton:hover {
-    background-color: rgb(134, 32, 32);
-    color: black;
-    box-shadow: 2px 2px 5px 1px rgba(255, 255, 255, 0.3);
-    transform: scale(1.03);
+    background-color: rgb(124, 0, 0);
+    color: red;
 }
 
 .hamburger {
@@ -154,7 +154,7 @@
     }
 }
 
-@media(max-width: 800px)    {
+@media(max-width: 800px) {
     .hamburger {
         display: block;
     }
@@ -173,17 +173,17 @@
         background-color: rgba(39, 35, 35, 0);
         scale: 1;
     }
+
     100% {
         background-color: rgba(39, 35, 35, 1);
         scale: 1.1;
     }
 }
 
-
 .hamburgerMenu {
     position: fixed;
     top: 70px;
-    left: 0;
+    left: -5px;
     right: 0;
     height: calc(100vh - min(70px, 10vh));
     min-height: 200px;
@@ -204,23 +204,23 @@
     position: fixed;
 
     top: 0;
-    left:0;
+    left: 0;
     height: 100%;
     width: 100%;
     z-index: 10;
     pointer-events: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     transition: background-color 0.3s ease-in-out;
 }
 
 .lowerOpacityActive {
     pointer-events: all;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-.hamburgerButtons{
+.hamburgerButtons {
     height: 100%;
-    width:100%;
+    width: 100%;
     top: 100px;
     display: flex;
     align-items: center;
@@ -251,6 +251,7 @@
         background-color: rgba(0, 0, 0, 0.4);
 
     }
+
     100% {
         background-color: rgba(0, 0, 0, 1);
         border-color: rgba(64, 64, 192, 1);
@@ -265,7 +266,6 @@
 .hidden {
     transform: translateX(-100%);
     z-index: 10;
-
 }
 
 .iconContainer {
@@ -290,9 +290,9 @@
 
 
 .topIcons {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
-    top:0;
+    top: 0;
     width: 100%;
     height: 50px;
     display: flex;
@@ -328,11 +328,59 @@
 }
 
 .infoCircle:hover {
-    transform: scale(1.1) ;
+    transform: scale(1.1);
 }
 
 .hamburgerLinksContainer {
     width: 100%;
     top: 50px;
     position: absolute;
+}
+
+.profileIconMenu {
+    height: 100px;
+    width: 200px;
+    background-color: rgba(22, 22, 22, 1);
+    right: 0;
+    top: 70px;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 11;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease-in-out;    
+}
+
+.profileIconButtonContainer {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.profileIconButton {
+    width: 80%;
+    height: 35px;
+    background-color: transparent;
+    background-color: rgba(64, 64, 192, 1);
+    border: 1px solid rgb(66, 46, 83);
+    color: white;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.activeProfileMenu {
+    z-index: 11;
+    transform: translateY(000%);  
 }

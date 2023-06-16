@@ -10,7 +10,7 @@ import { MdAccountCircle } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { AiFillInfoCircle } from "react-icons/ai";
-import {signOut } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 
 
 //TODO: When hamburger open and you click on a link, the hamburger menu should close
@@ -21,6 +21,9 @@ export default function Navbar() {
     const hamburgerMenu = useRef(null);
     const navbar = useRef(null);
     const lowerOpacityHamburgerOpen = useRef(null);
+
+    const profileMenu = useRef(null);
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,17 +51,51 @@ export default function Navbar() {
         window.location.href = '/'
     };
 
+    const handleLowerOpacityClick = () => {
+        if (hamburgerMenuOpen) {
+            handleHamburgerClick();
+        }
+        //Profile menu is open
+        else {
+            handleProfileIconClick();
+        }
+    };
 
+    //This function handles the hamburger menu opening and closing
+    //Upon click, changes the className of components
     const handleHamburgerClick = () => {
+        if (profileMenuOpen && !hamburgerMenuOpen) {
+            handleProfileIconClick();
+        }
+        //Change the boolean state of the hamburger menu
         setHamburgerMenuOpen(!hamburgerMenuOpen);
         setHamburgerCloserHidden(!hamburgerCloserHidden);
         if (hamburgerMenuOpen) {
             lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
             hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
             navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
-        } else {
+        }
+        else {
             lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
             hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.active}`;
+            navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
+        }
+    };
+
+    const handleProfileIconClick = () => {
+        if (hamburgerMenuOpen && !profileMenuOpen) {
+            handleHamburgerClick();
+        }
+        //Change the boolean state of the profile menu
+        setProfileMenuOpen(!profileMenuOpen);
+        if (profileMenuOpen) {
+            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
+            profileMenu.current.className = `${Style.profileIconMenu} `;
+            navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
+        }
+        else {
+            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
+            profileMenu.current.className = `${Style.profileIconMenu} ${Style.activeProfileMenu}`;
             navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
         }
     };
@@ -68,11 +105,15 @@ export default function Navbar() {
         if (hamburgerMenuOpen) {
             handleHamburgerClick();
         }
+        if (profileMenuOpen) {
+            handleProfileIconClick();
+        }
+
     }
 
     return <>
         <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
-            onClick={() => handleHamburgerClick()}></div>
+            onClick={() => handleLowerOpacityClick()}></div>
         <div ref={navbar} className={Style.wrapper}>
 
             {!hamburgerMenuOpen && <GiHamburgerMenu className={Style.hamburger} onClick={() => handleHamburgerClick()} />}
@@ -89,29 +130,29 @@ export default function Navbar() {
                             sizes="(max-width: 500px) 100px"
                         />
                     </div>
-
-
                 </div>
             </div>
             <div className={Style.buttons} style={{ display: "flex", justifyContent: "space-between" }}>
-            {loggedInUser && (
-                    <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>
-                )}
-                <Link onClick={() => handleButtonClick()} href="/profile" style={{}} className={Style.navProfileIcon}  >
-                    {loggedInUser ? (
-                        <>
-                            <MdAccountCircle style={{ fontSize: "45px" }} />
-                        </>
-                    ) : (
-                        <>
-                            <MdAccountCircle style={{ paddingRight: "5px", fontSize: "45px" }} />
-
-                        </>
-                    )}</Link>
-                
+                <MdAccountCircle style={{ fontSize: "45px", cursor: "pointer" }} onClick={() => handleProfileIconClick()} />
             </div>
         </div>
 
+        {/*Profile Icon Menu*/}
+        <div ref={profileMenu} className={Style.profileIconMenu} >
+            <div>
+                {loggedInUser ? (
+                    <div className={Style.profileIconButtonContainer}>
+                        <Link onClick={() => handleButtonClick()} href="/profile" className={Style.profileIconButton}>MY PROFILE</Link>
+                        <button onClick={handleLogout} className={Style.logoutButton} style={{ marginTop: "10px" }}>LOGOUT</button>
+                    </div>
+                ) : (
+                    <div className={Style.profileIconButtonContainer}>
+                        <Link onClick={() => handleButtonClick()} href="/login" className={Style.profileIconButton}>LOGIN</Link>
+                        <Link onClick={() => handleButtonClick()} href="/register" className={Style.profileIconButton} style={{ marginTop: "10px" }}>REGISTER</Link>
+                    </div>
+                )}
+            </div>
+        </div>
         <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
             <div className={Style.hamburgerButtons}>
                 <div className={Style.topIcons}>
@@ -130,6 +171,8 @@ export default function Navbar() {
 
                     </div>
                 </div>
+
+
                 {isLoggedIn ? (
                     <div className={Style.hamburgerLinksContainer}>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
@@ -156,3 +199,5 @@ export default function Navbar() {
 
 
 }
+
+

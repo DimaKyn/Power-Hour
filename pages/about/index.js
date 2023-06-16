@@ -10,22 +10,37 @@ export default function About() {
         <>
             <NavigationPanel links={aboutPanelLinks} />
             <div className={Style.inner}>
-                <h1 style={{ fontSize: '50px' }}>Maxim and Dima, Web developers</h1>
-                <Image
-                    src="/../public/we.jpg"
-                    width={500}
-                    height={500}
-                    priority={true}
-                    alt='Maxim and Dima'
-                />
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <h2 style={{ padding: "10px", fontSize: '20px' }}>Dima
-                        <p >Professional front-end developer (when we will actually finish the project)</p>
-                    </h2>
-                    <h2 style={{ padding: "10px", fontSize: '20px' }}>Maxim
-                        <p>Professional back-end developer (when we will actually finish the project)</p>
-                    </h2>
+                <h1 style={{ fontSize: '50px' }}>Maxim and Dima, Student Software Engineers</h1>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
+                        <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
+                            <Image
+                                src="/../public/about/Dima.jpg"
+                                width={300}
+                                height={300}
+                                priority={true}
+                                alt='Dima'
+                            />
+                        </div>
+                        <h2 style={{ padding: "10px", fontSize: '30px' }}>Dima</h2>
+                        <p style={{ textAlign: "center" }}>Student Software Engineer, I enjoy making music, front-end, working out, and raving. </p>
+                    </div>
+                    <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
+                        <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
+                            <Image
+                                src="/../public/about/refrigerator.jpg"
+                                width={300}
+                                height={300}
+                                priority={true}
+                                alt='Maxim'
+                            />
+                        </div>
+                        <h2 style={{ padding: "10px", fontSize: '30px' }}>Maxim</h2>
+                        <p style={{ textAlign: "center" }}>Student Software Engineer, refrigirator </p>               
+                        </div>
+
                 </div>
+
             </div>
         </>
 

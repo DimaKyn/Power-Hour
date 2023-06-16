@@ -1,4 +1,4 @@
-import Style from '/styles/PageStandard.module.css'
+import Style from '/styles/PageStandard.module.css';
 import { useEffect, useState } from 'react';
 
 async function fetchWorkouts() {
@@ -13,10 +13,9 @@ async function fetchWorkouts() {
     }
 }
 
-
 export default function Custom() {
     const [workouts, setWorkouts] = useState([]);
-    
+
     useEffect(() => {
         (async () => {
             const fetchedWorkouts = await fetchWorkouts();
@@ -24,16 +23,17 @@ export default function Custom() {
         })();
     }, []);
 
-    //Maxim create a list of available workouts here
-    return <>
-        <div className={Style.inner}>
-            <label className={Style.mainLabel}>Custom Workouts</label>
-            {Array.isArray(workouts.workoutsArray) && workouts.workoutsArray.map(workout => {
-                return <div key={workout.workoutName} style={{ backgroundColor: "blue" }}>
-                    {workout.workoutName}
-                </div>
-            })}
-
-        </div>
-    </>
+    return (
+        <>
+            <div className={Style.inner}>
+                <label className={Style.mainLabel}>Custom Workouts</label>
+                {Array.isArray(workouts.workoutsArray) &&
+                    workouts.workoutsArray.map(workout => (
+                        <div key={workout.workoutName} style={{ backgroundColor: 'blue' }}>
+                            {workout.workoutName}
+                        </div>
+                    ))}
+            </div>
+        </>
+    );
 }
