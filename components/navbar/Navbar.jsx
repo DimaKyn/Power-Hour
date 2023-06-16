@@ -20,6 +20,9 @@ export default function Navbar() {
     const navbar = useRef(null);
     const lowerOpacityHamburgerOpen = useRef(null);
 
+    const profileMenu = useRef(null);
+    const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -44,17 +47,61 @@ export default function Navbar() {
         window.location.href = '/'
     };
 
+    const handleLowerOpacityClick = () => {
+        if (hamburgerMenuOpen) {
+            handleHamburgerClick();
+        }
+        //Profile menu is open
+        else {
+            handleProfileIconClick();
+        }
+    };
 
+    //This function handles the hamburger menu opening and closing
+    //Upon click, changes the className of components
     const handleHamburgerClick = () => {
+        //Close the profile menu if it is open
+        setProfileMenuOpen(false);
+        profileMenu.current.className = `${Style.profileMenu} ${Style.hiddenProfileMenu}`;
+
+        //Change the boolean state of the hamburger menu
         setHamburgerMenuOpen(!hamburgerMenuOpen);
         setHamburgerCloserHidden(!hamburgerCloserHidden);
         if (hamburgerMenuOpen) {
             lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
             hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
             navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
-        } else {
+        } 
+        else {
             lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
             hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.active}`;
+            navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
+        }
+    };
+
+    const handleProfileIconClick = () => {
+        if (!hamburgerMenuOpen) {
+            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
+        } else {
+            hamburgerMenu.current.className = `${Style.hamburgerMenu} ${Style.hidden}`;
+            setHamburgerCloserHidden()
+        }
+
+
+        //Change the boolean state of the profile menu
+        setProfileMenuOpen(!profileMenuOpen);
+        if (profileMenuOpen) {
+            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen}`;
+            profileMenu.current.className = `${Style.profileMenu} ${Style.hiddenProfileMenu}`;
+            navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
+        } else if (hamburgerMenuOpen) {
+            console.log("here");
+            profileMenu.current.className = `${Style.profileMenu} ${Style.activeProfileMenu}`;
+            navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
+        }
+        else {
+            lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
+            profileMenu.current.className = `${Style.profileMenu} ${Style.activeProfileMenu}`;
             navbar.current.className = `${Style.wrapper} ${Style.navFullOpacity}`;
         }
     };
@@ -68,7 +115,7 @@ export default function Navbar() {
 
     return <>
         <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
-            onClick={() => handleHamburgerClick()}></div>
+            onClick={() => handleLowerOpacityClick()}></div>
         <div ref={navbar} className={Style.wrapper}>
 
             {!hamburgerMenuOpen && <GiHamburgerMenu className={Style.hamburger} onClick={() => handleHamburgerClick()} />}
@@ -90,24 +137,33 @@ export default function Navbar() {
                 </div>
             </div>
             <div className={Style.buttons} style={{ display: "flex", justifyContent: "space-between" }}>
-            {loggedInUser && (
+                {loggedInUser && (
                     <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>
                 )}
-                <Link onClick={() => handleButtonClick()} href="/profile" style={{}} className={Style.navProfileIcon}  >
-                    {loggedInUser ? (
-                        <>
-                            <MdAccountCircle style={{ fontSize: "45px" }} />
-                        </>
-                    ) : (
-                        <>
-                            <MdAccountCircle style={{ paddingRight: "5px", fontSize: "45px" }} />
-
-                        </>
-                    )}</Link>
-                
             </div>
-        </div>
 
+            <div className={Style.buttons} style={{ display: "flex", justifyContent: "space-between" }}>
+                <Link onClick={() => handleButtonClick()} href="/profile" style={{}}
+                    className={Style.navProfileIcon}>
+                    <MdAccountCircle style={{ fontSize: "45px" }} onClick={() => handleProfileIconClick()} />
+                </Link>
+
+            </div>
+
+
+
+        </div>
+        {/*Profile Icon Menu*/}
+        <div ref={profileMenu} className={Style.profileIconMenu} >
+            {loggedInUser && (
+                <button onClick={handleLogout} className={Style.logoutButton}>Logout</button>)}
+            <div>
+                {!loggedInUser && (
+                    <button>Login</button> &&
+                    <Link href="/" className={Style.registerButton}>Register</Link>)}
+            </div>
+
+        </div>
         <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
             <div className={Style.hamburgerButtons}>
                 <div className={Style.topIcons}>
