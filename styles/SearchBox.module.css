@@ -88,8 +88,8 @@
 }
 
 .upperLabel {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: 0;
     width: auto;
     text-align: center;
     display: flex;
@@ -101,7 +101,7 @@
 }
 
 .chosenExercises {
-    top: 0;
+    bottom: 70px;
     height: calc(100% - 70px);
     min-height: 100%;
     min-width: 300px;

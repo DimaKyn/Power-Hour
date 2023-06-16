@@ -4,7 +4,6 @@ export default async function handler(req, res) {
     if (req.method !== 'GET') {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
-    console.log("test");
 
     try {
         const client = await clientPromise;
