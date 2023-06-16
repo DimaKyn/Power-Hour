@@ -2,9 +2,10 @@ import Style from '/styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { signIn} from 'next-auth/react';
+import { signIn, signOut} from 'next-auth/react';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+
 //Hide the login button and show the loading div
 //TODO: Add a loading animation
 
@@ -51,10 +52,11 @@ export default function LoginBlock() {
     }
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem('loggedInUser');
+    window.localStorage.clear();
     setIsLoggedIn(false);
-    window.location.reload();
+    await signOut();
   };
   if(!isLoggedIn){
     return <>
