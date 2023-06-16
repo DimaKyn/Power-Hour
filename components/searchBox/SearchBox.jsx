@@ -9,11 +9,6 @@ import { StringToIconType } from "/components/stringToIcon/StringToIconType";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 import { useRef } from "react";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover.jsx"
 import { VscArrowSwap } from "react-icons/vsc";
 
 
