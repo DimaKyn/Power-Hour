@@ -1,0 +1,131 @@
+.wrapper {
+    background-color: black;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: auto;
+    width: 95%;
+    max-height: 100%;
+    padding: 20px;
+
+}
+
+.heightBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.heightBlock label{
+    position: absolute;
+    transition: 0.5s ease all;
+}
+
+.heightBlock input:focus + label,
+.heightBlock input:valid + label {
+    content: "";
+    color: rgba(252, 203, 26, 1);
+    background: transparent;
+    transform: translateX(-10px) translateY(-25px);
+    font-size: 1em;
+    padding: 0 10px;
+}
+
+.heightLabel {
+    pointer-events: none;
+    left: 20%;
+    position: absolute;
+    font-size: 20px;
+    color: gray;
+    margin-right: 10px;
+    background-color: black; 
+    z-index: 7;   
+}
+
+.heightInput {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px; 
+    height: 50px;
+    width: 70%;
+    background-color: black;    
+    border-bottom: 2px solid white;
+    font-size: 20px;
+    transition: border-color 0.5s;
+    transition: border-radius 0.3s;
+}
+
+.heightInput:focus {
+    border-color: rgba(252, 203, 26, 1);
+    border-bottom-width: 3px;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+/*This section is for the password block containing the input box and the password label*/
+
+.weightBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.weightBlock label{
+    background-color: black; 
+    position: absolute;
+    transition: 0.5s ease all;
+}
+
+.weightBlock input:focus + label,
+.weightBlock input:valid + label {
+    color: rgba(252, 203, 26, 1);
+    background: transparent;
+    transform: translateX(-10px) translateY(-25px);
+    font-size: 1em;
+    padding: 0 10px;
+}
+
+.weightLabel {
+    pointer-events: none;
+    left: 20%;
+    position: absolute;
+    font-size: 20px;
+    color: gray;
+    margin-right: 10px;
+}
+
+.weightInput {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px; 
+    height: 50px;
+    width: 70%;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    font-size: 20px;
+    transition: border-color 0.5s;
+    transition: border-radius 0.3s;
+}
+
+.weightInput:focus {
+    border-color: rgba(64, 64, 192, 1);
+    border-bottom-width: 3px;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+
+.bmiInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+}

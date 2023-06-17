@@ -25,7 +25,7 @@ export default function CustomWorkout() {
 
     return <>
         <NavigationPanel links={customWorkoutPanelLinks} />
-        <div className={Style.inner}>
+        <div className={Style.innerScrollable}>
             <label className={Style.mainLabel}>{workout}</label>
             <span>Workout blocks can be moved freely</span>
 
@@ -36,7 +36,7 @@ export default function CustomWorkout() {
                     cols={{ lg: 5, md: 4, sm: 3, xs: 2, xxs: 1 }}
                 >
                     {parsedExercise.map((exercise, index) => (
-                        <div key={index.toString()} data-grid={{ x: 0, y: 0, w: 1, h: 2, minW: 1, maxW: 1 }} className={Style.gridElement}>
+                        <div key={index.toString()} data-grid={{ x: 0, y: 0, w: 1, h: 1, minW: 1, maxW: 1 }} className={Style.gridElement}>
                             <WorkoutBox
                                 title={exercise.name}
                                 reps={exercise.reps}
