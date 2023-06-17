@@ -2,6 +2,9 @@ import Style from '/styles/PageStandard.module.css';
 import TableStyle from '/styles/workoutsTable.module.css';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import NavigationPanel from '/components/navigationPanel/NavigationPanel';
+import { customWorkoutsPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+import { CaseLower } from 'lucide-react';
 
 async function fetchWorkouts() {
     try {
@@ -28,12 +31,18 @@ export default function Custom() {
     }, []);
 
     const handleWorkoutClick = (workoutName, exercises) => {
+        localStorage.removeItem('exercises');
+        localStorage.removeItem('workout');
+        localStorage.setItem('exercises', JSON.stringify(exercises));
+        localStorage.setItem('workout', workoutName);
         router.push({
-          pathname: '/custom_workout',
-          query: { workout: workoutName, exercise: JSON.stringify(exercises) },
+          pathname: `custom/${encodeURIComponent((workoutName.toLowerCase()).split(' ').join('_'))}`,
+          params: { workout: workoutName, exercise: JSON.stringify(exercises) },
         });
       };
     return (
+        <>
+        <NavigationPanel links={customWorkoutsPanelLinks} />
         <div className={Style.inner}>
             <label className={Style.mainLabel}>My Workouts</label>
             <div className={TableStyle.workoutsTableContainer}>
@@ -58,5 +67,6 @@ export default function Custom() {
                 </table>
             </div>
         </div>
+    </>
     );
 }

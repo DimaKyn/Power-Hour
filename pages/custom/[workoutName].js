@@ -2,21 +2,17 @@ import WorkoutBox from '/components/workoutsBlock/WorkoutBox';
 import Style from '/styles/PageStandard.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { customWorkoutPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
-import { useState } from 'react';
 import StopWatch from 'components/StopWatch.jsx';
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
-import SpotifyPlayer from 'react-spotify-player';
 import { Responsive, WidthProvider } from 'react-grid-layout';
-import { useRouter } from 'next/router';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 export default function CustomWorkout() {
-    const router = useRouter();
-    const { workout, exercise } = router.query;
+    const exercise = localStorage.getItem('exercises');
+    const workout = localStorage.getItem('workout')
     const parsedExercise = JSON.parse(exercise);
-    console.log(parsedExercise)
 
     // size may also be a plain string using the presets 'large' or 'compact'
     const size = {
@@ -44,7 +40,7 @@ export default function CustomWorkout() {
                             <WorkoutBox
                                 title={exercise.name}
                                 reps={exercise.reps}
-                                //weight={exercise.weight}
+                                sets={exercise.sets}
                                 // imageSrc={exercise.imageSrc}
                                 // imageHeight={exercise.imageHeight}
                                 // imageWidth={exercise.imageWidth}
