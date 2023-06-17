@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import ChartStyle from 'styles/chart.module.css'
 
 
+
 async function fetchWeights() {
     try {
       const response = await fetch("/api/fetchWeights", {
@@ -22,6 +23,7 @@ async function fetchWeights() {
 
 function LineChart() {
     const [weightData, setWeightData] = useState([]);
+
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -37,6 +39,7 @@ function LineChart() {
 
     async function handleWeightInput() {
         var weight;
+
         Swal.fire({
             title: "Enter Weight",
             input: "number",
@@ -126,14 +129,16 @@ function LineChart() {
     return (
         <>
             <div className={Style.chartContainer}>
+
                 <div className={Style.inner} >
                     <canvas id="myChart"></canvas>
                     <button className={ButtonStyle.button} onClick={() => handleWeightInput()}>Add Weight</button>
                     <button className={ButtonStyle.button} onClick={handleRefresh}>Refresh</button>
+
                 </div>
             </div>
         </>
     );
 }
-
 export default LineChart;
+
