@@ -5,10 +5,10 @@
 }
 
 .workout {
-    border: 2px solid rgba(252, 203, 6, 0.6);
+    border: 2px solid rgba(80, 80, 250, 1);
     border-radius: 10px;
     background-color: black;
-    min-width: 350px;
+    min-width: 250px;
     min-height: 500px;
     max-height: 500px;
     max-width: 350px;
@@ -142,7 +142,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: rgba(252, 203, 26, 0.8);
+    color: rgba(80, 80, 250, 1);
     pointer-events: none;
 
 }

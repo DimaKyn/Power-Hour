@@ -195,11 +195,14 @@
 }
 
 .typedText {
-    display: inline-block;
+    content: "";
     vertical-align: middle;
-    color: rgb(80, 80, 250);
+    color: rgba(80, 80, 250, 1);
     font-size: 2.5rem;
 }
+
+
+
 
 .regularText {
     vertical-align: middle;

@@ -12,6 +12,43 @@
 
 }
 
+.checkbox {
+    color: blue;
+    font-weight: 20px;
+    height: 20px;
+}
+
+.checkboxLabel {
+    display: flex;
+    position: relative;
+    top: auto;
+    width: 100%;
+}
+
+.checkboxLabel input:checked~.checkmark {
+    color: rgba(252, 203, 26, 1);
+}
+
+.checkboxContainer {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
 .heightBlock {
     display: flex;
     justify-content: center;
@@ -19,13 +56,13 @@
     position: relative;
 }
 
-.heightBlock label{
+.heightBlock label {
     position: absolute;
     transition: 0.5s ease all;
 }
 
-.heightBlock input:focus + label,
-.heightBlock input:valid + label {
+.heightBlock input:focus+label,
+.heightBlock input:valid+label {
     content: "";
     color: rgba(252, 203, 26, 1);
     background: transparent;
@@ -41,17 +78,17 @@
     font-size: 20px;
     color: gray;
     margin-right: 10px;
-    background-color: black; 
-    z-index: 7;   
+    background-color: black;
+    z-index: 7;
 }
 
 .heightInput {
     padding-left: 10px;
     padding-right: 10px;
-    margin-right: 10px; 
+    margin-right: 10px;
     height: 50px;
     width: 70%;
-    background-color: black;    
+    background-color: black;
     border-bottom: 2px solid white;
     font-size: 20px;
     transition: border-color 0.5s;
@@ -75,14 +112,14 @@
     position: relative;
 }
 
-.weightBlock label{
-    background-color: black; 
+.weightBlock label {
+    background-color: black;
     position: absolute;
     transition: 0.5s ease all;
 }
 
-.weightBlock input:focus + label,
-.weightBlock input:valid + label {
+.weightBlock input:focus+label,
+.weightBlock input:valid+label {
     color: rgba(252, 203, 26, 1);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
@@ -102,7 +139,7 @@
 .weightInput {
     padding-left: 10px;
     padding-right: 10px;
-    margin-right: 10px; 
+    margin-right: 10px;
     height: 50px;
     width: 70%;
     background-color: transparent;

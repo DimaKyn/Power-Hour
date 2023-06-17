@@ -83,7 +83,7 @@ export default function BMICalculator() {
         }
     }, [metric])
 
-    return <div className={StyleStandard.inner}>
+    return <>
         <div className={StyleCalc.wrapper}>
             <div className={StyleCalc.title}>
                 <div className={Style.usernameBlock} >
@@ -96,9 +96,12 @@ export default function BMICalculator() {
                     <input type="number" className={Style.usernameInput} value={weightNumber} onChange={(e) => setWeightNumber(e.target.value)}></input>
                     <label className={Style.passwordLabel}>{weight}</label>
                 </div>
-                <div>
-                    <input type="checkbox" className={StyleCalc.checkbox} onClick={() => changeUnits()} checked={!metric}></input>
-                    <label for={StyleCalc.checkbox} onClick={() => changeUnits()}>Use US units</label>
+                <div onClick={() => changeUnits()} className={StyleCalc.checkboxContainer}>
+                <input type="checkbox" className={StyleCalc.checkbox} onClick={() => changeUnits()} checked={!metric}></input>
+
+                    <label className={StyleCalc.checkboxLabel}>
+                        US units
+                    </label>
                 </div>
                 <div className={Style.buttonDiv}>
                     <button className={Style.loginButton}
@@ -107,21 +110,20 @@ export default function BMICalculator() {
 
             </div>
             <div className={StyleCalc.bmiInfo}>
-                <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)", fontSize: "20px"}}>BMI:
-                <label style={{color: mapColorToBMIScore()}}>{bmi > 0 && " " + bmi.toFixed(2)}</label>
+                <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)", fontSize: "20px" }}>BMI:
+                    <label style={{ color: mapColorToBMIScore() }}>{bmi > 0 && " " + bmi.toFixed(2)}</label>
                 </label>
-                <br/>
+                <br />
                 <span>{BMIInfo[mapIndexToBMIscore(bmi)].explanation}</span>
-                <br/>
+                <br />
 
-                <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)" , fontSize: "20px"}}>Steps to {stepsToTake(bmi)} your BMI:</label>
+                <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)", fontSize: "20px" }}>Steps to {stepsToTake(bmi)} your BMI:</label>
                 <span>{BMIInfo[mapIndexToBMIscore(bmi)].steps.map(
                     (step, i) => {
                         return <>
                             <li key={i}>{(i + 1) + ": " + step}</li>
                             <br />
                         </>
-
                     }
                 )}</span>
 
@@ -129,5 +131,5 @@ export default function BMICalculator() {
 
         </div>
 
-    </div>
+    </>
 }
