@@ -10,8 +10,8 @@ export default function About() {
         <>
             <NavigationPanel links={aboutPanelLinks} />
             <div className={Style.inner}>
-                <h1 style={{ fontSize: '50px' }}>Maxim and Dima, Student Software Engineers</h1>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <label className={Style.mainLabel}>Maxim and Dima, Student Software Engineers</label>
+                <div style={{ display: "flex", flexDirection: "row" , flexWrap: "wrap"}} className={Style.flexingColumnContent}>
                     <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
                         <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
                             <Image

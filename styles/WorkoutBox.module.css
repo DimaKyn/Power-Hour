@@ -33,14 +33,13 @@
     border-radius: 10px;
     background-color: black;
     min-width: 250px;
-    min-height: 250px;
+    min-height: 150px;
     max-height: 250px;
     max-width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
     box-sizing: border-box;
     position: absolute;
     overflow: hidden;

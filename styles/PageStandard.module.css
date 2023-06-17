@@ -11,14 +11,27 @@
 }
 
 .inner {
-    --globalGold: rgb(252, 203, 26);
+    --globalGold: rgba(64, 64, 192, 1);
     position: absolute;
-    height: calc(100% - min(100px, 10vh));
+    height: calc(100% - min(130px, 10vh));
     width: 100%;
-    top: min(100px, 10vh);
-    align-items: center;
+    top: 100px;
     display: flex;
-    flex-direction: column;    
+    align-items: center;
+    flex-direction: column;
+}
+
+.innerScrollable {
+    --globalGold: rgba(64, 64, 192, 1);
+    position: absolute;
+    height: calc(100% - 20px);
+    width: 100%;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    height: calc(100% -10px);
 }
 
 @media(max-width: 300px) {
@@ -33,7 +46,7 @@
     --globalGold: rgb(252, 203, 26);
     height: calc(100% - min(100px, 10vh));
     width: 100%;
-    top: min(100px, 10vh);
+    top: 130px;
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -43,7 +56,8 @@
 
 
 .mainLabel {
-    align-items: center;
+    display: flex;
+    text-align: center;
     font-size: 40px;
     font-weight: bold;
     font-variant: uppercase;
@@ -105,11 +119,12 @@
     top:70px;
     left: 10px;
     height: 30px;
-    width: calc(100% - 20px);
+    width: 90%;
     display: flex;
     position: absolute;
     align-items: center;
     z-index: 2;
+    overflow-x: auto;
 }
 
 .navArrow {
@@ -134,21 +149,20 @@
 .draggablesContainer {
     flex-wrap: wrap;
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: row;
-    height: 90%;
-    width: 90%;
+    height: calc(100% - 500px);
+    width: 100%;
   }
 
   
   .gridLayout {
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;  
-    overflow: hidden;
 }
 
 .gridElement {
@@ -156,7 +170,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    width: 250px;
+    height: 500px;
+    width: 50px;
     color: white;
+}
+
+.flexingColumnContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
