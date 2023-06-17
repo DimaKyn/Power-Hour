@@ -6,7 +6,7 @@
   height: 100px;
   width: 90%;
   border-radius: 10px; 
-  box-shadow: 0 0 50px 50px rgb(0, 0, 0);
+  box-shadow: 0 20px 50px 50px rgb(0, 0, 0, 0.5);
   border: 2px solid rgba(64, 64, 192, 1);
 }
 
