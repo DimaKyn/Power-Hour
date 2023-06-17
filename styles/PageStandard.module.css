@@ -23,15 +23,28 @@
 
 .innerScrollable {
     --globalGold: rgba(64, 64, 192, 1);
-    position: absolute;
-    height: calc(100% - 20px);
+    position: relative;
+    height:110%;
     width: 100%;
     top: 100px;
+    padding-bottom: 110px;
     display: flex;
     align-items: center;
     flex-direction: column;
     overflow: auto;
     height: calc(100% -10px);
+}
+
+.innerLogin {
+    --globalGold: rgba(64, 64, 192, 1);
+    position: absolute;
+    height: calc(100% - 130px);
+    width: 100%;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media(max-width: 300px) {
@@ -121,7 +134,7 @@
     height: 30px;
     width: 90%;
     display: flex;
-    position: absolute;
+    position: fixed;
     align-items: center;
     z-index: 2;
     overflow-x: auto;
@@ -147,13 +160,12 @@
 }
 
 .draggablesContainer {
-    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     flex-direction: row;
     height: calc(100% - 500px);
     width: 100%;
-  }
+}
 
   
   .gridLayout {
@@ -170,8 +182,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 500px;
-    width: 50px;
+
     color: white;
 }
 
@@ -180,4 +191,59 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.inputBlock {
+    display: flex;
+
+    position: relative;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.inputBlock label{
+    position: absolute;
+    transition: 0.5s ease all;
+}
+
+.inputBlock input:focus + label,
+.inputBlock input:valid + label {
+    content: "";
+    color: rgba(252, 203, 26, 1);
+    background: transparent;
+    transform: translateX(-10px) translateY(-25px);
+    font-size: 15px;
+    padding: 0 10px;
+}
+
+.inputLabel {
+    left: 0%;
+    position: absolute;
+    font-size: 15px;
+    color: gray;
+    margin-right: 10px;
+    background-color: black; 
+    z-index: 7;   
+    font-weight: bold;
+}
+
+.input {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px; 
+    margin-bottom: 20px;
+    height: 25px;
+    width: 65%;
+    background-color: transparent;    
+    border-bottom: 2px solid white;
+    font-size: 15px;
+    transition: border-color 0.5s;
+    transition: border-radius 0.3s;
+}
+
+.input:focus {
+    border-color: rgba(64, 64, 192, 1);
+    border-bottom-width: 3px;
+    border-radius: 5px;
+    outline: none;
 }

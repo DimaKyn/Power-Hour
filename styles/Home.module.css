@@ -65,7 +65,7 @@
     animation: fadeInPower 2s ease-in-out forwards;
     font-family:  monospace;
     text-transform: bold;
-    font-size: min(300px, 12vw);
+    font-size: 9rem;
 
     font-weight: 10px;
 }
@@ -84,7 +84,7 @@
     min-block-size: 100px;
     font-family:  monospace;
     text-transform: bold;
-    font-size: min(200px, 6vw);
+    font-size: 5rem;
     font-weight: 10px;
     animation: fadeInSub 2s ease-in-out 1s forwards;
 
@@ -102,10 +102,17 @@
 .loginText {
     font-size: min(2rem, 100px);
     font-family: "Space Mono", monospace;
+    word-wrap: break-word;
     position: absolute;
     bottom: 10vh;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+}
+
+@media(max-width: 600px) {
+    .loginText {
+        font-size: 1rem;
+    }
 }
 
 .loginText:hover {
@@ -185,6 +192,35 @@
 
 .homeText:hover {
     transform: scale(1.1);
+}
+
+.typedText {
+    display: inline-block;
+    vertical-align: middle;
+    color: rgb(80, 80, 250);
+    font-size: 2.5rem;
+}
+
+.regularText {
+    vertical-align: middle;
+    font-size: 2.5rem;
+}
+
+@media(max-width: 600px) {
+    .typedText {
+        font-size: 1.3rem;
+    }
+    .regularText {
+        font-size: 1.3rem;
+    }
+
+    .labelPowerHour {
+        font-size: 3rem;
+    }
+
+    .subLabel {
+        font-size: 1.5rem;
+    }
 }
 
 
