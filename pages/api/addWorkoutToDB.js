@@ -9,14 +9,12 @@ export default async function handler(req, res) {
 
     try {
         const session = await getServerSession(req, res)
-        console.log(session);
         if (!session) {
             // Handle unauthorized access
             return res.status(401).json({ message: 'Unauthorized' });
         }
 
         const workout = req.body;
-        console.log(session.user)
 
         const client = await clientPromise;
         const db = client.db("powerhourdb");
