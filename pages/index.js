@@ -5,6 +5,7 @@ import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { homePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import { useState, useEffect } from 'react';
+import Typed from 'typed.js';
 
 //On a click of a label, move the page to the login block or to the top of the page
 function movePage(homepage) {
@@ -19,6 +20,18 @@ function movePage(homepage) {
 export default function Home() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const typed = new Typed('#typed', {
+      strings: ['POSSIBILITIES', ' CAPABILITIES', ' LIMITS', '\SELF', ' POWER', ' SOUL'],
+      typeSpeed: 100,
+      backSpeed: 25,
+      loop: true
+    });
+    return () => {
+      typed.destroy();
+    }
+  }, []);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser');
@@ -37,24 +50,11 @@ export default function Home() {
           <label className={Style.labelPowerHour}>POWER HOUR</label>
           <label className={Style.subLabel}>TIME TO TRAIN</label>
           <div className={Style.subSubSubImage}></div>
-          {isLoggedIn ? (
-            <label className={Style.loginText} onClick={() => movePage(homepage = false)}>Explore your possibilities using PowerHour</label>
-          ) : (
-            <label className={Style.loginText} onClick={() => movePage(homepage = false)}>LOGIN TO START TRAINING</label>
-          )}
+          <div><span className={Style.regularText}>EXPLORE YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
           <div className={Style.arrowDivDown} onClick={() => movePage(homepage = false)}>
             <AiFillCaretDown />
           </div>
         </div>
-      </div>
-
-      <div className={Style.loginPage}>
-        <div className={Style.backgroundImage2}></div>
-        <div className={Style.arrowDivUp} onClick={() => movePage(homepage = true)}>
-          <AiFillCaretUp />
-        </div>
-        <label className={Style.homeText} onClick={() => movePage(homepage = true)}>HOME</label>
-        <LoginBlock />
       </div>
     </div>
   )
