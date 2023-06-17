@@ -1,11 +1,15 @@
 .wrapper {
     background-color: black;
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 95%;
+    position: relative;
+    overflow: auto;
     width: 95%;
+    max-height: 100%;
+    padding: 20px;
+
 }
 
 .heightBlock {
@@ -109,12 +113,19 @@
 }
 
 .weightInput:focus {
-    border-color: rgba(252, 203, 26, 1);
+    border-color: rgba(64, 64, 192, 1);
     border-bottom-width: 3px;
     border-radius: 5px;
     outline: none;
 }
 
-.calculateButton {
-    
+
+
+.bmiInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
 }
