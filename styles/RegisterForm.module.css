@@ -1,7 +1,7 @@
 .formContainer {
     font-family: 'Noto Sans', sans-serif;
     border-radius: 10px;
-    border: 3px solid rgba(252, 203, 6, 0.7);
+    border: 3px solid rgba(80, 80, 250, 1);
     overflow: hidden;
     position: absolute;
     box-shadow: 0px 0px 5px 1px rgb(61, 53, 53);
@@ -32,7 +32,7 @@
   
   .input {
     content: "";
-    color: rgba(252, 203, 26, 1);
+    color: rgba(80, 80, 250, 1);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
     font-size: 1em;
@@ -43,9 +43,9 @@
     height: 50px;
     width: 80%;
     background-color: transparent;
-    border: 2px solid rgba(252, 203, 26, 0.8);
+    border: 2px solid rgba(80, 80, 250, 1);
     border-radius: 2px;
-    color: rgba(252, 203, 6, 0.8);
+    color: rgba(80, 80, 250, 1);
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -71,7 +71,7 @@
 .block input:focus + label,
 .block input:valid + label {
     content: "";
-    color: rgba(252, 203, 26, 1);
+    color: rgba(80, 80, 250, 1);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
     font-size: 1em;
@@ -103,7 +103,7 @@
 }
 
 .userInput:focus {
-    border-color: rgba(252, 203, 26, 1);
+    border-color: rgba(80, 80, 250, 1);
     border-bottom-width: 3px;
     border-radius: 5px;
     outline: none;

@@ -23,10 +23,12 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed('#typed', {
-      strings: ['POSSIBILITIES', ' CAPABILITIES', ' LIMITS', '\SELF', ' POWER', ' SOUL'],
-      typeSpeed: 100,
-      backSpeed: 25,
-      loop: true
+      strings: ['POSSIBILITIES', ' CAPABILITIES', ' LIMITS', 'STRENGTH', 'ABILITIES', ' POWER', ' SOUL', 'ENDURANCE'
+            , 'DISCIPLINE', 'ATHLETICISM', 'STAMINA', 'AGILITY', 'POTENTIAL', 'SPEED', 'RESILIENCE', 'MINDSET'],
+      typeSpeed: 90,
+      backSpeed: 35,
+      loop: true,
+      cursorChar: ""
     });
     return () => {
       typed.destroy();

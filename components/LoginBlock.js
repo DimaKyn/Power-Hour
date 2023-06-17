@@ -78,7 +78,7 @@ export default function LoginBlock() {
             <div className={Style.buttonDiv}>
                 <button className={Style.loginButton}
                     onClick={() => handleLogin(Style.loginButton, identifier, password)}>Login</button>
-                <label style={{ fontSize: '28px' , color: "rgba(252, 203, 6, 0.8)"}}>New to Power Hour?</label>
+                <label style={{ fontSize: '28px' , color: "rgba(80, 80, 250, 1)"}}>New to Power Hour?</label>
                 <Link href="/register" className={Style.registerButton}>Register now</Link>
             </div>
         </div>

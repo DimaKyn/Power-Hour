@@ -14,7 +14,7 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-  } from "../../components/ui/popover"
+} from "../../components/ui/popover"
 
 
 //TODO: implement save by username
@@ -115,43 +115,57 @@ export default function SearchBox() {
                 <div className={Style.exercise} key={index}>
 
                     <div className={Style.infoBlock}>
+                        <h1 h1 style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
 
-                        <h1 style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
-                        <h2>Type: {exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
-                        <h3>Muscle: {exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}</h3>
-                        <h3>Difficulty: {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}</h3>
+                        <div className={Style.textAndIconsWrapper}>
+                            <div className={Style.textAndIcon}>
+                                <StringToIconType exerciseInput={exercise.type} />
+                                <h2>{exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
+
+                            </div>
+                            <div className={Style.textAndIcon}>
+                                <StringToIconMuscle exerciseInput={exercise.muscle} />
+                                <h3>{exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}</h3>
+
+                            </div>
+                            <div className={Style.textAndIcon}>
+                                <StringToIconDifficulty exerciseInput={exercise.difficulty} />
+                                <h3>{exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}</h3>
+
+                            </div>
+
+
+                        </div>
+
                         <div className={Style.repetitionsSetsAdd}>
 
                             <div className={Style.setsRepsLabel}>
-                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Sets</label>
+                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Sets&nbsp;</label>
                                 <input type="number" style={{ paddingLeft: "5px" }} min="0" max="500" placeholder="3" className={Style.reps}></input>
                             </div>
                             <div className={Style.setsRepsLabel}>
-                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Reps</label>
+                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Reps&nbsp;</label>
 
                                 <input type="number" style={{ paddingLeft: "5px" }} min="0" max="1000" placeholder="10" className={Style.reps}></input>
                             </div>
                         </div>
-                    </div>
-                    <div className={Style.exerciseIcons}>
-                        <StringToIconType style={{ marginTop: "10px" }} exerciseInput={exercise.type} />
-                        <StringToIconMuscle style={{ marginTop: "10px" }} exerciseInput={exercise.muscle} />
-                        <StringToIconDifficulty style={{ marginTop: "10px" }} exerciseInput={exercise.difficulty} />
-                        <Popover className={Style.popoverParent}>
-                            <PopoverTrigger >
-                                <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
-                            </PopoverTrigger>
-                            <PopoverContent className={Style.popover}>
-                                <h1 style={{ fontSize: "30px" }}>INSTRUCTIONS</h1>
-                                <span>{exercise.instructions}</span></PopoverContent>
-                        </Popover>
+                        <div className={Style.exerciseIcons}>
 
+                            <Popover className={Style.popoverParent}>
+                                <PopoverTrigger >
+                                    <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
+                                </PopoverTrigger>
+                                <PopoverContent className={Style.popover}>
+                                    <h1 style={{ fontSize: "30px" }}>INSTRUCTIONS</h1>
+                                    <span>{exercise.instructions}</span></PopoverContent>
+                            </Popover>
+                            <div className={Style.buttonDiv}>
+                                <AiOutlinePlus className={Style.plusIcon} />
+                                <button key={index} onClick={() => addExercise(exercise, index)} className={Style.addButton}></button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className={Style.buttonDiv}>
-                        <AiOutlinePlus className={Style.plusIcon} />
-                        <button key={index} onClick={() => addExercise(exercise, index)} className={Style.addButton}></button>
-                    </div>
                 </div>
             </>
         }
@@ -172,7 +186,7 @@ export default function SearchBox() {
             </div>
 
             <div className={Style.divider}>
-                <VscArrowSwap style={{ fontSize: '50px', margin: "20px" }} className={Style.arrows} />
+                <VscArrowSwap style={{ fontSize: '50px', margin: "20px", color: "rgba(80, 80, 250, 1)" }} className={Style.arrows} />
             </div>
             <div className={Style.chosenExercises}>
                 <div className={Style.upperLabel}>
