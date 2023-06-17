@@ -10,6 +10,8 @@ import BMIInfo from '/data/bmi_information.json';
 
 
 
+
+
 export default function BMICalculator() {
     const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState("");
@@ -86,7 +88,11 @@ export default function BMICalculator() {
                         </>
                     }
                 )}</span>
+
+
             </div>
+
         </div>
+
     </>
 }
