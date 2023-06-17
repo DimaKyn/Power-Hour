@@ -5,7 +5,7 @@
     position: relative;
     padding: 10px;
     margin: 0 auto;
-    width: 250px;
+    width: 80%;
     height: 50px;
     display: flex;
     align-items: center;
@@ -23,9 +23,11 @@
     justify-content: center;
     flex-direction: row;
     display: flex;
-    position: relative;
     flex-wrap: wrap;
+    position: relative;
     left: 0;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .profileContainer {
@@ -41,23 +43,32 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    margin: 10px;
-    background-color: blue;
 }
 
 .choiceBlock {
-    border: 2px solid rgba(252, 203, 6, 0.6);
+    border: 2px solid rgba(80, 80, 250, 1);
     border-radius: 10px;
     background-color: black;
-    min-width: 350px;
-    min-height: 300px;
-    max-height: 400px;
-    max-width: 350px;
+    height: 250px;
+    width: 90%;
+    max-width: 300px;
+    min-height: 270px;
     align-items: center;
     display: grid;
     justify-content: center;
     flex-direction: column;
-    margin: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+
+@media(max-width: 400px) {
+    .choiceBlock {
+        width: 270px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 5px;
+        margin-bottom:5px;
+    }
 }
 
 .choiceBlock > h1:first-child {
@@ -71,7 +82,7 @@
 }
 
 .span {
-    text-align: center;
+    text-wrap: wrap;
 }
 
 .choiceBlock > Link {

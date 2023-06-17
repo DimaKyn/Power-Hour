@@ -3,7 +3,7 @@
 .loginBlock {
     font-family: 'Noto Sans', sans-serif;
     border-radius: 10px;
-    border: 3px solid rgba(252, 203, 6, 0.7);
+    border: 3px solid rgb(80, 80, 250);
     overflow: hidden;
     position: absolute;
     box-shadow: 0px 0px 5px 1px rgb(61, 53, 53);
@@ -25,11 +25,11 @@
     background-image: radial-gradient(
         closest-side at 0% 0%,
         rgb(70, 70, 70) 0%,
-        rgba(252, 203, 6, 0.7) 100%
+        rgb(80, 80, 250) 100%
         );  
     width: 200%;
     height: 200%;
-    outline: 3px solid rgba(252, 203, 26, 0.8);
+    outline: 3px solid rgb(80, 80, 250);
     position: absolute;
 }
 
@@ -119,9 +119,9 @@
     height: 50px;
     width: 80%;
     background-color: transparent;
-    border: 2px solid rgba(252, 203, 26, 0.8);
+    border: 2px solid rgb(80, 80, 250);
     border-radius: 2px;
-    color: rgba(252, 203, 6, 0.8);
+    color: rgb(80, 80, 250);
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -133,7 +133,7 @@
 }
 
 .registerButton:hover {
-    background-color: rgba(252, 203, 26, 0.8);
+    background-color: rgb(80, 80, 250);
     border: 2px solid white;
     color: black;
     transform: scale(1.03);
@@ -184,7 +184,7 @@
 .usernameBlock input:focus + label,
 .usernameBlock input:valid + label {
     content: "";
-    color: rgba(252, 203, 26, 1);
+    color: rgb(80, 80, 250);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
     font-size: 1em;
@@ -216,7 +216,7 @@
 }
 
 .usernameInput:focus {
-    border-color: rgba(252, 203, 26, 1);
+    border-color: rgb(80, 80, 250);
     border-bottom-width: 3px;
     border-radius: 5px;
     outline: none;
@@ -240,7 +240,7 @@
 
 .passwordBlock input:focus + label,
 .passwordBlock input:valid + label {
-    color: rgba(252, 203, 26, 1);
+    color: rgb(80, 80, 250);
     background: transparent;
     transform: translateX(-10px) translateY(-25px);
     font-size: 1em;
@@ -270,7 +270,7 @@
 }
 
 .passwordInput:focus {
-    border-color: rgba(252, 203, 26, 1);
+    border-color: rgb(80, 80, 250);
     border-bottom-width: 3px;
     border-radius: 5px;
     outline: none;
@@ -310,19 +310,6 @@
 .guideUl {
     list-style-type: disc;
     margin-left: 20px;
-}
-
-.logoutButton {
-    height: 50px;
-    width: 40%;
-    background-color: transparent;
-    border: 2px solid rgb(255, 119, 119);
-    border-radius: 2px;
-    color: rgb(134, 32, 32);
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
 }
 
 .logoutButton:hover {

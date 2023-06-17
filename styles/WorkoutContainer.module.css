@@ -35,7 +35,7 @@
 .h2 {
   font-size: 40px;
   margin-bottom: 10px;
-  color: rgb(234, 238, 18);
+  color: rgba(80, 80, 250, 1);
   font-weight: bold;
 }
 
@@ -78,8 +78,9 @@
 }
 
 .button {
-  background-color: rgb(234, 238, 18);
-  color: rgb(0, 0, 0);
+  background-color: rgba(80, 80, 250, 1);
+  color: white;
+  font-weight: bold;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -87,7 +88,7 @@
 }
 
 .button:hover {
-  background-color: rgb(161, 163, 10);
+  background-color: rgba(80, 80, 250, 1);
 }
 
 .buttonContainer {
