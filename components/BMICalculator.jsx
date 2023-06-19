@@ -6,23 +6,60 @@ import { useEffect, useState } from 'react'
 import { GiBodyHeight } from 'react-icons/gi';
 import { TbWeight } from 'react-icons/tb';
 import { useRef } from 'react';
-import BMIInfo from '/data/bmi_information.json';
-
-
-
-
+import BMIInfo from '/data/bmi_information.json'; 
 
 export default function BMICalculator() {
-    const [identifier, setIdentifier] = useState("");
-    const [password, setPassword] = useState("");
+    const [heightNumber, setHeightNumber] = useState("");
+    const [weightNumber, setWeightNumber] = useState("");
     const [height, setHeight] = useState("Height (cm)");
     const [weight, setWeight] = useState("Weight (kg)");
     const [bmi, setBMI] = useState(0);
+    const [metric, setMetric] = useState(true);
+    const metricRef = useRef(null);
+
+    function mapIndexToBMIscore(bmi) {
+        if (bmi <= 0) { return 0; }
+        else if (bmi < 16) { return 1; }
+        else if (bmi >= 16 && bmi < 18.5) { return 2; }
+        else if (bmi >= 18.5 && bmi < 25) { return 3; }
+        else if (bmi >= 25 && bmi < 30) { return 4; }
+        else if (bmi >= 30 && bmi < 40) { return 5; }
+        else { return 6; }
+    }
+
+    function mapColorToBMIScore() {
+        if (bmi <= 0) { return "white"; }
+        else if (bmi < 16) { return "red"; }
+        else if (bmi >= 16 && bmi < 18.5) { return "orange"; }
+        else if (bmi >= 18.5 && bmi < 25) { return "green"; }
+        else if (bmi >= 25 && bmi < 30) { return "orange"; }
+        else if (bmi >= 30 && bmi < 40) { return "red"; }
+        else { return "red"; }
+    }
+    //This function returns if you should maintain/gain/or lose weight for the provided BMI
+    function stepsToTake(bmi) {
+        let bmiIndexReturned = mapIndexToBMIscore(bmi);
+        if (bmiIndexReturned == 0) {
+            return "";
+        }
+        else if (bmiIndexReturned == 1 || bmiIndexReturned == 2) {
+            return "increase";
+        }
+        else if (bmiIndexReturned == 3) {
+            return "maintain";
+        }
+        else {
+            return "decrease";
+        }
+    }
 
     function calculateBMI(height, weight, metric) {
+        let totalBMI = 0;
+        console.log("height: ", height, "weight: ", weight, " metric: ", metric);
         if (metric) {
-            totalBMI= weight / ((height / 100) * (height / 100))
-            
+            totalBMI = weight / ((height / 100) * (height / 100))
+
+
         } else {
             totalBMI = (weight / (height * height)) * 703
         }
@@ -88,7 +125,6 @@ export default function BMICalculator() {
                         </>
                     }
                 )}</span>
-
 
             </div>
 
