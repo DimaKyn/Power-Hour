@@ -24,15 +24,13 @@ export default function LineChart() {
 
     useEffect(() => {
         (async () => {
-            const fetchedWeightData = await fetchWeights();
-            setWeightData(fetchedWeightData.weight);
-            setIsLoading(false);
-        })();
-    }, []);
-
-    useEffect(() => {
-        renderChart();
-    }, [weightData]);
+          const fetchedWeightData = await fetchWeights();
+          setWeightData(fetchedWeightData.weight);
+          setIsLoading(false);
+        })().then(() => {
+          renderChart();
+        });
+      }, []);
 
     async function handleWeightInput(weight) {
         Swal.fire({
@@ -52,7 +50,9 @@ export default function LineChart() {
                             Swal.showValidationMessage("Weight is required");
                             resolve();
                         } else {
+                            console.log("imhere")
                             setWeightData([...weightData, Number(inputWeight)]);
+                            console.log(weightData)
                             resolve();
                             try {
                                 console.log(inputWeight);
@@ -72,7 +72,9 @@ export default function LineChart() {
                     }, 500);
                 });
             }
-        });
+        }).then(() => {
+            renderChart();
+    });
     }
     
 
