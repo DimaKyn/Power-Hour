@@ -120,17 +120,17 @@ export default function SearchBox() {
                         <div className={Style.textAndIconsWrapper}>
                             <div className={Style.textAndIcon}>
                                 <StringToIconType exerciseInput={exercise.type} />
-                                <h2>{exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
+                                <h2 className={Style.textForIconH2}>{exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
 
                             </div>
                             <div className={Style.textAndIcon}>
                                 <StringToIconMuscle exerciseInput={exercise.muscle} />
-                                <h3>{exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}</h3>
+                                <h3 className={Style.textForIconH2}>{exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}&nbsp;</h3>
 
                             </div>
                             <div className={Style.textAndIcon}>
                                 <StringToIconDifficulty exerciseInput={exercise.difficulty} />
-                                <h3>{exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}</h3>
+                                <h3 className={Style.textForIconH2}>{exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}&nbsp;</h3>
 
                             </div>
 
@@ -140,11 +140,11 @@ export default function SearchBox() {
                         <div className={Style.repetitionsSetsAdd}>
 
                             <div className={Style.setsRepsLabel}>
-                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Sets&nbsp;</label>
+                                <label style={{ marginLeft: "10px", color: "rgba(80, 80, 250, 1)", fontWeight: "bold" }}>Sets&nbsp;</label>
                                 <input type="number" style={{ paddingLeft: "5px" }} min="0" max="500" placeholder="3" className={Style.reps}></input>
                             </div>
                             <div className={Style.setsRepsLabel}>
-                                <label style={{ marginLeft: "10px", color: "rgba(75, 75, 170, 1)" }}>Reps&nbsp;</label>
+                                <label style={{ marginLeft: "10px", color: "rgba(80, 80, 250, 1)", fontWeight: "bold" }}>Reps&nbsp;</label>
 
                                 <input type="number" style={{ paddingLeft: "5px" }} min="0" max="1000" placeholder="10" className={Style.reps}></input>
                             </div>

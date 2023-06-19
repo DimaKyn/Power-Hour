@@ -135,15 +135,19 @@
 .moveSquareIcon {
     box-sizing: border-box;
     font-size: 30px;
-    right: 5px;
-    top: 5px;
+    right: 0px;
+    top: 0px;
     position: absolute;
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     color: rgba(80, 80, 250, 1);
+    border-left: 2px solid rgba(80, 80, 250, 1);
+    border-bottom: 2px solid rgba(80, 80, 250, 1);
+    border-radius: 0 0 0 5px;
     pointer-events: none;
+    z-index: 11;
 
 }
 

@@ -7,6 +7,7 @@ import { homePanelLinks } from '/components/navigationPanel/NavigationPanelLinks
 import { useState, useEffect } from 'react';
 import Typed from 'typed.js';
 
+
 //On a click of a label, move the page to the login block or to the top of the page
 function movePage(homepage) {
   homepage ? window.scrollTo({ top: 0, behavior: 'smooth' }) :
@@ -23,8 +24,8 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed('#typed', {
-      strings: ['POSSIBILITIES', ' CAPABILITIES', ' LIMITS', 'STRENGTH', 'ABILITIES', ' POWER', ' SOUL', 'ENDURANCE'
-            , 'DISCIPLINE', 'ATHLETICISM', 'STAMINA', 'AGILITY', 'POTENTIAL', 'SPEED', 'RESILIENCE', 'MINDSET'],
+      strings: ['LIMITS',  'ABILITIES', 'STRENGTH', 'MINDSET', 'ENDURANCE', 'SOUL', 'DISCIPLINE',
+         'ATHLETICISM', 'STAMINA', 'AGILITY', 'POTENTIAL','CAPABILITIES', 'SPEED', 'RESILIENCE'],
       typeSpeed: 90,
       backSpeed: 35,
       loop: true,
@@ -52,7 +53,7 @@ export default function Home() {
           <label className={Style.labelPowerHour}>POWER HOUR</label>
           <label className={Style.subLabel}>TIME TO TRAIN</label>
           <div className={Style.subSubSubImage}></div>
-          <div><span className={Style.regularText}>EXPLORE YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
+          <div><span className={Style.regularText}>POWER YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
           <div className={Style.arrowDivDown} onClick={() => movePage(homepage = false)}>
             <AiFillCaretDown />
           </div>

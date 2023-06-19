@@ -66,8 +66,16 @@
     font-family:  monospace;
     text-transform: bold;
     font-size: 9rem;
-
     font-weight: 10px;
+}
+
+@media(max-width: 800px) {
+    .labelPowerHour {
+        font-size: 5rem;
+    }
+    .subLabel {
+        font-size: 3rem;
+    }
 }
 
 @keyframes fadeInPower {

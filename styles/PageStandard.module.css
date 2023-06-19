@@ -242,3 +242,12 @@
     border-radius: 5px;
     outline: none;
 }
+
+.textWithIconInTheMiddle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+

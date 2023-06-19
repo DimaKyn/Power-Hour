@@ -199,13 +199,13 @@
 }
 
 .popover {
-    background-color: black;
+    background-color: rgb(15, 15, 15);
     height: 400px;
     width: 300px;
     z-index: 3;
     border: 2px solid rgba(80, 80, 250, 1);
     border-radius: 5px;
-    box-shadow: 0 0 100px 100px rgb(0, 0, 0);
+    box-shadow: 0 0 100px 50px rgb(0, 0, 0);
     padding: 10px;
     overflow: auto;
 }
@@ -379,11 +379,12 @@
 
 .reps {
     background: transparent;
-    border: 2px solid rgba(80, 80, 250, 1);
+    border-bottom: 2px solid rgba(80, 80, 250, 1);
     width: 50px;
     height: 30px;
     padding-left: auto;
     color: rgba(80, 80, 250, 1);
+    font-weight: bold;
 }
 
 .reps:focus {
@@ -398,5 +399,10 @@
 @media(max-width: 600px) {
     .arrows {
         transform: rotate(90deg);
+    }
+
+    .textForIconH2 {
+        font-size: 14px;
+        width: 100%;    
     }
 }

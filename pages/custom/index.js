@@ -42,7 +42,7 @@ export default function Custom() {
       };
     return (
         <>
-        <NavigationPanel links={customWorkoutsPanelLinks} />
+        <NavigationPanel links={customWorkoutsPanelLinks}/>
         <div className={Style.inner}>
             <label className={Style.mainLabel}>My Workouts</label>
             <div className={TableStyle.workoutsTableContainer}>
