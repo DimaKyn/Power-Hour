@@ -38,7 +38,7 @@ export default function ProfileActivities() {
             <div className={Style.choiceBlock}>
                 <h1 style={{ fontSize: "27px", textAlign: "center" }}>For you</h1>
                 <span className={Style.span}>Track your progress, Keep tabs on what's important.</span>
-                <Link href="/" className={Style.button}>
+                <Link href="./personal_details" className={Style.button}>
                     <BsGraphUpArrow style={{ justifyContent: "center", position: "center", paddingRight: "10px", fontSize: "30px" }} />
                     Update Progress</Link>
             </div>

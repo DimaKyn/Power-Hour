@@ -1,14 +1,12 @@
 import Style from '/styles/LoginBlock.module.css'
 import StyleStandard from '/styles/PageStandard.module.css';
 import StyleCalc from '/styles/BMICalculator.module.css';
+
 import { useEffect, useState } from 'react'
 import { GiBodyHeight } from 'react-icons/gi';
 import { TbWeight } from 'react-icons/tb';
 import { useRef } from 'react';
-import BMIInfo from '/data/bmi_information.json';
-
-
-
+import BMIInfo from '/data/bmi_information.json'; 
 
 export default function BMICalculator() {
     const [heightNumber, setHeightNumber] = useState("");
@@ -60,6 +58,7 @@ export default function BMICalculator() {
         console.log("height: ", height, "weight: ", weight, " metric: ", metric);
         if (metric) {
             totalBMI = weight / ((height / 100) * (height / 100))
+
 
         } else {
             totalBMI = (weight / (height * height)) * 703

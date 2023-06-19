@@ -1,0 +1,9 @@
+.chartContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    height: 50%;
+    margin: 5 auto;
+  }
+  
