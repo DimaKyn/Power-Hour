@@ -32,13 +32,10 @@ function LineChart() {
     }, []);
 
     useEffect(() => {
-        console.log(weightData);
         renderChart();
       }, [weightData]);
 
-    console.log(weightData)
     async function handleWeightInput() {
-        console.log(weightData)
         var weight;
         Swal.fire({
             title: "Enter Weight",
@@ -54,7 +51,7 @@ function LineChart() {
                 weight = Number(inputWeight);
                 return new Promise((resolve) => {
                     setTimeout(() => {
-                        if (weight === "" || weight === null) {
+                        if (weight === 0 || weight === null) {
                             Swal.showValidationMessage("Weight is required");
                             resolve();
                         } else {
@@ -65,6 +62,8 @@ function LineChart() {
                     }, 500);
                 });
             }
+        }).then(()=>{
+            renderChart();
         })
     };
 
@@ -85,7 +84,6 @@ function LineChart() {
     }
 
     const renderChart = () => {
-        console.log(weightData)
         var ctx = document.getElementById("myChart").getContext("2d");
 
         const labels = Array.from({ length: weightData.length }, (_, index) => `Data ${index + 1}`);
@@ -98,21 +96,26 @@ function LineChart() {
                 {
                   data: weightData,
                   label: "Weight",
-                  borderColor: "#3e95cd",
-                  backgroundColor: "#7bb6dd",
-                  fill: false,
+                  borderColor: "rgba(123, 182, 221, 1)",
+                  backgroundColor: "rgba(123, 182, 221, 0.2)",
+                  fill: true,
                 },
-              ],
+              ],              
             },
             options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                y: {
-                  beginAtZero: true,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: "Weight (kg)",
+                    },
+                  },
                 },
               },
-            },
+              
           });
         }
 
