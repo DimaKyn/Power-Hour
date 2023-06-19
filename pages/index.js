@@ -8,6 +8,7 @@ import { CiDumbbell } from 'react-icons/ci';
 
 
 
+
 //On a click of a label, move the page to the login block or to the top of the page
 function movePage(homepage) {
   homepage ? window.scrollTo({ top: 0, behavior: 'smooth' }) :
