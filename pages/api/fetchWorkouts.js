@@ -25,7 +25,4 @@ export default async function handler(req, res) {
   } finally {
       client.close();
   }
-  finally{
-    client.close();
-  }
 }

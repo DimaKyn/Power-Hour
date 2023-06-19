@@ -71,5 +71,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Error in /api/register:', error);
     return errorHandler(error, req, res);
+  } finally {
+    client.close();
   }
 }
