@@ -55,6 +55,12 @@ export default async function handler(req, res) {
         workoutsArray: []
       });
 
+      // Create JSON table for new user
+      const jsonWeightTable = await db.collection('UserProgress').insertOne({
+        email: email,
+        weights: []
+      });
+
       console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
       
