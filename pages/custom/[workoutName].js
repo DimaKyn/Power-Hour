@@ -11,6 +11,8 @@ import Layouts from 'react-grid-layout'; // using @types/react-grid-layout
 import { useState, useCallback } from 'react';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import { BsArrowsMove } from "react-icons/bs";
+
 
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -26,10 +28,13 @@ export default function CustomWorkout() {
         <NavigationPanel links={customWorkoutPanelLinks} />
         <div className={Style.innerScrollable}>
             <label className={Style.mainLabel}>{workout}</label>
-            <span>Exercise blocks can be moved freely</span>
+            <div className={Style.textWithIconInTheMiddle}>
+                <label>Move the blocks by dragging the &nbsp;</label> <BsArrowsMove />&nbsp; icon
+
+            </div>
 
             <div className={Style.draggablesContainer}>
-                <ResponsiveGridLayout 
+                <ResponsiveGridLayout
                     layouts={layouts}
                     onLayoutChange={handleLayoutChange}
                     className={Style.gridLayout}
@@ -38,7 +43,7 @@ export default function CustomWorkout() {
                     cols={{ lg: 6, md: 4, sm: 3, xs: 2, xxs: 1 }}
                 >
                     {parsedExercise.map((exercise, index) => (
-                        <div key={index.toString()} data-grid={{ x: 1, y: 1, w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1}} className={Style.gridElement}>
+                        <div key={index.toString()} data-grid={{ x: 1, y: 1, w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.gridElement}>
                             <WorkoutBox
                                 title={exercise.name}
                                 sets={exercise.sets}

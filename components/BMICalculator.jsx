@@ -10,6 +10,7 @@ import BMIInfo from '/data/bmi_information.json';
 
 
 
+
 export default function BMICalculator() {
     const [heightNumber, setHeightNumber] = useState("");
     const [weightNumber, setWeightNumber] = useState("");
