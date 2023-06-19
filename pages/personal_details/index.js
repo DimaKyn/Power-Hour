@@ -5,34 +5,41 @@ import ButtonStyle from "/styles/ProfileActivities.module.css";
 import Swal from "sweetalert2";
 import ChartStyle from 'styles/chart.module.css'
 
+
 async function fetchWeights() {
     try {
-        const response = await fetch('/api/fetchWeights', {
-            method: 'GET',
-        });
-        const data = await response.json();
-        return data;
+      const response = await fetch("/api/fetchWeights", {
+        method: "GET",
+      });
+      const data = await response.json();
+      console.log(data.weights)
+      return data.weights;
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}
+  }
 
-export default function LineChart() {
+
+function LineChart() {
     const [weightData, setWeightData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const chartRef = useRef(null);
 
     useEffect(() => {
         (async () => {
-          const fetchedWeightData = await fetchWeights();
-          setWeightData(fetchedWeightData.weight);
-          setIsLoading(false);
-        })().then(() => {
-          renderChart();
-        });
-      }, []);
+            const fetchedWeightData = await fetchWeights();
+            setWeightData(fetchedWeightData);
+        })();
+    }, []);
 
-    async function handleWeightInput(weight) {
+    useEffect(() => {
+        console.log(weightData);
+        renderChart();
+      }, [weightData]);
+
+    console.log(weightData)
+    async function handleWeightInput() {
+        console.log(weightData)
+        var weight;
         Swal.fire({
             title: "Enter Weight",
             input: "number",
@@ -44,92 +51,86 @@ export default function LineChart() {
             cancelButtonText: "Cancel",
             showLoaderOnConfirm: true,
             preConfirm: (inputWeight) => {
+                weight = Number(inputWeight);
                 return new Promise((resolve) => {
-                    setTimeout(async () => {
-                        if (inputWeight === "" || inputWeight === null) {
+                    setTimeout(() => {
+                        if (weight === "" || weight === null) {
                             Swal.showValidationMessage("Weight is required");
                             resolve();
                         } else {
-                            console.log("imhere")
-                            setWeightData([...weightData, Number(inputWeight)]);
-                            console.log(weightData)
+                            updateToDB(weight);
                             resolve();
-                            try {
-                                console.log(inputWeight);
-                                let response = await fetch('/api/addWeightToDB', {
-                                    method: 'POST',
-                                    body: JSON.stringify({ weight: Number(inputWeight) }),
-                                    headers: {
-                                        Accept: "application/json, text/plain, */*",
-                                        "Content-Type": "application/json",
-                                    },
-                                });
-                                console.log(response);
-                            } catch (error) {
-                                console.log("Encountered an error adding weight:", error);
-                            }
+                            renderChart();
                         }
                     }, 500);
                 });
             }
-        }).then(() => {
-            renderChart();
-    });
-    }
-    
+        })
+    };
 
+    async function updateToDB(weight){
+        try {
+            setWeightData([...weightData, Number(weight)]);
+            let response = await fetch('/api/addWeightToDB', {
+                method: 'POST',
+                body: Number(weight),
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    "Content-Type": "application/json",
+                },
+            });
+        } catch (error) {
+            console.log("Encountered an error adding weight:", error);
+        }
+    }
 
     const renderChart = () => {
-        if (!weightData.length || !chartRef.current) {
-            return;
-        }
+        console.log(weightData)
+        var ctx = document.getElementById("myChart").getContext("2d");
 
-        const ctx = chartRef.current.getContext("2d");
-        const labels = Array.from(
-            { length: weightData.length },
-            (_, index) => `Data ${index + 1}`
-        );
+        const labels = Array.from({ length: weightData.length }, (_, index) => `Data ${index + 1}`);
 
         new Chart(ctx, {
             type: "line",
             data: {
-                labels: labels,
-                datasets: [
-                    {
-                        data: weightData,
-                        label: "Weight",
-                        borderColor: "#3e95cd",
-                        backgroundColor: "#7bb6dd",
-                        fill: false
-                    }
-                ]
+              labels: labels,
+              datasets: [
+                {
+                  data: weightData,
+                  label: "Weight",
+                  borderColor: "#3e95cd",
+                  backgroundColor: "#7bb6dd",
+                  fill: false,
+                },
+              ],
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    };
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+        }
+
+        const handleRefresh = () => {
+            window.location.reload(); // Refresh the page
+          }
 
     return (
         <>
             <div className={Style.chartContainer}>
-                <div className={Style.inner}>
-                    {isLoading ? (
-                        <p>Loading...</p>
-                    ) : (
-                        <>
-                            <canvas id="myChart" ref={chartRef}></canvas>
-                            <button className={ButtonStyle.button} onClick={() => handleWeightInput(weightData)}>Add Weight</button>
-                        </>
-                    )}
+                <div className={Style.inner} >
+                    <canvas id="myChart"></canvas>
+                    <button className={ButtonStyle.button} onClick={() => handleWeightInput()}>Add Weight</button>
+                    <button className={ButtonStyle.button} onClick={handleRefresh}>Refresh</button>
                 </div>
             </div>
         </>
     );
 }
+
+export default LineChart;
