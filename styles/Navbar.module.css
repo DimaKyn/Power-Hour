@@ -2,7 +2,7 @@
     overflow: hidden;
     top: 0;
     color: white;
-    background-color: rgba(22, 22, 22, 0.5);
+    background-color: rgba(22, 22, 22, 0.95);
     height: min(70px, 10vh);
     width: 100%;
     justify-content: center;
@@ -28,7 +28,7 @@
 
 @keyframes backgroundFullOpacity {
     0% {
-        background-color: rgba(22, 22, 22, 0.5);
+        background-color: rgba(22, 22, 22, 0.95);
     }
 
     100% {
@@ -42,11 +42,11 @@
 
 @keyframes backgroundHalfOpacity {
     0% {
-        background-color: rgb(22, 22, 22);
+        background-color: rgba(22, 22, 22, 1);
     }
 
     100% {
-        background-color: rgba(22, 22, 22, 0.5);
+        background-color: rgba(22, 22, 22, 0.95);
     }
 }
 
@@ -188,7 +188,7 @@
     height: calc(100vh - min(70px, 10vh));
     min-height: 200px;
     width: 270px;
-    background-image: url("../public/hamburgerMenu.jpg");
+    background-image: url("../public/static/images/hamburgerMenu.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -233,13 +233,16 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.9);
     height: min(100px, 5vh);
     width: 100%;
     padding: 30px;
     font-size: min(25px, 5vw);
-    border-top: 2px solid rgb(39, 39, 39);
-    border-bottom: 2px solid rgb(39, 39, 39);
+    border-top: 3px solid rgb(39, 39, 39);
+    border-bottom: 3px solid rgb(39, 39, 39);
+    margin-top: 1px;
+    margin-bottom: 1px;
+    
 }
 
 .hamburgerLinks:hover {
@@ -248,8 +251,7 @@
 
 @keyframes backgroundColorLinks {
     0% {
-        background-color: rgba(0, 0, 0, 0.4);
-
+        background-color: rgba(0, 0, 0, 0.9);
     }
 
     100% {

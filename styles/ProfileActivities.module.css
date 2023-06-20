@@ -38,7 +38,7 @@
 }
 
 .profilePicture {
-    background-image: url("../public/donkey.jpg");
+    background-color: rgb(19, 188, 218);
     background-size: cover;
     border-radius: 50%;
     width: 150px;

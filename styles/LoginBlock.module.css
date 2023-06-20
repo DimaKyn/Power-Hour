@@ -13,9 +13,8 @@
     display: flex;
     max-width: 300px;
     max-height: 500px;
-    min-width: 300px;
+    min-width: 270px;
     min-height: 500px;
-
 }
 
 .loginBlock::before {
@@ -91,11 +90,40 @@
 
 }
 
+.incorrectCredentialsLabel {
+    display: none;
+}
+
+.incorrectCredentialsLabelShow {
+    color: red;
+}
+
+.loginButtonLoading {
+    animation: rotate 1s linear infinite;
+}
+
+.loginButtonIconIdle {
+    display: none;
+    opacity: 0;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .loginButton {
     height: 50px;
     width: 80%;
     background-color: transparent;
     border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 2px;
     color: white;
     font-size: 20px;
@@ -103,6 +131,49 @@
     cursor: pointer;
     transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
 }
+
+.loginButtonIncorrectCredentials {
+    height: 50px;
+    width: 80%;
+    background-color: transparent;
+    border: 2px solid red;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s, box-shadow 0.5s;
+    animation: shake 0.1s 5 linear;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    25% {
+        transform: translate(3px, 0px);
+    }
+    50% {
+        transform: translate(0px, 0px);
+    }
+    75% {
+        transform: translate(-3px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.loginButtonIncorrectCredentials:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    box-shadow: 2px 2px 5px 1px rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
+}
+
 
 .loginButton:hover {
     background-color: rgba(255, 255, 255, 1);

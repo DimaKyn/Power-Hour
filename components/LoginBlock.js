@@ -2,17 +2,22 @@ import Style from '/styles/LoginBlock.module.css';
 import { FaUserAlt, FaKey } from 'react-icons/fa';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-import { signIn, signOut} from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
+import { useRef } from 'react';
+import { BiLoader } from 'react-icons/bi';
 
-//Hide the login button and show the loading div
-//TODO: Add a loading animation
-
+//This function is used to add a delay to the login button turning from red back to white
+async function sleep(msec) {
+  return new Promise(resolve => setTimeout(resolve, msec));
+}
 
 // Update the handleLogin function
-async function handleLogin(loginButton, identifier, password) {
+async function handleLogin(setLoginText, loginButtonRef, incorrectCredentialsLabelRef, loadingIconRef, identifier, password) {
   console.log('Trying to find user with identifier:', identifier);
+  setLoginText("");
+  loadingIconRef.current.classList = Style.loginButtonLoading;
 
   const response = await signIn('credentials', {
     redirect: false,
@@ -22,7 +27,13 @@ async function handleLogin(loginButton, identifier, password) {
   console.log(response)
   if (response.error) {
     console.log('User not found');
-    // Handle unsuccessful login
+    loginButtonRef.current.classList = Style.loginButtonIncorrectCredentials;
+    incorrectCredentialsLabelRef.current.classList = Style.incorrectCredentialsLabelShow;
+    loadingIconRef.current.classList = Style.loginButtonIconIdle;
+    setLoginText("Login");
+    await sleep(1000);
+    loginButtonRef.current.classList = Style.loginButton;
+
   } else {
     if (typeof window !== 'undefined') {
       localStorage.setItem('isLoggedIn', true);
@@ -39,11 +50,13 @@ async function handleLogin(loginButton, identifier, password) {
 //TODO: Add a register function
 //TODO: Add a forgot password function
 export default function LoginBlock() {
-    const [identifier, setIdentifier] = useState('');
-    const [password, setPassword] = useState('');
-
-
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
+  const loginButtonRef = useRef(null);
+  const incorrectCredentialsLabelRef = useRef(null);
+  const [loginText, setLoginText] = useState('Login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const loadingIconRef = useRef(null);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser');
@@ -58,30 +71,34 @@ export default function LoginBlock() {
     setIsLoggedIn(false);
     await signOut();
   };
-  if(!isLoggedIn){
+  if (!isLoggedIn) {
     return <>
-        <div className={Style.loginBlock}>
+      <div className={Style.loginBlock}>
 
-            <label className={Style.loginLabel}>LOGIN</label>
+        <label className={Style.loginLabel}>LOGIN</label>
 
-            <div className={Style.usernameBlock}>
-                <FaUserAlt className={Style.userIcon} />
-                <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={identifier} onChange={(e) => setIdentifier(e.target.value)}></input>
-                <label className={Style.usernameLabel}>Username/Email</label>
-            </div>
-            <div className={Style.passwordBlock}>
-                <FaKey className={Style.passwordIcon} />
-                <input required pattern=".*\S.*" type="password" className={Style.passwordInput} value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                <label className={Style.passwordLabel}>Password</label>
-            </div>
-            <Link className={Style.forgotPassword} href="/">Forgot your password?</Link>
-            <div className={Style.buttonDiv}>
-                <button className={Style.loginButton}
-                    onClick={() => handleLogin(Style.loginButton, identifier, password)}>Login</button>
-                <label style={{ fontSize: '28px' , color: "rgba(80, 80, 250, 1)"}}>New to Power Hour?</label>
-                <Link href="/register" className={Style.registerButton}>Register now</Link>
-            </div>
+        <div className={Style.usernameBlock}>
+          <FaUserAlt className={Style.userIcon} />
+          <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={identifier} onChange={(e) => setIdentifier(e.target.value)}></input>
+          <label className={Style.usernameLabel}>Username/Email</label>
         </div>
+        <div className={Style.passwordBlock}>
+          <FaKey className={Style.passwordIcon} />
+          <input required pattern=".*\S.*" type="password" className={Style.passwordInput} value={password} onChange={(e) => setPassword(e.target.value)}></input>
+          <label className={Style.passwordLabel}>Password</label>
+        </div>
+        <Link className={Style.forgotPassword} href="/">Forgot your password?</Link>
+        <div className={Style.buttonDiv}>
+          <button ref={loginButtonRef} className={Style.loginButton}
+            onClick={() => handleLogin(setLoginText, loginButtonRef, incorrectCredentialsLabelRef, loadingIconRef, identifier, password)}>
+            {<div ref={loadingIconRef} className={Style.loginButtonIconIdle} ><BiLoader /></div>}
+            {loginText}
+          </button>
+          <label ref={incorrectCredentialsLabelRef} className={Style.incorrectCredentialsLabel}>Incorrect Username or Password</label>
+          <label style={{ fontSize: '28px', color: "rgba(80, 80, 250, 1)" }}>New to Power Hour?</label>
+          <Link href="/register" className={Style.registerButton}>Register now</Link>
+        </div>
+      </div>
     </>
   }
   return (
@@ -91,7 +108,7 @@ export default function LoginBlock() {
         {isLoggedIn ? (
           <>
             <div className={Style.guide}>
-            <h1>Welcome, {localStorage.getItem('loggedInUser')}!</h1>
+              <h1>Welcome, {localStorage.getItem('loggedInUser')}!</h1>
               <h2 className={Style.guideH2}>How to use our website</h2>
               <p className={Style.guideP}>Here are some tips on how to get the most out of PowerHour:</p>
               <ul className={Style.guideUl}>

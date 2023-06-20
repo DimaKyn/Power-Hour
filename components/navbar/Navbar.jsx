@@ -124,7 +124,7 @@ export default function Navbar() {
                     <Link onClick={() => handleButtonClick()} style={{ height: "100%", width: "100%", cursor: "pointer", position: "absolute" }} href="/"></Link>
                     <div className={Style.logoContainer}>
                         <Image style={{ pointerEvents: "none" }}
-                            src="/../public/pwrhwrlogo.png"
+                            src="/../public/static/images/pwrhwrlogo.png"
                             alt="PowerHour logo"
                             fill={true}
                             sizes="(max-width: 500px) 100px"
@@ -178,7 +178,7 @@ export default function Navbar() {
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
                         <Link onClick={() => handleButtonClick()} href="/BMICalculator" className={Style.hamburgerLinks}>BMI CALCULATOR</Link>
                         <Link onClick={() => handleButtonClick()} href="/profile" className={Style.hamburgerLinks}>MY PROFILE</Link>
-                        <Link onClick={() => handleButtonClick()} href="/shop" className={Style.hamburgerLinks}>SHOP (in BETA)</Link>
+                        <Link onClick={() => handleButtonClick()} href="https://www.myprotein.com/" className={Style.hamburgerLinks}>SHOP (MyProtein.com)</Link>
                     </div>
                 ) : (
                     <div className={Style.hamburgerLinksContainer}>
