@@ -5,12 +5,6 @@ import Style from '/styles/PageStandard.module.css';
 import { SessionProvider } from 'next-auth/react';
 import { Sofia_Sans } from '@next/font/google';
 
-const sofia = Sofia_Sans({
-  subsets: ['latin'],
-  weights: ['400', '700']
-});
-
-
 function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>

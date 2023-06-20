@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { GiBodyHeight } from 'react-icons/gi';
 import { TbWeight } from 'react-icons/tb';
 import { useRef } from 'react';
-import BMIInfo from '/data/bmi_information.json'; 
+import BMIInfo from '/data/bmi_information.json';
 
 
 export default function BMICalculator() {
