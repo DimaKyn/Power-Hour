@@ -2,9 +2,12 @@
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
 import WorkoutContainer from '/components/WorkoutContainer';
+import StyleStandard from '/styles/PageStandard.module.css';
 import Style from '/styles/WorkoutContainer.module.css';
 import exercise from "data/exercises.json";
 import Style2 from'/styles/PremadeWorkout.module.css';
+import NavigationPanel from "/components/navigationPanel/NavigationPanel";
+import { PreMadeWorkoutsLinks } from "/components/navigationPanel/NavigationPanelLinksList";
 
 export default function PremadeWorkout() {
     const headline = "Premade Workouts for a Push, Pull, Leg Workout Routine";
@@ -12,8 +15,10 @@ export default function PremadeWorkout() {
     
     console.log(exercise)
     return (
-      <div className={Style2.centered}>
-        <h1 className={Style2.headline}>{headline}</h1>
+      <div className={StyleStandard.inner}>
+        <NavigationPanel links={PreMadeWorkoutsLinks} />
+
+        <label className={StyleStandard.mainLabel}>{headline}</label>
         <div className={Style.containerWrapper}>
           <div className={Style.containerV2}>
             <WorkoutContainer workoutName="Pull Day" category={exercise} />

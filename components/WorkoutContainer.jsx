@@ -55,12 +55,12 @@ const Exercise = ({ exercise }) => {
 
 
   return (
-    <div>
+    <div className={Style.entireExercise}>
       <h3 className={Style.h3}>{exercise.name}</h3>
       {editing ? (
         <div>
           <div>
-            <label>Sets:</label>
+            <label >3 Sets</label>
             <input
               type="number"
               name="sets"
@@ -69,8 +69,8 @@ const Exercise = ({ exercise }) => {
               className={Style.inputBlack}
             />
           </div>
-          <div>
-            <label>Reps:</label>
+          <div >
+            <label >Reps:</label>
             <input
               type="number"
               name="reps"
@@ -90,9 +90,8 @@ const Exercise = ({ exercise }) => {
       ) : (
         <div>
           <p className={Style.p}>
-            {"Sets: " + exercise.sets} {"Reps: " + exercise.reps}
+            {"3 Sets, "} {"10 Reps"}
           </p>
-          <button onClick={handleEditClick}>Edit</button>
         </div>
       )}
       <img src={exercise.imageUrl} alt={exercise.name} />
@@ -115,7 +114,7 @@ const WorkoutContainer = ({ workoutName, category }) => {
         ))}
       </div>
       <div className={Style.buttonContainer}>
-        <button className={Style.button} onClick={() => saveWorkoutToDB(workoutName, exercises)}>Save</button>
+        <button className={Style.button} onClick={() => saveWorkoutToDB(workoutName, exercises)}>Save workout</button>
       </div>
     </div>
   );

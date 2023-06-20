@@ -22,16 +22,17 @@ export default function CustomWorkout() {
     const [workout, setWorkout] = useState(null);
     const [layouts, setLayouts] = useState();
     const handleLayoutChange = useCallback((layout, layouts) => setLayouts(layouts));
-  
+
+    let storedExercise;
     useEffect(() => {
-      const storedExercise = localStorage.getItem('exercises');
-      const storedWorkout = localStorage.getItem('workout');
-      if (storedExercise) {
-        setParsedExercise(JSON.parse(storedExercise));
-      }
-      if (storedWorkout) {
-        setWorkout(storedWorkout);
-      }
+        storedExercise = localStorage.getItem('exercises');
+        const storedWorkout = localStorage.getItem('workout');
+        if (storedExercise) {
+            setParsedExercise(JSON.parse(storedExercise));
+        }
+        if (storedWorkout) {
+            setWorkout(storedWorkout);
+        }
     }, []);
 
     return <>
@@ -40,7 +41,7 @@ export default function CustomWorkout() {
             <label className={Style.mainLabel}>{workout}</label>
             <div className={Style.textWithIconInTheMiddle}>
                 <span className={Style.spanTextWithIconInTheMiddle}>Move the blocks by dragging the&nbsp;</span>
-                <BsArrowsMove className={Style.spanTextWithIconInTheMiddle}/>
+                <BsArrowsMove className={Style.spanTextWithIconInTheMiddle} />
                 <span className={Style.spanTextWithIconInTheMiddle}>&nbsp;icon</span>
 
             </div>

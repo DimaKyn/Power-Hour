@@ -7,13 +7,7 @@ import Typed from 'typed.js';
 import { CiDumbbell } from 'react-icons/ci';
 
 
-//On a click of a label, move the page to the login block or to the top of the page
-function movePage(homepage) {
-  homepage ? window.scrollTo({ top: 0, behavior: 'smooth' }) :
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  homepage = !homepage;
 
-}
 
 
 
@@ -41,11 +35,9 @@ export default function Home() {
       setIsLoggedIn(true);
     }
   }, []);
-
-  let homepage = true;
   return (
     <div className={Style.main}>
-      <NavigationPanel links={homePanelLinks} />
+      <NavigationPanel links={homePanelLinks}/>
       <div className={Style.wrapper}>
         <div className={Style.backgroundImage}></div>
         <div className={Style.homepageLabels}>
@@ -53,7 +45,7 @@ export default function Home() {
           <label className={Style.subLabel}>TIME TO TRAIN</label>
           <div className={Style.subSubSubImage}></div>
           <div><span className={Style.regularText}>POWER YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
-          <div className={Style.arrowDivDown} style={{width: "60px"}} onClick={() => movePage(homepage = false)}>
+          <div className={Style.arrowDivDown} style={{width: "60px"}}>
             <CiDumbbell style={{fontSize: "60px"}}/>
           </div>
         </div>

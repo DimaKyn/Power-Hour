@@ -1,26 +1,33 @@
 .container {
-  margin-top: 100px;
   padding: 20px;
   width: 350px;
   background-color: rgb(27, 27, 27);
-}
-
-.containerV2 {
-  flex: 0 0 auto;
-  margin-right: 20px;
-  box-sizing: border-box;
-  max-width: 400px;
-  display: flex;
+  border: 2px rgba(64, 64, 192, 1) solid;
+  border-radius: 5px;
 }
 
 .containerWrapper {
+  margin-top: 20px;
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  margin-bottom: 20px;
   justify-content: center;
   align-items: center;
+
 }
+
+.containerV2 {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 7px;
+}
+
+@media (max-width: 350px) {
+  .containerV2 {
+    width: 270px;
+  }
+}
+
+
 
 @media (max-width: 1200px) {
   .containerWrapper {
@@ -43,6 +50,15 @@
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: 400px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  outline: 2px solid rgba(80, 80, 250, 0.4);
+  background-color: rgb(10, 10, 10);
+}
+
+.entireExercise {
+  border-top: 10px solid rgba(33, 33, 143, 0.4);
+  padding: 5px;
+
 }
 
 .exercise {
@@ -53,6 +69,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
 }
 
 .h3 {
@@ -60,11 +77,14 @@
   font-weight: bold;
   margin-bottom: 10px;
   color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 .p {
   margin-bottom: 10px;
   font-size: 25px;
+  text-align: center;
+
 }
 
 .img {

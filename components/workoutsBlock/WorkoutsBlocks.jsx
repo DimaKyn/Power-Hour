@@ -41,7 +41,7 @@ export default function WorkoutsBlocks({ images }) {
         <div className={StyleWorkout.workout}>
             <h1 style={{ fontSize: "30px" }}>CARDIO</h1>
             <Image src="/workoutTypes/cardioAthletes.jpg"
-                alt="Bodybuilding athlete"
+                alt="cardio athletes"
                 width={300}
                 height={300} />
             <span style={{textAlign: "center"}}>

@@ -6,6 +6,13 @@ import { registerPanelLinks } from '/components/navigationPanel/NavigationPanelL
 import { useSession } from "next-auth/react";
 import { signIn, signOut } from 'next-auth/react';
 import Swal from 'sweetalert2';
+import { RxLetterCaseUppercase } from 'react-icons/rx';
+import { AiOutlineMail } from 'react-icons/ai';
+import { FaUserAlt } from 'react-icons/fa';
+import { MdPassword } from 'react-icons/md';
+import { AiOutlinePhone } from 'react-icons/ai';
+import { useRef } from 'react';
+import { BiLoader } from 'react-icons/bi';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -14,7 +21,27 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
+  //These are the variables needed to animate a loading animation on the register button
+  const [registerText, setRegisterText] = useState('Register');
+  const registerButtonRef = useRef(null);
+  const loadingIconRef = useRef(null);
+
+  function handleLoading() {
+    setRegisterText("");
+    loadingIconRef.current.classList = FormStyle.registerButtonLoading;
+  }
+
+  // Reset the loading animation
+  function displayRegisterText() {
+    setRegisterText("Register");
+    loadingIconRef.current.classList = FormStyle.registerButtonIdle;
+  }
+
+
   const handleSubmit = async (e) => {
+    //Display loading animation
+    handleLoading();
+
     e.preventDefault();
 
     const response = await fetch("/api/register", {
@@ -43,6 +70,7 @@ export default function Register() {
 
     if (response.error || !responseText.includes("User registered successfully")) {
       if (responseText.includes("All fields are required")) {
+        displayRegisterText();
         Swal.fire({
           icon: 'error',
           width: 400,
@@ -54,6 +82,8 @@ export default function Register() {
       }
 
       else if (responseText.includes("Username already exists")) {
+        displayRegisterText();
+
         Swal.fire({
           icon: 'error',
           width: 400,
@@ -62,9 +92,12 @@ export default function Register() {
           text: 'Username already exists!',
           // You can customize the appearance of the alert further using other options
         });
+
       }
 
       else if (responseText.includes("Email already exists")) {
+        displayRegisterText();
+        setRegisterButtonText();
         Swal.fire({
           icon: 'error',
           width: 400,
@@ -98,62 +131,86 @@ export default function Register() {
   return (
     <>
       <NavigationPanel links={registerPanelLinks} />
+
       <div className={Style.inner}>
-        <h1>Register page</h1>
-        <form onSubmit={handleSubmit}>
-          <div className={FormStyle.block}>
-            <label className={FormStyle.blockLabel} htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={FormStyle.userInput}
-            />
+        <label className={Style.mainLabel}>Create An Account</label>
+        <div className={FormStyle.wrapper}>
+          <div className={FormStyle.formContainer}>
+            <form onSubmit={handleSubmit}>
+              <div className={FormStyle.block}>
+                <RxLetterCaseUppercase className={FormStyle.icons} />
+                <input
+                  type="text"
+                  id="name"
+                  required pattern=".*\S.*"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className={FormStyle.userInput}
+                />
+                <label className={FormStyle.blockLabel} htmlFor="name">Name</label>
+              </div>
+              <div className={FormStyle.block}>
+                <FaUserAlt className={FormStyle.icons} />
+                <input
+                  type="text"
+                  id="username"
+                  required pattern=".*\S.*"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className={FormStyle.userInput}
+                />
+                <label className={FormStyle.blockLabel} htmlFor="username">Username</label>
+              </div>
+              <div className={FormStyle.block}>
+                <AiOutlineMail className={FormStyle.icons} />
+                <input
+                  type="email"
+                  id="email"
+                  required placeholder=" "
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={FormStyle.userInput}
+                />
+                <label className={FormStyle.blockLabel} htmlFor="email">Email</label>
+
+              </div>
+              <div className={FormStyle.block}>
+                <MdPassword className={FormStyle.icons} />
+                <input
+                  type="password"
+                  id="password"
+                  required pattern=".*\S.*"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={FormStyle.userInput}
+                />
+                <label className={FormStyle.blockLabel} htmlFor="password">Password</label>
+
+              </div>
+              <div className={FormStyle.block}>
+                <AiOutlinePhone className={FormStyle.icons} />
+                <input
+                  type="tel"
+                  id="phone"
+                  required pattern=".*\S.*"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className={FormStyle.userInput}
+                />
+                <label className={FormStyle.blockLabel} htmlFor="phone">Phone Number</label>
+
+              </div>
+              <div className={FormStyle.buttonDiv}>
+                <button ref={registerButtonRef} className={FormStyle.submitButton}>
+                  {<div ref={loadingIconRef} className={FormStyle.registerButtonIdle}><BiLoader /></div>}
+                  {registerText}
+                </button>
+              </div>
+            </form>
           </div>
-          <div className={FormStyle.block}>
-            <label className={FormStyle.blockLabel} htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className={FormStyle.userInput}
-            />
-          </div>
-          <div className={FormStyle.block}>
-            <label className={FormStyle.blockLabel} htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={FormStyle.userInput}
-            />
-          </div>
-          <div className={FormStyle.block}>
-            <label className={FormStyle.blockLabel} htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className={FormStyle.userInput}
-            />
-          </div>
-          <div className={FormStyle.block}>
-            <label className={FormStyle.blockLabel} htmlFor="phone">Phone Number:</label>
-            <input
-              type="tel"
-              id="phone"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              className={FormStyle.userInput}
-            />
-          </div>
-          <button type="submit" className={FormStyle.submitButton}>Register</button>
-        </form>
+        </div>
       </div>
+
     </>
   );
 }
