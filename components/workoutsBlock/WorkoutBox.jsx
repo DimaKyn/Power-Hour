@@ -73,7 +73,7 @@ export default function WorkoutBox(props) {
     {exerciseCompleted && <button ref={restoreButton} className={Style.restoreButton}
       onClick={() => completeExercise()}>Restore</button>}
     <div ref={exerciseRef} className={Style.workoutSquare}>
-      <div className="handle-draggable" style={{ height: "40px", width: "40px", position: "absolute", right: 0, top: 0, cursor: "move"}}>
+      <div className="handle-draggable" style={{ height: "40px", width: "40px", position: "absolute", right: 0, top: 0, cursor: "move", zIndex: "11"}}>
         <BsArrowsMove className={Style.moveSquareIcon} />
         </div>
       

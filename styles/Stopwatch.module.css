@@ -1,13 +1,14 @@
 .stopwatchContainer {
   text-align: center;
-  background-color: #131212;
+  background-color: #0a0a0a;
   position: fixed;
   bottom: 1%;
   height: 100px;
-  width: 90%;
-  border-radius: 10px; 
-  box-shadow: 0 20px 50px 50px rgb(0, 0, 0, 0.5);
-  border: 2px solid rgba(64, 64, 192, 1);
+  width: min(400px, 90%);
+  border-radius: 5px; 
+  border: 1px solid rgb(0, 0, 0);
+  box-shadow: 0 20px 50px 50px rgba(0, 0, 0, 0.5);
+  outline: 2px solid rgba(64, 64, 192, 1);
 }
 
 .stopwatchDisplay {
@@ -19,7 +20,8 @@
 
 .buttonStart {
   display: inline-block;
-  padding: 5px 30px;
+  padding: 5px;
+  width: 110px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -29,6 +31,9 @@
   border-radius: 4px;
   cursor: pointer;
   margin: 10px;
+  justify-content: center;
+  align-items: center;
+
 }
 .buttonStart:hover {
   background-color: #3b9267;
@@ -36,7 +41,8 @@
 
 .buttonReset {
   display: inline-block;
-  padding: 5px 30px;
+  padding: 5px;
+  width: 110px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -53,7 +59,8 @@
 
 .buttonStop {
   display: inline-block;
-  padding: 5px 30px;
+  padding: 5px;
+  width: 110px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;

@@ -66,8 +66,16 @@
     font-family:  monospace;
     text-transform: bold;
     font-size: 9rem;
-
     font-weight: 10px;
+}
+
+@media(max-width: 800px) {
+    .labelPowerHour {
+        font-size: 5rem;
+    }
+    .subLabel {
+        font-size: 3rem;
+    }
 }
 
 @keyframes fadeInPower {
@@ -127,26 +135,26 @@
     align-items: bottom;
     display: flex;
     height: 60px;
-    width: 100%;
-    animation: moveArrow 2.5s infinite;
-    animation-timing-function: ease-in-out;
+    width: 60px;
+    animation: moveDumbbell 2.5s infinite ;
+    animation-timing-function: fade-in-out;
 }
 
 .arrowDivDown:hover {
-    cursor: pointer;
     transform: scale(1.1);
 }
 
 
-@keyframes moveArrow {
+
+@keyframes moveDumbbell {
     0% {
-        transform: translateY(0px);
+        transform: translateY(0px)  rotate(0deg);
     }
     50% {
-        transform: translateY(20px);
+        transform: translateY(20px) rotate(180deg);
     }
     100% {
-        transform: translateY(0px);
+        transform: translateY(0px) rotate(360deg);
     }
 }
 
