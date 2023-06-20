@@ -1,5 +1,6 @@
 import Style from "/styles/SearchBox.module.css";
 import StyleStandard from "/styles/PageStandard.module.css";
+import StyleRegisterForm from "/styles/RegisterForm.module.css";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
 import { GrCircleInformation } from "react-icons/gr";
@@ -15,7 +16,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "../../components/ui/popover"
-
+import Tooltip from '@mui/material/Tooltip';
 
 //TODO: implement save by username
 async function workoutToDB(addedExercises, workoutName) {
@@ -77,7 +78,7 @@ export default function SearchBox() {
 
     function saveWorkout(workoutName) {
         if (workoutName === '') {
-            alert("Please enter a workout name");
+            alert("Please enter a workout name!");
             return;
         }
         workoutToDB(addedExercises, workoutName);
@@ -115,26 +116,29 @@ export default function SearchBox() {
                 <div className={Style.exercise} key={index}>
 
                     <div className={Style.infoBlock}>
-                        <h1 h1 style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
+                        <Tooltip title={exercise.name} placement="top">
+                            <h1 className={Style.exerciseHeader} style={{ fontSize: "20px", textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
+
+                        </Tooltip>
 
                         <div className={Style.textAndIconsWrapper}>
-                            <div className={Style.textAndIcon}>
-                                <StringToIconType exerciseInput={exercise.type} />
-                                <h2 className={Style.textForIconH2}>{exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1)}</h2>
+                            <Tooltip className={Style.tooltip} title={exercise.type.charAt(0).toUpperCase() + exercise.type.replaceAll("\_", " ").slice(1) + " exercise"}>
+                                <div className={Style.tooltipIcons}>
+                                    <StringToIconType exerciseInput={exercise.type} />
+                                </div>
+                            </Tooltip>
 
-                            </div>
-                            <div className={Style.textAndIcon}>
-                                <StringToIconMuscle exerciseInput={exercise.muscle} />
-                                <h3 className={Style.textForIconH2}>{exercise.muscle.charAt(0).toUpperCase() + exercise.muscle.replaceAll("\_", " ").slice(1)}&nbsp;</h3>
+                            <Tooltip className={Style.tooltip} title={"Targets your " + exercise.muscle.replaceAll("\_", " ")}>
+                                <div className={Style.tooltipIcons}>
+                                    <StringToIconMuscle exerciseInput={exercise.muscle} />
+                                </div>
+                            </Tooltip>
 
-                            </div>
-                            <div className={Style.textAndIcon}>
-                                <StringToIconDifficulty exerciseInput={exercise.difficulty} />
-                                <h3 className={Style.textForIconH2}>{exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}&nbsp;</h3>
-
-                            </div>
-
-
+                            <Tooltip className={Style.tooltip} title={exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1) + " level"}>
+                                <div className={Style.tooltipIcons}>
+                                    <StringToIconDifficulty exerciseInput={exercise.difficulty} />
+                                </div>
+                            </Tooltip>
                         </div>
 
                         <div className={Style.repetitionsSetsAdd}>
@@ -150,19 +154,20 @@ export default function SearchBox() {
                             </div>
                         </div>
                         <div className={Style.exerciseIcons}>
-
-                            <Popover className={Style.popoverParent}>
-                                <PopoverTrigger >
-                                    <GrCircleInformation style={{ marginTop: "10px" }} className={Style.informationCircle} />
-                                </PopoverTrigger>
-                                <PopoverContent className={Style.popover}>
-                                    <h1 style={{ fontSize: "30px" }}>INSTRUCTIONS</h1>
-                                    <span>{exercise.instructions}</span></PopoverContent>
-                            </Popover>
                             <div className={Style.buttonDiv}>
                                 <AiOutlinePlus className={Style.plusIcon} />
                                 <button key={index} onClick={() => addExercise(exercise, index)} className={Style.addButton}></button>
                             </div>
+                            <Popover className={Style.popoverParent}>
+                                <PopoverTrigger >
+                                    <GrCircleInformation className={Style.informationCircle} />
+                                </PopoverTrigger>
+                                <PopoverContent className={Style.popover}>
+                                    <h1 style={{ fontSize: "20px", textAlign: "center", color: "rgb(80, 80, 250)", textDecoration: "underline" }}>{exercise.name}</h1>
+                                    <h1 style={{ fontSize: "20px", textAlign: "center", fontWeight: "bold" }}>Instructions</h1>
+                                    <span>{exercise.instructions}</span></PopoverContent>
+                            </Popover>
+
                         </div>
                     </div>
 
@@ -188,14 +193,26 @@ export default function SearchBox() {
             <div className={Style.divider}>
                 <VscArrowSwap style={{ fontSize: '50px', margin: "20px", color: "rgba(80, 80, 250, 1)" }} className={Style.arrows} />
             </div>
+
             <div className={Style.chosenExercises}>
-                <div className={Style.upperLabel}>
-                    <label className={Style.labelChosenExercises}>Chosen Exercises</label>
-                    <input value={workoutName} onChange={(e) => setWorkoutName(e.target.value)} style={{ color: "black" }}></input>
-                    <button onClick={() => saveWorkout(workoutName)} style={{ backgroundColor: "blue" }}>Save to db</button>
-                    <button style={{ backgroundColor: "red" }}>clear</button>
+            <div className={Style.inputDiv}>
+                    <BiSearch className={Style.magnifyingGlass} />
+                    <input type="text" placeholder="Search for an exercise" className={Style.inputTextBox}
+                        value={stringInput} onInput={(event) => { handleInputUpdate(event) }} />
                 </div>
-                <div style={{ top: "50px", position: "absolute", bottom: "50px" }}>
+                <div className={Style.block}>
+                    <input required pattern=".*\S.*" type="text"
+                        value={workoutName}
+                        onChange={(e) => setWorkoutName(e.target.value)}
+                        className={Style.inputWorkoutName}>
+                    </input>
+                    <label className={Style.blockLabel}>Name your workout</label>
+                    <div className={Style.saveAndClearButtons}>
+                        <button onClick={() => saveWorkout(workoutName)} style={{ backgroundColor: "blue" }}>Save to db</button>
+                        <button style={{ backgroundColor: "red" }}>clear</button>
+                    </div>
+                </div>
+                <div className={Style.chosenExercisesInner}>
                     {addedExercises.map((exercise, index) => {
                         return addExerciseToBottomDiv(exercise, index);
                     })}
