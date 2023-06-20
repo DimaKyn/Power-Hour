@@ -54,7 +54,7 @@ export default function CustomWorkout() {
                     breakpoints={{ lg: 1550, md: 1200, sm: 800, xs: 530, xxs: 300 }}
                     cols={{ lg: 6, md: 4, sm: 3, xs: 2, xxs: 1 }}
                 >
-                    {parsedExercise.map((exercise, index) => (
+                    {parsedExercise && parsedExercise.map((exercise, index) => (
 
                         <div key={index.toString()} data-grid={{ x: index, y: 0, w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.gridElement}>
                             <WorkoutBox
