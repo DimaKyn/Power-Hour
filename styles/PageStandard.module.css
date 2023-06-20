@@ -50,14 +50,11 @@
 
 
 .innerRow {
-    height: calc(100% - min(100px, 10vh));
-    width: 100%;
-    top: 130px;
-    align-items: center;
     display: flex;
     flex-direction: row;
-    padding-left: 10px;
-    padding-right: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 

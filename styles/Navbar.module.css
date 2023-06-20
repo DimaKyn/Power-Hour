@@ -237,12 +237,12 @@
     height: min(100px, 5vh);
     width: 100%;
     padding: 30px;
-    font-size: min(25px, 5vw);
+    font-size: min(22px, 5vw);
     border-top: 3px solid rgb(39, 39, 39);
     border-bottom: 3px solid rgb(39, 39, 39);
     margin-top: 1px;
     margin-bottom: 1px;
-    
+    text-align: center;
 }
 
 .hamburgerLinks:hover {
@@ -342,7 +342,9 @@
 .profileIconMenu {
     height: 100px;
     width: 200px;
-    background-color: rgba(22, 22, 22, 1);
+    background-color: rgb(22, 22, 22);
+    border: 1px solid rgb(64, 64, 192);
+    border-top: transparent;
     right: 0;
     top: 70px;
     padding: 0;

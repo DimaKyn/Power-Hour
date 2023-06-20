@@ -120,7 +120,7 @@ export default function BMICalculator() {
                 <span>{BMIInfo[mapIndexToBMIscore(bmi)].steps.map(
                     (step, i) => {
                         return <>
-                            <li key={i * 2}>{(i + 1) + ": " + step}</li>
+                            <li style={{listStyleType: "none"}} key={i * 2}>{(i + 1) + ".  " + step}</li>
                             <br key={i * 2 + 1} />
                         </>
                     }

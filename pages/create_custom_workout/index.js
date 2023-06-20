@@ -11,6 +11,7 @@ export default function CreateCustomWorkout() {
         <NavigationPanel links={createCustomWorkoutPanelLinks} />
         <div className={Style.inner}>
             <label className={Style.mainLabel}>Create Workout</label>
+            <span>explain what to do here||||||||||</span>
             <div className={Style.innerRow}>
                 <SearchBox className={Style.searchBoxInner} ></SearchBox>
                 <div className={Style.workouts}></div>
