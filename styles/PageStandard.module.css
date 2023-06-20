@@ -91,6 +91,17 @@
     }
 }
 
+@media (max-width: 350px) {
+    .navPanelLinks {
+        font-size: 0.65em;
+    }
+    
+    .navPanelLinkCurrent {
+        font-size: 0.65em;
+    }
+}
+
+
 @media(max-width: 300px) {
     .inner {
         top: 80px;
@@ -103,14 +114,6 @@
     .mainLabel {
         font-size: 1.5em;
         margin-top: 30px;
-    }
-
-    .navPanelLinks {
-        font-size: 0.5em;
-    }
-
-    .navPanelLinkCurrent {
-        font-size: 0.5em;
     }
 }
 
@@ -145,11 +148,18 @@
     align-items: center;
     z-index: 2;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .navArrow {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.navPanelLinks {
+    flex-wrap: nowrap;
+    word-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .navPanelLinks:hover {
@@ -163,6 +173,9 @@
     color: rgba(80, 80, 250, 1);
     pointer-events: none;
     text-decoration: none;
+    flex-wrap: nowrap;
+    word-wrap: nowrap;
+    white-space: nowrap;
     font-weight: bold;
 }
 

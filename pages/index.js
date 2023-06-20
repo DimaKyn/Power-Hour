@@ -1,11 +1,10 @@
 import Style from '/styles/Home.module.css';
-import LoginBlock from '../components/LoginBlock';
-import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 //Import the navigation panel for this specific page
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { homePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import { useState, useEffect } from 'react';
 import Typed from 'typed.js';
+import { CiDumbbell } from 'react-icons/ci';
 
 
 //On a click of a label, move the page to the login block or to the top of the page
@@ -54,8 +53,8 @@ export default function Home() {
           <label className={Style.subLabel}>TIME TO TRAIN</label>
           <div className={Style.subSubSubImage}></div>
           <div><span className={Style.regularText}>POWER YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
-          <div className={Style.arrowDivDown} onClick={() => movePage(homepage = false)}>
-            <AiFillCaretDown />
+          <div className={Style.arrowDivDown} style={{width: "60px"}} onClick={() => movePage(homepage = false)}>
+            <CiDumbbell style={{fontSize: "60px"}}/>
           </div>
         </div>
       </div>
