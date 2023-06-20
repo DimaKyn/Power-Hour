@@ -31,6 +31,7 @@
 .workoutSquare {
     border: 2px solid rgba(64, 64, 192, 1);
     border-radius: 5px;
+    box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 1);
     background-color: black;
     min-width: 250px;
     min-height: 150px;
