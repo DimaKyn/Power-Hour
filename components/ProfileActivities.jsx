@@ -128,7 +128,7 @@ export default function ProfileActivities() {
                   fontSize: "30px",
                 }}
               />
-              Custom Workouts
+              My Workouts
             </Link>
           </div>
           <div className={Style.choiceBlock}>

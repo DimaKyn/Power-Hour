@@ -212,7 +212,7 @@ export default function Navbar() {
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
                         <Link onClick={() => handleButtonClick()} href="/BMICalculator" className={Style.hamburgerLinks}>BMI CALCULATOR</Link>
                         <Link onClick={() => handleButtonClick()} href="/profile" className={Style.hamburgerLinks}>MY PROFILE</Link>
-                        <Link onClick={() => handleButtonClick()} href="https://www.myprotein.com/" className={Style.hamburgerLinks}>SHOP (MyProtein.com)</Link>
+                        <Link onClick={() => handleButtonClick()} href="https://www.myprotein.com/" className={Style.hamburgerLinks}>SHOP MyProtein.com</Link>
                     </div>
                 ) : (
                     <div className={Style.hamburgerLinksContainer}>
