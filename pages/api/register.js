@@ -13,6 +13,7 @@ async function errorHandler(err, req, res, next) {
 }
 
 export default async function handler(req, res) {
+  let client;
   try {
     if (req.method === 'POST') {
       const { name, username, email, password, phoneNumber } = req.body;
@@ -72,6 +73,7 @@ export default async function handler(req, res) {
     console.error('Error in /api/register:', error);
     return errorHandler(error, req, res);
   } finally {
-    client.close();
+    if(client)
+      client.close();
   }
 }

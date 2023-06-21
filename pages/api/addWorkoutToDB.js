@@ -2,6 +2,7 @@ import clientPromise from '/lib/mongodb';
 import { getServerSession } from "next-auth/next"
 
 export default async function handler(req, res) {
+    let client;
     if (req.method !== 'POST') {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
@@ -27,6 +28,7 @@ export default async function handler(req, res) {
         client.close();
     }
     finally{
-        client.close();
+        if(client)
+            client.close();
     }
 }

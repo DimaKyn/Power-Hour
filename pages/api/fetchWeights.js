@@ -6,8 +6,9 @@ export default async function handler(req, res) {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
 
+    let client;
+
   try {
-   
     const session = await getSession({ req });
     console.log(session)
     if (!session) {
@@ -25,6 +26,9 @@ export default async function handler(req, res) {
     res.status(500).json({ message: "Error getting progress", error: error.message });
   }
   finally{
-    client.close();
+    if (client) {
+      // Close the client if it exists
+      client.close();
+    }
   }
 }
