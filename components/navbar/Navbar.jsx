@@ -196,12 +196,21 @@ export default function Navbar() {
                     </div>
                     <label style={{ width: "auto" }}>MENU</label>
                     {/* Home icon inside the hamburger menu*/}
-                    <div className={Style.iconContainer}>
-                        <Link onClick={() => handleButtonClick()} href="/profile">
-                            <BsFillPersonFill />
-                        </Link>
+                    {isLoggedIn ? (
+                        <div className={Style.iconContainer}>
+                            <Link onClick={() => handleButtonClick()} href="/profile">
+                                <BsFillPersonFill />
+                            </Link>
 
-                    </div>
+                        </div>
+                    ) : (
+                        <div className={Style.iconContainer}>
+                            <Link onClick={() => handleButtonClick()} href="/login">
+                                <BsFillPersonFill />
+                            </Link>
+
+                        </div>
+                    )}
                 </div>
 
 

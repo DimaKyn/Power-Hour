@@ -128,7 +128,7 @@ function LineChart() {
         <NavigationPanel links={myProgressLinks} />
             <div className={Style.chartContainer}>
                 <div className={Style.innerForGraph}>
-                    <canvas id="myChart"></canvas>
+                  <div Style={{width: "100%"}}><canvas id="myChart"></canvas></div>
                     <button className={ButtonStyle.button} onClick={() => handleWeightInput()}>Add Weight</button>
                     <button className={ButtonStyle.button} onClick={handleRefresh}>Refresh</button>
                 </div>
