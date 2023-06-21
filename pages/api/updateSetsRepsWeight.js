@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth/next"
 
 //This function handles updating a specific workout's exercise's sets, reps, or weight
 export default async function handler(req, res) {
+    let client;
     if (req.method !== 'POST') {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
@@ -29,7 +30,8 @@ export default async function handler(req, res) {
     } catch (error) {
         res.status(500).json({ message: "Error adding workout", error: error.message });
     } finally {
-        client.close();
+        if(client)
+            client.close();
     }
 }
 
