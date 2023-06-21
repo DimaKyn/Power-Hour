@@ -65,18 +65,30 @@ export default async function handler(req, res) {
       console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
 
+      //Disconnect from MongoDB
+      disconnectFromServer(client);
+
       return res.status(201).json({ message: 'User registered successfully' });
     } else {
       res.status(405).json({ message: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Error in /api/register:', error);
+    
+    //Disconnect from MongoDB
+    disconnectFromServer(client);
+
     return errorHandler(error, req, res);
   }
   finally {
-    // Disconnect from MongoDB
-    if (client) {
-      await client.close();
-    }
+    //Disconnect from MongoDB
+    disconnectFromServer(client);
+  }
+}
+
+//Remove the connection from the database
+async function disconnectFromServer(client) {
+  if (client) {
+    await client.close();
   }
 }

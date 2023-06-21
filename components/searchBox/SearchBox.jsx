@@ -108,11 +108,9 @@ export default function SearchBox() {
             for (let i = 0; i < 1; i++) {
                 const response = await fetchWorkoutByAttribute(inputValue, listOfSearchableVariables[i]);
                 if (response) {
-                    console.log(response);
                     for (let j = 0; j < response.length; j++) {
                         setListOfExercises(prevListOfExercises => [...prevListOfExercises ,response[j]]);
                     }
-                    console.log(listOfExercises);
                 }
             }
         }
@@ -132,7 +130,6 @@ export default function SearchBox() {
                     <div className={Style.infoBlock}>
                         <Tooltip title={exercise.name} placement="top">
                             <h1 className={Style.exerciseHeader} style={{ textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
-
                         </Tooltip>
 
                         <div className={Style.textAndIconsWrapper}>

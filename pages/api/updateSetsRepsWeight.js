@@ -30,10 +30,8 @@ export default async function handler(req, res) {
     } catch (error) {
         res.status(500).json({ message: "Error adding workout", error: error.message });
     } finally {
-        // Disconnect from MongoDB
-        if (client) {
-            await client.close();
-        }
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
     }
 }
 
@@ -60,3 +58,10 @@ async function updateInDatabase(typeOfStat, workoutName, exerciseName, workoutsC
     );
     return result;
 }
+
+//Remove the connection from the database
+async function disconnectFromServer(client) {
+    if (client) {
+      await client.close();
+    }
+  }
