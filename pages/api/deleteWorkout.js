@@ -23,6 +23,9 @@ export default async function handler(req, res) {
         const workoutIndex = userObject.workouts.findIndex((workout) => workout.workoutName === workoutName);
         //If the workout was not found in the database
         if (workoutIndex === -1) {
+            // Disconnect from MongoDB
+            disconnectFromServer(client);
+            //Return 404 not found error
             return res.status(404).json({ message: "Workout not found" });
         }
         //If the workout was found in the database
@@ -39,8 +42,13 @@ export default async function handler(req, res) {
     }
     finally {
         // Disconnect from MongoDB
-        if (client) {
-            await client.close();
-        }
+        disconnectFromServer(client);
     }
 }
+
+//Remove the connection from the database
+async function disconnectFromServer(client) {
+    if (client) {
+      await client.close();
+    }
+  }

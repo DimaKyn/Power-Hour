@@ -28,7 +28,7 @@
     top: min(100px, 10vh);
     align-items: center;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
 }
 
 .innerScrollable {
@@ -66,13 +66,26 @@
     width: 100%;
 }
 
+.mainLabelDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-variant: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 .mainLabel {
+    font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90%;
     display: flex;
     text-align: center;
     font-size: 40px;
     font-weight: bold;
-    font-variant: uppercase;
 }
 
 @media(max-width: 780px) {
@@ -107,7 +120,7 @@
     .navPanelLinks {
         font-size: 0.65em;
     }
-    
+
     .navPanelLinkCurrent {
         font-size: 0.65em;
     }
@@ -300,7 +313,7 @@
     font-size: 14px;
 }
 
-.stickyNavBottom{
+.stickyNavBottom {
     position: sticky;
     bottom: 0;
     width: 100%;
@@ -320,9 +333,5 @@
 
 .tooltipHoverTextInformation:hover {
     color: rgb(255, 215, 0);
-    cursor: help;    
+    cursor: help;
 }
-
-
-
-
