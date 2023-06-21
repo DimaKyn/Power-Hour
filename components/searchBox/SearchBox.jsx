@@ -15,6 +15,8 @@ import {
     PopoverTrigger,
 } from "../../components/ui/popover"
 import Tooltip from '@mui/material/Tooltip';
+import Swal from 'sweetalert2';
+
 
 
 
@@ -77,6 +79,16 @@ export default function SearchBox() {
     function saveWorkout(workoutName) {
         if (workoutName === '') {
             alert("Please enter a workout name!");
+            return;
+        }
+        if (addedExercises.length === 0) {
+            Swal.fire({
+                title: 'No exercises added',
+                text: "Add at least one exercise to save a workout",
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonText: 'Okay',
+            });
             return;
         }
         workoutToDB(addedExercises, workoutName);

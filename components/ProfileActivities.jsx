@@ -74,7 +74,7 @@ export default function ProfileActivities() {
         <div className={Style.buttonContainer}>
           <div className={Style.choiceBlock}>
             <h1 style={{ fontSize: "27px", textAlign: "center" }}>
-              Check out a workout
+              Pre-made Workouts
             </h1>
             <span className={Style.span}>
               Choose a plan from a few of our available workouts.
@@ -93,12 +93,11 @@ export default function ProfileActivities() {
           </div>
           <div className={Style.choiceBlock}>
             <h1 style={{ fontSize: "27px", textAlign: "center" }}>
-              Feeling creative?
+              Create A Workout
             </h1>
             <span className={Style.span}>
               Create the perfect routine to suit your style, technique,
               preferences and workout needs. <br />
-              Browse from hundreds of available exercises.
             </span>
             <Link href="./create_custom_workout" className={Style.button}>
               <BsPlusLg
@@ -114,7 +113,7 @@ export default function ProfileActivities() {
           </div>
           <div className={Style.choiceBlock}>
             <h1 style={{ fontSize: "27px", textAlign: "center" }}>
-              Browse custom workouts
+              Saved Workouts
             </h1>
 
             <span className={Style.span}>
@@ -133,7 +132,7 @@ export default function ProfileActivities() {
             </Link>
           </div>
           <div className={Style.choiceBlock}>
-            <h1 style={{ fontSize: "27px", textAlign: "center" }}>For you</h1>
+            <h1 style={{ fontSize: "27px", textAlign: "center" }}>My Progress</h1>
             <span className={Style.span}>
               Track your progress, Keep tabs on what's important.
             </span>
