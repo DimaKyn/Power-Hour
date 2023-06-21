@@ -15,19 +15,23 @@ import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react'
 
 export default function Navbar() {
+    //Variables for the hamburger menu
     const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
     const [hamburgerCloserHidden, setHamburgerCloserHidden] = useState(true);
     const hamburgerMenu = useRef(null);
     const navbar = useRef(null);
     const lowerOpacityHamburgerOpen = useRef(null);
 
+    //Variables for the profile icon menu
     const profileMenu = useRef(null);
     const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
+    //Variables for local user information
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const { data: session, status } = useSession();
 
+    //Hook to set the username in local storage
     useEffect(() => {
         if (status === 'authenticated') {
             setLoggedInUser(session.user);
@@ -35,13 +39,7 @@ export default function Navbar() {
         }
     }, [session, status]);
 
-    useEffect(() => {
-        if (status === 'authenticated') {
-            setLoggedInUser(session.user);
-            localStorage.setItem('username', session.user.username);
-        }
-    }, [session, status]);
-
+    //Hook to set the loggedInUser in local storage
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const user = localStorage.getItem('loggedInUser');
@@ -49,7 +47,7 @@ export default function Navbar() {
         }
     }, []);
 
-
+    //Hook to update isLoggedIn state
     useEffect(() => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
@@ -57,6 +55,7 @@ export default function Navbar() {
         }
     }, []);
 
+    //This function handles a logout, if the user agrees, executes logout
     const handleLogout = async () => {
         // Show the Swal alert
         Swal.fire({
@@ -72,12 +71,14 @@ export default function Navbar() {
                 localStorage.removeItem('loggedInUser');
                 window.localStorage.clear();
                 setLoggedInUser(null);
+                //Sign out of next-auth
                 await signOut();
                 window.location.href = '/';
             }
         });
     };
 
+    //This function makes the hamburger menu close if you click outside the hamburger menu
     const handleLowerOpacityClick = () => {
         if (hamburgerMenuOpen) {
             handleHamburgerClick();
@@ -109,6 +110,7 @@ export default function Navbar() {
         }
     };
 
+    //This function handles the profile icon menu opening and closing
     const handleProfileIconClick = () => {
         if (hamburgerMenuOpen && !profileMenuOpen) {
             handleHamburgerClick();
@@ -120,6 +122,7 @@ export default function Navbar() {
             profileMenu.current.className = `${Style.profileIconMenu} `;
             navbar.current.className = `${Style.wrapper} ${Style.navHalfOpacity}`;
         }
+
         else {
             lowerOpacityHamburgerOpen.current.className = `${Style.lowerOpacityHamburgerOpen} ${Style.lowerOpacityActive}`;
             profileMenu.current.className = `${Style.profileIconMenu} ${Style.activeProfileMenu}`;
@@ -142,18 +145,19 @@ export default function Navbar() {
         <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
             onClick={() => handleLowerOpacityClick()}></div>
         <div ref={navbar} className={Style.wrapper}>
-
+            {/*Navbar*/}
             {!hamburgerMenuOpen && <GiHamburgerMenu className={Style.hamburger} onClick={() => handleHamburgerClick()} />}
             {!hamburgerCloserHidden &&
                 <CgClose className={Style.hamburgerCloser} onClick={() => handleHamburgerClick()} />}
             <div className={Style.rightSide}>
                 <div className={Style.logo}>
-                    <Link onClick={() => handleButtonClick()} style={{ height: "100%", width: "100%", cursor: "pointer", position: "absolute" }} href="/"></Link>
                     <div className={Style.logoContainer}>
-                        <Image style={{ pointerEvents: "none" }}
-                            src="/../public/static/images/pwrhwrlogo.png"
+                        <Link onClick={() => handleButtonClick()} style={{ height: "100%", width: "100%", cursor: "pointer", position: "absolute" }} href="/"></Link>
+                        <Image
+                            style={{ pointerEvents: "none" }}
+                            src="/static/images/pwrhwrlogo.png"
                             alt="PowerHour logo"
-                            fill={true}
+                            fill="responsive"
                             sizes="(max-width: 500px) 100px"
                         />
                     </div>
@@ -185,6 +189,7 @@ export default function Navbar() {
                 )}
             </div>
         </div >
+        {/*Hamburger Menu*/}
         <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
             <div className={Style.hamburgerButtons}>
                 <div className={Style.topIcons}>

@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import Style from '/styles/Stopwatch.module.css';
-import {BsFillPlayFill} from 'react-icons/bs';
 
 export default function StopWatch(){
   const [time, setTime] = useState(0);

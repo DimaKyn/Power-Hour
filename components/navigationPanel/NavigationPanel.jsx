@@ -11,6 +11,7 @@ export default function NavigationPanel(props) {
         //Turn first letter to uppercase
         firstLetter = navigation[0].toUpperCase();
         path = firstLetter + navigation.slice(1);
+        //Special case, if the navigation is saved workouts, then the href changes to custom
         if (navigation === "saved workouts") {
             navigation = "custom";
         }
@@ -21,9 +22,6 @@ export default function NavigationPanel(props) {
         //If the navigation is home, then the href changes to "/"
         else if (navigation === "home") {
             navigationLinks.push(<Link key={index * 2} className={Style.navPanelLinks} href={'/'}>{path}</Link>)
-        }
-        else if (navigation === "saved workouts") {
-
         }
         //Else, add the navigation to the panel
         else {

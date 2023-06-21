@@ -1,3 +1,4 @@
+//These are the links used to navigate between pages
 export const homePanelLinks = ["home"];
 export const aboutPanelLinks = ["home","about"];
 export const workoutsPanelLinks= ["home", "workouts"];

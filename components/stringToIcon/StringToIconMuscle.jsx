@@ -2,6 +2,7 @@ import {GiPull, GiShoulderArmor, GiAbdominalArmor, GiLeg, GiFemaleLegs, GiBiceps
 import {MdOutlineAirlineSeatLegroomExtra} from "react-icons/md";
 import {VscTriangleDown} from "react-icons/vsc";
 
+//This file is used to convert a string to an icon. Used to display the muscle group of an exercise.
 const icons = {
     "abdominals": <GiAbdominalArmor/>,
     "abductors": <GiFemaleLegs/>,
@@ -22,7 +23,7 @@ const icons = {
     "triceps": <GiArm/>,
 }
 
-// This function returns the icon component that matches the string passed to it
+//This function returns the icon component that matches the string passed to it
 export function StringToIconMuscle(wantedIconName) {
     var {exerciseInput} = wantedIconName;
     var muscleWithSpaces = exerciseInput.replace('\_', ' ');

@@ -17,24 +17,24 @@ import {
 import Tooltip from '@mui/material/Tooltip';
 import Swal from 'sweetalert2';
 
-
-
-
-//TODO: implement save by username
+//This function adds a workout to the database
 async function workoutToDB(addedExercises, workoutName) {
     var workout = {
         workoutName: workoutName,
         exercises: []
     };
+    //For every exercise chosen, add it to the current workout
     addedExercises.forEach((exercise) => {
-        const exerciseInfo = {
+
+        workout.exercises.push({
             name: exercise.name,
-            sets: exercise.sets,
-            reps: exercise.reps,
+            sets: "3",
+            reps: "10",
             info: exercise.instructions,
-        };
-        workout.exercises.push({ exerciseInfo });
+            weight: "0",
+        });
     })
+    //Send the workout to the database
     try {
         let response = await fetch('/api/addWorkoutToDB', {
             method: 'POST',
@@ -68,21 +68,25 @@ async function workoutToDB(addedExercises, workoutName) {
 }
 
 
-//Fetch a list of (maximum 10) workouts from the ninja API based on the attribute of the workout
+//Fetch a list of workouts from the ninja API based on the attribute of the workout
 function fetchWorkoutByAttribute(inputValue, attribute) {
+    //Fetch url is of the form "https://api.api-ninjas.com/v1/exercises? + "muscle=" + "chest" for example
     console.log(api_url + attribute + inputValue);
     return fetch(api_url + attribute + inputValue, {
         headers: {
             'X-Api-Key': "oh+RWDOk74XjoYD3nBn99A==COJtYSEfL5CGiH65"
         }
     }).then(response => response.json()).then(data => {
+        //If the fetch is successful, return the exercises
         return data;
     }).catch(error => {
+        //If the fetch is unsuccessful, return null
         console.log(error);
         return null;
     });
 }
 
+//This is the url for the ninja api
 const api_url = "https://api.api-ninjas.com/v1/exercises?";
 const listOfSearchableVariables = ["name=", "type=", "muscle=", "difficulty="];
 
@@ -92,11 +96,20 @@ export default function SearchBox() {
     const [addedExercises, setAddedExercises] = useState([]);
     const [workoutName, setWorkoutName] = useState('');
 
+    //This function handles saving the workout to the database
     function saveWorkout(workoutName) {
+        //Displays alert if no workout name has been entered
         if (workoutName === '') {
-            alert("Please enter a workout name!");
+            Swal.fire({
+                title: 'No workout name entered',
+                text: "Enter a workout name to save a workout",
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonText: 'Okay',
+            });
             return;
         }
+        //Displays alert if no exercises have been added
         if (addedExercises.length === 0) {
             Swal.fire({
                 title: 'No exercises added',
@@ -107,6 +120,7 @@ export default function SearchBox() {
             });
             return;
         }
+        //Handles saving the workout to the database
         workoutToDB(addedExercises, workoutName);
     }
 
@@ -125,7 +139,7 @@ export default function SearchBox() {
                 const response = await fetchWorkoutByAttribute(inputValue, listOfSearchableVariables[i]);
                 if (response) {
                     for (let j = 0; j < response.length; j++) {
-                        setListOfExercises(prevListOfExercises => [...prevListOfExercises ,response[j]]);
+                        setListOfExercises(prevListOfExercises => [...prevListOfExercises, response[j]]);
                     }
                 }
             }
@@ -138,11 +152,10 @@ export default function SearchBox() {
             return addExerciseToBottomDiv(exercise, index);
         }
 
-        //This function adds an exercise to the search results
+        //This function creates an exercise and adds it to the search results
         function exerciseBlock(exercise, index) {
-            return <>
-                <div className={Style.exercise} key={index}>
-
+            return <div key={index}>
+                <div className={Style.exercise} >
                     <div className={Style.infoBlock}>
                         <Tooltip title={exercise.name} placement="top">
                             <h1 className={Style.exerciseHeader} style={{ textTransform: "uppercase", fontWeight: "bold" }}>{exercise.name}</h1>
@@ -167,10 +180,7 @@ export default function SearchBox() {
                                 </div>
                             </Tooltip>
                         </div>
-
                         <div className={Style.repetitionsSetsAdd}>
-
-
                         </div>
                         <div className={Style.exerciseIcons}>
                             <Popover className={Style.popoverParent}>
@@ -188,11 +198,9 @@ export default function SearchBox() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </>
+            </div>
         }
-
 
         return <>
             <div className={Style.searchBoxInner}>
@@ -208,13 +216,10 @@ export default function SearchBox() {
                 </div>
             </div>
             <div className={Style.fixedNavBottom}></div>
-
             <div className={Style.divider}>
                 <VscArrowSwap style={{ margin: "20px", color: "rgba(80, 80, 250, 1)" }} className={Style.arrows} />
             </div>
-
             <div className={Style.chosenExercises}>
-
                 <div className={Style.block}>
                     <div className={Style.pencilAndInputDiv}>
                         <BsPencilSquare className={Style.magnifyingGlass} />
@@ -224,9 +229,7 @@ export default function SearchBox() {
                             className={Style.inputWorkoutName}>
                         </input>
                         <label className={Style.blockLabel}>Workout Name</label>
-
                     </div>
-
                     <button onClick={() => saveWorkout(workoutName)} className={Style.saveWorkoutButton}>Save</button>
                 </div>
                 <div className={Style.chosenExercisesInner}>
@@ -234,13 +237,11 @@ export default function SearchBox() {
                         return addExerciseToBottomDiv(exercise, index);
                     })}
                 </div>
-
             </div>
-
         </>
     }
 
-    //This function adds an exercise to the bottom div
+    //This function adds an exercise to the bottom/right div
     function addExerciseToBottomDiv(exercise, index) {
         return <div className={Style.exerciseAdded} key={index}>
             <div className={Style.infoBlockAdded}>
@@ -279,20 +280,14 @@ export default function SearchBox() {
                             <MdDeleteForever className={Style.trashIcon} />
                             <button key={index} onClick={() => { remove(exercise, addedExercises); }} className={Style.removeButton}></button>
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
-
         </div>
     }
 
-    //This function removes an exercise from the search box and adds it to the bottom div
+    //This function removes an exercise from the search box and adds it to the bottom/right div
     function remove(exercise, arrayToRemoveFrom) {
-        console.log("Trying to remove " + exercise.name);
-        console.log(arrayToRemoveFrom);
         setAddedExercises(addedExercises.filter((item) => item !== exercise));
         setListOfExercises([...listOfExercises, exercise]);
     }
