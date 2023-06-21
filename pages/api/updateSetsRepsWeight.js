@@ -25,13 +25,15 @@ export default async function handler(req, res) {
         //Access database and update the exercise information
 
         const result = updateInDatabase(typeOfWorkout, workoutName, exerciseName, workoutsCollection);
-            res.status(200).json({ message: "Workout added successfully", insertedId: result.insertedId })
+        res.status(200).json({ message: "Workout added successfully", insertedId: result.insertedId })
 
     } catch (error) {
         res.status(500).json({ message: "Error adding workout", error: error.message });
     } finally {
-        if(client)
-            client.close();
+        // Disconnect from MongoDB
+        if (client) {
+            await client.close();
+        }
     }
 }
 

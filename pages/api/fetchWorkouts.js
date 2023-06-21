@@ -26,9 +26,9 @@ export default async function handler(req, res) {
       .status(500)
       .json({ message: "Error getting workouts", error: error.message });
   } finally {
+    // Disconnect from MongoDB
     if (client) {
-      // Close the client if it exists
-      client.close();
+      await client.close();
     }
   }
 }

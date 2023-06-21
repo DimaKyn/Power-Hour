@@ -27,8 +27,10 @@ export default async function handler(req, res) {
     } catch (error) {
         res.status(500).json({ message: "Error adding progress", error: error.message });
     }
-    finally{
-        if(client)
-            client.close();
+    finally {
+        // Disconnect from MongoDB
+        if (client) {
+            await client.close();
+        }
     }
 }
