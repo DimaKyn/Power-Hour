@@ -14,8 +14,6 @@ import { signOut } from 'next-auth/react'
 import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react'
 
-//TODO: When hamburger open and you click on a link, the hamburger menu should close
-//TODO: When hamburger open and you click on screen, the hamburger menu should close
 export default function Navbar() {
     const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
     const [hamburgerCloserHidden, setHamburgerCloserHidden] = useState(true);
@@ -169,21 +167,21 @@ export default function Navbar() {
         {/*Profile Icon Menu*/}
         <div ref={profileMenu} className={Style.profileIconMenu} >
 
-            <div>
 
+            <div className={Style.profileIconButtonContainer}>
                 {loggedInUser ? (
-                    <div div className={Style.profileIconButtonContainer}>
-                        <div style={{fontSize: "15px", fontWeight: "bold", paddingBottom: "5px", marginTop: "-10px"}}>
+                    <>
+                        <div style={{ fontSize: "15px", fontWeight: "bold", paddingBottom: "5px", marginTop: "-10px" }}>
                             {loggedInUser.name}
                         </div>
                         <Link onClick={() => handleButtonClick()} href="/profile" className={Style.profileIconButton}>MY PROFILE</Link>
                         <button onClick={handleLogout} className={Style.logoutButton} style={{ marginTop: "10px" }}>LOGOUT</button>
-                    </div>
+                    </>
                 ) : (
-                    <div className={Style.profileIconButtonContainer}>
+                    <>
                         <Link onClick={() => handleButtonClick()} href="/login" className={Style.profileIconButton}>LOGIN</Link>
                         <Link onClick={() => handleButtonClick()} href="/register" className={Style.profileIconButton} style={{ marginTop: "10px" }}>REGISTER</Link>
-                    </div>
+                    </>
                 )}
             </div>
         </div >

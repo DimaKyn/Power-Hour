@@ -109,7 +109,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(56, 149, 255, 0.3); 
+  background: rgba(0, 0, 0, 0.5); 
 
 }
 
@@ -118,7 +118,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(64, 64, 192, 1); 
+  background: rgb(82, 82, 236); 
 }
 
 input[type=number]::-webkit-inner-spin-button {

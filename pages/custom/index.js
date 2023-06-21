@@ -89,7 +89,7 @@ export default function Custom() {
                             </tr>
                         </thead>
                         <tbody>
-                            {(uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><div style={{display: "flex", justifyContent: "center", alignItems: "center"}}><ImSpinner6 className={TableStyle.loadingIcon}/></div></td></tr>}
+                            {(uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><ImSpinner6 className={TableStyle.loadingIcon} /></div></td></tr>}
 
                             {uniqueWorkouts.map((workoutName) => {
                                 const workout = workouts.workoutsArray.find((w) => w.workoutName === workoutName);
@@ -97,10 +97,12 @@ export default function Custom() {
                                     <tr key={workout.workoutName} >
                                         <td>
                                             <div className={TableStyle.tr}>
-                                                <button className={TableStyle.workoutButton} onClick={() => handleWorkoutClick(workout.workoutName, workout.exercises)}>
-                                                    {workout.workoutName}
-                                                </button>
-                                                <div className={TableStyle.workoutDeleteButton} onClick={() => deleteWorkout(workout.workoutName)}><BsTrash3 /></div>                                                </div>
+                                                <div className={TableStyle.workoutButton} onClick={() => handleWorkoutClick(workout.workoutName, workout.exercises)} >
+                                                    <h1 className={TableStyle.workoutButtonText}>{workout.workoutName}</h1>
+                                                </div>
+                                                <div className={TableStyle.workoutDeleteButton} onClick={() => deleteWorkout(workout.workoutName)}><BsTrash3 /></div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 );

@@ -28,6 +28,16 @@ export default async function handler(req, res) {
         res.status(200).json({ message: "User progress added successfully", insertedId: result.insertedId });
     } catch (error) {
         res.status(500).json({ message: "Error adding progress", error: error.message });
+    } finally {
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
     }
 }
+
+//Remove the connection from the database
+async function disconnectFromServer(client) {
+    if (client) {
+      await client.close();
+    }
+  }
 

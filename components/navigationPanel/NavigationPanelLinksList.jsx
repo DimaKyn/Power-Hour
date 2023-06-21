@@ -7,6 +7,6 @@ export const customWorkoutsPanelLinks = ["home", "profile" ,"saved workouts"];
 export const customWorkoutPanelLinks = ["home", "profile" , "saved workouts", "custom workout"];
 export const createCustomWorkoutPanelLinks = ["home", "profile" , "create custom Workout"];
 export const BMICalculatorLinks = ["home", "BMI Calculator"];
-export const PreMadeWorkoutsLinks = ["home", "Pre-made Workouts"];
+export const PreMadeWorkoutsLinks = ["home", "profile", "Pre-made Workouts"];
 export const myProgressLinks = ["home", "my progress"];
 export const LoginLinks = ["home", "login"];
