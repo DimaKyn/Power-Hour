@@ -23,6 +23,9 @@ export default function NavigationPanel(props) {
         else if (navigation === "home") {
             navigationLinks.push(<Link key={index * 2} className={Style.navPanelLinks} href={'/'}>{path}</Link>)
         }
+        else if (navigation === "saved workouts") {
+
+        }
         //Else, add the navigation to the panel
         else {
             navigationLinks.push(<Link key={index * 2} className={Style.navPanelLinks} href={`/${navigation}`}>{path}</Link>)
