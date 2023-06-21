@@ -1,43 +1,112 @@
 .workoutsTableContainer {
-    overflow-y: auto;
-    max-height: 700px;
-    width: 600px;
+  overflow-y: auto;
+  max-height: 700px;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
 }
+
 .workoutsTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .workoutsTable th,
-  .workoutsTable td {
-    padding: 10px;
-    border: 3px solid rgba(64, 64, 192, 1);
-    position: sticky;
-    top: 0;
-  }
-  
-  .workoutsTable th {
-    background-color: rgba(64, 64, 192, 1);
-    font-weight: bold;
-    text-align: center;
-    font-size: 25px;
-  }
+  border: 3px solid rgb(0, 0, 0);
+  outline: 2px solid rgb(103, 103, 243);
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  .workoutsTable tr:hover {
-    background-color: rgb(103, 103, 243); /* Adjust the background color as needed */
-  }
+.workoutsTable th,
+.workoutsTable td {
+  border: 3px solid rgb(22, 22, 22);
+  position: sticky;
+  top: 0;
+}
 
-  .workoutsTable th:nth-child(1) {
-    z-index: 1;
-  }
-  
-  .workoutsTable tbody {
-    background-color: rgb(132, 132, 245);
-    text-align: center;
-    font-size: 20px;
-  }
+.workoutsTable th {
+  background-color: rgb(22, 22, 22);
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+}
 
-  .workoutsTable td button {
-    display: block;
-    width: 100%;
+.workoutsTable tr:hover {
+  background-color: rgb(203, 203, 247);
+  /* Adjust the background color as needed */
+}
+
+.workoutsTable th:nth-child(1) {
+  z-index: 1;
+}
+
+.workoutsTable tbody {
+  background-color: rgb(132, 132, 245);
+  text-align: center;
+  font-size: 20px;
+}
+
+.workoutsTable td button {
+  display: block;
+  width: 100%;
+}
+
+.workoutButton {
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid black;
+  height: 50px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  background-color: rgb(42, 42, 173);
+  padding-left: 10px;
+}
+
+.workoutButton:hover {
+  background-color: rgb(103, 103, 243);
+}
+
+.tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workoutDeleteButton {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 4px;
+  height: 45px;
+  width: 45px;
+  background-color: rgb(42, 42, 173);
+  border: 1px solid black;
+  color: white;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.workoutDeleteButton:hover {
+  background-color: rgb(218, 42, 42);
+}
+
+.loadingIcon {
+  top: 50%;
+  left: 50%;
+  animation: spin 1s linear 0s infinite normal none running;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+

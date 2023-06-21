@@ -6,11 +6,6 @@ import { useState, useEffect } from 'react';
 import Typed from 'typed.js';
 import { CiDumbbell } from 'react-icons/ci';
 
-
-
-
-
-
 export default function Home() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);

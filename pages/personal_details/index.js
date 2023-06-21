@@ -3,7 +3,6 @@ import Chart from "chart.js";
 import Style from "/styles/PageStandard.module.css";
 import ButtonStyle from "/styles/ProfileActivities.module.css";
 import Swal from "sweetalert2";
-import ChartStyle from "styles/chart.module.css";
 import NavigationPanel from "/components/navigationPanel/NavigationPanel";
 import { myProgressLinks } from "/components/navigationPanel/NavigationPanelLinksList";
 
@@ -89,7 +88,13 @@ function LineChart() {
   }
 
   const createChart = () => {
-    const ctx = document.getElementById("myChart").getContext("2d");
+
+    //Changed to fit the screen
+    let ctx = document.getElementById("myChart");
+    ctx.height= 500;
+    ctx.width= 280;
+    ctx = ctx.getContext("2d");
+
 
     const labels = Array.from(
       { length: weightData.length },
@@ -111,8 +116,8 @@ function LineChart() {
         ],
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
+        responsive: false,
+        maintainAspectRatio: true,
         scales: {
           y: {
             beginAtZero: true,
@@ -138,8 +143,9 @@ function LineChart() {
   return (
     <>
       <NavigationPanel links={myProgressLinks} />
-        <div className={Style.inner}>
-          <canvas id="myChart"></canvas>
+      <div className={Style.inner}>
+        <div>
+          <canvas id="myChart" ></canvas>
           <button className={ButtonStyle.button} onClick={handleWeightInput}>
             Add Weight
           </button>
@@ -147,6 +153,8 @@ function LineChart() {
             Refresh
           </button>
         </div>
+
+      </div>
     </>
   );
 }

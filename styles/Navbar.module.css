@@ -18,6 +18,7 @@
 }
 
 .logoContainer {
+    position: relative;
     height: 46px;
     width: 243px;
 }

@@ -1,12 +1,12 @@
 import clientPromise from '/lib/mongodb';
 import { getSession } from 'next-auth/react';
 
-export default async function handler(req, res) { 
-    if (req.method !== 'GET') {
-        return res.status(405).json({ msg: 'Method not allowed' });
-    }
+export default async function handler(req, res) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ msg: 'Method not allowed' });
+  }
 
-    let client;
+  let client;
 
   try {
     const session = await getSession({ req });
@@ -19,16 +19,16 @@ export default async function handler(req, res) {
     const client = await clientPromise;
     const db = client.db("powerhourdb");
     const workoutsCollection = db.collection("UserProgress");
-    const cursor = await workoutsCollection.find({ email: session.user.email});
+    const cursor = await workoutsCollection.find({ email: session.user.email });
     const result = await cursor.toArray();
     res.status(200).json(result[0]);
   } catch (error) {
     res.status(500).json({ message: "Error getting progress", error: error.message });
   }
-  finally{
+  finally {
+    // Disconnect from MongoDB
     if (client) {
-      // Close the client if it exists
-      client.close();
+      await client.close();
     }
   }
 }

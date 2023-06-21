@@ -1,27 +1,96 @@
+.searchResults {
+    position: relative;
+    height: calc(100% - 70px);
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .searchBoxInner {
     border: 2px solid rgba(80, 80, 250, 1);
     background-color: rgb(22, 22, 22);
     width: 100%;
-    height: 60vh;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin: 30px;
+    margin: 10px;
+}
+
+.chosenExercises {
+    border: 2px solid rgba(80, 80, 250, 1);
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 60%;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    margin: 10px;
+    overflow: hidden;
+
 }
 
 .chosenExercisesInner {
-    border: 2px solid rgba(80, 80, 250, 1);
     background-color: rgb(22, 22, 22);
-    width: 100%;
-    height: 60vh;
+    position: relative;
+    height: 530px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    position: relative;
-    margin: 30px;
+    flex-wrap: wrap;
+    overflow: auto;
+    z-index: 2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+
+}
+
+
+@media(max-width: 760px) {
+    .chosenExercisesInner {
+        height: 330px;
+        width: 100%;
+    }
+
+    .searchResults {
+        height: 380px;
+        width: 100%;
+    }
+
+    .searchBoxInner {
+        height: 380px;
+    }
+}
+
+@media(max-height: 810px) {
+    .chosenExercisesInner {
+        height: 330px;
+        width: 100%;
+    }
+
+    .searchBoxInner {
+        height: 403px;
+    }
+
+    .searchResults {
+        height: 380px;
+        width: 100%;
+    }
 }
 
 .inputDiv {
@@ -32,7 +101,6 @@
     height: 70px;
     top: 0;
     left: 0;
-    display: flex;
 }
 
 .inputDiv:focus {
@@ -45,7 +113,7 @@
     color: white;
     width: 100%;
     height: 100%;
-    font-size: 25px;
+    font-size: 23px;
     padding-left: 50px;
     position: absolute;
     box-sizing: border-box;
@@ -68,38 +136,9 @@
     z-index: 1;
 }
 
-.searchResults {
-    position: relative;
-    height: calc(100% - 70px);
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 2;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.chosenExercises {
-    border: 2px solid rgba(80, 80, 250, 1);
-    background-color: rgb(0, 0, 0);
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    margin: 30px;
-}
-
 .divider {
-    height: 100%;
-    width: max(100px, 10%);
+    height: 40px;
+    width: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,19 +206,20 @@
     min-width: 250px;
     width: 300px;
     max-height: 300px;
-    height: 210px;
+    height: 140px;
     box-shadow: 4px 4px 5px 1px rgb(0, 0, 0);
 }
 
 .exerciseAdded {
     border: 1px solid rgba(80, 80, 250, 1);
     border-radius: 3px;
-    height: auto;
-    width: 250px;
+    height: 100px;
+    width: 280px;
     margin: 10px;
     padding-left: 10px;
     padding-right: 10px;
     background-color: rgb(0, 0, 0);
+    box-shadow: 4px 4px 5px 1px rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -187,6 +227,20 @@
     position: relative;
     min-width: 200px;
     max-width: 300px;
+}
+
+@media(max-width: 320px) {
+    .exerciseAdded {
+        width: 255px;
+    }
+
+    .exerciseHeader {
+        font-size: 10px;
+    }
+
+    .exerciseHeaderAdded {
+        font-size: 10px;
+    }
 }
 
 .informationCircle {
@@ -244,7 +298,6 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: auto;
 }
 
 .infoBlockAdded {
@@ -253,7 +306,6 @@
     justify-content: center;
     width: auto;
     height: auto;
-    padding: 10px;
     flex-wrap: wrap;
 }
 
@@ -276,7 +328,7 @@
     font-size: 50px;
     height: auto;
     width: auto;
-    padding: 15px;
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -286,9 +338,8 @@
 .repetitionsSetsAdd {
     display: flex;
     flex-direction: row;
-    bottom: 0;
-    left: 0;
-    width: 90%;
+    width: 100%;
+    margin-top: 5px;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -302,7 +353,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .setsRepsLabelAdded {
@@ -316,8 +367,8 @@
 
 .addButton {
     height: 40px;
-    width: 50px;
-    border-radius: 3px;
+    width: 40px;
+    border-radius: 5px;
     outline: 1px solid rgba(0, 255, 76, 0.2);
     border: 2px solid black;
     background-color: rgba(80, 80, 250, 1);
@@ -330,6 +381,10 @@
     bottom: 0;
     right: 0%;
     font-size: 15px;
+}
+
+.addButton:hover {
+    background-color: rgba(0, 255, 76, 0.664);
 }
 
 .removeButton {
@@ -350,6 +405,10 @@
     font-size: 20px;
 }
 
+.removeButton:hover {
+    background-color: rgba(255, 0, 0, 0.664);
+}
+
 .buttonDiv {
     position: relative;
     display: flex;
@@ -362,7 +421,8 @@
 .plusIcon {
     position: absolute;
     color: black;
-    font-size: 25px;;
+    font-size: 25px;
+    ;
     pointer-events: none;
 }
 
@@ -390,32 +450,42 @@
 
 .arrows {
     color: white;
-    font-size: 30px;
+    font-size: 35px;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 750px) {
     .arrows {
         transform: rotate(90deg);
     }
+}
 
+@media(max-width: 600px) {
     .textForIconH2 {
         font-size: 14px;
-        width: 100%;    
+        width: 100%;
     }
 }
 
 .exerciseHeader {
     line-height: 1.5em;
+    font-size: 20px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 100%;
-    padding: 10px;
 }
 
-.exerciseHeader:hover {
-    cursor: help;
+.exerciseHeaderAdded {
+    line-height: 1.5em;
+    font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
 
+.exerciseHeaderAdded:hover {
+    cursor: help;
 }
 
 .tooltip {
@@ -434,6 +504,8 @@
     margin-right: 20px;
 }
 
+
+
 .tooltipIcons:hover {
     background-color: rgba(80, 80, 250, 0.5);
     cursor: pointer;
@@ -447,69 +519,119 @@
     width: 100%;
 }
 
+/* This is the part for naming the workout */
+.block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 70px;
+    width: 100%;
+    border-bottom: 3px solid gray;
+    overflow: hidden;
+}
+
+.block label {
+    position: absolute;
+    transition: 0.5s ease all;
+    left: 55px;
+    font-size: 18px;
+}
+
+.block input:focus+label,
+.block input:valid+label {
+    content: "";
+    color: rgba(80, 80, 250, 1);
+    background: transparent;
+    transform: translateX(-5px) translateY(-22px);
+    font-size: 0.8em;
+}
+
+.blockLabel {
+    pointer-events: none;
+    left: 20%;
+    position: absolute;
+    font-size: 22px;
+    color: gray;
+    margin-right: 10px;
+}
+
+.inputWorkoutName {
+    padding-left: 20px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 200px;
+    left: 0;
+    background-color: transparent;
+    border-bottom: 2px solid gray;
+    font-size: 18px;
+    transition: border-color 0.5s;
+    transition: border-radius 0.3s;
+    position: relative;
+}
+
+.inputWorkoutName:focus {
+    border-color: rgba(80, 80, 250, 1);
+    border-bottom-width: 3px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.pencilAndInputDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+@media(max-width:340px) {
+    .inputWorkoutName {
+        width: 100px;
+    }
+
+    .block label {
+        font-size: 12px;
+        transform: translateY(-5px);
+    }
+
+    .saveWorkoutButton {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/*This section is for the chosen workout buttons*/
 .saveAndClearButtons {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: auto;
 }
 
-
-/* This is the part for naming the workout */
-.block {
+.saveWorkoutButton {
+    height: 40px;
+    border-radius: 3px;
+    outline: 1px solid rgba(80, 80, 250, 1);
+    border: 2px solid black;
+    background-color: rgba(80, 80, 250, 1);
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: relative;
-    height: 92px;
-    width: 100%;
-    border-bottom: 3px solid white;
-  }
-  
-  .block label {
-    position: absolute;
-    transition: 0.5s ease all;
-    left: 10px;
-    font-size: 20px;
-  }
-  
-  .block input:focus + label,
-  .block input:valid + label {
-    content: "";
-    color: rgba(80, 80, 250, 1);
-    background: transparent;
-    transform: translateX(-5px) translateY(-20px);
-    font-size: 0.8em;
-  }
+    padding: 10px;
+    margin: 10px;
+}
 
-  .blockLabel {
-    pointer-events: none;
-    left: 20%;
-    position: absolute;
-    font-size: 20px;
-    color: gray;
-    margin-right: 10px;
-    color: rgba(80, 80, 250, 1);
-    z-index: 7;
-  }
+.saveWorkoutButton:hover {
+    cursor: pointer;
+    background-color: rgba(80, 80, 250, 0.5);
+}
 
-  .inputWorkoutName {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 10px;
-    height: 50px;
-    width: 70%;
-    background-color: transparent;
-    border-bottom: 2px solid white;
-    font-size: 18px;
-    transition: border-color 0.5s;
-    transition: border-radius 0.3s;
-  }
-  
-  .inputWorkoutName:focus {
-    border-color: rgba(80, 80, 250, 1);
-    border-bottom-width: 3px;
-    border-radius: 5px;
-    outline: none;
-  }
+@media (max-width: 960px) {
+    .saveWorkoutButton {
+        content: "Save";
+    }
+}
