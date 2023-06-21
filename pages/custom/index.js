@@ -40,6 +40,9 @@ export default function Custom() {
           params: { workout: workoutName, exercise: JSON.stringify(exercises) },
         });
       };
+
+    const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
+
     return (
         <>
         <NavigationPanel links={customWorkoutsPanelLinks}/>
@@ -53,8 +56,9 @@ export default function Custom() {
                         </tr>
                     </thead>
                     <tbody>
-                        {Array.isArray(workouts.workoutsArray) &&
-                            workouts.workoutsArray.map((workout) => (
+                    {uniqueWorkouts.map((workoutName) => {
+                            const workout = workouts.workoutsArray.find((w) => w.workoutName === workoutName);
+                            return (
                                 <tr key={workout.workoutName}>
                                     <td>
                                         <button onClick={() => handleWorkoutClick(workout.workoutName, workout.exercises)}>
@@ -62,7 +66,8 @@ export default function Custom() {
                                         </button>
                                     </td>
                                 </tr>
-                            ))}
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>
