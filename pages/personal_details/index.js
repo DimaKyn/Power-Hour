@@ -122,6 +122,7 @@ function LineChart() {
             window.location.reload(); // Refresh the page
           }
 
+
     return (
         <>
         <NavigationPanel links={myProgressLinks} />
