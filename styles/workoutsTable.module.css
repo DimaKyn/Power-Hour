@@ -65,18 +65,11 @@
   background-color: rgb(42, 42, 173);
   padding-left: 10px;
   overflow: hidden;
+  cursor: pointer;
+
 }
 
-.workoutButtonTextDiv {
-  font-size: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .workoutButtonText {
   font-size: 20px;
@@ -84,6 +77,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 90%;
+  cursor: pointer;
 }
 
 .workoutButton:hover {
