@@ -1,15 +1,19 @@
 import bcrypt from 'bcrypt';
+import { getServerSession } from "next-auth/next";
 import clientPromise from '../../lib/mongodb';
 
 export default async function handler(req, res) {
 
+    if (req.method !== 'POST') {
+        return res.status(405).json({ msg: 'Method not allowed' });
+    }
+
     let client;
-    const workoutName = req.body.workoutName;
 
     try {
         //STUCK HERE
-        const session = await getSession({ req });
-
+        const session = await getServerSession(req, res);
+        console.log(session);
         if (!session) {
             // Handle unauthorized access
             return res.status(401).json({ message: "Unauthorized" });
@@ -18,24 +22,22 @@ export default async function handler(req, res) {
         const client = await clientPromise;
         const db = client.db("powerhourdb");
         const workoutsCollection = db.collection("UserCustomWorkouts");
-        //This will find the user object with the matching email
-        const userObject = await workoutsCollection.findOne({ email: session.user.email });
-        const workoutIndex = userObject.workouts.findIndex((workout) => workout.workoutName === workoutName);
-        //If the workout was not found in the database
-        if (workoutIndex === -1) {
-            // Disconnect from MongoDB
-            disconnectFromServer(client);
-            //Return 404 not found error
+
+        const email = session.user.email;
+        const workoutName = req.body.workoutName;
+
+        const result = await workoutsCollection.updateOne(
+            { email: email},
+            { $pull: { workoutsArray: { workoutName: workoutName } } }
+        );
+
+        // Check if any documents were matched and modified
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: "Email not found" });
+        } else if (result.modifiedCount === 0) {
             return res.status(404).json({ message: "Workout not found" });
         }
-        //If the workout was found in the database
-        else {
-            //Splice() removes an object from an array
-            userObject.workouts.splice(workoutIndex, 1);
 
-            // Update the document in the MongoDB collection
-            await workoutsCollection.updateOne({ email: session.user.email }, { $set: { workout: userDocument.workout } });
-        }
         res.status(200).json({ message: "Workout deleted" });
     } catch (error) {
         res.status(500).json({ message: "Error deleting workout" });
@@ -49,6 +51,7 @@ export default async function handler(req, res) {
 //Remove the connection from the database
 async function disconnectFromServer(client) {
     if (client) {
-      await client.close();
+        await client.close();
+        console.log("Disconnected from server");
     }
-  }
+}

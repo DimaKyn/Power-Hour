@@ -2,13 +2,13 @@ import clientPromise from '/lib/mongodb';
 import { getServerSession } from "next-auth/next"
 
 export default async function handler(req, res) {
-    console.log("Again");
     let client;
     if (req.method !== 'POST') {
         return res.status(405).json({ msg: 'Method not allowed' });
     }
 
     try {
+        console.log(req.body);
 
         const session = await getServerSession(req, res)
         const workout = req.body;
@@ -20,6 +20,8 @@ export default async function handler(req, res) {
             { $push: { workoutsArray: workout } },
             { returnOriginal: false, upsert: true }
         );
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
         res.status(200).json({ message: "Workout added successfully", insertedId: result.insertedId })
     } catch (error) {
         res.status(500).json({ message: "Error adding workout", error: error.message });
@@ -33,5 +35,6 @@ export default async function handler(req, res) {
 async function disconnectFromServer(client) {
     if (client) {
         await client.close();
+        console.log("Disconnected from server");
     }
 }

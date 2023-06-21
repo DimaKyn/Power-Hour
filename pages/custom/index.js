@@ -9,6 +9,7 @@ import { BsTrash3 } from 'react-icons/bs';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { ImSpinner6 } from 'react-icons/im';
+import { useRef } from 'react';
 
 async function fetchWorkouts() {
     try {
@@ -25,14 +26,23 @@ async function fetchWorkouts() {
 async function deleteWorkoutFromDB(workoutName) {
     try {
         const response = await fetch('/api/deleteWorkout', {
-            method: 'DELETE',
-            body: JSON.stringify({ workoutName }),
+            method: 'POST',
+            body: JSON.stringify({ workoutName: workoutName}),
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         const data = await response.json();
-        return data;
+        if (data.message === "Workout deleted") {
+            Swal.fire({
+                title: 'Success!',
+                text: `Workout ${workoutName} has been deleted`,
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            }).then(() => {
+                
+            });
+        }
     } catch (error) {
         console.log(error);
     }
@@ -40,7 +50,6 @@ async function deleteWorkoutFromDB(workoutName) {
 
 export default function Custom() {
     const [workouts, setWorkouts] = useState([]);
-
     const router = useRouter();
 
     useEffect(() => {
@@ -63,6 +72,8 @@ export default function Custom() {
         });
     }
 
+    const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
+    
     const handleWorkoutClick = (workoutName, exercises) => {
         localStorage.removeItem('exercises');
         localStorage.removeItem('workout');
@@ -74,7 +85,9 @@ export default function Custom() {
         });
     };
 
-    const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
+    function test(workout, workouts) {
+        console.log(workout);
+    }
 
     return (
         <>
@@ -93,6 +106,7 @@ export default function Custom() {
 
                             {uniqueWorkouts.map((workoutName) => {
                                 const workout = workouts.workoutsArray.find((w) => w.workoutName === workoutName);
+                                {test(workout, workouts)}
                                 return (
                                     <tr key={workout.workoutName} >
                                         <td>
@@ -107,7 +121,8 @@ export default function Custom() {
                                     </tr>
                                 );
                             })}
-                            {!(uniqueWorkouts.length === 0) && (
+                            {(uniqueWorkouts === 0) && <tr style={{ textAlign: "center" }}><td><h1 style={{ color: "white" }}>No workouts yet</h1></td></tr>}
+                            {uniqueWorkouts && (
                                 <tr>
                                     <td style={{ alignItems: "center", display: "flex", justifyContent: "center" }}>
                                         <Link className={TableStyle.workoutButton} style={{ fontSize: "50px", fontWeight: "bold", display: "flex", justifyContent: "center", alignItems: "center" }} href="./create_custom_workout"><AiOutlinePlus /></Link>

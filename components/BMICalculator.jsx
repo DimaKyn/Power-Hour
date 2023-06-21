@@ -8,7 +8,8 @@ import { TbWeight } from 'react-icons/tb';
 import { useRef } from 'react';
 import BMIInfo from '/data/bmi_information.json';
 
-
+//This function handles the BMI calculator, it fetches information from a 
+//JSON file from data/bmi_information.json and displays it to the user
 export default function BMICalculator() {
     const [heightNumber, setHeightNumber] = useState("");
     const [weightNumber, setWeightNumber] = useState("");
@@ -16,8 +17,8 @@ export default function BMICalculator() {
     const [weight, setWeight] = useState("Weight (kg)");
     const [bmi, setBMI] = useState(0);
     const [metric, setMetric] = useState(true);
-    const metricRef = useRef(null);
 
+    //Returns the index corresponding to the BMI score
     function mapIndexToBMIscore(bmi) {
         if (bmi <= 0) { return 0; }
         else if (bmi < 16) { return 1; }
@@ -28,6 +29,7 @@ export default function BMICalculator() {
         else { return 6; }
     }
 
+    //Returns the color corresponding to the BMI score
     function mapColorToBMIScore() {
         if (bmi <= 0) { return "white"; }
         else if (bmi < 16) { return "red"; }
@@ -37,7 +39,8 @@ export default function BMICalculator() {
         else if (bmi >= 30 && bmi < 40) { return "red"; }
         else { return "red"; }
     }
-    //This function returns if you should maintain/gain/or lose weight for the provided BMI
+
+    //This function returns if you should maintain/gain/lose weight for the provided BMI
     function stepsToTake(bmi) {
         let bmiIndexReturned = mapIndexToBMIscore(bmi);
         if (bmiIndexReturned == 0) {
@@ -54,25 +57,27 @@ export default function BMICalculator() {
         }
     }
 
+    //This function CALCULATES the BMI
     function calculateBMI(height, weight, metric) {
         let totalBMI = 0;
-        console.log("height: ", height, "weight: ", weight, " metric: ", metric);
+        //If normal units
         if (metric) {
             totalBMI = weight / ((height / 100) * (height / 100))
-
-
-        } else {
+        } 
+        //If US units
+        else {
             totalBMI = (weight / (height * height)) * 703
         }
         setBMI(totalBMI);
         return weight;
     }
 
+    //This function changes the units of the input fields
     function changeUnits() {
         setMetric(!metric);
     }
 
-    //Used to change the units of the input fields
+    //Used to update the units of the input fields
     useEffect(() => {
         if (metric) {
             setHeight("Height (cm)");

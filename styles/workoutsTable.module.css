@@ -5,7 +5,7 @@
   padding: 10px;
   margin-bottom: 20px;
   padding-bottom: 20px;
-
+  
 }
 
 .workoutsTable {
@@ -15,7 +15,6 @@
   border-collapse: collapse;
   padding-bottom: 20px;
   margin-bottom: 20px;
-
 }
 
 .workoutsTable th,
@@ -32,7 +31,6 @@
 }
 
 .workoutsTable tr:hover {
-  background-color: rgb(203, 203, 247);
   /* Adjust the background color as needed */
 }
 
@@ -41,9 +39,10 @@
 }
 
 .workoutsTable tbody {
-  background-color: rgb(132, 132, 245);
+  background-color: rgb(22, 22, 22);
   text-align: center;
   font-size: 20px;
+  
 }
 
 .workoutsTable td button {
@@ -66,22 +65,25 @@
   padding-left: 10px;
   overflow: hidden;
   cursor: pointer;
-
+  
 }
 
 
 
 .workoutButtonText {
-  font-size: 20px;
+  font-size: 18px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 90%;
+  width: 180px;
   cursor: pointer;
+
 }
 
 .workoutButton:hover {
-  background-color: rgb(103, 103, 243);
+  background-image: linear-gradient(90deg ,rgb(68, 68, 172), rgb(46, 46, 121));
+  border: 2px solid rgb(190, 190, 190);
+
 }
 
 .tr {
@@ -89,16 +91,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid rgb(0, 0, 0);
+  outline: 2px solid rgb(103, 103, 243);
+  margin: 2px;
 }
 
 .workoutDeleteButton {
   padding-left: 10px;
   padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 4px;
-  height: 45px;
-  width: 45px;
-  background-color: rgb(42, 42, 173);
+  height: 50px;
+  width: 50px;
+  background-color: rgb(145, 18, 39);
   border: 1px solid black;
   color: white;
   font-size: 25px;
@@ -109,7 +112,7 @@
 }
 
 .workoutDeleteButton:hover {
-  background-color: rgb(218, 42, 42);
+  background-color: rgb(255, 0, 0);
 }
 
 .loadingIcon {

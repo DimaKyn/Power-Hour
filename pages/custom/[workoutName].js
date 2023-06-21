@@ -35,12 +35,20 @@ export default function CustomWorkout() {
         }
     }, []);
 
+    function test(exercise) {
+        console.log("Name " + exercise.name);
+        console.log("Sets " + exercise.sets);
+        console.log("Reps " + exercise.reps);
+        console.log("Info " + exercise);
+        console.log("Weight " + exercise.weight);
+        console.log("Workout name " + workout);
+    };
+
+
     return <>
         <NavigationPanel links={customWorkoutPanelLinks} />
         <div className={Style.innerScrollable}>
-            <div className={Style.mainLabelDiv}>
-                <label className={Style.mainLabel}>{workout}</label>
-            </div>
+            <label className={Style.mainLabel}>{workout}</label>
             <div className={Style.textWithIconInTheMiddle}>
                 <span className={Style.spanTextWithIconInTheMiddle}>Move the blocks by dragging the&nbsp;</span>
                 <BsArrowsMove className={Style.spanTextWithIconInTheMiddle} />
@@ -58,21 +66,21 @@ export default function CustomWorkout() {
                     cols={{ lg: 6, md: 4, sm: 3, xs: 2, xxs: 1 }}
                 >
                     {parsedExercise && parsedExercise.map((exercise, index) => (
-
-                        <div key={index.toString()} data-grid={{ x: index, y: 0, w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.gridElement}>
+                        < div key={index.toString()} data-grid={{ x: 0, y: 0, w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.gridElement}>
+                            {test(exercise)}
                             <WorkoutBox
                                 title={exercise.name}
-                                sets={exercise.sets}
-                                reps={exercise.reps}
-                                weight={exercise.weight}
+                                setsFromProps={exercise.sets}
+                                repsFromProps={exercise.reps}
+                                weightFromProps={exercise.weight}
+                                information={exercise.info}
                                 workoutName={workout}
-                                containerName={"workoutBox"}
                             />
                         </div>
                     ))}
                 </ResponsiveGridLayout>
                 <StopWatch />
-            </div>
+            </div >
         </div >
     </>
 }
