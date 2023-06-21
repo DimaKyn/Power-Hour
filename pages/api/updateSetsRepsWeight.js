@@ -35,6 +35,7 @@ export default async function handler(req, res) {
     } finally {
         //Disconnect from MongoDB
         disconnectFromServer(client);
+        console.log("Disconnected from server");
     }
 }
 

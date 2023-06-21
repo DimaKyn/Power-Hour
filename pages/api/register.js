@@ -19,6 +19,8 @@ export default async function handler(req, res) {
       const { name, username, email, password, phoneNumber } = req.body;
 
       if (!name || !username || !email || !password || !phoneNumber) {
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
         return res.status(400).json({ message: 'All fields are required' });
       }
 
