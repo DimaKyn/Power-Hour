@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Style from '/styles/WorkoutContainer.module.css';
+import Swal from "sweetalert2";
 
 async function saveWorkoutToDB(workoutName, exercises) {
   var workout = {
@@ -25,6 +26,13 @@ async function saveWorkoutToDB(workoutName, exercises) {
       },
       credentials: 'include',
     });
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Workout has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
   } catch (error) {
     console.log("Encountered an error adding workout:", error);
   }
