@@ -7,6 +7,7 @@ import ChartStyle from "styles/chart.module.css";
 import NavigationPanel from "/components/navigationPanel/NavigationPanel";
 import { myProgressLinks } from "/components/navigationPanel/NavigationPanelLinksList";
 
+
 async function fetchWeights() {
   try {
     const response = await fetch("/api/fetchWeights", {
