@@ -20,6 +20,17 @@
     flex-direction: column;
 }
 
+.innerForGraph {
+    --globalGold: rgb(252, 203, 26);
+    position: absolute;
+    height: calc(100% - min(100px, 10vh));
+    width: 100%;
+    top: min(100px, 10vh);
+    align-items: center;
+    display: flex;
+    flex-direction: column;    
+}
+
 .innerScrollable {
     position: relative;
     height: 100%;
