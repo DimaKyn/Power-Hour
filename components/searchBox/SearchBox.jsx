@@ -46,6 +46,13 @@ async function workoutToDB(addedExercises, workoutName) {
         });
         response = await response.json();
         console.log(response);
+        Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Workout has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
     } catch (error) {
         console.log("Encountered an error adding workout:", error);
     }
