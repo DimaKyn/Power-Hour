@@ -90,8 +90,8 @@
 .logoutButton {
     width: 80%;
     height: 35px;
-    background-color: #250909;
-    border: 2px solid rgb(175, 1, 1);
+    background-color: #641111;
+    border: 2px solid rgb(255, 46, 46);
     border-radius: 2px;
     color: white;
     font-size: 20px;
@@ -101,8 +101,8 @@
 }
 
 .logoutButton:hover {
-    background-color: rgb(124, 0, 0);
-    color: red;
+    background-color: rgb(236, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .hamburger {
@@ -341,7 +341,7 @@
 }
 
 .profileIconMenu {
-    height: 100px;
+    height: 130px;
     width: 200px;
     background-color: rgb(22, 22, 22);
     border: 1px solid rgb(64, 64, 192);

@@ -12,6 +12,7 @@ import { AiFillHome } from "react-icons/ai";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { signOut } from 'next-auth/react'
 import Swal from 'sweetalert2';
+import { useSession } from 'next-auth/react'
 
 //TODO: When hamburger open and you click on a link, the hamburger menu should close
 //TODO: When hamburger open and you click on screen, the hamburger menu should close
@@ -27,6 +28,21 @@ export default function Navbar() {
 
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { data: session, status } = useSession();
+
+    useEffect(() => {
+        if (status === 'authenticated') {
+            setLoggedInUser(session.user);
+            localStorage.setItem('username', session.user.username);
+        }
+    }, [session, status]);
+
+    useEffect(() => {
+        if (status === 'authenticated') {
+            setLoggedInUser(session.user);
+            localStorage.setItem('username', session.user.username);
+        }
+    }, [session, status]);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -46,23 +62,23 @@ export default function Navbar() {
     const handleLogout = async () => {
         // Show the Swal alert
         Swal.fire({
-          title: 'Logout',
-          text: 'Are you sure you want to logout?',
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'Logout',
-          cancelButtonText: 'Cancel',
+            title: 'Logout',
+            text: 'Are you sure you want to logout?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Logout',
+            cancelButtonText: 'Cancel',
         }).then(async (result) => {
-          if (result.isConfirmed) {
-            // User confirmed the logout
-            localStorage.removeItem('loggedInUser');
-            window.localStorage.clear();
-            setLoggedInUser(null);
-            await signOut();
-            window.location.href = '/';
-          }
+            if (result.isConfirmed) {
+                // User confirmed the logout
+                localStorage.removeItem('loggedInUser');
+                window.localStorage.clear();
+                setLoggedInUser(null);
+                await signOut();
+                window.location.href = '/';
+            }
         });
-      };
+    };
 
     const handleLowerOpacityClick = () => {
         if (hamburgerMenuOpen) {
@@ -152,9 +168,14 @@ export default function Navbar() {
 
         {/*Profile Icon Menu*/}
         <div ref={profileMenu} className={Style.profileIconMenu} >
+
             <div>
+
                 {loggedInUser ? (
-                    <div className={Style.profileIconButtonContainer}>
+                    <div div className={Style.profileIconButtonContainer}>
+                        <div style={{fontSize: "15px", fontWeight: "bold", paddingBottom: "5px", marginTop: "-10px"}}>
+                            {loggedInUser.name}
+                        </div>
                         <Link onClick={() => handleButtonClick()} href="/profile" className={Style.profileIconButton}>MY PROFILE</Link>
                         <button onClick={handleLogout} className={Style.logoutButton} style={{ marginTop: "10px" }}>LOGOUT</button>
                     </div>
@@ -165,7 +186,7 @@ export default function Navbar() {
                     </div>
                 )}
             </div>
-        </div>
+        </div >
         <div ref={hamburgerMenu} className={Style.hamburgerMenu}>
             <div className={Style.hamburgerButtons}>
                 <div className={Style.topIcons}>

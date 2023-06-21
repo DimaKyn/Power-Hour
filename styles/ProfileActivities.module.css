@@ -86,8 +86,9 @@
     display: grid;
     justify-content: center;
     flex-direction: column;
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
+    box-shadow: 4px 4px 10px 5px rgb(0, 0, 0);
 }
 
 @media(max-width: 400px) {
@@ -112,6 +113,7 @@
 
 .span {
     text-wrap: wrap;
+    text-align: center;
 }
 
 .choiceBlock > Link {
