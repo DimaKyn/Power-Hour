@@ -8,6 +8,8 @@ import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLi
 import { useRef } from 'react';
 import { BiLoader } from 'react-icons/bi';
 
+///////////This file is used to create the login block on the login page///////////
+
 //This function is used to add a delay to the login button turning from red back to white
 async function sleep(msec) {
   return new Promise(resolve => setTimeout(resolve, msec));
@@ -44,11 +46,7 @@ async function handleLogin(setLoginText, loginButtonRef, incorrectCredentialsLab
   }
 }
 
-//The main login block
-//TODO: Add a loading animation
-//TODO: Add a login function
-//TODO: Add a register function
-//TODO: Add a forgot password function
+//This function creates the login block
 export default function LoginBlock() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -74,9 +72,7 @@ export default function LoginBlock() {
   if (!isLoggedIn) {
     return <>
       <div className={Style.loginBlock}>
-
         <label className={Style.loginLabel}>LOGIN</label>
-
         <div className={Style.usernameBlock}>
           <FaUserAlt className={Style.userIcon} />
           <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={identifier} onChange={(e) => setIdentifier(e.target.value)}></input>
@@ -87,7 +83,6 @@ export default function LoginBlock() {
           <input required pattern=".*\S.*" type="password" className={Style.passwordInput} value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <label className={Style.passwordLabel}>Password</label>
         </div>
-        <Link className={Style.forgotPassword} href="/">Forgot your password?</Link>
         <div className={Style.buttonDiv}>
           <button ref={loginButtonRef} className={Style.loginButton}
             onClick={() => handleLogin(setLoginText, loginButtonRef, incorrectCredentialsLabelRef, loadingIconRef, identifier, password)}>

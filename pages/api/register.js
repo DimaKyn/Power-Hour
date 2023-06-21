@@ -19,6 +19,8 @@ export default async function handler(req, res) {
       const { name, username, email, password, phoneNumber } = req.body;
 
       if (!name || !username || !email || !password || !phoneNumber) {
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
         return res.status(400).json({ message: 'All fields are required' });
       }
 
@@ -28,6 +30,8 @@ export default async function handler(req, res) {
 
       if (existingEmail) {
         res.setHeader('Content-Type', 'application/json');
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
         return res.status(400).json({ message: 'Email already exists' });
       }
 
@@ -35,6 +39,8 @@ export default async function handler(req, res) {
 
       if (existingUsername) {
         res.setHeader('Content-Type', 'application/json');
+        //Disconnect from MongoDB
+        disconnectFromServer(client);
         return res.status(400).json({ message: 'Username already exists' });
       }
 
@@ -74,7 +80,7 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error('Error in /api/register:', error);
-    
+
     //Disconnect from MongoDB
     disconnectFromServer(client);
 
@@ -90,5 +96,7 @@ export default async function handler(req, res) {
 async function disconnectFromServer(client) {
   if (client) {
     await client.close();
+    console.log("Disconnected from server");
+
   }
 }

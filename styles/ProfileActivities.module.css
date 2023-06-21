@@ -75,21 +75,32 @@
   }
 
 .choiceBlock {
-    border: 2px solid rgba(80, 80, 250, 1);
+    outline: 2px solid rgba(80, 80, 250, 1);
+    border: 2px solid rgb(0, 0, 0);
+
     border-radius: 10px;
-    background-color: black;
-    height: 250px;
-    width: 90%;
-    max-width: 300px;
-    min-height: 270px;
+    background-color: rgb(10, 10, 10);
+    height: 160px;
+    width: 80%;
+    max-width: 400px;
+    min-height: 160px;
     align-items: center;
     display: grid;
     justify-content: center;
     flex-direction: column;
     margin: 10px;
     padding: 10px;
-    box-shadow: 4px 4px 10px 5px rgb(0, 0, 0);
+
+    box-shadow: 4px 4px 10px 10px rgb(0, 0, 0);
 }
+
+@media(max-width: 425px) {
+    .choiceBlock {
+        min-height: 250px;
+    }
+}
+
+
 
 @media(max-width: 400px) {
     .choiceBlock {

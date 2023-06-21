@@ -5,17 +5,13 @@ import StyleWorkout from "/styles/WorkoutBox.module.css";
 export async function getStaticProps() {
     const prisma = new PrismaClient()
     const images = await prisma.images.findMany()
-
     return {
         props: { images }
     }
 }
 
 //Returns workout divs with an image, title, and description
-//TODO: Create image to return
-export default function WorkoutsBlocks({ images }) {
-    const divs = [];
-
+export default function WorkoutsBlocks() {
     return <div className={StyleWorkout.blocksWrapper}>
         <div className={StyleWorkout.workout}>
             <h1 style={{ fontSize: "30px" }}>CALISTHENICS</h1>
@@ -48,7 +44,5 @@ export default function WorkoutsBlocks({ images }) {
                 Cardiovascular exercise, also known as cardio or aerobic exercise, is any type of exercise that increases your heart rate. It includes activities such as running, cycling, and swimming.
             </span>
         </div>
-
-
     </div>
 }
