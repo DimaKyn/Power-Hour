@@ -11,7 +11,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { AiFillInfoCircle } from "react-icons/ai";
 import { signOut } from 'next-auth/react'
-
+import Swal from 'sweetalert2';
 
 //TODO: When hamburger open and you click on a link, the hamburger menu should close
 //TODO: When hamburger open and you click on screen, the hamburger menu should close
@@ -44,12 +44,25 @@ export default function Navbar() {
     }, []);
 
     const handleLogout = async () => {
-        localStorage.removeItem('loggedInUser');
-        window.localStorage.clear();
-        setLoggedInUser(null);
-        await signOut();
-        window.location.href = '/'
-    };
+        // Show the Swal alert
+        Swal.fire({
+          title: 'Logout',
+          text: 'Are you sure you want to logout?',
+          icon: 'alert',
+          showCancelButton: true,
+          confirmButtonText: 'Logout',
+          cancelButtonText: 'Cancel',
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            // User confirmed the logout
+            localStorage.removeItem('loggedInUser');
+            window.localStorage.clear();
+            setLoggedInUser(null);
+            await signOut();
+            window.location.href = '/';
+          }
+        });
+      };
 
     const handleLowerOpacityClick = () => {
         if (hamburgerMenuOpen) {
