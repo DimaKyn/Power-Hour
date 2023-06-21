@@ -48,7 +48,7 @@ export default function Navbar() {
         Swal.fire({
           title: 'Logout',
           text: 'Are you sure you want to logout?',
-          icon: 'alert',
+          icon: 'question',
           showCancelButton: true,
           confirmButtonText: 'Logout',
           cancelButtonText: 'Cancel',
