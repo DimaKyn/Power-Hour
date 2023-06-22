@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { getServerSession } from "next-auth/next";
 import clientPromise from '../../lib/mongodb';
 
