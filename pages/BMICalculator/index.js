@@ -3,6 +3,7 @@ import Style from "/styles/PageStandard.module.css";
 import NavigationPanel from "/components/navigationPanel/NavigationPanel";
 import { BMICalculatorLinks } from "/components/navigationPanel/NavigationPanelLinksList";
 
+//This is the main BMI Calculator page
 export default function BMICalculatorPage() {
     return <div className={Style.inner}>
         <NavigationPanel links={BMICalculatorLinks} />
