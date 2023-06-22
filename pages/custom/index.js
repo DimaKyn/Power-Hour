@@ -47,14 +47,18 @@ async function deleteWorkoutFromDB(workoutName, handleRefresh) {
     }
 }
 
+
 export default function Custom() {
     const [workouts, setWorkouts] = useState([]);
     const router = useRouter();
+
+    const [doneFetching, setDoneFetching] = useState(false);
 
     useEffect(() => {
         (async () => {
             const fetchedWorkouts = await fetchWorkouts();
             setWorkouts(fetchedWorkouts);
+            setDoneFetching(true);
         })();
     }, []);
 
@@ -118,7 +122,7 @@ export default function Custom() {
                                     </tr>
                                 );
                             })}
-                            {(uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><h1 style={{ color: "white" }}>No workouts yet</h1></td></tr>}
+                            {(doneFetching) && (uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><h1 style={{ color: "white" }}>No workouts yet</h1></td></tr>}
                             {uniqueWorkouts && (
                                 <tr>
                                     <td style={{ alignItems: "center", display: "flex", justifyContent: "center" }}>
