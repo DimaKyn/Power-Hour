@@ -44,7 +44,6 @@ export default function CustomWorkout() {
         console.log("Workout name " + workout);
     };
 
-
     return <>
         <NavigationPanel links={customWorkoutPanelLinks} />
         <div className={Style.innerScrollable}>
@@ -72,7 +71,7 @@ export default function CustomWorkout() {
                                 title={exercise.name}
                                 setsFromProps={exercise.sets}
                                 repsFromProps={exercise.reps}
-                                weightFromProps={exercise.weight}
+                                weightFromProps={exercise.weight ?? "0"}
                                 information={exercise.info}
                                 workoutName={workout}
                             />

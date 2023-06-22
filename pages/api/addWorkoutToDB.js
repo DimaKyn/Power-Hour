@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     try {
         const session = await getServerSession(req, res)
         const workout = req.body;
-        const client = await clientPromise;
+        client = await clientPromise;
         const db = client.db("powerhourdb");
         const workoutsCollection = db.collection("UserCustomWorkouts");
         const result = await workoutsCollection.findOneAndUpdate(
@@ -25,13 +25,12 @@ export default async function handler(req, res) {
     }
     finally {
         // //Disconnect from MongoDB
-        // disconnectFromServer(client);
+        //disconnectFromServer(client);
     }
 }
 
 async function disconnectFromServer(client) {
     if (client) {
         await client.close();
-        console.log("Disconnected from server");
     }
 }

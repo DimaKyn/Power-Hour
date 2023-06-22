@@ -17,6 +17,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "../ui/popover"
+import Swal from 'sweetalert2';
+
 
 //This function is used to update the sets, reps and weight of an exercise
 async function updateSetsRepsWeight(typeOfStat, value, exerciseName, workoutName,) {
@@ -38,7 +40,41 @@ async function updateSetsRepsWeight(typeOfStat, value, exerciseName, workoutName
     if (response.ok) {
       let json = await response.json();
       console.log(json.message);
+      if(json.message.includes("Updated Successfuly")){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Updated Successfuly'
+          })
+    } 
     } else {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'error',
+        title: 'Failed to update'
+      })
       console.log("Failed to update" + response.status);
     }
   } catch (error) {

@@ -102,7 +102,7 @@ export default function BMICalculator() {
                     <label className={Style.passwordLabel}>{weight}</label>
                 </div>
                 <div onClick={() => changeUnits()} className={StyleCalc.checkboxContainer}>
-                    <input type="checkbox" className={StyleCalc.checkbox} onClick={() => changeUnits()} checked={!metric} />
+                    <input type="checkbox" className={StyleCalc.checkbox} onChange={() => changeUnits()} checked={!metric} />
                     <label className={StyleCalc.checkboxLabel}>
                         US units
                     </label>
@@ -124,10 +124,10 @@ export default function BMICalculator() {
                 <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)", fontSize: "20px" }}>Steps to {stepsToTake(bmi)} your BMI:</label>
                 <span>{BMIInfo[mapIndexToBMIscore(bmi)].steps.map(
                     (step, i) => {
-                        return <>
-                            <li style={{listStyleType: "none"}} key={i * 2}>{(i + 1) + ".  " + step}</li>
-                            <br key={i * 2 + 1} />
-                        </>
+                        return <div key={i}>
+                            <li style={{listStyleType: "none"}} >{(i + 1) + ".  " + step}</li>
+                            <br/>
+                        </div>
                     }
                 )}</span>
 

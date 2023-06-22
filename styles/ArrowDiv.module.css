@@ -1,0 +1,51 @@
+.arrowDiv {
+    position: absolute;
+    top: 107px;
+    right: 26px;
+    font-size: 35px;
+    color: rgb(90, 90, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: upAndDown 2s ease-in-out infinite;
+}
+
+.loginArrowDiv {
+    position: absolute;
+    top: 135px;
+    right: 43px;
+    font-weight: bold;
+    font-size: 13px;
+    color: rgb(90, 90, 226);
+}
+
+.loginArrowDiv2 {
+    position: absolute;
+    top: 135px;
+    right: 5px;
+    font-weight: bold;
+    font-size: 13px;
+    color: rgb(90, 90, 226);
+}
+
+@keyframes upAndDown {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media(max-width: 600px) {
+    .loginArrowDiv {
+        right: 22px;
+    }
+    .loginArrowDiv2 {
+        display: none;
+    }
+
+}

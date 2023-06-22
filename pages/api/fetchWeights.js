@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    const client = await clientPromise;
+    client = await clientPromise;
     const db = client.db("powerhourdb");
     const workoutsCollection = db.collection("UserProgress");
     const cursor = await workoutsCollection.find({ email: session.user.email });
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   }
   finally {
     // Disconnect from MongoDB
-    disconnectFromServer(client);
+    //disconnectFromServer(client);
   }
 }
 

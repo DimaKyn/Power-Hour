@@ -9,7 +9,6 @@ import { BsTrash3 } from 'react-icons/bs';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { ImSpinner6 } from 'react-icons/im';
-import { useRef } from 'react';
 
 async function fetchWorkouts() {
     try {
@@ -23,7 +22,7 @@ async function fetchWorkouts() {
     }
 }
 
-async function deleteWorkoutFromDB(workoutName) {
+async function deleteWorkoutFromDB(workoutName, handleRefresh) {
     try {
         const response = await fetch('/api/deleteWorkout', {
             method: 'POST',
@@ -40,7 +39,7 @@ async function deleteWorkoutFromDB(workoutName) {
                 icon: 'success',
                 confirmButtonText: 'Ok',
             }).then(() => {
-                
+                handleRefresh();
             });
         }
     } catch (error) {
@@ -68,12 +67,11 @@ export default function Custom() {
             confirmButtonText: 'Delete',
             cancelButtonText: 'Cancel',
         }).then(async (result) => {
-            deleteWorkoutFromDB(workoutName);
+            deleteWorkoutFromDB(workoutName, handleRefresh);
         });
     }
 
     const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
-    
     const handleWorkoutClick = (workoutName, exercises) => {
         localStorage.removeItem('exercises');
         localStorage.removeItem('workout');
@@ -85,9 +83,9 @@ export default function Custom() {
         });
     };
 
-    function test(workout, workouts) {
-        console.log(workout);
-    }
+    const handleRefresh = () => {
+        router.reload();
+      };
 
     return (
         <>
@@ -106,7 +104,6 @@ export default function Custom() {
 
                             {uniqueWorkouts.map((workoutName) => {
                                 const workout = workouts.workoutsArray.find((w) => w.workoutName === workoutName);
-                                {test(workout, workouts)}
                                 return (
                                     <tr key={workout.workoutName} >
                                         <td>
@@ -121,7 +118,7 @@ export default function Custom() {
                                     </tr>
                                 );
                             })}
-                            {(uniqueWorkouts === 0) && <tr style={{ textAlign: "center" }}><td><h1 style={{ color: "white" }}>No workouts yet</h1></td></tr>}
+                            {(uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><h1 style={{ color: "white" }}>No workouts yet</h1></td></tr>}
                             {uniqueWorkouts && (
                                 <tr>
                                     <td style={{ alignItems: "center", display: "flex", justifyContent: "center" }}>
