@@ -41,11 +41,6 @@ export default async function handler(req, res) {
 
 //This function handles the update of the stat of the provided workout name and exercise name
 async function updateInDatabase(typeOfStat, value, workoutName, exerciseName, workoutsCollection, email) {
-    console.log(typeOfStat);
-    console.log(value);
-    console.log(workoutName);
-    console.log(exerciseName);
-    console.log(email);
 
     try {
         const result = await workoutsCollection.findOneAndUpdate(
