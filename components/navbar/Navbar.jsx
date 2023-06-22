@@ -191,7 +191,7 @@ export default function Navbar() {
                     </div>
                     <label style={{ width: "auto" }}>MENU</label>
                     {/* Home icon inside the hamburger menu*/}
-                    {isLoggedIn ? (
+                    {loggedInUser ? (
                         <div className={Style.iconContainer}>
                             <Link onClick={() => handleButtonClick()} href="/profile">
                                 <BsFillPersonFill />
@@ -209,7 +209,7 @@ export default function Navbar() {
                 </div>
 
 
-                {isLoggedIn ? (
+                {loggedInUser ? (
                     <div className={Style.hamburgerLinksContainer}>
                         <Link onClick={() => handleButtonClick()} href="/workouts" className={Style.hamburgerLinks}>WORKOUTS</Link>
                         <Link onClick={() => handleButtonClick()} href="/BMICalculator" className={Style.hamburgerLinks}>BMI CALCULATOR</Link>
