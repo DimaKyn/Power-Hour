@@ -131,9 +131,9 @@ export default function ProfileActivities() {
           </Link>
         </div>
         <div className={Style.choiceBlock}>
-          <h1 style={{ fontSize: "27px", textAlign: "center" }}>My Progress</h1>
+          <h1 style={{ fontSize: "27px", textAlign: "center" }}>My Weight Progress</h1>
           <span className={Style.span}>
-            Track your progress, Keep tabs on what's important.
+            Track your weight progress, Keep tabs on what's important.
           </span>
           <Link href="./personal_details" className={Style.button}>
             <BsGraphUpArrow
@@ -144,7 +144,7 @@ export default function ProfileActivities() {
                 fontSize: "30px",
               }}
             />
-            Update Progress
+            Update Weight Progress
           </Link>
         </div>
         <div className={Style.choiceBlock}>

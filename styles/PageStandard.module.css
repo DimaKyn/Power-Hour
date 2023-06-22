@@ -21,13 +21,12 @@
 }
 
 .innerForGraph {
-    --globalGold: rgb(252, 203, 26);
     position: absolute;
-    height: calc(100% - min(100px, 10vh));
+    height: calc(100% - 130px);
     width: 100%;
-    top: min(100px, 10vh);
-    align-items: center;
+    top: 120px;
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -333,4 +332,41 @@
 .tooltipHoverTextInformation:hover {
     color: rgb(255, 215, 0);
     cursor: help;
+}
+
+.chartContainer{
+    position: absolute;
+    height: 80%;
+    width: 90%;
+    border: 2px solid rgb(0, 0, 0);
+    outline: 2px solid rgb(80,80,220);
+    background-color: rgb(8,8,8);
+    padding: 30px;
+}
+
+.chart{
+    height: 80%;
+}
+
+.chartButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.chartbutton{
+    width: 100px;
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    outline: 2px solid rgb(80,80,220);
+    background-color: rgb(17, 17, 17);
+    margin: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.chartbutton:hover{
+    background-color: rgb(44, 44, 44);
 }

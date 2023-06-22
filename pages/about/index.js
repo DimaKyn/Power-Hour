@@ -15,7 +15,7 @@ export default function About() {
                     <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
                         <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
                             <Image
-                                src="/../public/about/Dima.jpg"
+                                src="/static/about/Dima.jpg"
                                 width={300}
                                 height={300}
                                 priority={true}
@@ -23,12 +23,12 @@ export default function About() {
                             />
                         </div>
                         <h2 style={{ padding: "10px", fontSize: '30px' }}>Dima</h2>
-                        <p style={{ textAlign: "center" }}>Student Software Engineer, I enjoy making music, front-end, working out, and raving. </p>
+                        <p style={{ textAlign: "center" }}>Software Engineering Student, I enjoy making music, front-end, working out, and raving. </p>
                     </div>
                     <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
                         <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
                             <Image
-                                src="/../public/about/Maxim.jpg"
+                                src="/static/about/Maxim.jpg"
                                 width={300}
                                 height={300}
                                 priority={true}
@@ -36,7 +36,7 @@ export default function About() {
                             />
                         </div>
                         <h2 style={{ padding: "10px", fontSize: '30px' }}>Maxim</h2>
-                        <p style={{ textAlign: "center" }}>Student Software Engineer, refrigirator </p>               
+                        <p style={{ textAlign: "center" }}>Software Engineering Student , I enjoy writting code, playing video games with friend working out, and eating.  </p>               
                         </div>
 
                 </div>

@@ -10,7 +10,6 @@ export default async function handler(req, res) {
     let client;
 
     try {
-        //STUCK HERE
         const session = await getServerSession(req, res);
         console.log(session);
         if (!session) {
@@ -18,7 +17,7 @@ export default async function handler(req, res) {
             return res.status(401).json({ message: "Unauthorized" });
         }
 
-        const client = await clientPromise;
+        client = await clientPromise;
         const db = client.db("powerhourdb");
         const workoutsCollection = db.collection("UserCustomWorkouts");
 
@@ -43,7 +42,7 @@ export default async function handler(req, res) {
     }
     finally {
         // Disconnect from MongoDB
-        disconnectFromServer(client);
+        //disconnectFromServer(client);
     }
 }
 

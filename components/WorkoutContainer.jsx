@@ -8,13 +8,14 @@ async function saveWorkoutToDB(workoutName, exercises) {
     exercises: []
   };
   exercises.forEach(exercise => {
-    const exerciseInfo = {
+    
+    workout.exercises.push({
       name: exercise.name,
       sets: exercise.sets,
       reps: exercise.reps,
+      weight: "0",
       info: exercise.instructions
-    };
-    workout.exercises.push(exerciseInfo);
+    });
   })
   try {
     let response = await fetch('/api/addWorkoutToDB', {
@@ -26,6 +27,7 @@ async function saveWorkoutToDB(workoutName, exercises) {
       },
       credentials: 'include',
     });
+    
     const Toast = Swal.mixin({
       toast: true,
       position: 'bottom',
@@ -47,7 +49,6 @@ async function saveWorkoutToDB(workoutName, exercises) {
   }
   
 }
-
 const Exercise = ({ exercise }) => {
   const [setsReps, setSetsReps] = useState({ sets: exercise.sets, reps: exercise.reps });
   const [editing, setEditing] = useState(false);

@@ -13,6 +13,8 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import { signOut } from 'next-auth/react'
 import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react'
+import { BsArrowUpShort } from "react-icons/bs";
+import StyleArrowDiv from "/styles/ArrowDiv.module.css";
 
 export default function Navbar() {
     //Variables for the hamburger menu
@@ -132,6 +134,17 @@ export default function Navbar() {
     }
 
     return <>
+        {/*Arrow div*/}
+        {!loggedInUser && (
+            <>
+                <div className={StyleArrowDiv.arrowDiv}>
+                    <BsArrowUpShort />
+                </div>
+                <label className={StyleArrowDiv.loginArrowDiv}>LOGIN</label>
+                <label className={StyleArrowDiv.loginArrowDiv2}>NOW</label>
+            </>
+        )}
+        {/*End Arrow div */}
         <div ref={lowerOpacityHamburgerOpen} className={Style.lowerOpacityHamburgerOpen}
             onClick={() => handleLowerOpacityClick()}></div>
         <div ref={navbar} className={Style.wrapper}>

@@ -35,7 +35,8 @@ function LineChart() {
 
     useEffect(() => {
         console.log(weightData);
-        renderChart();
+        if(weightData)
+          renderChart();
       }, [weightData]);
 
     console.log(weightData)
@@ -89,8 +90,9 @@ function LineChart() {
     const renderChart = () => {
         console.log(weightData)
         var ctx = document.getElementById("myChart").getContext("2d");
-
-        const labels = Array.from({ length: weightData.length }, (_, index) => `Data ${index + 1}`);
+        let labels;
+        
+        labels = Array.from({ length: weightData.length }, (_, index) => `Data ${index + 1}`);
 
         new Chart(ctx, {
             type: "line",
@@ -117,22 +119,18 @@ function LineChart() {
             },
           });
         }
-
-        const handleRefresh = () => {
-            window.location.reload(); // Refresh the page
-          }
-
-
+        
     return (
         <>
         <NavigationPanel links={myProgressLinks} />
-            <div className={Style.chartContainer}>
-                <div className={Style.innerForGraph}>
-                  <div Style={{width: "100%"}}><canvas id="myChart"></canvas></div>
-                    <button className={ButtonStyle.button} onClick={() => handleWeightInput()}>Add Weight</button>
-                    <button className={ButtonStyle.button} onClick={handleRefresh}>Refresh</button>
+            <div className={Style.innerForGraph}>
+                <div className={Style.chartContainer}>
+                  <div className={Style.chart}><canvas id="myChart"></canvas></div>
+                   <div className={Style.chartButtons}>
+                   <button className={Style.chartbutton} onClick={() => handleWeightInput()}>Add Weight</button>
+                   </div>
                 </div>
-            </div>
+          </div>
         </>
     );
 }

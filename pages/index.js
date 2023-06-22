@@ -47,13 +47,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className={Style.arrowDivUp}>
-        {isLoggedIn ? (
-          <></>
-        ) : (
-          <ImArrowUp style={{ fontSize: '60px' }} />
-        )}
-      </div>
+      
     </div>
   )
 }

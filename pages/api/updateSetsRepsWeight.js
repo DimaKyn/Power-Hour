@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         res.status(500).json({ message: "Error adding workout", error: error.message });
     } finally {
         //Disconnect from MongoDB
-        disconnectFromServer(client);
+        //disconnectFromServer(client);
         console.log("Disconnected from server");
     }
 }
