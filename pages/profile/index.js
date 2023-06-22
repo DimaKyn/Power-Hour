@@ -21,7 +21,7 @@ export default function Profile() {
     <NavigationPanel links={profilePanelLinks} />
     <div className={Style.inner}>
       <label className={Style.mainLabel} >
-        Welcome back {loggedInUser ? ', ' + loggedInUser.name : ''}
+        Welcome back {loggedInUser ? ', ' + loggedInUser.name.charAt(0).toUpperCase() + loggedInUser.name.slice(1) : ''}
       </label>
       <ProfileActivities />
     </div>

@@ -4,8 +4,8 @@ import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { homePanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import { useState, useEffect } from 'react';
 import Typed from 'typed.js';
-import { CiDumbbell } from 'react-icons/ci';
-
+import { CiDumbbell,  } from 'react-icons/ci';
+import { ImArrowUp } from 'react-icons/im';
 export default function Home() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,6 +26,7 @@ export default function Home() {
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser');
+    console.log(loggedInUser)
     if (loggedInUser) {
       setIsLoggedIn(true);
     }
@@ -40,10 +41,18 @@ export default function Home() {
           <label className={Style.subLabel}>TIME TO TRAIN</label>
           <div className={Style.subSubSubImage}></div>
           <div><span className={Style.regularText}>POWER YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
+          
           <div className={Style.arrowDivDown} style={{width: "60px"}}>
             <CiDumbbell style={{fontSize: "60px"}}/>
           </div>
         </div>
+      </div>
+      <div className={Style.arrowDivUp}>
+        {isLoggedIn ? (
+          <></>
+        ) : (
+          <ImArrowUp style={{ fontSize: '60px' }} />
+        )}
       </div>
     </div>
   )

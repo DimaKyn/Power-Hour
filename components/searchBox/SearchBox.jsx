@@ -46,14 +46,22 @@ async function workoutToDB(addedExercises, workoutName) {
         });
         response = await response.json();
         console.log(response);
-        //Pop a success alert
-        Swal.fire({
-            position: 'top',
-            icon: 'success',
-            title: 'Workout has been saved',
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
             showConfirmButton: false,
-            timer: 1500
-        })
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'success',
+            title: 'Saved workout successfully'
+          })
     } catch (error) {
         console.log("Encountered an error adding workout:", error);
     }

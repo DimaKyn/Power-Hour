@@ -158,6 +158,37 @@
 }
 
 
+.arrowDivUp {
+    position: absolute;
+    font-size: 30px;
+    justify-content: top;
+    align-items: top;
+    display: flex;
+    animation: moveArrow 2.5s infinite ;
+    animation-timing-function: fade-in-out;
+    top: 20px;
+    right: 20px;
+}
+
+.arrowDivUp:hover {
+    transform: scale(1.1);
+}
+
+
+
+@keyframes moveArrow1 {
+    0% {
+        transform: translateY(0px)  rotate(0deg);
+    }
+    50% {
+        transform: translateY(20px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+    }
+}
+
+
 .loginPage {
     margin-top: 5vh;
     height: 100vh;
@@ -232,6 +263,5 @@
         font-size: 1.5rem;
     }
 }
-
 
 
