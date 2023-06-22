@@ -71,9 +71,6 @@ export default async function handler(req, res) {
       console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
 
-      //Disconnect from MongoDB
-      disconnectFromServer(client);
-
       return res.status(201).json({ message: 'User registered successfully' });
     } else {
       res.status(405).json({ message: 'Method not allowed' });
@@ -97,6 +94,5 @@ async function disconnectFromServer(client) {
   if (client) {
     await client.close();
     console.log("Disconnected from server");
-
   }
 }

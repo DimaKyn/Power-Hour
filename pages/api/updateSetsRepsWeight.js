@@ -73,6 +73,5 @@ async function updateInDatabase(typeOfStat, value, workoutName, exerciseName, wo
 async function disconnectFromServer(client) {
     if (client) {
         await client.close();
-        console.log("Disconnected from server");
     }
 }
