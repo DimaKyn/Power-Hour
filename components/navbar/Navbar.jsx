@@ -39,17 +39,8 @@ export default function Navbar() {
         }
     }, [session, status]);
 
-    //Hook to set the loggedInUser in local storage
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const user = localStorage.getItem('loggedInUser');
-            setLoggedInUser(user);
-        }
-    }, []);
-
     //Hook to update isLoggedIn state
     useEffect(() => {
-        const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
             setIsLoggedIn(true);
         }
@@ -138,7 +129,6 @@ export default function Navbar() {
         if (profileMenuOpen) {
             handleProfileIconClick();
         }
-
     }
 
     return <>
@@ -176,7 +166,7 @@ export default function Navbar() {
                 {loggedInUser ? (
                     <>
                         <div style={{ fontSize: "15px", fontWeight: "bold", paddingBottom: "5px", marginTop: "-10px" }}>
-                            {loggedInUser.name}
+                            {loggedInUser.name.charAt(0).toUpperCase() + loggedInUser.name.slice(1)}
                         </div>
                         <Link onClick={() => handleButtonClick()} href="/profile" className={Style.profileIconButton}>MY PROFILE</Link>
                         <button onClick={handleLogout} className={Style.logoutButton} style={{ marginTop: "10px" }}>LOGOUT</button>
