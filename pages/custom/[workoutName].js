@@ -46,8 +46,8 @@ export default function CustomWorkout() {
 
     return <>
         <NavigationPanel links={customWorkoutPanelLinks} />
-        <div className={Style.innerScrollable}>
-            <label className={Style.mainLabel}>{workout}</label>
+        <div className={Style.inner}>
+            <div className={Style.mainLabelDiv2}><label className={Style.mainLabel2}>{workout}</label></div>
             <div className={Style.textWithIconInTheMiddle}>
                 <span className={Style.spanTextWithIconInTheMiddle}>Move the blocks by dragging the&nbsp;</span>
                 <BsArrowsMove className={Style.spanTextWithIconInTheMiddle} />
