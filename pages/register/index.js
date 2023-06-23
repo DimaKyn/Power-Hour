@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Style from '/styles/PageStandard.module.css';
 import FormStyle from '/styles/RegisterForm.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
@@ -11,7 +11,6 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdPassword } from 'react-icons/md';
 import { AiOutlinePhone } from 'react-icons/ai';
-import { useRef } from 'react';
 import { BiLoader } from 'react-icons/bi';
 
 export default function Register() {
@@ -21,7 +20,7 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
-  //These are the variables needed to animate a loading animation on the register button
+  // These are the variables needed to animate a loading animation on the register button
   const [registerText, setRegisterText] = useState('Register');
   const registerButtonRef = useRef(null);
   const loadingIconRef = useRef(null);
@@ -37,12 +36,17 @@ export default function Register() {
     loadingIconRef.current.classList = FormStyle.registerButtonIdle;
   }
 
-
   const handleSubmit = async (e) => {
-    //Display loading animation
+    // Display loading animation
     handleLoading();
 
     e.preventDefault();
+
+    // Validate inputs
+    if (!validateName() || !validatePassword() || !validatePhoneNumber()) {
+      displayRegisterText();
+      return;
+    }
 
     const response = await fetch("/api/register", {
       method: "POST",
@@ -58,7 +62,6 @@ export default function Register() {
       }),
     });
     const responseText = await response.text();
-    console.log("Response text:", responseText);
 
     const data = JSON.parse(responseText);
 
@@ -79,9 +82,7 @@ export default function Register() {
           text: 'All fields are required!',
           // You can customize the appearance of the alert further using other options
         });
-      }
-
-      else if (responseText.includes("Username already exists")) {
+      } else if (responseText.includes("Username already exists")) {
         displayRegisterText();
 
         Swal.fire({
@@ -92,12 +93,8 @@ export default function Register() {
           text: 'Username already exists!',
           // You can customize the appearance of the alert further using other options
         });
-
-      }
-
-      else if (responseText.includes("Email already exists")) {
+      } else if (responseText.includes("Email already exists")) {
         displayRegisterText();
-        setRegisterButtonText();
         Swal.fire({
           icon: 'error',
           width: 400,
@@ -109,7 +106,6 @@ export default function Register() {
       }
 
       // Handle errors, e.g., show an error message
-      console.log("Unsuccessful registration")
     } else if (!responseLogin.error) {
       // Handle successful registration, e.g., show a success message or redirect the user
       // Swal.fire({
@@ -119,12 +115,68 @@ export default function Register() {
       //   showConfirmButton: false,
       //   timer: 1500
       // })
-      console.log("Successful registration")
       localStorage.setItem('isLoggedIn', true);
       localStorage.setItem('loggedInUser', username);
-      console.log('Stored:', username);
       window.location.href = '/profile'; // redirect to profile page
-      //window.location.href = '/';
+      // window.location.href = '/';
+    }
+  };
+
+  // Validate the name input
+  const validateName = () => {
+    const nameRegex = /^[a-zA-Z]+$/;
+
+    if (!nameRegex.test(name)) {
+      Swal.fire({
+        icon: 'error',
+        width: 400,
+        height: 100,
+        title: 'Invalid name',
+        text: 'Name must contain only letters!',
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  // Validate the password input
+  const validatePassword = () => {
+    if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+      Swal.fire({
+        icon: 'error',
+        width: 400,
+        height: 100,
+        title: 'Invalid password',
+        text: 'Password must be at least 8 characters long and contain at least one letter and one number!',
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  // Validate the phone number input
+  const validatePhoneNumber = () => {
+    const phoneNumberRegex = /^\d+$/;
+
+    if (!phoneNumberRegex.test(phoneNumber)) {
+      Swal.fire({
+        icon: 'error',
+        width: 400,
+        height: 100,
+        title: 'Invalid phone number',
+        text: 'Phone number must contain only numbers!',
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
     }
   };
 
@@ -142,10 +194,11 @@ export default function Register() {
                 <input
                   type="text"
                   id="name"
-                  required pattern=".*\S.*"
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="name">Name</label>
               </div>
@@ -154,10 +207,11 @@ export default function Register() {
                 <input
                   type="text"
                   id="username"
-                  required pattern=".*\S.*"
+                  required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="username">Username</label>
               </div>
@@ -166,39 +220,40 @@ export default function Register() {
                 <input
                   type="email"
                   id="email"
-                  required placeholder=" "
+                  required
+                  placeholder=" "
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="email">Email</label>
-
               </div>
               <div className={FormStyle.block}>
                 <MdPassword className={FormStyle.icons} />
                 <input
                   type="password"
                   id="password"
-                  required pattern=".*\S.*"
+                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="password">Password</label>
-
               </div>
               <div className={FormStyle.block}>
                 <AiOutlinePhone className={FormStyle.icons} />
                 <input
                   type="tel"
                   id="phone"
-                  required pattern=".*\S.*"
+                  required
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="phone">Phone Number</label>
-
               </div>
               <div className={FormStyle.buttonDiv}>
                 <button ref={registerButtonRef} className={FormStyle.submitButton}>
@@ -210,7 +265,6 @@ export default function Register() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

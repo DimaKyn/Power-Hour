@@ -8,45 +8,11 @@ import { profilePanelLinks } from '/components/navigationPanel/NavigationPanelLi
 import { useRef } from 'react';
 import { BiLoader } from 'react-icons/bi';
 
-///////////This file is used to create the login block on the login page///////////
-
 //This function is used to add a delay to the login button turning from red back to white
 async function sleep(msec) {
   return new Promise(resolve => setTimeout(resolve, msec));
 }
 
-// Update the handleLogin function
-async function handleLogin(setLoginText, loginButtonRef, incorrectCredentialsLabelRef, loadingIconRef, identifier, password) {
-  console.log('Trying to find user with identifier:', identifier);
-  setLoginText("");
-  loadingIconRef.current.classList = Style.loginButtonLoading;
-
-  const response = await signIn('credentials', {
-    redirect: false,
-    identifier,
-    password,
-  });
-  console.log(response)
-  if (response.error) {
-    console.log('User not found');
-    loginButtonRef.current.classList = Style.loginButtonIncorrectCredentials;
-    incorrectCredentialsLabelRef.current.classList = Style.incorrectCredentialsLabelShow;
-    loadingIconRef.current.classList = Style.loginButtonIconIdle;
-    setLoginText("Login");
-    await sleep(1000);
-    loginButtonRef.current.classList = Style.loginButton;
-
-  } else {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('isLoggedIn', true);
-      localStorage.setItem('loggedInUser', identifier);
-      console.log('Stored:', identifier);
-      window.location.href = '/profile'; // redirect to profile page
-    }
-  }
-}
-
-//This function creates the login block
 export default function LoginBlock() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -69,33 +35,99 @@ export default function LoginBlock() {
     setIsLoggedIn(false);
     await signOut();
   };
-  if (!isLoggedIn) {
-    return <>
-      <div className={Style.loginBlock}>
-        <label className={Style.loginLabel}>LOGIN</label>
-        <div className={Style.usernameBlock}>
-          <FaUserAlt className={Style.userIcon} />
-          <input required pattern=".*\S.*" type="text" className={Style.usernameInput} value={identifier} onChange={(e) => setIdentifier(e.target.value)}></input>
-          <label className={Style.usernameLabel}>Username/Email</label>
-        </div>
-        <div className={Style.passwordBlock}>
-          <FaKey className={Style.passwordIcon} />
-          <input required pattern=".*\S.*" type="password" className={Style.passwordInput} value={password} onChange={(e) => setPassword(e.target.value)}></input>
-          <label className={Style.passwordLabel}>Password</label>
-        </div>
-        <div className={Style.buttonDiv}>
-          <button ref={loginButtonRef} className={Style.loginButton}
-            onClick={() => handleLogin(setLoginText, loginButtonRef, incorrectCredentialsLabelRef, loadingIconRef, identifier, password)}>
-            {<div ref={loadingIconRef} className={Style.loginButtonIconIdle} ><BiLoader /></div>}
-            {loginText}
-          </button>
-          <label ref={incorrectCredentialsLabelRef} className={Style.incorrectCredentialsLabel}>Incorrect Username or Password</label>
-          <label style={{ fontSize: '28px', color: "rgba(80, 80, 250, 1)" }}>New to Power Hour?</label>
-          <Link href="/register" className={Style.registerButton}>Register now</Link>
-        </div>
-      </div>
-    </>
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
+  async function handleLogin() {
+    console.log('Trying to find user with identifier:', identifier);
+    setLoginText("");
+    loadingIconRef.current.classList = Style.loginButtonLoading;
+
+    const response = await signIn('credentials', {
+      redirect: false,
+      identifier,
+      password,
+    });
+
+    if (response.error) {
+      console.log('User not found');
+      loginButtonRef.current.classList = Style.loginButtonIncorrectCredentials;
+      incorrectCredentialsLabelRef.current.classList = Style.incorrectCredentialsLabelShow;
+      loadingIconRef.current.classList = Style.loginButtonIconIdle;
+      setLoginText("Login");
+      await sleep(1000);
+      loginButtonRef.current.classList = Style.loginButton;
+    } else {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('loggedInUser', identifier);
+        console.log('Stored:', identifier);
+        window.location.href = '/profile'; // redirect to profile page
+      }
+    }
   }
+
+  if (!isLoggedIn) {
+    return (
+      <>
+        <div className={Style.loginBlock}>
+          <label className={Style.loginLabel}>LOGIN</label>
+          <div className={Style.usernameBlock}>
+            <FaUserAlt className={Style.userIcon} />
+            <input
+              required
+              pattern=".*\S.*"
+              type="text"
+              className={Style.usernameInput}
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              onKeyDown={handleKeyPress}
+            />
+            <label className={Style.usernameLabel}>Username/Email</label>
+          </div>
+          <div className={Style.passwordBlock}>
+            <FaKey className={Style.passwordIcon} />
+            <input
+              required
+              pattern=".*\S.*"
+              type="password"
+              className={Style.passwordInput}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={handleKeyPress}
+            />
+            <label className={Style.passwordLabel}>Password</label>
+          </div>
+          <div className={Style.buttonDiv}>
+            <button
+              ref={loginButtonRef}
+              className={Style.loginButton}
+              onClick={handleLogin}
+            >
+              <div ref={loadingIconRef} className={Style.loginButtonIconIdle}>
+                <BiLoader />
+              </div>
+              {loginText}
+            </button>
+            <label ref={incorrectCredentialsLabelRef} className={Style.incorrectCredentialsLabel}>
+              Incorrect Username or Password
+            </label>
+            <label style={{ fontSize: '28px', color: "rgba(80, 80, 250, 1)" }}>
+              New to Power Hour?
+            </label>
+            <Link href="/register" className={Style.registerButton}>
+              Register now
+            </Link>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <NavigationPanel links={profilePanelLinks} />
@@ -113,7 +145,9 @@ export default function LoginBlock() {
               </ul>
             </div>
             <div className={Style.buttonDiv}>
-              <button className={Style.logoutButton} onClick={handleLogout}>Logout</button>
+              <button className={Style.logoutButton} onClick={handleLogout}>
+                Logout
+              </button>
             </div>
           </>
         ) : (
