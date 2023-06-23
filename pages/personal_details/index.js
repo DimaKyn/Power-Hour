@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Chart from "chart.js";
 import Style from "/styles/PageStandard.module.css";
-import ButtonStyle from "/styles/ProfileActivities.module.css";
 import Swal from "sweetalert2";
-import ChartStyle from 'styles/chart.module.css'
 import NavigationPanel from "/components/navigationPanel/NavigationPanel";
 import { myProgressLinks } from "/components/navigationPanel/NavigationPanelLinksList";
 
