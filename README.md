@@ -1,5 +1,5 @@
 <p align="center">
-  <img  src="public/static/images/pwrhwrlogo.png">
+  <img  src="public/PowerHourLogoGit.png">
 </p>
 
 ## Description
