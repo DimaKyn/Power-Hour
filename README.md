@@ -2,9 +2,6 @@
   <img  src="public/static/images/pwrhwrlogo.png">
 </p>
 
-This is a README.md file that provides important information about the "Power Hour" website. It includes a description of the website's features and functionality, as well as instructions on how to use it. Additionally, it provides a link to the live website.
-
-
 ## Description
 The "Power Hour" website is a platform where users can create an account and manage their workouts. Here are the main features of the website:
 - Account creation: Users can create an account to access the website's features.
