@@ -1,5 +1,5 @@
 <p align="center">
-  <img  src="public/PowerHourLogoForGit.png">
+  <img  src="public/pwrhwrlogo.png">
 </p>
 
 ## Description
