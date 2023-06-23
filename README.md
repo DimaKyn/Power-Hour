@@ -29,7 +29,7 @@ To use the "Power Hour" website, follow these steps:
 - This is our collaborated repository for our 6th semester project.
 - The project is in developed using the NextJS 13 framework with a MongoDB server.
 - The website is built using HTML, CSS, and JavaScript.
-
+[![Skills](https://skillicons.dev/icons?i=js,html,css,mongodb,nextjs,react)](https://skillicons.dev)
 
 ## Authors
 - [@DimaKyn](https://github.com/DimaKyn)
