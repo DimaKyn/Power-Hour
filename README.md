@@ -1,6 +1,7 @@
 # Power Hour
 This is a README.md file that provides important information about the "Power Hour" website. It includes a description of the website's features and functionality, as well as instructions on how to use it. Additionally, it provides a link to the live website.
 
+![logo](public/static/images/pwrhwrlogo.png)
 
 ## Description
 The "Power Hour" website is a platform where users can create an account and manage their workouts. Here are the main features of the website:
@@ -27,3 +28,7 @@ To use the "Power Hour" website, follow these steps:
 - The project is in developed using the NextJS 13 framework with a MongoDB server.
 - The website is built using HTML, CSS, and JavaScript.
 
+
+## Authors
+- [@DimaKyn](https://github.com/DimaKyn)
+- [@MaximL98](https://github.com/MaximL98)
