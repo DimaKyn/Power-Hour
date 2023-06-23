@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Style from '/styles/PageStandard.module.css';
 import FormStyle from '/styles/RegisterForm.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
@@ -11,7 +11,6 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdPassword } from 'react-icons/md';
 import { AiOutlinePhone } from 'react-icons/ai';
-import { useRef } from 'react';
 import { BiLoader } from 'react-icons/bi';
 
 export default function Register() {
@@ -175,6 +174,12 @@ export default function Register() {
     return true;
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
       <NavigationPanel links={registerPanelLinks} />
@@ -193,6 +198,7 @@ export default function Register() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="name">Name</label>
               </div>
@@ -205,6 +211,7 @@ export default function Register() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="username">Username</label>
               </div>
@@ -218,6 +225,7 @@ export default function Register() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="email">Email</label>
               </div>
@@ -230,6 +238,7 @@ export default function Register() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="password">Password</label>
               </div>
@@ -242,6 +251,7 @@ export default function Register() {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   className={FormStyle.userInput}
+                  onKeyDown={handleKeyDown}
                 />
                 <label className={FormStyle.blockLabel} htmlFor="phone">Phone Number</label>
               </div>
