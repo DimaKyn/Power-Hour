@@ -2,7 +2,6 @@
   <img  src="public/static/images/pwrhwrlogo.png">
 </p>
 
-# Power Hour
 This is a README.md file that provides important information about the "Power Hour" website. It includes a description of the website's features and functionality, as well as instructions on how to use it. Additionally, it provides a link to the live website.
 
 
