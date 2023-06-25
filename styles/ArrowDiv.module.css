@@ -1,31 +1,35 @@
 .arrowDiv {
     position: absolute;
-    top: 107px;
-    right: 26px;
+    top: 75px;
+    right: 24px;
     font-size: 35px;
     color: rgb(90, 90, 226);
     display: flex;
     justify-content: center;
     align-items: center;
     animation: upAndDown 2s ease-in-out infinite;
+    z-index: 11;
 }
 
 .loginArrowDiv {
     position: absolute;
-    top: 135px;
+    top: 105px;
     right: 43px;
     font-weight: bold;
     font-size: 13px;
     color: rgb(90, 90, 226);
+    z-index: 11;
 }
 
 .loginArrowDiv2 {
     position: absolute;
-    top: 135px;
+    top: 105px;
     right: 5px;
     font-weight: bold;
     font-size: 13px;
     color: rgb(90, 90, 226);
+    z-index: 11;
+
 }
 
 @keyframes upAndDown {
@@ -47,5 +51,4 @@
     .loginArrowDiv2 {
         display: none;
     }
-
 }
