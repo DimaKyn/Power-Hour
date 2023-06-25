@@ -13,7 +13,7 @@ export default function About() {
                 <label className={Style.mainLabel}>Maxim and Dima, Student Software Engineers</label>
                 <div style={{ display: "flex", flexDirection: "row" , flexWrap: "wrap"}} className={Style.flexingColumnContent}>
                     <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
-                        <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
+                        <div style={{ borderRadius: "1000px", overflow: "hidden", top: "0"}}>
                             <Image
                                 src="/static/about/Dima.jpg"
                                 width={300}
@@ -23,10 +23,10 @@ export default function About() {
                             />
                         </div>
                         <h2 style={{ padding: "10px", fontSize: '30px' }}>Dima</h2>
-                        <p style={{ textAlign: "center" }}>Software Engineering Student, Ambitious, Creative and Focused on my goals. I enjoy coding, making music, working out, and cooking. </p>
+                        <p style={{ textAlign: "center" }}>Software Engineering Student. I enjoy coding, making music, working out, and cooking. </p>
                     </div>
-                    <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', flexDirection: "column", margin: "20px" }}>
-                        <div style={{ borderRadius: "1000px", overflow: "hidden" }}>
+                    <div style={{ maxWidth: "270px", display: 'flex', alignItems: 'center', justifyContent: "top", flexDirection: "column", margin: "20px" }}>
+                        <div style={{ borderRadius: "1000px", overflow: "hidden", top: "0", position: "relative"}}>
                             <Image
                                 src="/static/about/Maxim.jpg"
                                 width={300}
