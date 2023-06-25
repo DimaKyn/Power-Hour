@@ -47,7 +47,7 @@ export default function Home() {
         </div>
       </div>
       <div className={Style.explanationsContainer}>
-        {!isLoggedIn && <div className={Style.explanationDiv}>
+        {isLoggedIn && <div className={Style.explanationDiv}>
           <span style={{textAlign: "center", fontWeight: "bold", fontSize: "20px"}}>
             <Link href="/login" className={Style.loginLink}><span style={{textDecoration: "underline"}}>Login</span> </Link> 
             to save workouts, track progress, and more!
