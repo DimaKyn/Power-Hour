@@ -26,7 +26,7 @@ async function deleteWorkoutFromDB(workoutName, handleRefresh) {
     try {
         const response = await fetch('/api/deleteWorkout', {
             method: 'POST',
-            body: JSON.stringify({ workoutName: workoutName}),
+            body: JSON.stringify({ workoutName: workoutName }),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -38,8 +38,6 @@ async function deleteWorkoutFromDB(workoutName, handleRefresh) {
                 text: `Workout ${workoutName} has been deleted`,
                 icon: 'success',
                 confirmButtonText: 'Ok',
-            }).then(() => {
-                handleRefresh();
             });
         }
     } catch (error) {
@@ -51,6 +49,7 @@ async function deleteWorkoutFromDB(workoutName, handleRefresh) {
 export default function Custom() {
     const [workouts, setWorkouts] = useState([]);
     const router = useRouter();
+    const [workoutCounter, setWorkoutCounter] = useState(0);
 
     const [doneFetching, setDoneFetching] = useState(false);
 
@@ -58,9 +57,10 @@ export default function Custom() {
         (async () => {
             const fetchedWorkouts = await fetchWorkouts();
             setWorkouts(fetchedWorkouts);
+            setWorkoutCounter(fetchedWorkouts.length);
             setDoneFetching(true);
         })();
-    }, []);
+    }, [workoutCounter]);
 
     function deleteWorkout(workoutName) {
         Swal.fire({
@@ -72,10 +72,16 @@ export default function Custom() {
             cancelButtonText: 'Cancel',
         }).then(async (result) => {
             deleteWorkoutFromDB(workoutName, handleRefresh);
+            let index = uniqueWorkouts.indexOf(workoutName);
+            if (index > -1) {
+                uniqueWorkouts.splice(index);
+            }
+            setWorkoutCounter(workoutCounter - 1);
         });
     }
 
     const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
+
     const handleWorkoutClick = (workoutName, exercises) => {
         localStorage.removeItem('exercises');
         localStorage.removeItem('workout');
@@ -89,7 +95,7 @@ export default function Custom() {
 
     const handleRefresh = () => {
         router.reload();
-      };
+    };
 
     return (
         <>
@@ -104,7 +110,7 @@ export default function Custom() {
                             </tr>
                         </thead>
                         <tbody>
-                            {(uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><ImSpinner6 className={TableStyle.loadingIcon} /></div></td></tr>}
+                            {(!doneFetching) && (uniqueWorkouts.length === 0) && <tr style={{ textAlign: "center" }}><td><div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><ImSpinner6 className={TableStyle.loadingIcon} /></div></td></tr>}
 
                             {uniqueWorkouts.map((workoutName) => {
                                 const workout = workouts.workoutsArray.find((w) => w.workoutName === workoutName);
