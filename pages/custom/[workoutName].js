@@ -12,8 +12,7 @@ import { useState, useCallback, useEffect } from 'react';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import { BsArrowsMove } from "react-icons/bs";
-
-
+import { useWindowSize } from "@uidotdev/usehooks";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -22,6 +21,25 @@ export default function CustomWorkout() {
     const [workout, setWorkout] = useState(null);
     const [layouts, setLayouts] = useState();
     const handleLayoutChange = useCallback((layout, layouts) => setLayouts(layouts));
+    const windowSize = useWindowSize();
+
+    function returnIndexBasedOnWindowSize() {
+        if (windowSize.width >= 1550) {
+            return 6;
+        }
+        else if (windowSize.width >= 1200 && windowSize.width < 1550) {
+            return 4;
+        }
+        else if (windowSize.width >= 800 && windowSize.width < 1200) {
+            return 3;
+        }
+        else if (windowSize.width >= 530 && windowSize.width < 800) {
+            return 2;
+        }
+        else {
+            return 1;
+        }
+    }
 
     let storedExercise;
     useEffect(() => {
@@ -35,18 +53,9 @@ export default function CustomWorkout() {
         }
     }, []);
 
-    function test(exercise) {
-        console.log("Name " + exercise.name);
-        console.log("Sets " + exercise.sets);
-        console.log("Reps " + exercise.reps);
-        console.log("Info " + exercise);
-        console.log("Weight " + exercise.weight);
-        console.log("Workout name " + workout);
-    };
-
     return <>
         <NavigationPanel links={customWorkoutPanelLinks} />
-        <div className={Style.inner}>
+        <div className={Style.innerForGrid}>
             <div className={Style.mainLabelDiv2}><label className={Style.mainLabel2}>{workout}</label></div>
             <div className={Style.textWithIconInTheMiddle}>
                 <span className={Style.spanTextWithIconInTheMiddle}>Move the blocks by dragging the&nbsp;</span>
@@ -65,8 +74,7 @@ export default function CustomWorkout() {
                     cols={{ lg: 6, md: 4, sm: 3, xs: 2, xxs: 1 }}
                 >
                     {parsedExercise && parsedExercise.map((exercise, index) => (
-                        < div key={index.toString()} data-grid={{ x: 0, y: 0, w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.gridElement}>
-                            {test(exercise)}
+                        < div key={index.toString()} data-grid={{ x: index % returnIndexBasedOnWindowSize(), y: Math.floor(index / 4), w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.gridElement}>
                             <WorkoutBox
                                 title={exercise.name}
                                 setsFromProps={exercise.sets}
@@ -78,7 +86,7 @@ export default function CustomWorkout() {
                         </div>
                     ))}
                 </ResponsiveGridLayout>
-                <StopWatch />
+                <StopWatch/>
             </div >
         </div >
     </>
