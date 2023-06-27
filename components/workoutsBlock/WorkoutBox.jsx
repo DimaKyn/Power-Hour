@@ -22,7 +22,9 @@ import Swal from 'sweetalert2';
 
 //This function is used to update the sets, reps and weight of an exercise
 async function updateSetsRepsWeight(typeOfStat, value, exerciseName, workoutName,) {
-
+  //If value is a float, floor it to an int
+  let valueInt = parseInt(value);
+  
   try {
     //Create a fetch request to update the sets, reps or weight of an exercise
     let response = await fetch("/api/updateSetsRepsWeight", {
@@ -31,7 +33,7 @@ async function updateSetsRepsWeight(typeOfStat, value, exerciseName, workoutName
         typeOfStat: typeOfStat,
         workoutName: workoutName,
         exerciseName: exerciseName,
-        value: value,
+        value: valueInt,
       }),
       headers: {
         "Content-Type": "application/json",

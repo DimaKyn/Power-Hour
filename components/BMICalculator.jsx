@@ -1,11 +1,8 @@
 import Style from '/styles/LoginBlock.module.css'
-import StyleStandard from '/styles/PageStandard.module.css';
 import StyleCalc from '/styles/BMICalculator.module.css';
-
 import { useEffect, useState } from 'react'
 import { GiBodyHeight } from 'react-icons/gi';
 import { TbWeight } from 'react-icons/tb';
-import { useRef } from 'react';
 import BMIInfo from '/data/bmi_information.json';
 
 //This function handles the BMI calculator, it fetches information from a 
@@ -17,6 +14,8 @@ export default function BMICalculator() {
     const [weight, setWeight] = useState("Weight (kg)");
     const [bmi, setBMI] = useState(0);
     const [metric, setMetric] = useState(true);
+    const [displayStepsToTake, setDisplayStepsToTake] = useState(false);
+    const [validInput, setValidInput] = useState(true);
 
     //Returns the index corresponding to the BMI score
     function mapIndexToBMIscore(bmi) {
@@ -59,11 +58,20 @@ export default function BMICalculator() {
 
     //This function CALCULATES the BMI
     function calculateBMI(height, weight, metric) {
+        if (height <= 0 || weight <= 0) {
+            setBMI(0);
+            stepsToTake(40);
+            setDisplayStepsToTake(false);
+            setValidInput(true);
+            return;
+        }
+        setValidInput(false);
+        setDisplayStepsToTake(true);
         let totalBMI = 0;
         //If normal units
         if (metric) {
             totalBMI = weight / ((height / 100) * (height / 100))
-        } 
+        }
         //If US units
         else {
             totalBMI = (weight / (height * height)) * 703
@@ -93,12 +101,12 @@ export default function BMICalculator() {
             <div className={StyleCalc.title}>
                 <div className={Style.usernameBlock} >
                     <GiBodyHeight className={Style.userIcon} />
-                    <input type="number" className={Style.usernameInput} value={heightNumber} onChange={(e) => setHeightNumber(e.target.value)}></input>
+                    <input step="1" type="number" className={Style.usernameInput} value={heightNumber} onChange={(e) => setHeightNumber(e.target.value)}></input>
                     <label className={Style.usernameLabel}>{height}</label>
                 </div>
                 <div className={Style.passwordBlock} style={{ marginTop: "30px" }}>
                     <TbWeight className={Style.passwordIcon} />
-                    <input type="number" className={Style.usernameInput} value={weightNumber} onChange={(e) => setWeightNumber(e.target.value)}></input>
+                    <input step="1" type="number" className={Style.usernameInput} value={weightNumber} onChange={(e) => setWeightNumber(e.target.value)}></input>
                     <label className={Style.passwordLabel}>{weight}</label>
                 </div>
                 <div onClick={() => changeUnits()} className={StyleCalc.checkboxContainer}>
@@ -109,7 +117,9 @@ export default function BMICalculator() {
                 </div>
                 <div className={StyleCalc.buttonDiv}>
                     <button className={Style.loginButton}
-                        onClick={() => calculateBMI(heightNumber, weightNumber, metric)}>Calculate</button>
+                        onClick={() => calculateBMI(heightNumber, weightNumber, metric)}>Calculate
+                    </button>
+                    {validInput && <label style={{ color: "red", marginTop: "3px"}}>Please provide valid height and weight numbers</label>}
                 </div>
 
             </div>
@@ -121,12 +131,12 @@ export default function BMICalculator() {
                 <span>{BMIInfo[mapIndexToBMIscore(bmi)].explanation}</span>
                 <br />
 
-                <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)", fontSize: "20px" }}>Steps to {stepsToTake(bmi)} your BMI:</label>
+                {displayStepsToTake && <label style={{ fontWeight: "bold", color: "rgba(64, 64, 192, 1)", fontSize: "20px" }}>Steps to {stepsToTake(bmi)} your BMI:</label>}
                 <span>{BMIInfo[mapIndexToBMIscore(bmi)].steps.map(
                     (step, i) => {
                         return <div key={i}>
-                            <li style={{listStyleType: "none"}} >{(i + 1) + ".  " + step}</li>
-                            <br/>
+                            <li style={{ listStyleType: "none" }} >{(i + 1) + ".  " + step}</li>
+                            <br />
                         </div>
                     }
                 )}</span>
