@@ -635,3 +635,29 @@
         content: "Save";
     }
 }
+
+.loadingIcon {
+    position: relative;
+    font-size: 30px;
+    animation: spin 1s linear 0s infinite normal none running;
+}
+
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.saveButtonDiv {
+    height: 60px;
+    width: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
