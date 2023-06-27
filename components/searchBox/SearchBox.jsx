@@ -16,6 +16,7 @@ import {
 } from "../../components/ui/popover"
 import Tooltip from '@mui/material/Tooltip';
 import Swal from 'sweetalert2';
+import { ImSpinner6 } from "react-icons/im";
 
 //This function adds a workout to the database
 async function workoutToDB(addedExercises, workoutName) {
@@ -46,7 +47,7 @@ async function workoutToDB(addedExercises, workoutName) {
         });
         response = await response.json();
         console.log(response.message);
-        if(response.message.includes("Workout added")){
+        if (response.message.includes("Workout added")) {
             const Toast = Swal.mixin({
                 toast: true,
                 position: 'bottom',
@@ -54,16 +55,16 @@ async function workoutToDB(addedExercises, workoutName) {
                 timer: 1500,
                 timerProgressBar: true,
                 didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
-              })
-              
-              Toast.fire({
+            })
+
+            Toast.fire({
                 icon: 'success',
                 title: 'Saved workout successfully'
-              })
-        } 
+            })
+        }
     } catch (error) {
         const Toast = Swal.mixin({
             toast: true,
@@ -72,15 +73,15 @@ async function workoutToDB(addedExercises, workoutName) {
             timer: 1500,
             timerProgressBar: true,
             didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer)
-              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-          })
-          
-          Toast.fire({
+        })
+
+        Toast.fire({
             icon: 'error',
             title: 'Encountered an error adding workout'
-          })
+        })
         console.log("Encountered an error adding workout:", error);
     }
 }
@@ -113,9 +114,11 @@ export default function SearchBox() {
     const [listOfExercises, setListOfExercises] = useState([]);
     const [addedExercises, setAddedExercises] = useState([]);
     const [workoutName, setWorkoutName] = useState('');
+    const [loading, setLoading] = useState(false);
 
     //This function handles saving the workout to the database
-    function saveWorkout(workoutName) {
+    async function saveWorkout(workoutName) {
+        setLoading(true);
         //Displays alert if no workout name has been entered
         if (workoutName === '') {
             Swal.fire({
@@ -139,7 +142,8 @@ export default function SearchBox() {
             return;
         }
         //Handles saving the workout to the database
-        workoutToDB(addedExercises, workoutName);
+        await workoutToDB(addedExercises, workoutName);
+        setLoading(false);
     }
 
     return SearchBoxInner();
@@ -149,10 +153,10 @@ export default function SearchBox() {
 
         // Update the value of the stringInput variable and then search for a workout
         async function handleInputUpdate(event) {
-            //Clear the list of workouts
-            setListOfExercises([]);
             const inputValue = event.target.value;
             setStringInput(inputValue);
+            //Clear the list of workouts
+            setListOfExercises([]);
             for (let i = 0; i < 1; i++) {
                 const response = await fetchWorkoutByAttribute(inputValue, listOfSearchableVariables[i]);
                 if (response) {
@@ -161,6 +165,7 @@ export default function SearchBox() {
                     }
                 }
             }
+            setListOfExercises(prevListOfExercises => [...prevListOfExercises.reverse()]);
         }
 
         //This function removes the chosen exercise to add from the search box and adds it to the bottom div
@@ -248,7 +253,10 @@ export default function SearchBox() {
                         </input>
                         <label className={Style.blockLabel}>Workout Name</label>
                     </div>
-                    <button onClick={() => saveWorkout(workoutName)} className={Style.saveWorkoutButton}>Save</button>
+                    <div className={Style.saveButtonDiv}>
+                        {!loading && <button onClick={() => saveWorkout(workoutName)} className={Style.saveWorkoutButton}>Save</button>}
+                        {loading && <ImSpinner6 className={Style.loadingIcon} />}
+                    </div>
                 </div>
                 <div className={Style.chosenExercisesInner}>
                     {addedExercises.map((exercise, index) => {

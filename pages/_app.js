@@ -2,14 +2,19 @@ import Navbar from '/components/navbar/Navbar';
 import "/styles/globals.css";
 import Style from '/styles/PageStandard.module.css';
 import { SessionProvider } from 'next-auth/react';
+import Head from 'next/head';
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
-  return (
+  return (<>
+    <Head>
+      <link rel="shortcut icon" href="/favicon.ico" />
+    </Head>
     <SessionProvider session={session}>
       <div className={Style.backgroundImage}></div>
       <Navbar />
       <Component {...pageProps} ></Component>
     </SessionProvider>
+  </>
   );
 }
 
