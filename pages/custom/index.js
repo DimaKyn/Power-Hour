@@ -86,6 +86,7 @@ export default function Custom() {
     // Get the unique workouts
     const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
 
+
     // Function to handle the click event on a workout
     const handleWorkoutClick = (workoutName, exercises) => {
         localStorage.removeItem('exercises');

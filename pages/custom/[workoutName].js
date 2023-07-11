@@ -12,6 +12,7 @@ import 'react-resizable/css/styles.css';
 import { BsArrowsMove } from "react-icons/bs";
 import { useWindowSize } from "@uidotdev/usehooks";
 
+
 const ResponsiveGridLayout = WidthProvider(Responsive); // Creating a responsive grid layout using the WidthProvider and Responsive components
 
 // Define the CustomWorkout component as the default export
@@ -21,6 +22,7 @@ export default function CustomWorkout() {
     const [layouts, setLayouts] = useState();
     const handleLayoutChange = useCallback((layout, layouts) => setLayouts(layouts));
     const windowSize = useWindowSize();
+
 
     // Function to return the index based on the window size
     function returnIndexBasedOnWindowSize() {
