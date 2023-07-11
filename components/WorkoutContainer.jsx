@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import Style from '/styles/WorkoutContainer.module.css';
 import Swal from "sweetalert2";
 
+// Function to save the workout to the database
 async function saveWorkoutToDB(workoutName, exercises) {
+  // Create a workout object with the workout name and an empty array for exercises
   var workout = {
     workoutName: workoutName,
     exercises: []
   };
+
+  // Iterate through each exercise and add it to the workout object
   exercises.forEach(exercise => {
     
     workout.exercises.push({
@@ -18,6 +22,7 @@ async function saveWorkoutToDB(workoutName, exercises) {
     });
   })
   try {
+    // Send a POST request to the server to add the workout to the database
     let response = await fetch('/api/addWorkoutToDB', {
       method: 'POST',
       body: JSON.stringify(workout),
@@ -28,6 +33,7 @@ async function saveWorkoutToDB(workoutName, exercises) {
       credentials: 'include',
     });
     
+    // Display a success toast notification
     const Toast = Swal.mixin({
       toast: true,
       position: 'bottom',
@@ -49,12 +55,15 @@ async function saveWorkoutToDB(workoutName, exercises) {
   }
   
 }
+
+// Component for each exercise in the workout
 const Exercise = ({ exercise }) => {
+  // State variables
   const [setsReps, setSetsReps] = useState({ sets: exercise.sets, reps: exercise.reps });
   const [editing, setEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-
+  // Function to handle changes in sets and reps input fields
   const handleSetsRepsChange = (event) => {
     const value = parseInt(event.target.value);
     const name = event.target.name;
@@ -63,10 +72,12 @@ const Exercise = ({ exercise }) => {
     }
   };
 
+  // Function to handle edit button click
   const handleEditClick = () => {
     setEditing(!editing);
   };
 
+  // Function to handle save button click
   const handleSaveClick = () => {
     setIsSaving(true);
   };
@@ -117,7 +128,9 @@ const Exercise = ({ exercise }) => {
   );
 };
 
+// Component for the workout container
 const WorkoutContainer = ({ workoutName, category }) => {
+  // Find the workout based on the workout name
   const workout = category.find((workout) => workout.name === workoutName);
   const exercises = workout ? workout.exercises : [];
 
@@ -125,6 +138,7 @@ const WorkoutContainer = ({ workoutName, category }) => {
     <div className={Style.container}>
       <h2 className={Style.h2}>{workoutName}</h2>
       <div className={Style.exercisesContainer}>
+        {/* Map through each exercise and render the Exercise component */}
         {exercises.map((exercise) => (
           <div key={exercise.id}>
             <Exercise exercise={exercise} />

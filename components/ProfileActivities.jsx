@@ -33,6 +33,7 @@ export default function ProfileActivities() {
 
   return (
     <>
+      {/* File input for profile picture */}
       <input
         type="file"
         onChange={handleFileSelected}
@@ -40,6 +41,7 @@ export default function ProfileActivities() {
         style={{ display: "none" }}
       />
       <div>
+        {/* Display upload profile picture button if no file selected */}
         {!file && (
           <div
             className={Style.button}
@@ -49,6 +51,7 @@ export default function ProfileActivities() {
             Upload Profile Picture
           </div>
         )}
+        {/* Display profile picture if file selected */}
         {file && (
           <div
             className={Style.profilePicture}
@@ -69,7 +72,7 @@ export default function ProfileActivities() {
           </div>
         )}
       </div>
-
+      {/* Activity buttons */}
       <div className={Style.buttonContainer}>
         <div className={Style.choiceBlock}>
           <h1 style={{ fontSize: "27px", textAlign: "center" }}>
@@ -91,6 +94,8 @@ export default function ProfileActivities() {
             Create Workout
           </Link>
         </div>
+
+        {/* Browse pre-made workouts */}
         <div className={Style.choiceBlock}>
           <h1 style={{ fontSize: "27px", textAlign: "center" }}>
             Pre-made Workouts
@@ -110,11 +115,12 @@ export default function ProfileActivities() {
             Browse Workouts
           </Link>
         </div>
+
+        {/* View saved workouts */}
         <div className={Style.choiceBlock}>
           <h1 style={{ fontSize: "27px", textAlign: "center" }}>
             Saved Workouts
           </h1>
-
           <span className={Style.span}>
             Start a workout that you built for yourself.
           </span>
@@ -130,6 +136,8 @@ export default function ProfileActivities() {
             My Workouts
           </Link>
         </div>
+
+        {/* View weight progress */}
         <div className={Style.choiceBlock}>
           <h1 style={{ fontSize: "27px", textAlign: "center" }}>My Weight Progress</h1>
           <span className={Style.span}>
@@ -147,6 +155,8 @@ export default function ProfileActivities() {
             Update Weight Progress
           </Link>
         </div>
+
+        {/* Calculate BMI */}
         <div className={Style.choiceBlock}>
           <h1 style={{ fontSize: "27px", textAlign: "center" }}>BMI Calculator</h1>
           <span className={Style.span}>

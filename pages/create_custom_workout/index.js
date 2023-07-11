@@ -4,17 +4,19 @@ import Style from '/styles/PageStandard.module.css';
 import SearchBox from '/components/searchBox/SearchBox';
 import Tooltip from '@mui/material/Tooltip';
 
+// Define the constants for the exercise details
 const nameOfExercise = "Name of the exercise, can be long or short"
 const typeOfExercise = "Type of the exercise, possible values: \"Cardio\", \"Olympic Wightlifting\", \"Plyometrics\", \"Powerlifting\", \"Strength\", \"Stretching\", \"Strongman\"";
 const muscleOfExercise = "The activated muscle, possible values: \"Abdominals\", \"Abductors\", \"Adductors\", \"Biceps\", \"Calves\", \"Chest\", \"Forearms\", \"Glutes\", \"Hamstrings\", \"Lats\", \"Lower Back\", \"Middle Back\", \"Neck\", \"Quadriceps\", \"Traps\", \"Triceps\"";
 const difficultyOfExercise = "Possible values: \"Beginner\", \"Intermediate\", or \"Advanced\"";
 
+// Define the CreateCustomWorkout component as the default export
 export default function CreateCustomWorkout() {
 
     return <>
-        <NavigationPanel links={createCustomWorkoutPanelLinks} />
+        <NavigationPanel links={createCustomWorkoutPanelLinks} /> {/* Render the NavigationPanel component with the createCustomWorkoutPanelLinks */}
         <div className={Style.inner}>
-            <label className={Style.mainLabel}>Create Workout</label>
+            <label className={Style.mainLabel}>Create Workout</label> {/* Render the main label */}
             <span style={{ wordWrap: "nowrap", textAlign: "center", fontSize: "15px" }}>{"Search an exercise by "}
                 <Tooltip className={Style.tooltip} title={nameOfExercise}>
                     <span className={Style.tooltipHoverTextInformation}>name</span>

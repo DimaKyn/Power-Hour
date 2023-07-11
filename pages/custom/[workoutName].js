@@ -1,21 +1,21 @@
 import WorkoutBox from '/components/workoutsBlock/WorkoutBox';
 import Style from '/styles/PageStandard.module.css';
-import StyleDraggable from '/styles/WorkoutBox.module.css';
 import NavigationPanel from '/components/navigationPanel/NavigationPanel';
 import { customWorkoutPanelLinks } from '/components/navigationPanel/NavigationPanelLinksList';
 import StopWatch from 'components/StopWatch.jsx';
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
 import { Responsive, WidthProvider } from 'react-grid-layout';
-import Layouts from 'react-grid-layout'; // using @types/react-grid-layout
 import { useState, useCallback, useEffect } from 'react';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import { BsArrowsMove } from "react-icons/bs";
 import { useWindowSize } from "@uidotdev/usehooks";
 
-const ResponsiveGridLayout = WidthProvider(Responsive);
 
+const ResponsiveGridLayout = WidthProvider(Responsive); // Creating a responsive grid layout using the WidthProvider and Responsive components
+
+// Define the CustomWorkout component as the default export
 export default function CustomWorkout() {
     const [parsedExercise, setParsedExercise] = useState(null);
     const [workout, setWorkout] = useState(null);
@@ -23,6 +23,8 @@ export default function CustomWorkout() {
     const handleLayoutChange = useCallback((layout, layouts) => setLayouts(layouts));
     const windowSize = useWindowSize();
 
+
+    // Function to return the index based on the window size
     function returnIndexBasedOnWindowSize() {
         if (windowSize.width >= 1550) {
             return 6;
@@ -43,13 +45,13 @@ export default function CustomWorkout() {
 
     let storedExercise;
     useEffect(() => {
-        storedExercise = localStorage.getItem('exercises');
-        const storedWorkout = localStorage.getItem('workout');
+        storedExercise = localStorage.getItem('exercises'); // Get the stored exercises from local storage
+        const storedWorkout = localStorage.getItem('workout'); // Get the stored workout from local storage
         if (storedExercise) {
             setParsedExercise(JSON.parse(storedExercise));
         }
         if (storedWorkout) {
-            setWorkout(storedWorkout);
+            setWorkout(storedWorkout); // Set the stored workout
         }
     }, []);
 
