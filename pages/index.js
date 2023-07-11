@@ -10,7 +10,6 @@ import Link from 'next/link';
 
 export default function Home() {
 // Define the Home component as the default export
-export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
