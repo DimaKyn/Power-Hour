@@ -5,21 +5,19 @@ import Swal from "sweetalert2";
 import NavigationPanel from "/components/navigationPanel/NavigationPanel";
 import { myProgressLinks } from "/components/navigationPanel/NavigationPanelLinksList";
 
-
+// Function to fetch weights from the server
 async function fetchWeights() {
     try {
       const response = await fetch("/api/fetchWeights", {
         method: "GET",
       });
       const data = await response.json();
-      console.log(data.weights)
       return data.weights;
     } catch (error) {
-      console.log(error);
     }
   }
 
-
+// Define the LineChart component as the default export
 function LineChart() {
     const [weightData, setWeightData] = useState([]);
     const chartRef = useRef(null);
@@ -32,20 +30,19 @@ function LineChart() {
     }, []);
 
     useEffect(() => {
-        console.log(weightData);
         if(weightData)
           renderChart();
       }, [weightData]);
 
-    console.log(weightData)
+    // Function to handle the weight input
     async function handleWeightInput() {
-        console.log(weightData)
         var weight;
         Swal.fire({
             title: "Enter Weight",
             input: "number",
             inputAttributes: {
-                autocapitalize: "off"
+                autocapitalize: "off",
+                step: "any" // Allow decimal values
             },
             showCancelButton: true,
             confirmButtonText: "Add",
@@ -58,7 +55,16 @@ function LineChart() {
                         if (weight === "" || weight === null) {
                             Swal.showValidationMessage("Weight is required");
                             resolve();
-                        } else {
+                        }
+                        if(weight < 0 ){
+                          Swal.showValidationMessage("Weight is too small, you're not that skinny...");
+                          resolve();
+                        }
+                        if(weight > 1000){
+                          Swal.showValidationMessage("Weight is too big, you're not that fat...");
+                          resolve();
+                        }
+                        else {
                             updateToDB(weight);
                             resolve();
                             renderChart();
@@ -68,7 +74,8 @@ function LineChart() {
             }
         })
     };
-
+    
+    // Function to update the weight data in the database
     async function updateToDB(weight){
         try {
             setWeightData([...weightData, Number(weight)]);
@@ -85,8 +92,8 @@ function LineChart() {
         }
     }
 
+    // Function to render the chart
     const renderChart = () => {
-        console.log(weightData)
         var ctx = document.getElementById("myChart").getContext("2d");
         let labels;
         

@@ -4,6 +4,7 @@ import Style from '/styles/PageStandard.module.css';
 import { SessionProvider } from 'next-auth/react';
 import Head from 'next/head';
 
+// Define the App component as the default export
 function App({ Component, pageProps: { session, ...pageProps } }) {
   return (<>
     <Head>

@@ -12,7 +12,7 @@ import { BiLoader } from 'react-icons/bi';
 async function sleep(msec) {
   return new Promise(resolve => setTimeout(resolve, msec));
 }
-
+// This function is the login, it shows to the user what information he needs to input and saves those inputs
 export default function LoginBlock() {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -28,20 +28,20 @@ export default function LoginBlock() {
       setIsLoggedIn(true);
     }
   }, []);
-
+  // SignOut users
   const handleLogout = async () => {
     localStorage.removeItem('loggedInUser');
     window.localStorage.clear();
     setIsLoggedIn(false);
     await signOut();
   };
-
+  // Allow keyboard key "Enter" to trigger event
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleLogin();
     }
   };
-
+  // Handles login using NextAuth
   async function handleLogin() {
     console.log('Trying to find user with identifier:', identifier);
     setLoginText("");
@@ -70,7 +70,7 @@ export default function LoginBlock() {
       }
     }
   }
-
+  // If user is not logged in, we hide most of the content and tell him to login
   if (!isLoggedIn) {
     return (
       <>
@@ -127,7 +127,7 @@ export default function LoginBlock() {
       </>
     );
   }
-
+  // If user is logged in, we show him the content. meaning he has a profile page.
   return (
     <>
       <NavigationPanel links={profilePanelLinks} />

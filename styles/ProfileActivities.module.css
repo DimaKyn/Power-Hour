@@ -10,12 +10,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
     
     background-color: rgb(108, 92, 255);
     cursor: pointer;
+    transform: scale(1.09);
 }
 
 .buttonContainer {

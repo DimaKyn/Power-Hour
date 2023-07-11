@@ -1,17 +1,20 @@
 import bcrypt from 'bcrypt';
 import clientPromise from '../../lib/mongodb';
 
+// Function to hash the password using bcrypt
 async function hashPassword(password) {
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-  return hashedPassword;
+  const salt = await bcrypt.genSalt(10); // Generate a salt with a cost factor of 10
+  const hashedPassword = await bcrypt.hash(password, salt); // Hash the password using the generated salt
+  return hashedPassword; // Return the hashed password
 }
 
+// Error handler middleware function
 async function errorHandler(err, req, res, next) {
   console.error(err);
   res.status(500).json({ message: 'Internal server error' });
 }
 
+// Define the handler function as the default export
 export default async function handler(req, res) {
   let client;
   try {
@@ -24,7 +27,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: 'All fields are required' });
       }
 
-      const client = await clientPromise;
+      const client = await clientPromise; // Get the MongoDB client from the clientPromise
       const db = client.db(process.env.DB_NAME);
       const existingEmail = await db.collection('Users').findOne({ email });
 
@@ -68,7 +71,6 @@ export default async function handler(req, res) {
         weights: []
       });
 
-      console.log('User created:', newUser);
       res.setHeader('Content-Type', 'application/json');
 
       return res.status(201).json({ message: 'User registered successfully' });
@@ -93,6 +95,5 @@ export default async function handler(req, res) {
 async function disconnectFromServer(client) {
   if (client) {
     await client.close();
-    console.log("Disconnected from server");
   }
 }

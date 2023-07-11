@@ -9,6 +9,7 @@
   border: 1px solid rgb(0, 0, 0);
   box-shadow: 0 20px 50px 50px rgba(0, 0, 0, 0.5);
   outline: 2px solid rgba(64, 64, 192, 1);
+  margin-top: 20px;
 }
 
 .stopwatchDisplay {

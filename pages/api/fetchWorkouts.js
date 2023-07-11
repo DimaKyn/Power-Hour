@@ -1,6 +1,7 @@
 import clientPromise from "/lib/mongodb";
 import { getSession } from "next-auth/react";
 
+// Define the handler function as the default export
 export default async function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ msg: "Method not allowed" });
@@ -9,8 +10,7 @@ export default async function handler(req, res) {
   let client;
 
   try {
-    const session = await getSession({ req });
-    console.log(session);
+    const session = await getSession({ req }); // Get the session using the getSession function
     if (!session) {
       // Handle unauthorized access
       return res.status(401).json({ message: "Unauthorized" });
@@ -34,6 +34,6 @@ export default async function handler(req, res) {
 //Remove the connection from the database
 async function disconnectFromServer(client) {
   if (client) {
-    await client.close();
+    await client.close(); // Close the MongoDB client connection
   }
 }

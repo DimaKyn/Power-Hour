@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Swal from 'sweetalert2';
 import { ImSpinner6 } from 'react-icons/im';
 
+// Function to fetch workouts from the server
 async function fetchWorkouts() {
     try {
         const response = await fetch('/api/fetchWorkouts', {
@@ -22,6 +23,7 @@ async function fetchWorkouts() {
     }
 }
 
+// Function to delete a workout from the database
 async function deleteWorkoutFromDB(workoutName, handleRefresh) {
     try {
         const response = await fetch('/api/deleteWorkout', {
@@ -45,7 +47,7 @@ async function deleteWorkoutFromDB(workoutName, handleRefresh) {
     }
 }
 
-
+// Define the Custom component as the default export
 export default function Custom() {
     const [workouts, setWorkouts] = useState([]);
     const router = useRouter();
@@ -62,6 +64,7 @@ export default function Custom() {
         })();
     }, [workoutCounter]);
 
+    // Function to delete a workout
     function deleteWorkout(workoutName) {
         Swal.fire({
             title: 'Delete Workout',
@@ -80,8 +83,10 @@ export default function Custom() {
         });
     }
 
+    // Get the unique workouts
     const uniqueWorkouts = workouts.workoutsArray ? [...new Set(workouts.workoutsArray.map((workout) => workout.workoutName))] : [];
 
+    // Function to handle the click event on a workout
     const handleWorkoutClick = (workoutName, exercises) => {
         localStorage.removeItem('exercises');
         localStorage.removeItem('workout');
@@ -93,6 +98,7 @@ export default function Custom() {
         });
     };
 
+    // Function to handle the refresh event
     const handleRefresh = () => {
         router.reload();
     };

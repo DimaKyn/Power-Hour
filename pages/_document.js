@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
+// Define the Document component as the default export
 export default function Document() {
   return (
     <Html lang="en">

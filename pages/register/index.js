@@ -80,7 +80,6 @@ export default function Register() {
           height: 100,
           title: 'Unsuccessful registration',
           text: 'All fields are required!',
-          // You can customize the appearance of the alert further using other options
         });
       } else if (responseText.includes("Username already exists")) {
         displayRegisterText();
