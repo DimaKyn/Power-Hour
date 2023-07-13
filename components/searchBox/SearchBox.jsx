@@ -46,7 +46,6 @@ async function workoutToDB(addedExercises, workoutName) {
             },
         });
         response = await response.json();
-        console.log(response.message);
         if (response.message.includes("Workout added")) {
             const Toast = Swal.mixin({
                 toast: true,
@@ -90,7 +89,6 @@ async function workoutToDB(addedExercises, workoutName) {
 //Fetch a list of workouts from the ninja API based on the attribute of the workout
 function fetchWorkoutByAttribute(inputValue, attribute) {
     //Fetch url is of the form "https://api.api-ninjas.com/v1/exercises? + "muscle=" + "chest" for example
-    console.log(api_url + attribute + inputValue);
     return fetch(api_url + attribute + inputValue, {
         headers: {
             'X-Api-Key': "oh+RWDOk74XjoYD3nBn99A==COJtYSEfL5CGiH65"

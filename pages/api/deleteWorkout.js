@@ -11,7 +11,6 @@ export default async function handler(req, res) {
 
     try {
         const session = await getServerSession(req, res);
-        console.log(session);
         if (!session) {
             // Handle unauthorized access
             return res.status(401).json({ message: "Unauthorized" });
@@ -50,6 +49,5 @@ export default async function handler(req, res) {
 async function disconnectFromServer(client) {
     if (client) {
         await client.close();
-        console.log("Disconnected from server");
     }
 }
