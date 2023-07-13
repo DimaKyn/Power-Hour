@@ -268,6 +268,16 @@
     color: white;
 }
 
+.lastGridElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .flexingColumnContent {
     display: flex;
     flex-direction: column;

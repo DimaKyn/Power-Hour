@@ -20,6 +20,7 @@ export default function CustomWorkout() {
     const [parsedExercise, setParsedExercise] = useState(null);
     const [workout, setWorkout] = useState(null);
     const [layouts, setLayouts] = useState();
+    const [lastIndex, setLastIndex] = useState(0);
     const handleLayoutChange = useCallback((layout, layouts) => setLayouts(layouts));
     const windowSize = useWindowSize();
 
@@ -49,6 +50,7 @@ export default function CustomWorkout() {
         const storedWorkout = localStorage.getItem('workout'); // Get the stored workout from local storage
         if (storedExercise) {
             setParsedExercise(JSON.parse(storedExercise));
+            setLastIndex(JSON.parse(storedExercise).length);
         }
         if (storedWorkout) {
             setWorkout(storedWorkout); // Set the stored workout
@@ -87,6 +89,18 @@ export default function CustomWorkout() {
                             />
                         </div>
                     ))}
+
+                    < div key={lastIndex.toString()} data-grid={{ x: lastIndex % returnIndexBasedOnWindowSize(), y: Math.floor(lastIndex / 4), w: 1, h: 1, minW: 1, maxW: 1, maxH: 1, minH: 1 }} className={Style.lastGridElement}>
+                            <WorkoutBox
+                                title=""
+                                setsFromProps=""
+                                repsFromProps=""
+                                weightFromProps=""
+                                information=""
+                                workoutName=""
+                            />
+                        </div>
+
                 </ResponsiveGridLayout>
                 <StopWatch/>
             </div >
