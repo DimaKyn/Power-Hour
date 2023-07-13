@@ -45,8 +45,8 @@ export default function Home() {
           <div className={Style.subSubSubImage}></div>
           <div><span className={Style.regularText}>POWER YOUR&nbsp;</span><span id="typed" className={Style.typedText}></span></div>
 
-          <div className={Style.dumbbellDiv} style={{ width: "60px" }}>
-            <CiDumbbell style={{ fontSize: "60px" }} />
+          <div className={Style.dumbbellDiv} style={{ width: "55px" }}>
+            <CiDumbbell style={{ fontSize: "55px" }} />
           </div>
         </div>
       </div>
