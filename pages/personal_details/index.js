@@ -56,11 +56,11 @@ function LineChart() {
                             Swal.showValidationMessage("Weight is required");
                             resolve();
                         }
-                        if(weight < 0 ){
+                        else if(weight < 0 ){
                           Swal.showValidationMessage("Weight is too small, you're not that skinny...");
                           resolve();
                         }
-                        if(weight > 1000){
+                        else if(weight > 1000){
                           Swal.showValidationMessage("Weight is too big, you're not that fat...");
                           resolve();
                         }

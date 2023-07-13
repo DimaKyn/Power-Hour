@@ -43,7 +43,6 @@ export default function LoginBlock() {
   };
   // Handles login using NextAuth
   async function handleLogin() {
-    console.log('Trying to find user with identifier:', identifier);
     setLoginText("");
     loadingIconRef.current.classList = Style.loginButtonLoading;
 
@@ -54,7 +53,6 @@ export default function LoginBlock() {
     });
 
     if (response.error) {
-      console.log('User not found');
       loginButtonRef.current.classList = Style.loginButtonIncorrectCredentials;
       incorrectCredentialsLabelRef.current.classList = Style.incorrectCredentialsLabelShow;
       loadingIconRef.current.classList = Style.loginButtonIconIdle;
@@ -65,7 +63,6 @@ export default function LoginBlock() {
       if (typeof window !== 'undefined') {
         localStorage.setItem('isLoggedIn', true);
         localStorage.setItem('loggedInUser', identifier);
-        console.log('Stored:', identifier);
         window.location.href = '/profile'; // redirect to profile page
       }
     }

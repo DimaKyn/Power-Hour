@@ -13,7 +13,6 @@ export default function PremadeWorkout() {
     const headline = "Premade Workouts for a Push, Pull, Leg Workout Routine";
     const explanation = "The push-pull-legs workout routine is a popular training split that divides the body into three main muscle groups: push muscles, pull muscles, and leg muscles. The idea behind this routine is to train each muscle group separately, allowing for more focused and efficient workouts.";
     
-    console.log(exercise)
     return (
       <div className={StyleStandard.inner}>
         <NavigationPanel links={PreMadeWorkoutsLinks} />

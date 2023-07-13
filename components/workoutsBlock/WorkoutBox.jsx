@@ -41,7 +41,6 @@ async function updateSetsRepsWeight(typeOfStat, value, exerciseName, workoutName
     });
     if (response.ok) {
       let json = await response.json();
-      console.log(json.message);
       if(json.message.includes("Updated Successfuly")){
         const Toast = Swal.mixin({
             toast: true,
